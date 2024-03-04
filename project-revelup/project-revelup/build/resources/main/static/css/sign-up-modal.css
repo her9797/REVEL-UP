@@ -1,0 +1,59 @@
+/* 모달 내용 스타일 */
+.modal-content {
+    padding: 20px; /* 내부 여백 추가 */
+    border: none !important; /* 내부 선 제거 */
+}
+
+/* 모달 헤더 스타일 */
+.modal-header {
+    background-color: #ffffff; /* 모달 헤더 배경색 (분홍색) */
+    border-top-left-radius: 15px; /* 헤더 모서리 둥글게 */
+    border-top-right-radius: 15px; /* 헤더 모서리 둥글게 */
+    display: flex; /* Flexbox를 사용하여 수직 가운데 정렬 */
+    align-items: center; /* 수직 가운데 정렬 */
+    border: none;
+}
+
+/* 모달 헤더 제목 가운데 정렬 */
+.modal-title {
+    margin: auto; /* 수평 가운데 정렬 */
+}
+
+/* 모달 푯말 스타일 */
+.modal-footer {
+    background-color: #ffffff; /* 모달 푯말 배경색 (분홍색) */
+    border-bottom-left-radius: 15px; /* 푯말 모서리 둥글게 */
+    border-bottom-right-radius: 15px; /* 푯말 모서리 둥글게 */
+    display: flex; /* Flexbox를 사용하여 수직 가운데 정렬 */
+    align-items: center; /* 수직 가운데 정렬 */
+    border: none;
+}
+
+/* 닫기 버튼 스타일 */
+.close {
+    color: #000; /* 닫기 버튼 색상 (검정색) */
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+    border: none; /* 버튼 테두리 제거 */
+    background: none; /* 배경색 제거 */
+    position: absolute; /* 절대 위치 */
+    top: 10px; /* 위에서 10px 떨어진 위치 */
+    right: 10px; /* 오른쪽에서 10px 떨어진 위치 */
+}
+
+.close:hover,
+.close:focus {
+    color: #ff1493; /* 닫기 버튼 호버시 색상 (분홍색) */
+    text-decoration: none;
+}
+
+.modal-body {
+    border: none;
+}
+.checkbox-label {
+    display: inline-block;
+    vertical-align: middle;
+    margin-right: -410px; /* 체크박스와 라벨 사이의 간격 조정 */
+}
+

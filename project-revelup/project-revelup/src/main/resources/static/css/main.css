@@ -1,0 +1,129 @@
+    /* 전체적인 정렬을 위한 스타일 */
+    body {
+        background-color: #f8f9fa; /* 전체 배경색 */
+    }
+
+    .content-container {
+        max-width: 2200px; /* 내용의 최대 너비 지정 */
+        margin: 0 auto; /* 가운데 정렬을 위한 margin 설정 */
+        padding: 0; /* 좌우 여백 추가 */
+    }
+
+    /* banner Section */
+    .banner-area {
+        background-image: url('../img/banner/banner1.jpg'); /* 배경 이미지 = banner1.jpg  */
+        background-size: cover; /* 배경 이미지를 화면에 맞게 조정합니다. */
+        background-position: center; /* 배경 이미지를 가운데로 정렬합니다. */
+        color: rgb(255, 255, 255); /* 텍스트의 색상을 흰색으로 설정합니다. */
+        padding: 100px 0; /* 섹션의 상하 여백을 설정합니다. */
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* 텍스트에 그림자 효과를 추가합니다. */
+    }
+
+    /* 배너 style */
+    .banner-content h1 {
+        font-size: 36px; /* Reduced heading font size */
+        font-weight: 600; /* h1 텍스트를 조금 두껍게 설정 */
+        margin-bottom: 10px;
+        text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3); /* 그림자를 아주 살짝 추가 */
+    }
+
+    .banner-content p {
+        font-size: 16px; /* Reduced paragraph font size */
+        letter-spacing: -0.5px; /* p 태그의 텍스트 자간을 조금 좁혀줌 */
+    }
+
+    /* Second Header 4-column Section */
+    .features-area {
+        background-color: #f8f9fa;
+        padding: 80px 0; /* Reduced padding */
+    }
+
+    .single-features {
+        margin-bottom: 20px; /* Reduced margin between feature items */
+        position: relative;
+        z-index: 1; /* 다른 요소 위로 올려줌 */
+        text-align: center; /* 가운데 정렬 */
+    }
+
+    .single-features h6 {
+        font-size: 20px; /* Reduced heading font size */
+        margin-bottom: 8px;
+    }
+
+    .single-features p {
+        font-size: 14px; /* Reduced paragraph font size */
+    }
+
+    /* Product Area */
+    .single-product-slider {
+        background-color: #f8f9fa;
+        padding: 80px 0; /* Reduced padding */
+    }
+
+    .single-product {
+        margin-bottom: 20px;
+    }
+
+    .single-product img {
+        border-radius: 8px; /* Increased border radius for product images */
+    }
+
+    .product-details h6 {
+        font-size: 16px; /* Reduced heading font size */
+        margin-bottom: 8px;
+    }
+
+    .price h6 {
+        margin-right: 8px; /* Reduced margin */
+    }
+
+    /* 사용자 정의 버튼 스타일 */
+    .btn-product {
+        background-color: #0cc291; /* 새로운 버튼 기본 배경색 */
+        color: white; /* 새로운 버튼 기본 텍스트 색상 */
+        border: none;
+        padding: 8px 10px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 13px;
+        cursor: pointer;
+        border-radius: 10px;
+        transition: background-color 0.3s ease, transform 0.2s ease; /* 배경색 및 크기에 대한 전환 효과를 추가합니다. */
+    }
+
+    .btn-product:hover {
+        background-color: #54d3b0; /* 새로운 버튼 호버 시 배경색 */
+        transform: scale(1.05); /* 마우스를 갖다 대면 살짝 커지는 애니메이션을 적용합니다. */
+        text-decoration: none; /* 호버 시 텍스트 밑줄 제거 */
+        color: black; /* 호버 시 텍스트 색상을 검정색으로 변경 */
+    }
+
+
+    /* 하이라이트 효과 */
+    .highlight {
+        cursor: pointer;
+        position: relative;
+        display: inline-block;
+    }
+
+    .highlight:after {
+        content: "";
+        width: 100%;
+        height: 25px;
+        background-color: #D9FCDB;
+        position: absolute;
+        bottom: -2px;
+        left: 0;
+        transition: width 0.3s ease-in-out;
+        z-index: -1;
+    }
+
+    .highlight:hover:after {
+        width: 0;
+    }
+
+    /* footer */
+    .single_footer_widget ul.list a {
+        color: black;
+    }
