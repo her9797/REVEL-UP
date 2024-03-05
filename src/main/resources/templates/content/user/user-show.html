@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+
+    <!-- Bootstrap CSS -->
+    <link th:href="@{https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css}" rel="stylesheet">
+    <link th:href="@{/css/mypage.css}" rel="stylesheet">
+    <link th:href="@{/css/user-show.css}" rel="stylesheet">
+
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+</head>
+
+<body>
+<div th:insert="~{/fragments/header.html}"></div>
+
+<!-- Banner -->
+<section class="banner2-area">
+    <div class="container">
+        <div class="row fullscreen align-items-center">
+            <div class="col-lg-10">
+                <div class="banner2-content">
+                    <h1 style="font-weight: bold; margin-left: 94px;">마이페이지</h1>
+                    <br>
+                    <p style="color:white; margin-left: 100px;">마이페이지</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<div class="container" style="border-top: 1px solid lightgray; margin-top: 15px;">
+    <br>
+    <div class="row">
+        <!-- Left Sidebar -->
+        <div class="col-lg-3">
+            <div class="sidebar" style="font-size: 15px; color: #000; padding-top: 10px; padding-bottom: 10px;">
+                <ul class="list">
+                    <a style="font-weight: bold; font-size: 18px; background-color: rgb(240, 240, 240); display: block; padding: 10px; text-decoration: none;">내 정보</a>
+                    <a th:href="@{/content/user/user-show}" class="sidebar-main" style="display: block; padding: 5px 10px; text-decoration: none;">나의 정보 조회</a>
+                    <a th:href="@{/content/user/user-delete1}" class="sidebar-main" style="display: block; padding: 5px 10px; text-decoration: none;">회원 탈퇴</a>
+                    <a style="font-weight: bold; font-size: 18px; background-color: rgb(240, 240, 240); display: block; padding: 10px; text-decoration: none;">나의 후원 내역</a>
+                    <a href="" class="sidebar-main" style="display: block; padding: 5px 10px; text-decoration: none;">후원 내역 조회</a>
+                    <a style="font-weight: bold; font-size: 18px; background-color: rgb(240, 240, 240); display: block; padding: 10px; text-decoration: none;">나의 펀딩 내역</a>
+                    <a href="" class="sidebar-main" style="display: block; padding: 5px 10px; text-decoration: none;">펀딩 내역 조회</a>
+                    <a href="" class="sidebar-main" style="display: block; padding: 5px 10px; text-decoration: none;">펀딩 신규 등록</a>
+                    <a style="font-weight: bold; font-size: 18px; background-color: rgb(240, 240, 240); display: block; padding: 10px; text-decoration: none;">찜한 내역 관리</a>
+                    <a href="" class="sidebar-main" style="display: block; padding: 5px 10px; text-decoration: none;">찜한 목록 조회</a>
+                </ul>
+            </div>
+        </div>
+
+        <!-- User Info Form -->
+        <div class="col-lg-8">
+            <a style="margin-bottom: 20px; font-size: 18px;">내 정보 &gt; <b>내 정보 조회</b></a>
+            <div class="col-lg-1.5 col-md-1.5 col-sm-1.5" style="margin-top: 20px;">
+                <!-- Username -->
+                <div class="username">
+                    <div class="label">아이디</div>
+                    <input type="text" class="input" placeholder="아이디를 입력하세요">
+                </div>
+                <!-- Name -->
+                <div class="name">
+                    <div class="label">이름</div>
+                    <input type="text" class="input" placeholder="이름을 입력하세요">
+                </div>
+                <!-- Password -->
+                <div class="password">
+                    <div class="label">비밀번호</div>
+                    <input type="password" class="input" placeholder="비밀번호를 입력하세요">
+                </div>
+                <!-- Phone Number -->
+                <div class="phone">
+                    <div class="label">휴대폰 번호</div>
+                    <input type="tel" class="input" placeholder="휴대폰 번호를 입력하세요">
+                </div>
+                <!-- Address -->
+                <div class="address" style="margin-top: 10px;">
+                    <div class="label" style="margin-bottom: 1px;">주소</div>
+                    <input type="text" class="input" placeholder="주소">
+                </div>
+                <!-- 수정 Button -->
+                <button onclick="location.href='/content/user/user-update'" class="btn-mo" style="margin-top: 50px; display: block; margin-left: auto; margin-right: auto;">
+                    수정하기
+                </button>
+
+            </div>
+        </div>
+    </div>
+
+    <!-- Features Area -->
+    <section class="features-area">
+        <div class="container">
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+        </div>
+    </section>
+</div>
+
+<div th:insert="~{/fragments/footer.html}"></div>
+
+<!-- Bootstrap JS -->
+<script th:src="@{/js/user-show.js}"></script>
+<script th:src="@{//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js}"></script>
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Page</title>
+
+    <link rel="stylesheet" type="text/css" th:href="@{/css/login.css}">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+
+    <script src="/js/login.js"></script>
+
+</head>
+
+    <header class="header_area sticky-header">
+        <div class="main_menu">
+            <nav class="navbar navbar-expand-lg navbar-light main_box">
+                <div class="container">
+                    <a class="navbar-brand logo_h" th:href="@{main}"><img src="/img/logo.png" alt=""></a>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+<body>
+
+<!-- 로그인 폼 -->
+<section class="login">
+    <div class="login_box">
+        <div class="left">
+            <div class="contact">
+                <form action="">
+                    <h3>SIGN IN</h3>
+                    <input type="text" placeholder="USERNAME">
+                    <input type="password" placeholder="PASSWORD">
+                    <div class="find-user">
+                        <a th:href="@{/content/user/user-find}">forget your id/password ?</a>
+                    </div>
+                    <button class="submit" onclick="showModal(event)">SIGN-IN</button>
+                    <button class="submit2" onclick="redirectToSignUp()">SIGN-UP</button>
+                </form>
+            </div>
+        </div>
+        <div class="right">
+            <div class="right-text">
+                <h2>REVEL-UP</h2>
+                <h5>Welcome REVEL-UP Crowd Funding!</h5>
+            </div>
+            <div class="right-inductor">
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<div th:insert="~{/fragments/footer.html}"></div>
+</body>
+</html>
+
+<body>
+
+<!-- 모달 창 -->
+<div id="myModal" class="modal">
+    <!-- 모달 내용 -->
+    <div class="modal-content">
+        <p>등록되지 않은 회원입니다.</p>
+        <button style="width: 50px; border-radius: 10px; margin-left: 90px; margin-top: 15px; font-size: 13px;" onclick="closeModal()">닫기</button> <!-- 모달 닫기 버튼 -->
+    </div>
+</div>
+

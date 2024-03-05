@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.revelup.user.model.dao.UserMapper">
+
+    <resultMap id="userResultMap" type="com.revelup.user.model.dto.UserDTO">
+        <id property="userId" column="USER_ID"/>
+        <result property="userName" column="USER_NAME"/>
+        <result property="userPw" column="USER_PW"/>
+        <result property="userPhone" column="USER_PHONE"/>
+        <result property="userAdd" column="USER_ADD"/>
+        <result property="userEmail" column="USER_EMAIL"/>
+        <result property="userAuth" column="USER_AUTH"/>
+    </resultMap>
+
+    <insert id="insertUser" parameterType="com.revelup.user.model.dto.UserDTO">
+        INSERT INTO USER(
+                         USER_ID
+                        ,USER_NAME
+                        ,USER_PW
+                        ,USER_PHONE
+                        ,USER_ADD
+                        ,USER_EMAIL
+                        )
+        VALUES (
+                #{ userId }
+                ,#{ userName }
+                ,#{ userPw }
+                ,#{ userPhone }
+                ,#{ userAdd }
+                ,#{ userEmail }
+        )
+    </insert>
+
+</mapper>

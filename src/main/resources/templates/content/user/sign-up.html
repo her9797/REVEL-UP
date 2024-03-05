@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>회원 가입</title>
+
+    <!-- CSS -->
+    <link rel="stylesheet" type="text/css" th:href="@{/css/sign-up.css}">
+    <link rel="stylesheet" type="text/css" th:href="@{/css/sign-up-modal.css}">
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- JavaScript -->
+    <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script th:src="@{/js/sign-up.js}"></script>
+
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet">
+</head>
+<body>
+<div th:insert="~{/fragments/header.html}"></div>
+
+<section class="banner">
+    <div class="user-banner">
+        <img src="/img/tree.png" alt="유저 배너">
+        <p>회원 가입</p>
+    </div>
+</section>
+<hr>
+
+<!-- 회원가입 폼 -->
+<section class="sign-up" style="margin-top: 80px;">
+    <div class="col-lg-8">
+
+        <div class="col-lg-1.5 col-md-1.5 col-sm-1.5">
+            <form action="/content/user/sign-up" method="post">
+            <!-- 아이디 입력 -->
+            <div class="username">
+                <div class="label" style="margin-left: 30px;">아이디</div>
+                <input id="userId" name="userId" type="text" class="input" placeholder="아이디를 입력하세요">
+            </div>
+            <!-- 이름 입력 -->
+            <div class="name" style="margin-top: 10px;">
+                <div class="label" style="margin-left: 10px;">이름</div>
+                <input id="userName" name="userName" type="text" class="input" placeholder="이름을 입력하세요">
+            </div>
+            <!-- 비밀번호 입력 -->
+            <div class="password" style="margin-top: 10px;">
+                <div class="label" style="margin-left: 45px;">비밀번호</div>
+                <input type="password" id="userPw" name="userPw" class="input" placeholder="비밀번호를 입력하세요">
+            </div>
+            <div class="password" style="margin-top: 10px;">
+                <div class="label" style="margin-left: 80px;">비밀번호 확인</div>
+                <input type="password" id="userPwCheck" name="userPwCheck" class="input" placeholder="비밀번호를 입력하세요" onkeyup="validatePassword()">
+                <!-- 비밀번호 일치 여부 메시지 -->
+                <div id="passwordMatch" style="color: red; margin-left: 80px;"></div>
+            </div>
+            <!-- 휴대폰 번호 입력 -->
+            <div class="phone" style="margin-top: 10px;">
+                <div class="label" style="margin-left: 60px;">휴대폰 번호</div>
+                <input id="userPhone" name="userPhone" type="tel" class="input" placeholder="휴대폰 번호를 입력하세요">
+            </div>
+            <!-- 주소 입력 -->
+            <div class="form-container" style="margin-top: 10px;">
+                <div class="input-container">
+                    <div class="label" style="margin-bottom: -8px; margin-left: 10px;">주소</div>
+                    <input type="text" id="userPostcode"  class="postcode-input" placeholder="우편번호">
+                    <input type="button" onclick="execDaumPostcode()" class="btn-modify" value="우편번호 찾기">
+                </div>
+                <div class="input-container">
+                    <input type="text" id="userAdd" name="userAdd" class="address-input" placeholder="주소" required>
+                    <input type="text" id="userDetailAddress" name="userAdd" class="detail-address-input" placeholder="상세주소">
+                </div>
+            </div>
+            <!-- 이메일 입력 창-->
+            <div class="email">
+                <div class="email">
+                    <div class="input-container" style="margin-top: 10px;">
+                        <div class="label" style="margin-bottom: -8px; margin-left: 30px;">이메일</div>
+                        <input type="text" id="userEmail" name="userEmail" class="email-input" placeholder="@를 포함한 이메일을 입력하세요">
+                        <!-- 인증번호 전송 버튼 -->
+                        <button type="button" id="sendEmail" class="btn-email" onclick="sendVerificationCode()">인증번호 전송</button>
+                    </div>
+                    <div class="input-container">
+                        <!-- 인증번호 입력 창 -->
+                        <input type="text" id="authCode" name="authCode" class="authCode-input" placeholder="발송된 인증번호를 입력하세요">
+                        <button type="button" id="checkEmailBtn" class="btn-email-check" onclick="checkEmailCode()">인증번호 확인</button>
+                    </div>
+                </div>
+            </div>
+            <div class="checkbox-container">
+                <!-- 첫 번째 체크박스와 모달 -->
+                <input type="checkbox" id="showModalCheckbox1" data-toggle="modal" data-target="#myModal1" required>
+                <label class="checkbox-label" for="showModalCheckbox1">이용 약관</label>
+            </div>
+
+            <div class="checkbox-container" style="margin-left: -70px">
+                <!-- 두 번째 체크박스와 모달 -->
+                <input type="checkbox" id="showModalCheckbox2" data-toggle="modal" data-target="#myModal2" required>
+                <label class="checkbox-label" for="showModalCheckbox2">개인 정보 처리 방침</label>
+            </div>
+
+            <!-- 첫 번째 모달 (위쪽에 배치) -->
+            <div class="modal fade" id="myModal1" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel1" aria-hidden="true">
+                <!-- 모달 내용 -->
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header" style="border: none">
+                            <h5 class="modal-title">이용약관</h5>
+                        </div>
+                        <div class="modal-body">
+                            <p>회원가입:
+
+                                이용자는 회원정보를 기입하고 약관에 동의하여 회원가입을 신청함.
+                                "몰"은 허위 정보 등으로 인한 가입을 거부할 수 있음.<br>
+
+                                <br>회원 탈퇴 및 자격 상실:
+                                회원은 언제든지 탈퇴 가능하며, "몰"은 허위 정보 등으로 자격을 제한할 수 있음.
+                                법령 위반, 결제 미이행, 전자상거래 질서 위협 등으로 자격 제한 가능.
+                                자격 제한 후 반복 또는 시정되지 않을 경우 자격 상실 가능.<br>
+
+                                <br>통지:
+                                통지는 전자우편 또는 게시판을 통해 이루어짐.
+                                중요한 사항은 개별 통지를 함.</p>
+                        </div>
+                        <div class="modal-footer" style="border: none">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal" style="margin-right: 190px">닫기</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 두 번째 모달 (아래쪽에 배치) -->
+            <div class="modal fade" id="myModal2" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel2" aria-hidden="true" >
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header" style="border: none">
+                            <h5 class="modal-title">개인 정보 처리 방침</h5>
+                        </div>
+                        <div class="modal-body">
+                            <p>제30조(개인정보 처리방침의 수립 및 공개) <br>
+                                ① 개인정보처리자는 다음 각 호의 사항이 포함된
+                                개인정보의 처리 방침(이하 “개인정보 처리방침”이라 한다)을 정하여야 한다. 이 경우 공공기관은
+                                제32조에 따라 등록대상이 되는 개인정보파일에 대하여 개인정보 처리방침을 정한다.<br>
+                                1. 개인정보의 처리 목적
+                                2. 개인정보의 처리 및 보유 기간
+                                3. 개인정보의 제3자 제공에 관한 사항(해당되는 경우에만 정한다)
+                                3의2. 개인정보의 파기절차 및 파기방법(제21조제1항 단서에 따라 개인정보를 보존하여야 하는
+                                경우에는 그 보존근거와 보존하는 개인정보 항목을 포함한다)
+                                4. 개인정보 처리의 위탁에 관한 사항(해당되는 경우에만 정한다)
+                                5. 정보주체와 법정대리인의 권리·의무 및 그 행사방법에 관한 사항
+                                6. 제31조에 따른 개인정보 보호책임자의 성명 또는 개인정보 보호업무 및 관련 고충사항을
+                                처리하는 부서의 명칭과 전화번호 등 연락처
+                                7. 인터넷 접속정보파일 등 개인정보를 자동으로 수집하는 장치의 설치·운영 및 그 거부에 관한
+                                사항(해당하는 경우에만 정한다)
+                                8. 그 밖에 개인정보의 처리에 관하여 대통령령으로 정한 사항<br>
+                                ② 개인정보처리자가 개인정보 처리방침을 수립하거나 변경하는 경우에는 정보주체가 쉽게
+                                확인할 수 있도록 대통령령으로 정하는 방법에 따라 공개하여야 한다.
+                                ③ 개인정보 처리방침의 내용과 개인정보처리자와 정보주체 간에 체결한 계약의 내용이 다른
+                                경우에는 정보주체에게 유리한 것을 적용한다.
+                                ④ 보호위원회는 개인정보 처리방침의 작성지침을 정하여 개인정보처리자에 게 그 준수를 권장할
+                                수 있다.<br>
+                                12 | 개인정보 처리방침 작성지침 일반
+                                시행령 제31조(개인정보 처리방침의 내용 및 공개방법 등) ① 법 제30조제1항제8호에서 “대통령령
+                                으로 정한 사항”이란 다음 각 호의 사항을 말한다.<br>
+                                1. 처리하는 개인정보의 항목
+                                2. 삭제 <2020. 8. 4.>
+                                3. 제30조 또는 제48조의2에 따른 개인정보의 안전성 확보 조치에 관한 사항
+                                표준지침 제18조(개인정보 처리방침의 작성기준 등) ① 개인정보처리자가 개인정보 처리방침을
+                                작성하는 때에는 법 제30조제1항 각 호 및 영 제31조제1항 각 호의 사항을 명시적으로 구분하되,
+                                알기 쉬운 용어로 구체적이고 명확하게 표현하여야 한다.<br>
+                                ② 개인정보처리자는 처리하는 개인정보가 개인정보의 처리 목적에 필요한 최소한이라는 점을
+                                밝혀야 한다.
+                            </p>
+                        </div>
+                        <div class="modal-footer" style="border: none">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal" style="margin-right: 190px">닫기</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        <!-- 가입 버튼 -->
+        <button class="btn-user" style="margin-top: 50px; margin-bottom: 120px">가입하기</button>
+    </form>
+    </div>
+    </div>
+</section>
+
+
+
+<div th:insert="~{/fragments/footer.html}"></div>
+</body>
+</html>
