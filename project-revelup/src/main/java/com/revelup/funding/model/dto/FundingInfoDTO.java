@@ -1,7 +1,8 @@
 package com.revelup.funding.model.dto;
 
-import lombok.AllArgsConstructor;
+import lombok.*;
 
-@AllArgsConstructor
+/** 펀딩DTO 메소드*/
 public class FundingInfoDTO {
+
 }

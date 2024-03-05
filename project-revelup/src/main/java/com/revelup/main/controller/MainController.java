@@ -1,8 +1,8 @@
 package com.revelup.main.controller;
 
+import org.apache.ibatis.javassist.bytecode.stackmap.TypeData;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
-
 @Controller
 public class MainController {
 
@@ -52,5 +52,10 @@ public class MainController {
    @GetMapping("/fragments/user-delete2")
     public String delete2Page(){
         return "fragments/user-delete2";
+   }
+
+   @GetMapping("/fragments/user-find-id")
+    public String userFindId() {
+        return "fragments/user-find-id";
    }
 }

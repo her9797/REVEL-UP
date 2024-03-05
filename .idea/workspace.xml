@@ -1,0 +1,294 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="7c1e440a-2833-423b-9b22-719f0c4cc2a9" name="Changes" comment="디렉토리 수정했어요">
+      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/project-revelup/build/classes/java/main/com/revelup/audit/controller/AuditController.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/project-revelup/build/classes/java/main/com/revelup/audit/model/dao/AuditDAO.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/project-revelup/build/classes/java/main/com/revelup/audit/model/dto/AuditDTO.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/project-revelup/build/classes/java/main/com/revelup/audit/model/service/AuditService.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/project-revelup/build/classes/java/main/com/revelup/funding/controller/FundingController.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/project-revelup/build/classes/java/main/com/revelup/funding/model/dao/FundingDAO.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/project-revelup/build/classes/java/main/com/revelup/funding/model/dao/SetterDAO.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/project-revelup/build/classes/java/main/com/revelup/funding/model/dto/DeliveryDTO.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/project-revelup/build/classes/java/main/com/revelup/funding/model/dto/GiftDTO.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/project-revelup/build/classes/java/main/com/revelup/funding/model/dto/SetterFileDTO.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/project-revelup/build/classes/java/main/com/revelup/funding/model/dto/SetterInfoDTO.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/project-revelup/build/classes/java/main/com/revelup/funding/model/service/FundingService.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/project-revelup/build/classes/java/main/com/revelup/funding/model/service/SetterService.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/project-revelup/build/classes/java/main/com/revelup/inquiry/controller/InquiryController.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/project-revelup/build/classes/java/main/com/revelup/inquiry/model/dao/InquiryDAO.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/project-revelup/build/classes/java/main/com/revelup/inquiry/model/dto/InquiryDTO.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/project-revelup/build/classes/java/main/com/revelup/inquiry/model/dto/InquiryFileDTO.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/project-revelup/build/classes/java/main/com/revelup/inquiry/model/service/InquiryService.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/project-revelup/build/classes/java/main/com/revelup/notice/controller/NoticeController.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/project-revelup/build/classes/java/main/com/revelup/notice/model/dao/NoticeDAO.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/project-revelup/build/classes/java/main/com/revelup/notice/model/dto/NoticeDTO.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/project-revelup/build/classes/java/main/com/revelup/notice/model/service/NoticeService.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/project-revelup/build/classes/java/main/com/revelup/pay/controller/PayController.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/project-revelup/build/classes/java/main/com/revelup/pay/model/dao/PayDAO.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/project-revelup/build/classes/java/main/com/revelup/pay/model/dto/PayDTO.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/project-revelup/build/classes/java/main/com/revelup/pay/model/service/PayService.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/project-revelup/build/classes/java/main/com/revelup/recipient/controller/RecipientController.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/project-revelup/build/classes/java/main/com/revelup/recipient/model/dao/RecipientDAO.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/project-revelup/build/classes/java/main/com/revelup/recipient/model/dto/RecipientDTO.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/project-revelup/build/classes/java/main/com/revelup/recipient/model/service/RecipientService.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/project-revelup/build/classes/java/main/com/revelup/report/model/dao/ReportDAO.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/project-revelup/build/classes/java/main/com/revelup/report/model/dto/ReportDTO.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/project-revelup/build/classes/java/main/com/revelup/report/model/service/ReportService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project-revelup/.gradle/8.5/checksums/checksums.lock" beforeDir="false" afterPath="$PROJECT_DIR$/project-revelup/.gradle/8.5/checksums/checksums.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project-revelup/.gradle/8.5/dependencies-accessors/dependencies-accessors.lock" beforeDir="false" afterPath="$PROJECT_DIR$/project-revelup/.gradle/8.5/dependencies-accessors/dependencies-accessors.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project-revelup/.gradle/8.5/executionHistory/executionHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/project-revelup/.gradle/8.5/executionHistory/executionHistory.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project-revelup/.gradle/8.5/executionHistory/executionHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/project-revelup/.gradle/8.5/executionHistory/executionHistory.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project-revelup/.gradle/8.5/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/project-revelup/.gradle/8.5/fileHashes/fileHashes.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project-revelup/.gradle/8.5/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/project-revelup/.gradle/8.5/fileHashes/fileHashes.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project-revelup/.gradle/8.5/fileHashes/resourceHashesCache.bin" beforeDir="false" afterPath="$PROJECT_DIR$/project-revelup/.gradle/8.5/fileHashes/resourceHashesCache.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project-revelup/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/project-revelup/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project-revelup/build/classes/java/main/com/revelup/funding/controller/FundingFileController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/project-revelup/build/classes/java/main/com/revelup/funding/controller/FundingInfoController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/project-revelup/build/classes/java/main/com/revelup/funding/model/dao/FundingFileDAO.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/project-revelup/build/classes/java/main/com/revelup/funding/model/dao/FundingInfoDAO.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/project-revelup/build/classes/java/main/com/revelup/funding/model/dto/FundingInfoDTO.class" beforeDir="false" afterPath="$PROJECT_DIR$/project-revelup/build/classes/java/main/com/revelup/funding/model/dto/FundingInfoDTO.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project-revelup/build/classes/java/main/com/revelup/funding/model/service/FundingFileService.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/project-revelup/build/classes/java/main/com/revelup/funding/model/service/FundingInfoService.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/project-revelup/build/classes/java/main/com/revelup/main/controller/MainController.class" beforeDir="false" afterPath="$PROJECT_DIR$/project-revelup/build/classes/java/main/com/revelup/main/controller/MainController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project-revelup/build/classes/java/main/com/revelup/report/controller/ReportController.class" beforeDir="false" afterPath="$PROJECT_DIR$/project-revelup/build/classes/java/main/com/revelup/report/controller/ReportController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project-revelup/build/classes/java/main/com/revelup/setter/cotroller/SetterFileController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/project-revelup/build/classes/java/main/com/revelup/setter/cotroller/SetterInfoController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/project-revelup/build/classes/java/main/com/revelup/setter/model/dao/SetterFileDAO.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/project-revelup/build/classes/java/main/com/revelup/setter/model/dao/SetterInfoDAO.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/project-revelup/build/classes/java/main/com/revelup/setter/model/dto/SetterFileDTO.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/project-revelup/build/classes/java/main/com/revelup/setter/model/dto/SetterInfoDTO.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/project-revelup/build/classes/java/main/com/revelup/setter/model/service/SetterFileService.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/project-revelup/build/classes/java/main/com/revelup/setter/model/service/SetterInfoService.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/project-revelup/build/resources/main/static/js/user-find.js" beforeDir="false" afterPath="$PROJECT_DIR$/project-revelup/build/resources/main/static/js/user-find.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project-revelup/build/resources/main/templates/content/pledge/getter/getter-ongoing.html" beforeDir="false" afterPath="$PROJECT_DIR$/project-revelup/build/resources/main/templates/content/mypage/pledge/getter-ongoing.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project-revelup/build/resources/main/templates/content/pledge/getter/getter-refund.html" beforeDir="false" afterPath="$PROJECT_DIR$/project-revelup/build/resources/main/templates/content/mypage/pledge/getter-refund.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project-revelup/build/resources/main/templates/content/pledge/getter/getter-shortfull.html" beforeDir="false" afterPath="$PROJECT_DIR$/project-revelup/build/resources/main/templates/content/mypage/pledge/getter-shortfull.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project-revelup/build/resources/main/templates/content/pledge/getter/getter-spons-details.html" beforeDir="false" afterPath="$PROJECT_DIR$/project-revelup/build/resources/main/templates/content/mypage/pledge/getter-spons-details.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project-revelup/build/resources/main/templates/content/pledge/setter/setter-funding-history-progress.html" beforeDir="false" afterPath="$PROJECT_DIR$/project-revelup/build/resources/main/templates/content/mypage/pledge/setter-funding-history-progress.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project-revelup/build/resources/main/templates/fragments/user-find-id.html" beforeDir="false" afterPath="$PROJECT_DIR$/project-revelup/build/resources/main/templates/fragments/user-find-id.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project-revelup/build/resources/main/templates/fragments/user-find-password.html" beforeDir="false" afterPath="$PROJECT_DIR$/project-revelup/build/resources/main/templates/fragments/user-find-password.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project-revelup/build/resources/main/templates/fragments/user-find.html" beforeDir="false" afterPath="$PROJECT_DIR$/project-revelup/build/resources/main/templates/fragments/user-find.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project-revelup/build/tmp/compileJava/compileTransaction/stash-dir/MainController.class.uniqueId0" beforeDir="false" afterPath="$PROJECT_DIR$/project-revelup/build/tmp/compileJava/compileTransaction/stash-dir/MainController.class.uniqueId0" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project-revelup/build/tmp/compileJava/previous-compilation-data.bin" beforeDir="false" afterPath="$PROJECT_DIR$/project-revelup/build/tmp/compileJava/previous-compilation-data.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project-revelup/src/main/java/com/revelup/audit/controller/AuditDeclineController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/project-revelup/src/main/java/com/revelup/audit/model/dao/AuditDeclineDAO.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/project-revelup/src/main/java/com/revelup/audit/model/dto/AuditDeclineDTO.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/project-revelup/src/main/java/com/revelup/audit/model/service/AuditDeclineService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/project-revelup/src/main/java/com/revelup/funding/controller/DeliveryController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/project-revelup/src/main/java/com/revelup/funding/controller/FundingFileController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/project-revelup/src/main/java/com/revelup/funding/controller/FundingInfoController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/project-revelup/src/main/java/com/revelup/funding/controller/GiftController.java" beforeDir="false" afterPath="$PROJECT_DIR$/project-revelup/src/main/java/com/revelup/funding/controller/FundingController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project-revelup/src/main/java/com/revelup/funding/model/dao/DeliveryDAO.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/project-revelup/src/main/java/com/revelup/funding/model/dao/FundingFileDAO.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/project-revelup/src/main/java/com/revelup/funding/model/dao/FundingInfoDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/project-revelup/src/main/java/com/revelup/funding/model/dao/SetterDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project-revelup/src/main/java/com/revelup/funding/model/dao/GiftDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/project-revelup/src/main/java/com/revelup/funding/model/dao/FundingDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project-revelup/src/main/java/com/revelup/funding/model/dto/FundingFileDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/project-revelup/src/main/java/com/revelup/funding/model/dto/FundingFileDTO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project-revelup/src/main/java/com/revelup/funding/model/dto/FundingInfoDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/project-revelup/src/main/java/com/revelup/funding/model/dto/FundingInfoDTO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project-revelup/src/main/java/com/revelup/funding/model/service/DeliveryService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/project-revelup/src/main/java/com/revelup/funding/model/service/FundingFileService.java" beforeDir="false" afterPath="$PROJECT_DIR$/project-revelup/src/main/java/com/revelup/funding/model/service/SetterService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project-revelup/src/main/java/com/revelup/funding/model/service/FundingInfoService.java" beforeDir="false" afterPath="$PROJECT_DIR$/project-revelup/src/main/java/com/revelup/funding/model/service/FundingService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project-revelup/src/main/java/com/revelup/funding/model/service/GiftService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/project-revelup/src/main/java/com/revelup/inquiry/controller/InquiryFileController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/project-revelup/src/main/java/com/revelup/inquiry/model/dao/InquiryFileDAO.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/project-revelup/src/main/java/com/revelup/inquiry/model/service/InquiryFileService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/project-revelup/src/main/java/com/revelup/main/controller/MainController.java" beforeDir="false" afterPath="$PROJECT_DIR$/project-revelup/src/main/java/com/revelup/main/controller/MainController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project-revelup/src/main/java/com/revelup/setter/cotroller/SetterFileController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/project-revelup/src/main/java/com/revelup/setter/cotroller/SetterInfoController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/project-revelup/src/main/java/com/revelup/setter/model/dao/SetterFileDAO.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/project-revelup/src/main/java/com/revelup/setter/model/dao/SetterInfoDAO.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/project-revelup/src/main/java/com/revelup/setter/model/dto/SetterFileDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/project-revelup/src/main/java/com/revelup/funding/model/dto/SetterFileDTO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project-revelup/src/main/java/com/revelup/setter/model/dto/SetterInfoDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/project-revelup/src/main/java/com/revelup/funding/model/dto/SetterInfoDTO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project-revelup/src/main/java/com/revelup/setter/model/service/SetterFileService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/project-revelup/src/main/java/com/revelup/setter/model/service/SetterInfoService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/project-revelup/src/main/resources/static/js/user-find.js" beforeDir="false" afterPath="$PROJECT_DIR$/project-revelup/src/main/resources/static/js/user-find.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project-revelup/src/main/resources/templates/fragments/user-find-id.html" beforeDir="false" afterPath="$PROJECT_DIR$/project-revelup/src/main/resources/templates/fragments/user-find-id.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project-revelup/src/main/resources/templates/fragments/user-find-password.html" beforeDir="false" afterPath="$PROJECT_DIR$/project-revelup/src/main/resources/templates/fragments/user-find-password.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project-revelup/src/main/resources/templates/fragments/user-find.html" beforeDir="false" afterPath="$PROJECT_DIR$/project-revelup/src/main/resources/templates/fragments/user-find.html" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ExternalProjectsData">
+    <projectState path="$PROJECT_DIR$/project-revelup">
+      <ProjectState />
+    </projectState>
+  </component>
+  <component name="ExternalProjectsManager">
+    <system id="GRADLE">
+      <state>
+        <projects_view>
+          <tree_state>
+            <expand />
+            <select />
+          </tree_state>
+        </projects_view>
+      </state>
+    </system>
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="JavaScript File" />
+        <option value="HTML File" />
+        <option value="CSS File" />
+        <option value="Interface" />
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="main" />
+      </map>
+    </option>
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
+  "lastFilter": {
+    "state": "OPEN",
+    "assignee": "her9797"
+  }
+}]]></component>
+  <component name="GithubPullRequestsUISettings">
+    <option name="selectedUrlAndAccountId">
+      <UrlAndAccount>
+        <option name="accountId" value="706fca58-fa26-4610-9e4d-8bf3d03a45a8" />
+        <option name="url" value="https://github.com/TeamMouse2024/revelup.git" />
+      </UrlAndAccount>
+    </option>
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProjectColorInfo"><![CDATA[{
+  "associatedIndex": 1
+}]]></component>
+  <component name="ProjectId" id="2dFMs0PMOEnfH0QQWvTRABJZ6Cy" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
+  <component name="ProjectViewState">
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ASKED_ADD_EXTERNAL_FILES": "true",
+    "DefaultHtmlFileTemplate": "HTML File",
+    "Gradle.Build project-revelup.executor": "Run",
+    "Gradle.project-revelup [:ProjectRevelupApplication.main()].executor": "Run",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "C:/Users/hi/Desktop/project-revelup/project-revelup/src/main/java/com/revelup/funding/model/dto",
+    "list.type.of.created.stylesheet": "CSS",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "project.structure.last.edited": "Project",
+    "project.structure.proportion": "0.0",
+    "project.structure.side.proportion": "0.0",
+    "vue.rearranger.settings.migration": "true"
+  }
+}]]></component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\hi\Desktop\project-revelup\project-revelup\src\main\java\com\revelup\funding\model\dto" />
+      <recent name="C:\Users\hi\Desktop\project-revelup\project-revelup\src\main\java\com\revelup\recipient" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\hi\Desktop\project-revelup\project-revelup\src\main\resources\templates\content\mypage\pledge" />
+      <recent name="C:\Users\hi\Desktop\project-revelup\project-revelup\src\main\resources\templates\content\mypage" />
+      <recent name="C:\Users\hi\Desktop\project-revelup\project-revelup\src\main\resources\static\img\product" />
+      <recent name="C:\Users\hi\Desktop\project-revelup\project-revelup\src\main\resources\static\img\icons" />
+      <recent name="C:\Users\hi\Desktop\project-revelup\project-revelup\src\main\resources\templates\content" />
+    </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="com.revelup.funding.model.dao" />
+      <recent name="com.revelup.funding.model.service" />
+    </key>
+  </component>
+  <component name="RunManager">
+    <configuration name="Unnamed" type="Application" factoryName="Application" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.revelup.ProjectRevelupApplication" />
+      <module name="revelup.main" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+  </component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="jdk-17.0.9-temurin-17.0.9-3183f394aec4-842bf14d" />
+      </set>
+    </attachedChunks>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="7c1e440a-2833-423b-9b22-719f0c4cc2a9" name="Changes" comment="" />
+      <created>1709599576503</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1709599576503</updated>
+      <workItem from="1709599578833" duration="25811000" />
+    </task>
+    <task id="LOCAL-00001" summary="파일 추가">
+      <option name="closed" value="true" />
+      <created>1709616360733</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1709616360733</updated>
+    </task>
+    <task id="LOCAL-00002" summary="클래스 추가">
+      <option name="closed" value="true" />
+      <created>1709616508808</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1709616508808</updated>
+    </task>
+    <task id="LOCAL-00003" summary="git 오류로 재업로드">
+      <option name="closed" value="true" />
+      <created>1709616615982</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1709616615982</updated>
+    </task>
+    <task id="LOCAL-00004" summary="디렉토리 생성 all">
+      <option name="closed" value="true" />
+      <created>1709625420306</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1709625420306</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
+    <MESSAGE value="파일 추가" />
+    <MESSAGE value="클래스 추가" />
+    <MESSAGE value="git 오류로 재업로드" />
+    <MESSAGE value="디렉토리 생성 all" />
+    <MESSAGE value="디렉토리 수정" />
+    <MESSAGE value="디렉토리 수정했어요" />
+    <option name="LAST_COMMIT_MESSAGE" value="디렉토리 수정했어요" />
+  </component>
+</project>
