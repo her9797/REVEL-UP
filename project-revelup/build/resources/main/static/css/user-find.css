@@ -1,0 +1,180 @@
+.find-id {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 400px; /* 화면 전체 높이에 대해 가운데 정렬 */
+    margin: 10px 0; /* 위 아래 여백을 줄임 */
+}
+
+
+.find-password {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 500px; /* 화면 전체 높이에 대해 가운데 정렬 */
+    margin: 10px 0; /* 위 아래 여백을 줄임 */
+}
+
+.find-password .col-lg-8 {
+    text-align: center; /* 내용을 수평 가운데 정렬 */
+    width: 100%; /* 폼의 너비를 화면 너비에 맞게 설정 */
+}
+
+.find-password .col-lg-1 {
+    width: 100%;
+    max-width: 500px; /* 콘텐츠의 최대 너비 설정 */
+    margin: auto; /* 좌우 여백을 자동으로 설정하여 가운데 정렬 */
+}
+
+.col-lg-8 {
+    text-align: center; /* 내용을 수평 가운데 정렬 */
+    width: 100%; /* 폼의 너비를 화면 너비에 맞게 설정 */
+}
+
+.input-group {
+    margin: 5px 0; /* 위 아래 여백을 줄임 */
+    display: flex;
+    align-items: center;
+    justify-content: center; /* 입력 박스들을 수평 가운데 정렬 */
+}
+
+.user-banner {
+    margin: 5px 0; /* 위 아래 여백을 줄임 */
+    text-align: center; /* 텍스트를 가운데 정렬 */
+}
+
+.input {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+    box-sizing: border-box;
+    margin-bottom: 10px;
+}
+
+.username .input,
+.name .input,
+.password .input {
+    width: 500px; /* 인풋 박스의 너비를 부모 요소에 맞게 설정 */
+    box-sizing: border-box; /* 패딩과 테두리를 포함한 너비로 설정 */
+}
+
+.label {
+    font-size: 16px;
+    font-weight: bold;
+    margin-bottom: 3px;
+    text-align: center;
+}
+
+.btn-password,
+.btn-id {
+    background:#0dd6a0;
+    width: 150px;
+    color:#fff;
+    border:none;
+    border-radius: 5px;
+    position:relative;
+    height:60px;
+    font-size:18px;
+    padding:0 2em;
+    cursor:pointer;
+    transition:800ms ease all;
+    outline:none;
+}
+
+.btn-id:hover,
+.btn-password:hover {
+    background:#fff;
+    color:#0dd6a0;
+}
+
+.btn-id:before,
+.btn-id:after,
+.btn-password:before,
+.btn-password:after {
+    content:'';
+    position:absolute;
+    top:0;
+    right:0;
+    height:2px;
+    width:0;
+    background: #0dd6a0;
+    transition:400ms ease all;
+}
+
+.btn-password:after,
+.btn-id:after {
+    right:inherit;
+    top:inherit;
+    left:0;
+    bottom:0;
+}
+
+.btn-id:hover:before,
+.btn-id:hover:after,
+.btn-password:hover:before,
+.btn-password:hover:after {
+    width:100%;
+    transition:800ms ease all;
+}
+
+.user-banner img {
+    width: 100px; /* 이미지를 부모 요소에 맞게 너비 설정 */
+    max-width: 100px; /* 이미지의 최대 너비 설정 */
+    height: auto; /* 이미지의 높이 자동 조정 */
+}
+
+.user-banner p {
+    font-size: 18px; /* 텍스트 크기 설정 */
+    margin-top: 10px; /* 이미지와 텍스트 사이 간격 조정 */
+}
+
+.banner {
+    margin-left: -10px;
+    font-weight: bold;
+}
+
+hr {
+    border: 0;
+    height: 1px;
+    background-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0));
+    width: 50%;
+}
+
+.email-input,
+.authCode-input {
+    flex: 1;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+    box-sizing: border-box;
+    margin-bottom: 5px; /* 아래 여백 줄임 */
+    width: 364px; /* 원하는 너비로 조정 */
+}
+
+.confirmEmail-input,
+.sendEmail-input {
+    width: 130px;
+    height: 45px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 13px;
+    box-sizing: border-box;
+    margin-bottom: 5px; /* 아래 여백 줄임 */
+}
+
+.btn-modify,
+.btn-email-check,
+.btn-email {
+    padding: 10px 16px; /* 버튼의 길이 조정 */
+    background-color: #0CC291;
+    border: none;
+    border-radius: 5px;
+    color: #fff;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin-top: 5px; /* 버튼 위쪽 간격 조정 */
+}
