@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>pay</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <!-- 폰트 -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet">
+    <!-- 내부 CSS -->
+    <link href="../css/mypage.css" rel="stylesheet">
+    <link href="../css/pay1.css" rel="stylesheet">
+    <script src="../pay1.js" defer></script>
+
+</head>
+
+<body>
+<div id="header"></div>
+<!-- 배너 부분 -->
+<section class="banner2-area">
+    <div class="container">
+        <div class="row fullscreen align-items-center">
+            <div class="col-lg-10">
+                <div class="banner2-content">
+                    <h1 style="font-weight: bold; margin-left: 94px;">결제하기</h1>
+                    <br>
+                    <p style="color:white; margin-left: 100px;">지구를 위한 착한 아이디어</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="information">
+    <!--이름-->
+    <div class="name">이름</div>
+    <input type="text" class="name-container"><br>
+    <!--휴대폰번호-->
+    <div class="phone">휴대폰 번호</div>
+    <input type="text" class="phone-container"><br>
+    <!--주소-->
+    <div class="address">주소</div>
+    <input type="text" id="sample6_postcode" class="postcode-input" placeholder="우편번호">
+    <input type="button" onclick="sample6_execDaumPostcode()" class="form-button" value="우편번호 찾기"><br>
+    <input type="text" id="sample6_address" class="address-input" placeholder="주소">
+    <input type="text" id="sample6_detailAddress" class="address-input" placeholder="상세주소">
+</section>
+
+<section class="product">
+    <div class="image-box"> <!-- 컨테이너 스타일-->
+        <img src="img/product/p1.png" class="image"> <!--사진에 대한 이미지 css적용시 사용-->
+        <p class="image-desc">
+            <a style="font-weight: bold;">청바지로 만든 슬리퍼</a><br>
+            <a><strong>선물가격 : </strong> 40,000원</a><br>
+            <a><strong>후원날짜 : </strong> 2024-02-25</a><br>
+            <a><strong>색상 :</strong> 블루 </a><br>
+            <a><strong>수량 :</strong>1개</a><br>
+            <a><strong>마감일 :</strong>2024-04-25</a><br>
+</section>
+
+<section class="pay">
+    <!-- 결제하기 , 카카오 페이 버튼-->
+    <div class="paybutton">결제하기</div>
+    <button onclick="" class="form-paybutton">카카오페이</button>
+</section>
+<br>
+<br>
+<br>
+<br>
+<div id="footer"></div>
+<!-- jQuery -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+<!-- Bootstrap JS -->
+<!-- jQuery -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
+
+</body>
+</html>

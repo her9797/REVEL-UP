@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link th:href="@{/css/user-find-id.css}" rel="stylesheet">
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link th:href="@{https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap}" rel="stylesheet">
+
+</head>
+
+<body>
+<div th:id="header"></div>
+
+<section class="banner">
+    <div class="user-banner">
+        <img src="img/id.png" alt="유저 배너">
+        <p>아이디 찾기</p>
+    </div>
+</section>
+<hr>
+
+<section class="find-id">
+    <div class="col-lg-8">
+        <div class="col-lg-1.5 col-md-1.5 col-sm-1.5">
+            <!-- Name Input -->
+            <div class="name" style="margin-top: 10px;">
+                <div class="label" style="margin-bottom: 20px;">회원님의 아이디 입니다.</div>
+                <input type="id" class="input" placeholder="회원 아이디">
+            </div>
+        </div>
+
+        <button class="btn-id" style="margin-top: 30px; font-size: 15px;">로그인</button>
+    </div>
+</section>
+
+<div th:id="footer"></div>
+
+</body>
+<!-- Bootstrap JS -->
+<script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+<script th:src="@{/js/user-find-id.js}"></script>
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</html>

@@ -1,0 +1,96 @@
+/* 타이틀 박스 */
+.title-box {
+    display: flex;
+    align-items: center;
+    padding: 15px;
+    font-size: 14px; /* 원하는 폰트 크기로 설정 */
+}
+
+.title-box button {
+    background-color: #ccc;
+    border: none;
+    padding: 10px;
+    color: #ffffff;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 18px;
+    transition: background-color 0.3s;
+    cursor: pointer;
+    border-radius: 15px;  /* 모서리 둥글게 */
+    margin-right: 20px; /* 버튼 사이의 간격 설정 */
+    width: 150px;
+    height: 50px;
+}
+
+.title-box button:not(:last-child) {
+    margin-right: 30px; /* 마지막 버튼을 제외한 버튼에 오른쪽 마진 설정 */
+}
+
+.title-box button:hover {
+    background-color: #0CC291;
+}
+
+.support-date {
+    font-weight: bold;
+    font-size: 16px;
+    margin-top: -5px;
+    margin-bottom: 0px;
+}
+
+/* 이미지 박스 그룹 스타일 */
+.image-box-group {
+    display: flex; /* 요소를 가로로 배치 */
+    flex-wrap: wrap; /* 화면 크기에 따라 요소를 다음 줄로 넘김 */
+    justify-content: space-between; /*  요소 사이에 여백 동일하게 배치 */
+}
+
+/* 이미지 박스 스타일 */
+.image-box {
+    height: 290px;
+    box-sizing: border-box; /* 테두리와 패딩이 요소의 크기에 포함 */
+    width: calc(25% - 16px); /* 부모 요소의 가로 길이를 4로 나눈 값에서 10px(여백) 빼기 */
+    border: 1px solid #bdbdbd;
+    border-radius: 15px;  /* 모서리 둥글게 */
+    padding: 10px;
+    font-size: 14px; /* 원하는 폰트 크기로 설정 */
+    margin: 3% 1px 8px 0; /* top right bottom left*/
+    background-color: rgb(240, 240, 240);
+}
+
+.image-box:last-child {
+    margin-right: 0; /* 마지막 이미지 박스의 오른쪽 여백 제거 */
+}
+
+/* 이미지 스타일 */
+.image-box img {
+    display: flex; /* Flex layout 적용 */
+    flex-direction: column; /* 요소를 세로로 배치 */
+    align-items: center; /* 요소를 수평 가운데로 정렬 */
+    justify-content: center; /* 요소를 수직 가운데로 정렬 */
+    width: 100%; /* 이미지 크기 조정 */
+    margin-top: -5px;
+    margin-bottom: 5px;
+}
+
+/* 이미지 설명 스타일 */
+.image-desc {
+    display: flex;
+    flex-wrap: wrap; /* 넘칠 경우 자동으로 다음 줄로 이동 */
+    align-items: center; /* 수직 가운데 정렬 */
+    justify-content: center; /* 수평 가운데 정렬 */
+    margin-top: -5px;
+    margin-bottom: 5px;
+}
+
+/* 각 항목 스타일 */
+.image-desc div {
+    max-width: 0px;
+    margin-right: 5px; /* 각 항목 오른쪽 여백 추가 */
+    margin-bottom: 3px; /* 각 항목 아래 여백 추가 */
+    display: flex; /* 요소를 가로로 배열 */
+    align-items: center; /* 수직 가운데 정렬 */
+    flex-direction: row; /* 요소를 가로로 배치 */
+    justify-content: space-between; /* 요소 사이에 여백 동일하게 배치 */
+    flex-wrap: wrap; /* 화면 크기에 따라 요소를 다음 줄로 넘김 */
+}
