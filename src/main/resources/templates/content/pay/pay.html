@@ -12,14 +12,15 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet">
     <!-- 내부 CSS -->
-    <link href="../css/mypage.css" rel="stylesheet">
-    <link href="../css/pay1.css" rel="stylesheet">
-    <script src="../pay1.js" defer></script>
+    <link th:href="@{/css/mypage.css}" rel="stylesheet">
+    <link rel="stylesheet" th:href="@{/css/pay.css}" />
+    <script th:src="@{/js/pay.js}"></script>
 
 </head>
 
+<div th:insert="~{/fragments/header.html}"></div>
+
 <body>
-<div id="header"></div>
 <!-- 배너 부분 -->
 <section class="banner2-area">
     <div class="container">
@@ -44,14 +45,14 @@
     <!--주소-->
     <div class="address">주소</div>
     <input type="text" id="sample6_postcode" class="postcode-input" placeholder="우편번호">
-    <input type="button" onclick="sample6_execDaumPostcode()" class="form-button" value="우편번호 찾기"><br>
+    <input type="button" onclick="postApi()" class="form-button" value="우편번호 찾기">
     <input type="text" id="sample6_address" class="address-input" placeholder="주소">
     <input type="text" id="sample6_detailAddress" class="address-input" placeholder="상세주소">
 </section>
 
 <section class="product">
     <div class="image-box"> <!-- 컨테이너 스타일-->
-        <img src="img/product/p1.png" class="image"> <!--사진에 대한 이미지 css적용시 사용-->
+        <img th:src="@{/img/product/p1.png}" class="image"> <!--사진에 대한 이미지 css적용시 사용-->
         <p class="image-desc">
             <a style="font-weight: bold;">청바지로 만든 슬리퍼</a><br>
             <a><strong>선물가격 : </strong> 40,000원</a><br>
@@ -59,6 +60,8 @@
             <a><strong>색상 :</strong> 블루 </a><br>
             <a><strong>수량 :</strong>1개</a><br>
             <a><strong>마감일 :</strong>2024-04-25</a><br>
+        </p>
+    </div>
 </section>
 
 <section class="pay">
@@ -74,13 +77,13 @@
 <!-- jQuery -->
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
-<!-- Bootstrap JS -->
-<!-- jQuery -->
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+
+<script th:src="@{/js/user-update.js}"></script>
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-</body>
-</html>
 
+<div th:insert="~{/fragments/footer.html}"></div>
 </body>
 </html>

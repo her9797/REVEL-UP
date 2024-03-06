@@ -5,10 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title></title>
 
-    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
     <link th:href="@{/css/user-find-id.css}" rel="stylesheet">
+    <th:block th:insert="~{fragments/common}"></th:block>
 
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -37,16 +36,11 @@
             </div>
         </div>
 
-        <button class="btn-id" style="margin-top: 30px; font-size: 15px;">로그인</button>
+        <button onclick="location.href='/content/user/login'" class="btn-id" style="margin-top: 30px; font-size: 15px;">로그인</button>
     </div>
 </section>
 
 <div th:insert="~{/fragments/footer.html}"></div>
 
 </body>
-<!-- Bootstrap JS -->
-<script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
-<script th:src="@{/js/user-find-id.js}"></script>
-<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
 </html>

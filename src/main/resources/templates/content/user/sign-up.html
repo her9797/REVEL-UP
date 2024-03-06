@@ -5,16 +5,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>회원 가입</title>
 
-    <!-- CSS -->
+    <!-- 페이지에 1:1로 매칭되는 CSS -->
     <link rel="stylesheet" type="text/css" th:href="@{/css/sign-up.css}">
     <link rel="stylesheet" type="text/css" th:href="@{/css/sign-up-modal.css}">
-    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
 
-    <!-- JavaScript -->
-    <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-    <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <!--  전 인원이 사용하는 공통 css 및 js 링크 모음  -->
+    <th:block th:include="fragments/common"></th:block>
+
+    <!--  페이지에 1:1로 매칭되는 js  -->
     <script th:src="@{/js/sign-up.js}"></script>
 
 
@@ -25,7 +23,7 @@
 </head>
 <body>
 <div th:insert="~{/fragments/header.html}"></div>
-
+<div th:insert="~{content/user/modal.html}"></div>
 <section class="banner">
     <div class="user-banner">
         <img src="/img/tree.png" alt="유저 배너">
@@ -85,7 +83,8 @@
                         <div class="label" style="margin-bottom: -8px; margin-left: 30px;">이메일</div>
                         <input type="text" id="userEmail" name="userEmail" class="email-input" placeholder="@를 포함한 이메일을 입력하세요">
                         <!-- 인증번호 전송 버튼 -->
-                        <button type="button" id="sendEmail" class="btn-email" onclick="sendVerificationCode()">인증번호 전송</button>
+                        <button type="button" id="sendEmail" class="btn-email" onclick="sendEmailCode()">인증번호 전송</button>
+
                     </div>
                     <div class="input-container">
                         <!-- 인증번호 입력 창 -->
@@ -191,8 +190,6 @@
     </div>
     </div>
 </section>
-
-
 
 <div th:insert="~{/fragments/footer.html}"></div>
 </body>

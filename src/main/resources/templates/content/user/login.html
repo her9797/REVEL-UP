@@ -6,8 +6,7 @@
     <title>Login Page</title>
 
     <link rel="stylesheet" type="text/css" th:href="@{/css/login.css}">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
-
+    <th:block th:include="fragments/common"></th:block>
     <script src="/js/login.js"></script>
 
 </head>
@@ -16,7 +15,7 @@
         <div class="main_menu">
             <nav class="navbar navbar-expand-lg navbar-light main_box">
                 <div class="container">
-                    <a class="navbar-brand logo_h" th:href="@{main}"><img src="/img/logo.png" alt=""></a>
+                    <a class="navbar-brand logo_h" th:href="@{/}"><img src="/img/logo.png" alt=""></a>
                 </div>
             </nav>
         </div>
@@ -36,7 +35,7 @@
                     <div class="find-user">
                         <a th:href="@{/content/user/user-find}">forget your id/password ?</a>
                     </div>
-                    <button class="submit" onclick="showModal(event)">SIGN-IN</button>
+                    <button class="submit" onclick="">SIGN-IN</button>
                     <button class="submit2" onclick="redirectToSignUp()">SIGN-UP</button>
                 </form>
             </div>
