@@ -73,6 +73,18 @@ function sendEmailCode() {
     // 인증번호 확인 버튼을 활성화
     $("#confirmEmail").css("disabled",false);
 
+
+    // 인증번호 요청
+    var email = $('#userEmail').val();
+    $.get("/content/user/sendMail?email=" + email, function (data, status){
+        emailCode = data;
+
+        if (email == null) {
+            alert("이메일을 입력해주세요")
+        } else {
+            alert("요청 ok");
+        }
+    })
 }
 
 // 인증번호 확인 버튼 클릭 시
