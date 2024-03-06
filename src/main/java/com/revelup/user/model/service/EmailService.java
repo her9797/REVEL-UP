@@ -24,6 +24,7 @@ public class EmailService {
     * @Description : 이메일주소, 내용, 제목이 필요
     * */
 
+    /** 이메일 전송 폼 메소드 */
     public String sendMailReject(String email) throws Exception {
 
         String emailCode = createCode();
@@ -42,7 +43,7 @@ public class EmailService {
         return emailCode;
     }
 
-    // 인증번호 및 임시 비밀번호 생성 메서드
+    /** 인증번호 및 임시 비밀번호 생성 메소드 */
     public String createCode() {
         Random random = new Random();
         StringBuffer key = new StringBuffer();

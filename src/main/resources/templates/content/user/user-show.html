@@ -5,13 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title></title>
 
-    <!-- Bootstrap CSS -->
-    <link th:href="@{https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css}" rel="stylesheet">
     <link th:href="@{/css/mypage.css}" rel="stylesheet">
     <link th:href="@{/css/user-show.css}" rel="stylesheet">
 
-    <!-- jQuery -->
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <th:block th:include="fragments/common"></th:block>
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -112,11 +109,6 @@
 
 <div th:insert="~{/fragments/footer.html}"></div>
 
-<!-- Bootstrap JS -->
-<script th:src="@{/js/user-show.js}"></script>
-<script th:src="@{//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js}"></script>
-<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
 </body>
 </html>

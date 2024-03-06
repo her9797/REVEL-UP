@@ -1,9 +1,9 @@
 spring:
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://localhost:3306/menudb
-    username: minsup
-    password: m
+    url: jdbc:mysql://localhost:3306/jdbctest
+    username: ohgiraffers
+    password: ohgiraffers
   mail:
     host: smtp.gmail.com
     port: 587

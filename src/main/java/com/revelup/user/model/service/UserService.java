@@ -17,8 +17,7 @@ public class UserService {
         this.userMapper = userMapper;
     }
 
-
-    public void userSignUp(UserDTO userDTO) {
-        userMapper.insertUser(userDTO);
+    public void signupUser(UserDTO userDTO) {
+        userMapper.signupUser(userDTO);
     }
 }

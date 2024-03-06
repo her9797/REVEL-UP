@@ -14,7 +14,7 @@
         <result property="userAuth" column="USER_AUTH"/>
     </resultMap>
 
-    <insert id="insertUser" parameterType="com.revelup.user.model.dto.UserDTO">
+    <insert id="signupUser" parameterType="com.revelup.user.model.dto.UserDTO">
         INSERT INTO USER(
                          USER_ID
                         ,USER_NAME

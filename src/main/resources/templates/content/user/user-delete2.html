@@ -5,10 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title></title>
 
-    <!-- Bootstrap CSS -->
-    <link th:href="@{https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css}" rel="stylesheet">
+    <th:block th:include="fragments/common"></th:block>
     <link th:href="@{/css/mypage.css}" rel="stylesheet">
     <link th:href="@{/css/user-delete2.css}" rel="stylesheet">
+
 
 
 </head>
@@ -63,7 +63,7 @@
             <div class="col-lg-1.5 col-md-1.5 col-sm-1.5" style="margin-top: 20px; text-align: center;">
                 <h6 style="font-weight: bold">정말로 탈퇴 하시겠습니까?</h6>
 
-                <button class="btn-cancel" style="margin-top: 50px;" th:onclick="|window.location.href='@{/fragments/user-show}'|">돌아가기</button>
+                <button class="btn-cancel" style="margin-top: 50px;" th:onclick="|window.location.href='@{/content/user/user-show}'|">돌아가기</button>
                 <button class="btn-delete" style="margin-top: 50px;">탈퇴하기</button>
 
             </div>
