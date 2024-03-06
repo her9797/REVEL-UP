@@ -12,13 +12,15 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet">
     <!-- 내부 CSS -->
-    <link href="../css/mypage.css" rel="stylesheet">
-    <link href="../css/pay_Complect.css" rel="stylesheet">
-    <script src="../pay1.js" defer></script>
+    <link th:href="@{/css/mypage.css}" rel="stylesheet">
+    <link rel="stylesheet" th:href="@{/css/pay_complect.css}" />
+    <script src="/pay.js" defer></script>
 </head>
 
 <body>
-<div id="header"></div>
+
+<div th:insert="~{/fragments/header.html}"></div>
+
 <!-- 배너 부분 -->
 <section class="banner2-area">
     <div class="container">
@@ -46,6 +48,7 @@
 <section class="product">
     <div class="image-box"> <!-- 컨테이너 스타일-->
         <img src="img/product/p1.png" class="image"> <!--사진에 대한 이미지 css적용시 사용-->
+    </div>
 </section>
 <section class="note">
     <p class="image-desc">
@@ -71,7 +74,8 @@
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-</html>
+
+<div th:insert="~{/fragments/footer.html}"></div>
 
 </body>
 </html>

@@ -5,20 +5,16 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title></title>
 
-  <!-- Bootstrap CSS -->
-  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
-  <link href="../css/mypage.css" rel="stylesheet">
-  <link href="../css/manager-report.css" rel="stylesheet">
-  <script src="../script/manager-report.js" defer></script>
-
-  <!-- 폰트 -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet">
+  <th:block th:include="fragments/common"></th:block>
+  <link th:href="@{/css/manager-report.css}" rel="stylesheet">
+  <script th:src="@{/js/manager-report.js}"></script>
 
 </head>
 <body>
-<div id="header"></div>
+
+
+<!-- 헤더 부분 -->
+<div th:insert="~{/fragments/header.html}"></div>
 
 <!-- 배너 부분 -->
 <section class="banner2-area">
@@ -38,12 +34,12 @@
 
 <div class="container" style="border-top: 1px solid lightgray; margin-top: 15px;">
   <div class="title-box">
-    <button onclick="location.href='manager-fnd-select.html'">펀딩조회</button>
+    <button onclick="location.href='/manager/manager-find-select'">펀딩조회</button>
     <button onclick="location.href=''">펀딩심사</button>
-    <button onclick="location.href='manager-report.html'" style="background-color: #0CC291;">신고처리</button>
-    <button onclick="location.href='manager-notice.html'">공지사항</button>
-    <button onclick="location.href='manager-inquiry.html'">문의사항</button>
-    <button onclick="location.href='manager-calculate.html'">정산</button>
+    <button onclick="location.href='/manager/manager-report'" style="background-color: #0CC291;">신고처리</button>
+    <button onclick="location.href='/manager/manager-notice'">공지사항</button>
+    <button onclick="location.href='/manager/manager-inquiry'">문의사항</button>
+    <button onclick="location.href='/manager/manager-calculate'">정산</button>
   </div>
   <div class="row">
     <table class="manager_table" border="0">
@@ -208,6 +204,7 @@
   </div>
 </div>
 
+<!-- Features Area -->
 <section class="features-area">
   <div class="container">
     <br>
@@ -219,12 +216,9 @@
     <br>
   </div>
 </section>
+</div>
 
-<div id="footer"></div>
+<div th:insert="~{/fragments/footer.html}"></div>
+
 </body>
-
-<!-- Bootstrap JS -->
-<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-
+</html>

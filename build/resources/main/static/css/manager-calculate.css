@@ -25,6 +25,7 @@
 
 .title-box button:hover {
     background-color: #0CC291;
+    transform: scale(1.06); /* 마우스를 갖다대면 버튼이 살짝 커짐 */
 }
 
 .manager_table {

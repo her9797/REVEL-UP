@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+
+    <th:block th:include="fragments/common"></th:block>
+
+    <link th:href="@{/css/mypage.css}" rel="stylesheet">
+    <link th:href="@{/css/setter-funding-history.css}" rel="stylesheet">
+
+    <script th:src="@{/js/setter-funding-history.js}"></script>
+
+</head>
+<body>
+
+<!-- 헤더 부분 -->
+<div th:insert="~{/fragments/header.html}"></div>
+
+<!-- 배너 부분 -->
+<section class="banner2-area">
+    <div class="container">
+        <div class="row fullscreen align-items-center">
+            <div class="col-lg-10">
+                <div class="banner2-content">
+                    <h1 style="font-weight: bold; margin-left: 94px;">마이페이지</h1>
+                    <br>
+                    <p style="color:white; margin-left: 100px;">마이페이지</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<div class="container" style="border-top: 1px solid lightgray; margin-top: 15px;">
+    <br>
+    <div class="row">
+        <!-- Left Sidebar -->
+        <div class="col-lg-3">
+            <div class="sidebar" style="font-size: 15px; color: #000; padding-top: 10px; padding-bottom: 10px;">
+                <ul class="list">
+                    <a style="font-weight: bold; font-size: 18px; background-color: rgb(240, 240, 240); display: block; padding: 10px; text-decoration: none;">내 정보</a>
+                    <a th:href="@{/content/user/user-show}" class="sidebar-main" style="display: block; padding: 5px 10px; text-decoration: none;">나의 정보 조회</a>
+                    <a th:href="@{/content/user/user-delete1}" class="sidebar-main" style="display: block; padding: 5px 10px; text-decoration: none;">회원 탈퇴</a>
+                    <a style="font-weight: bold; font-size: 18px; background-color: rgb(240, 240, 240); display: block; padding: 10px; text-decoration: none;">나의 후원 내역</a>
+                    <a th:href="@{/content/mypage/getter-ongoing}" class="sidebar-main" style="display: block; padding: 5px 10px; text-decoration: none;">후원 내역 조회</a>
+                    <a style="font-weight: bold; font-size: 18px; background-color: rgb(240, 240, 240); display: block; padding: 10px; text-decoration: none;">나의 펀딩 내역</a>
+                    <a th:href="@{/content/mypage/setter-funding-history}" class="sidebar-main" style="display: block; padding: 5px 10px; text-decoration: none;">펀딩 내역 조회</a>
+                    <a href="" class="sidebar-main" style="display: block; padding: 5px 10px; text-decoration: none;">펀딩 신규 등록</a>
+                    <a style="font-weight: bold; font-size: 18px; background-color: rgb(240, 240, 240); display: block; padding: 10px; text-decoration: none;">찜한 내역 관리</a>
+                    <a th:href="@{/content/mypage/all-wishlist}" class="sidebar-main" style="display: block; padding: 5px 10px; text-decoration: none;">찜한 목록 조회</a>
+                </ul>
+            </div>
+        </div>
+
+
+        <div class="col-lg-8 col-md-8 col-sm-8">
+            <a style="margin-bottom: 20px; font-size: 18px;">나의 펀딩 내역 &gt; 펀딩 내역 조회 &gt; <b> 상세조회</b></a>
+
+            <p class="title" style="font-size: 14px; font-weight: bold; margin-top: 10px;">등록일 2024-02-21</p>
+
+            <div class="image-box">
+                <img th:src="@{/img/product/p1.png}" alt="product1">
+                <p class="image-desc">
+                <div>
+                    <strong class="info-item">펀딩명 </strong>: [개굴기업] 알뜰살뜰 모아모아 레인보우 협탁 <br>
+                    <strong class="info-item">선물명 </strong>: 레인보우 협탁<br>
+                    <strong class="info-item">달성률 </strong>: 71%<br>
+                    <strong class="info-item">달성금액 </strong>: 28,000,000<br>
+                    <strong class="info-item">펀딩 종료일 </strong>: 2024-04-24
+                </div>
+
+                </p>
+            </div>
+
+            <div class="table-container" style="margin-top: 80px;">
+                <p class="title" style="font-size: 18px; font-weight: bold; margin-top: 10px;">게터의 후원 내역</p>
+                <button id="open-deliv-modal" onclick="openModal()">운송장입력</button>
+
+                <div id="deliv-modal" class="modal">
+                    <div class="modal-content">
+                        <h4>운송장 번호를 입력하세요.</h4>
+                        <input type="text" id="trackingNumber" name="trackingNumber">
+                        <div class="modal-button" style="justify-content: center;">
+                            <!-- <button id="submit-btn" onclick='alert("아직 등록되지 않은 기능입니다.")'>등록</button> -->
+                            <button id="submit-btn">등록</button>
+                            <button id="cancel-btn" onclick="closeModal()">취소</button>
+                        </div>
+                    </div>
+                </div>
+
+                <table border="1">
+                    <tr align="center" bgcolor="#0CC291">
+                        <td>선택</td>
+                        <td>후원번호</td>
+                        <td>이름</td>
+                        <td>후원 금액</td>
+                        <td>후원일</td>
+                        <td>후원자 주소</td>
+                        <td>배송중</td>
+                        <td>운송장번호</td>
+                    </tr>
+                    <tr align="center">
+                        <td><input type="radio" name="check" value="check"></td>
+                        <td>F-001</td>
+                        <td>김자바</td>
+                        <td>70000</td>
+                        <td>2024-02-01</td>
+                        <td>서울 광진구 종곡동 28-11</td>
+                        <td>배송중</td>
+                        <td class="trackingNumberCell" id="trackingNumberCell">123456789123</td>
+
+                    </tr>
+                    <tr align="center">
+                        <td><input type="radio" name="check" value="check"></td>
+                        <td>F-002</td>
+                        <td>홍길동</td>
+                        <td>140000</td>
+                        <td>2024-02-05</td>
+                        <td>서울 중구 인사동 인사로 인사길1212</td>
+                        <td>배송중</td>
+                        <td class="trackingNumberCell" id="trackingNumberCell">-</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Features Area -->
+<section class="features-area">
+    <div class="container">
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+    </div>
+</section>
+</div>
+
+<div th:insert="~{/fragments/footer.html}"></div>
+
+</body>
+</html>

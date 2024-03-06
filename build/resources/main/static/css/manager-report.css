@@ -3,6 +3,7 @@
     display: flex;
     justify-content: center; /* 자식 요소 사이의 간격을 최대화하여 오른쪽 정렬 */
     align-items: center; /* 수직 가운데 정렬 */
+    cursor: pointer;
 }
 
 .title-box button {
@@ -25,6 +26,7 @@
 
 .title-box button:hover {
     background-color: #0CC291;
+    transform: scale(1.06); /* 마우스를 갖다대면 버튼이 살짝 커짐 */
 }
 
 .manager_table {
@@ -124,6 +126,14 @@ span.active {
 }
 
 #close-btn {
+    margin-left: 85%;
+    color: #aaaaaa;
+    float: right;
+    font-size: 23px;
+    font-weight: bold;
+}
+
+#close-btn2 {
     margin-left: 85%;
     color: #aaaaaa;
     float: right;

@@ -3,6 +3,7 @@
     display: flex;
     justify-content: center; /* 자식 요소 사이의 간격을 최대화하여 오른쪽 정렬 */
     align-items: center; /* 수직 가운데 정렬 */
+    cursor: pointer;
 }
 
 .title-box button {
@@ -178,6 +179,9 @@ button {
     width: 130px;
     border: none;
     margin-left: 5px;
+}
+button:hover {
+    transform: scale(1.08); /* 마우스를 갖다대면 버튼이 살짝 커짐 */
 }
 
 input {
