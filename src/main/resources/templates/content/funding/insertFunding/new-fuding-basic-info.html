@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 
 <head>
     <meta charset="UTF-8">
@@ -7,58 +7,21 @@
     <title></title>
 
     <!-- Bootstrap CSS -->
-    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
-    <link href="./css/mypage.css" rel="stylesheet">
-    <!-- Bootstrap CSS -->
-    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link th:href="@{https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css}" rel="stylesheet">
+    <link th:href="@{/css/mypage.css}" rel="stylesheet">
+    <link th:href="@{/css/new-funding-basic-info.css}" rel="stylesheet">
+
     <!-- jQuery -->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
-    <!-- 폰트 -->
+    <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet">
-
-    <!-- CSS 주소 경로 -->
-    <link rel="stylesheet" href="./css/new-funding-basic-info.css" />
 
 </head>
 
-<script>
-
-    function loadHeaderAndFooter() {
-        // 헤더 파일을 가져오는 XMLHttpRequest 객체 생성
-        var xhttpHeader = new XMLHttpRequest();
-        xhttpHeader.onreadystatechange = function () {
-            if (this.readyState == 4 && this.status == 200) {
-                // 헤더 파일의 내용을 가져와서 특정 요소의 내용으로 대체
-                document.getElementById("header").innerHTML = this.responseText;
-            }
-        };
-        xhttpHeader.open("GET", "header.html", true);
-        xhttpHeader.send();
-
-        // 푸터 파일을 가져오는 XMLHttpRequest 객체 생성
-        var xhttpFooter = new XMLHttpRequest();
-        xhttpFooter.onreadystatechange = function () {
-            if (this.readyState == 4 && this.status == 200) {
-                // 푸터 파일의 내용을 가져와서 특정 요소의 내용으로 대체
-                document.getElementById("footer").innerHTML = this.responseText;
-            }
-        };
-        xhttpFooter.open("GET", "footer.html", true);
-        xhttpFooter.send();
-    }
-
-    // 페이지 로드 시 헤더와 푸터를 가져오도록 호출
-    window.onload = loadHeaderAndFooter;
-
-
-</script>
-
 <body>
-<div id="header"></div>
-
+<div th:insert="~{/fragments/header.html}"></div>
 
 <!-- 배너 부분 -->
 <section class="banner2-area">
@@ -76,7 +39,6 @@
     </div>
 </section>
 
-
 <div class="container" style="border-top: 1px solid lightgray; margin-top: 15px;">
     <br>
     <div class="row">
@@ -84,33 +46,16 @@
             <!-- 왼쪽 사이드바 -->
             <div class="sidebar" style="font-size: 15px; color: #000; padding-top: 10px; padding-bottom: 10px;">
                 <ul class="list">
-                    <a
-                            style="font-weight: bold; font-size: 18px; background-color: rgb(240, 240, 240); display: block; padding: 10px; text-decoration: none;">내
-                        정보</a>
-                    <a href="" class="sidebar-main"
-                       style="display: block; padding: 5px 10px; text-decoration: none;">나의 정보 조회</a>
-                    <a href="" class="sidebar-main"
-                       style="display: block; padding: 5px 10px; text-decoration: none;">회원 탈퇴</a>
-
-                    <a
-                            style="font-weight: bold; font-size: 18px; background-color: rgb(240, 240, 240); display: block; padding: 10px; text-decoration: none;">나의
-                        후원 내역</a>
-                    <a href="" class="sidebar-main"
-                       style="display: block; padding: 5px 10px; text-decoration: none;">후원 내역 조회</a>
-
-                    <a
-                            style="font-weight: bold; font-size: 18px; background-color: rgb(240, 240, 240); display: block; padding: 10px; text-decoration: none;">나의
-                        펀딩 내역</a>
-                    <a href="" class="sidebar-main"
-                       style="display: block; padding: 5px 10px; text-decoration: none;">펀딩 내역 조회</a>
-                    <a href="new-funding.html" class="sidebar-main"
-                       style="display: block; padding: 5px 10px; text-decoration: none;">펀딩 신규 등록</a>
-
-                    <a
-                            style="font-weight: bold; font-size: 18px; background-color: rgb(240, 240, 240); display: block; padding: 10px; text-decoration: none;">찜한
-                        내역 관리</a>
-                    <a href="" class="sidebar-main"
-                       style="display: block; padding: 5px 10px; text-decoration: none;">찜한 목록 조회</a>
+                    <a style="font-weight: bold; font-size: 18px; background-color: rgb(240, 240, 240); display: block; padding: 10px; text-decoration: none;">내 정보</a>
+                    <a th:href="@{/content/user/user-show.html}" class="sidebar-main" style="display: block; padding: 5px 10px; text-decoration: none;">나의 정보 조회</a>
+                    <a th:href="@{/content/user/user-delete1}" class="sidebar-main" style="display: block; padding: 5px 10px; text-decoration: none;">회원 탈퇴</a>
+                    <a style="font-weight: bold; font-size: 18px; background-color: rgb(240, 240, 240); display: block; padding: 10px; text-decoration: none;">나의 후원 내역</a>
+                    <a href="" class="sidebar-main" style="display: block; padding: 5px 10px; text-decoration: none;">후원 내역 조회</a>
+                    <a style="font-weight: bold; font-size: 18px; background-color: rgb(240, 240, 240); display: block; padding: 10px; text-decoration: none;">나의 펀딩 내역</a>
+                    <a href="" class="sidebar-main" style="display: block; padding: 5px 10px; text-decoration: none;">펀딩 내역 조회</a>
+                    <a th:href="@{/content/funding/insertFunding/new-funding-terms-of-use}" class="sidebar-main" style="display: block; padding: 5px 10px; text-decoration: none;">펀딩 신규 등록</a>
+                    <a style="font-weight: bold; font-size: 18px; background-color: rgb(240, 240, 240); display: block; padding: 10px; text-decoration: none;">찜한 내역 관리</a>
+                    <a th:href="@{/content/mypage/interest.html}" class="sidebar-main" style="display: block; padding: 5px 10px; text-decoration: none;">찜한 목록 조회</a>
                 </ul>
             </div>
         </div>
@@ -120,8 +65,7 @@
             <a style="margin-bottom: 300px; font-size: 18px;">나의 펀딩 내역 &gt; <b>펀딩 신규 등록</b></a>
 
             <div class="col-lg-1.5 col-md-1.5 col-sm-1.5">
-                <p class="title" style="font-size: 14px; font-weight: bold; margin-top: 30px;">새로운 펀딩을 등록하기 위해 아래
-                    정보를 입력 및 필요한 파일을 업로드해주세요.</p>
+                <p class="title" style="font-size: 14px; font-weight: bold; margin-top: 30px;">새로운 펀딩을 등록하기 위해 아래 정보를 입력 및 필요한 파일을 업로드해주세요.</p>
                 <div class="contents">
                     <h3>기본정보</h3>
                     <div class="input-group">
@@ -145,7 +89,6 @@
                     </div>
 
                     <div class="input-group">
-
                         <input type="file" id="image" accept="image/*" onchange="setThumbnail(event);" multiple />
                         <div id="image_container"></div>
                     </div>
@@ -172,9 +115,9 @@
                     </div>
                     <div class="button-group">
                         <button class="back-button"
-                                onclick="document.location.href='02.new-funding-setter-info.html'">이전</button>
+                                onclick="location.href='/content/funding/insertFunding/new-funding-setter-info'">이전</button>
                         <button class="next-button"
-                                onclick="document.location.href='04.new-funding-story.html'">다음</button>
+                                onclick="location.href='/content/funding/insertFunding/new-funding-story'">다음</button>
                     </div>
                     <section class="features-area">
                         <div class="container">
@@ -188,77 +131,18 @@
                         </div>
                     </section>
                 </div>
-
-                <div id="footer"></div>
             </div>
-
         </div>
-
-
     </div>
 </div>
 
-<!-- footer 부분 -->
-<section class="features-area">
-    <div class="container">
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-    </div>
-</section>
+<div th:insert="~{/fragments/footer.html}"></div>
 
-
-
-<!-- Bootstrap JS -->
+<script th:src="@{/js/new-funding-basic-info.js}"></script>
 
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-
-
-<script>
-    // 대표이미지 미리보기
-    function setThumbnail(event) {
-        for (var image of event.target.files) {
-            var reader = new FileReader();
-
-            reader.onload = function (event) {
-                var img = document.createElement("img");
-                img.setAttribute("src", event.target.result);
-                document.querySelector("div#image_container").appendChild(img);
-            };
-
-            console.log(image);
-            reader.readAsDataURL(image);
-        }
-    }
-</script>
-<script>
-    // 목표금액 제약조건
-    function checkFundingGoalAmount() {
-        var goalAmountInput = document.getElementById("funding-goal-amount");
-        var errorMessage = document.getElementById("error-message");
-
-        var goalAmount = goalAmountInput.value;
-
-        // 50만원 이상 1억원 이하인지 확인
-        if (goalAmount < 500000) {
-            errorMessage.textContent = "50만원 이하는 목표 금액으로 설정하실 수 없습니다. 상향조정해 주세요.";
-        } else if (goalAmount > 100000000) {
-            errorMessage.textContent = "1억원 이상은 목표 금액으로 설정하실 수 없습니다. 하향조정해 주세요.";
-        } else {
-            errorMessage.textContent = "";
-        }
-    }
-
-    // 이벤트 리스너 추가
-    var goalAmountInput = document.getElementById("funding-goal-amount");
-    goalAmountInput.addEventListener("input", checkFundingGoalAmount);
-</script>
 
 </body>
 

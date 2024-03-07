@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 
 <head>
     <meta charset="UTF-8">
@@ -7,58 +7,21 @@
     <title></title>
 
     <!-- Bootstrap CSS -->
-    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
-    <link href="./css/mypage.css" rel="stylesheet">
-    <!-- Bootstrap CSS -->
-    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link th:href="@{https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css}" rel="stylesheet">
+    <link th:href="@{/css/mypage.css}" rel="stylesheet">
+    <link th:href="@{/css/all-funding.css}" rel="stylesheet">
+
     <!-- jQuery -->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
-    <!-- 폰트 -->
+    <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet">
-
-    <!-- CSS 주소 경로 -->
-    <link rel="stylesheet" href="/css/all-funding.css" />
 
 </head>
 
-<script>
-
-    function loadHeaderAndFooter() {
-        // 헤더 파일을 가져오는 XMLHttpRequest 객체 생성
-        var xhttpHeader = new XMLHttpRequest();
-        xhttpHeader.onreadystatechange = function () {
-            if (this.readyState == 4 && this.status == 200) {
-                // 헤더 파일의 내용을 가져와서 특정 요소의 내용으로 대체
-                document.getElementById("header").innerHTML = this.responseText;
-            }
-        };
-        xhttpHeader.open("GET", "header.html", true);
-        xhttpHeader.send();
-
-        // 푸터 파일을 가져오는 XMLHttpRequest 객체 생성
-        var xhttpFooter = new XMLHttpRequest();
-        xhttpFooter.onreadystatechange = function () {
-            if (this.readyState == 4 && this.status == 200) {
-                // 푸터 파일의 내용을 가져와서 특정 요소의 내용으로 대체
-                document.getElementById("footer").innerHTML = this.responseText;
-            }
-        };
-        xhttpFooter.open("GET", "footer.html", true);
-        xhttpFooter.send();
-    }
-
-    // 페이지 로드 시 헤더와 푸터를 가져오도록 호출
-    window.onload = loadHeaderAndFooter;
-
-
-</script>
-
 <body>
-<div id="header"></div>
-
+<div th:insert="~{/fragments/header.html}"></div>
 
 <!-- 배너 부분 -->
 <section class="banner2-area">
@@ -105,6 +68,7 @@
                     <li class="button-group"><button class="pay-button">후원하기</button><span><button
                             class="save-button">❤</button></span>
                     </li>
+                </ul>
             </div>
 
             <div class="col-lg-3 col-md-6">
@@ -116,6 +80,7 @@
                     <li class="button-group"><button class="pay-button">후원하기</button><span><button
                             class="save-button">❤</button></span>
                     </li>
+                </ul>
             </div>
 
             <div class="col-lg-3 col-md-6">
@@ -241,9 +206,10 @@
     </section>
 </div>
 
-<div id="footer"></div>
+<div th:insert="~{/fragments/footer.html}"></div>
 
 
+<script th:src="@{/js/all-funding.js}"></script>
 <!-- Bootstrap JS -->
 
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
