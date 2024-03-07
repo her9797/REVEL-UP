@@ -5,13 +5,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title></title>
 
-    <!-- Bootstrap CSS -->
-    <link th:href="@{https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css}" rel="stylesheet">
+    <!-- 내 CSS -->
     <link th:href="@{/css/mypage.css}" rel="stylesheet">
     <link th:href="@{/css/user-update.css}" rel="stylesheet">
-    <!-- Bootstrap CSS -->
-    <!-- jQuery -->
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    <th:block th:include="~{fragments/common}"></th:block>
+
+    <!--  내 js  -->
+    <script th:src="@{/js/user-update.js}"></script>
 
     <!-- 폰트 -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -95,8 +96,8 @@
                         <input type="button" onclick="sample6_execDaumPostcode()" class="btn-modify" value="우편번호 찾기">
                     </div>
                     <div class="input-container" style="text-align: center;">
-                        <input type="text" id="sample6_address" class="address-input" placeholder="주소">
-                        <input type="text" id="sample6_detailAddress" class="detail-address-input" placeholder="상세주소">
+                        <input type="text" name="userAdd" id="sample6_address" class="address-input" placeholder="주소">
+                        <input type="text" name="userAdd" id="sample6_detailAddress" class="detail-address-input" placeholder="상세주소">
                     </div>
                 </div>
                 <!-- 이메일 입력 창-->
@@ -137,12 +138,5 @@
     <div th:insert="~{/fragments/footer.html}"></div>
 </div>
 
-<!-- Bootstrap JS -->
-<script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
-
-<script th:src="@{/js/user-update.js}"></script>
-<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </body>
 </html>

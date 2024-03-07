@@ -60,14 +60,14 @@ public class UserController {
     }
 
     @GetMapping("/sign-up")
-    public void userSignUp(){}
+    public void signupUser(){}
 
     @PostMapping("/sign-up")
-    public String userSignUp(UserDTO userDTO){
+    public String signupUser(UserDTO userDTO){
 
-        userService.userSignUp(userDTO);
+        userService.signupUser(userDTO);
 
-        return "redirect:/main";
+        return "main";
     }
 
 

@@ -10,6 +10,7 @@ function validatePassword() {
     }
 }
 
+// 주소 창 스크립트
 function execDaumPostcode() {
     new daum.Postcode({
         oncomplete: function(data) {
@@ -24,7 +25,7 @@ function execDaumPostcode() {
 
             // 우편번호와 주소 정보를 해당 필드에 넣는다.
             document.getElementById('userPostcode').value = data.zonecode;
-            document.getElementById("userAddress").value = addr;
+            document.getElementById("userAdd").value = addr;
 
             // 상세주소 필드로 커서 이동
             document.getElementById("userDetailAddress").focus();
@@ -59,45 +60,11 @@ document.addEventListener('DOMContentLoaded', function () {
     });
 });
 
-// 입력 필드 유효성 검사 함수
-function validateForm() {
-    var username = document.querySelector('.username input').value;
-    var name = document.querySelector('.name input').value;
-    var password = document.querySelector('.password input').value;
-    var phone = document.querySelector('.phone input').value;
-    var address = document.querySelector('.address-input').value;
-    var email = document.querySelector('.email-input').value;
-
-// 각 필드의 유효성 검사를 수행합니다.
-    if (username === '' || name === '' || password === '' || phone === '' || address === '' || email === '') {
-        return false; // 하나라도 비어 있는 경우 false 반환
-    } else {
-        return true; // 모든 필드가 채워져 있는 경우 true 반환
-    }
-}
-
-// 가입하기 버튼의 활성화 상태를 업데이트하는 함수
-function updateButtonState() {
-    var signUpButton = document.querySelector('.btn-user');
-
-    if (validateForm()) {
-        signUpButton.removeAttribute('disabled'); // 모든 필드가 유효한 경우 버튼 활성화
-    } else {
-        signUpButton.setAttribute('disabled', true); // 필드가 하나라도 비어 있는 경우 버튼 비활성화
-    }
-}
-
-// 입력 필드가 변경될 때마다 버튼 상태를 업데이트합니다.
-document.querySelectorAll('.input').forEach(input => {
-    input.addEventListener('input', updateButtonState);
-});
-
-
 
 var emailCode = "";
 
 // 인증번호 전송 버튼 클릭 시
-function sendVerificationCode() {
+function sendEmailCode() {
 
     // 인증번호 전송 버튼을 "인증번호 재전송"으로 변경
     $("#sendEmail").text("인증번호 재전송");
@@ -107,24 +74,27 @@ function sendVerificationCode() {
     $("#confirmEmail").css("disabled",false);
 
 
-
     // 인증번호 요청
     var email = $('#userEmail').val();
     $.get("/content/user/sendMail?email=" + email, function (data, status){
         emailCode = data;
-        alert("요청 ok");
+
+        if (email == null) {
+            alert("이메일을 입력해주세요");
+        } else {
+            alert("요청 ok");
+        }
     })
 }
 
 // 인증번호 확인 버튼 클릭 시
-
 function checkEmailCode() {
 
     // 내가 전송한 코드랑 입력한 코드 체크 아니면, 탈락 맞으면 성공
     if (emailCode == $('#authCode').val()) {
-        console.log("성공")
+        console.log("성공");
     } else {
-        console.log("실패")
+        console.log("실패");
     }
 
 }
