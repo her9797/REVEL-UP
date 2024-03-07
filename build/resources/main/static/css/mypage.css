@@ -20,6 +20,7 @@
         height: 34px;
         font-weight: normal; /* 일반 텍스트 굵기로 설정합니다. */
         transition: transform 0.1s ease, font-weight 0.1s ease; /* 변형 및 굵기 속성에 대한 전환 효과를 추가합니다. */
+
     }
 
     .sidebar-main:hover {
@@ -28,6 +29,7 @@
         text-decoration: none;
         transform: scale(1.05);
         font-weight: bold; /* 마우스를 올렸을 때 텍스트 굵기를 강조합니다. */
+
     }
 
     .sidebar-main:hover a {
