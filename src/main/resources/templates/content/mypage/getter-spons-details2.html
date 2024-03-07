@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+
+    <th:block th:include="fragments/common"></th:block>
+
+    <link th:href="@{/css/mypage.css}" rel="stylesheet">
+    <link th:href="@{/css/getter-spons-details2.css}" rel="stylesheet">
+
+    <script th:src="@{/js/getter-spons-details2.js}"></script>
+
+</head>
+<body>
+
+<!-- 헤더 부분 -->
+<div th:insert="~{/fragments/header.html}"></div>
+
+<!-- 배너 부분 -->
+<section class="banner2-area">
+    <div class="container">
+        <div class="row fullscreen align-items-center">
+            <div class="col-lg-10">
+                <div class="banner2-content">
+                    <h1 style="font-weight: bold; margin-left: 94px;">마이페이지</h1>
+                    <br>
+                    <p style="color:white; margin-left: 100px;">마이페이지</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<div class="container" style="border-top: 1px solid lightgray; margin-top: 15px;">
+    <br>
+    <div class="row">
+        <!-- Left Sidebar -->
+        <div class="col-lg-3">
+            <div class="sidebar" style="font-size: 15px; color: #000; padding-top: 10px; padding-bottom: 10px;">
+                <ul class="list">
+                    <a style="font-weight: bold; font-size: 18px; background-color: rgb(240, 240, 240); display: block; padding: 10px; text-decoration: none;">내 정보</a>
+                    <a th:href="@{/content/user/user-show}" class="sidebar-main" style="display: block; padding: 5px 10px; text-decoration: none;">나의 정보 조회</a>
+                    <a th:href="@{/content/user/user-delete1}" class="sidebar-main" style="display: block; padding: 5px 10px; text-decoration: none;">회원 탈퇴</a>
+                    <a style="font-weight: bold; font-size: 18px; background-color: rgb(240, 240, 240); display: block; padding: 10px; text-decoration: none;">나의 후원 내역</a>
+                    <a th:href="@{/content/mypage/getter-ongoing}" class="sidebar-main" style="display: block; padding: 5px 10px; text-decoration: none;">후원 내역 조회</a>
+                    <a style="font-weight: bold; font-size: 18px; background-color: rgb(240, 240, 240); display: block; padding: 10px; text-decoration: none;">나의 펀딩 내역</a>
+                    <a th:href="@{/content/mypage/setter-funding-history}" class="sidebar-main" style="display: block; padding: 5px 10px; text-decoration: none;">펀딩 내역 조회</a>
+                    <a href="" class="sidebar-main" style="display: block; padding: 5px 10px; text-decoration: none;">펀딩 신규 등록</a>
+                    <a style="font-weight: bold; font-size: 18px; background-color: rgb(240, 240, 240); display: block; padding: 10px; text-decoration: none;">찜한 내역 관리</a>
+                    <a href="" class="sidebar-main" style="display: block; padding: 5px 10px; text-decoration: none;">찜한 목록 조회</a>
+                </ul>
+            </div>
+        </div>
+
+
+        <div class="col-lg-8 col-md-8 col-sm-8">
+            <a style="margin-bottom: 20px; font-size: 18px;">나의 후원 내역 &gt; 후원내역 &gt; <b>상세조회</b></a>
+
+            <p class="title" style="font-size: 14px; font-weight: bold; margin-top: 10px;">후원 <!--후원일 불러옴-->2024-02-21</p>
+
+            <div class="image-box">
+                <img th:src="@{/img/product/p1.png}" alt="product1">
+                <p class="image-desc">
+                <div>
+                    <strong class="info-item">펀딩명 </strong>: [개굴기업] 알뜰살뜰 모아모아 레인보우 협탁 <br>
+                    <strong class="info-item">선물명 </strong>: 레인보우 협탁<br>
+                    <strong class="info-item">제품 수량 </strong>: 1개<br>
+                    <strong class="info-item">후원 금액 </strong>: 70,000원<br>
+                    <strong class="info-item">펀딩 종료일 </strong>: 2024-04-24
+                </div>
+                </p>
+            </div>
+
+
+            <p class="title" style="font-size: 14px; font-weight: bold; margin-top: 50px;">배송조회</p>
+            <div class="deliv-info-container">
+                <div id="deliv-status">배송완료 |
+                    <button id="confirmation"  onclick="openModalConfir()">후원확정</button>
+
+                    <div id="confirmation-modal" class="modal">
+                        <div class="modal-content">
+                            <h3 style="color: #000; font-weight: bold;">후원확정</h3>
+                            <p style="color: #000; font-size: 18px; font-weight: normal; margin-top: 20px;">
+                                후원 확정 시 후원취소 불가능합니다. <br>
+                                후원확정 진행하시겠습니까?
+                            </p>
+                            <div class="button-group"> <!-- 버튼 그룹 div 추가 -->
+                                <button id="submit-btn">확인</button>
+                                <button id="cancel-btn">취소</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="deliv-info">
+                    <span style="font-weight: bold;">우체국</span> : <span style="font-weight: normal;">101012121313<!-- 운송장 번호 불러옴 --> </span>
+                </div>
+                <button id="deliv-select" onclick="window.open('https://service.epost.go.kr/trace.RetrieveDomRigiTraceList.comm?displayHeader=N&sid1=[#TRACKING_NO]')">택배사 배송조회</button>
+
+                <p style="font-size: 14px; color: #000; font-weight: bold; margin-top: 20px;">배송지 정보</p>
+
+                <div class="deliv-recipient">
+                    <div class="item"><span class="label">주소</span> <span class="content"> 서울 종로구 인사동길12 대일빌딩, 7층 10강의실</span></div>
+                    <div class="item"><span class="label">받는사람</span> <span class="content"> 홍길동</span></div>
+                    <div class="item"><span class="label">전화번호</span> <span class="content"> 010-1234-5678</span></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Features Area -->
+<section class="features-area">
+    <div class="container">
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+    </div>
+</section>
+</div>
+
+<div th:insert="~{/fragments/footer.html}"></div>
+
+</body>
+</html>
