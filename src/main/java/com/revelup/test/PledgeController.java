@@ -21,6 +21,11 @@ public class PledgeController {
         return "content/mypage/getter-spons-details";
     }
 
+    @GetMapping("/getter-spons-details2")
+    public String getterSponsDetailsTwoPage() {
+        return "content/mypage/getter-spons-details2";
+    }
+
     // 후원철회 버튼 클릭 후 페이지 이동
     @GetMapping("/getter-refund")
     public String getterRefundPage() {
@@ -39,10 +44,10 @@ public class PledgeController {
         return "content/mypage/all-wishlist";
     }
 
-    // 펀딩 내역조회 페이지 이동
-    @GetMapping("/setter-funding-history-progress")
+    // 펀딩 내역조회 상세페이지 이동
+    @GetMapping("/setter-funding-history")
     public String setterFundingHistoryProgressPage() {
-        return "/contnet/mypage/setter-funding-history-progress";
+        return "/content/mypage/setter-funding-history";
     }
 
 

@@ -1,4 +1,4 @@
 package com.revelup.funding.model.dao;
 
-public interface FundingDAO {
+public interface FundingMapper {
 }

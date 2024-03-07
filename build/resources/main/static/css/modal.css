@@ -83,6 +83,11 @@
     .modal-text h5 {
         font-weight: bold;
         margin-bottom: 50px;
+        margin-top: -20px;
+    }
+
+    .modal-text p {
+        font-size: 13px;
     }
 
     .hidden {

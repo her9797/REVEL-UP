@@ -73,6 +73,18 @@ function sendEmailCode() {
     // 인증번호 확인 버튼을 활성화
     $("#confirmEmail").css("disabled",false);
 
+
+    // 인증번호 요청
+    var email = $('#userEmail').val();
+    $.get("/content/user/sendMail?email=" + email, function (data, status){
+        emailCode = data;
+
+        if (email == null) {
+            alert("이메일을 입력해주세요");
+        } else {
+            alert("요청 ok");
+        }
+    })
 }
 
 // 인증번호 확인 버튼 클릭 시
@@ -80,9 +92,9 @@ function checkEmailCode() {
 
     // 내가 전송한 코드랑 입력한 코드 체크 아니면, 탈락 맞으면 성공
     if (emailCode == $('#authCode').val()) {
-        console.log("성공")
+        console.log("성공");
     } else {
-        console.log("실패")
+        console.log("실패");
     }
 
 }

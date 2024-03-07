@@ -18,8 +18,6 @@ function loadHeaderAndFooter() {
             document.getElementById("footer").innerHTML = this.responseText;
         }
     };
-
-
     xhttpFooter.open("GET", "footer.html", true);
     xhttpFooter.send();
 }
