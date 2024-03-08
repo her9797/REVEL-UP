@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
@@ -13,12 +13,6 @@
 
 </head>
 <body>
-            <div sec:authorize="hasAnyAuthority('ADMIN')">
-                <h1>=== 관리자 페이지 ===</h1>
-            </div>
-            <div sec:authorize="hasAnyAuthority('USER')">
-                <h1>=== 회원 페이지 ===</h1>
-            </div>
 
 <div th:insert="~{/fragments/header.html}"></div>
 
@@ -114,7 +108,7 @@
                         </div>
                         <div class="prd-bottom">
                             <a href="#" class="btn-product">Add to Bag</a>
-                            <a th:href="@{/content/funding/detail-funding}" class="btn-product">펀딩 상세 조회</a>
+                            <a th:href="@{/content/funding/detail-funding.html}" class="btn-product">펀딩 상세 조회</a>
                             <a href="#" class="btn-product">Pay</a>
                         </div>
                         <!-- <canvas id="salesChart" width="200" height="100"></canvas> -->

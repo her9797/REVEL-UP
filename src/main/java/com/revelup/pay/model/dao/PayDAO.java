@@ -1,4 +1,4 @@
 package com.revelup.pay.model.dao;
 
-public interface PayMapper {
+public interface PayDAO {
 }
