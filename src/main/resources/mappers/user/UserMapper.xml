@@ -16,6 +16,11 @@
 
     </resultMap>
 
+    <select id="checkUserId" resultMap="login">
+        SELECT * FROM USER
+         WHERE USER_ID = #{ userId }
+    </select>
+
     <insert id="signup" parameterType="com.revelup.user.model.dto.UserDTO">
         INSERT INTO USER(
                          USER_ID
@@ -35,7 +40,7 @@
         )
     </insert>
 
-    <select id="findByUserId" resultMap="login">
+    <select id="findByLoginId" resultMap="login">
         SELECT
                 USER_ID
                 ,USER_NAME
@@ -48,9 +53,19 @@
         WHERE  USER_ID = #{ userId }
     </select>
 
-    <select id="findByLoginId" resultMap="login">
-        SELECT * FROM USER
-        WHERE USER_ID = #{ userId}
+    <select id="findByUserId" resultMap="login">
+        SELECT
+        USER_ID
+        ,USER_NAME
+        ,USER_PW
+        ,USER_PHONE
+        ,USER_ADD
+        ,USER_EMAIL
+        ,USER_ROLE
+        FROM   USER
+        WHERE  USER_ID = #{ userId }
     </select>
+
+
 
 </mapper>

@@ -6,8 +6,8 @@ import com.revelup.user.model.dto.UserDTO;
 import com.revelup.user.model.service.EmailService;
 import com.revelup.user.model.service.UserService;
 import lombok.AllArgsConstructor;
+import org.apache.catalina.connector.Response;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
@@ -61,11 +61,15 @@ public class UserController {
         return "content/user/user-find-password";
     }
 
-    @GetMapping("/checkUserId")
-    public boolean checkUserId(@RequestParam("username") String username) {
 
-        return userService.checkUserId(username);
-    }
+    /* 회원가입 시 아이디 중복체크 */
+//    @GetMapping("/checkSameId")
+//    public @ResponseBody ResponseDto<Boolean> check(@RequestParam("userId") String userId){
+//        if (userId == null || userId.isEmpty()) {
+//            return new ResponseDto<>(-1, "ID를 입력해주세요", null);
+//        }
+//
+//    }
 
     @GetMapping("/sign-up")
     public void signupUser(){}

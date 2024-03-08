@@ -2,7 +2,7 @@ function toggleOtherReason() {
     var selectElement = document.getElementById("reason");
     var otherReasonTextarea = document.getElementById("otherReason");
 
-    if (selectElement.value === "other") {
+    if (selectElement.value === "otherReason") {
         otherReasonTextarea.style.display = "block";
     } else {
         otherReasonTextarea.style.display = "none";

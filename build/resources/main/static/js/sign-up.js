@@ -1,3 +1,5 @@
+
+
 // 비밀번호 확인 스크립트
 function validatePassword() {
     var userPw = document.getElementById("userPw").value;

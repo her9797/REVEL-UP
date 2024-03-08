@@ -26,6 +26,7 @@ public class UserService {
     private PasswordEncoder passwordEncoder;
 
 
+    /** 로그인 시 아이디 비교 */
     public LoginUserDTO findByUserId(String userId) {
 
         LoginUserDTO login = userMapper.findByUserId(userId);
@@ -38,7 +39,7 @@ public class UserService {
 
     }
 
-    /* 회원가입 */
+    /** 회원가입 */
     public int signup(UserDTO userDTO) {
         userDTO.setUserPw(passwordEncoder.encode(userDTO.getUserPw()));
 
@@ -53,16 +54,17 @@ public class UserService {
         return result;
    }
 
-
+    /** 로그인 후 정보 조회 후 정보 출력 */
     public LoginUserDTO findByLoginId(String loginUserId) {
 
         return userMapper.findByLoginId(loginUserId);
 
     }
 
-    public boolean checkUserId(String username) {
+    /** 아이디 중복 체크 */
+    public boolean checkUserId(String userId) {
 
-        UserDTO check = userMapper.checkUserId(username);
+        UserDTO check = userMapper.checkUserId(userId);
 
         return check == null;
 
