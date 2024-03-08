@@ -78,7 +78,7 @@ body {  /* 전체 설정 */
 }
 
 /* 찜하기 버튼 스타일 */
-.items .save-button {
+.items .heart-button {
     color:red;
     font-size: 20px;
     margin: 0 auto;
@@ -93,4 +93,22 @@ body {  /* 전체 설정 */
 .items .save-button:hover {
     color: rgb(255, 74, 74);
     transform: scale(1.05); /* 마우스 호버 시 약간 확대하여 강조 */
+}
+
+.test input{
+    display: none;
+}
+
+/* 찜하기 버튼 */
+.heart-button {
+    font-size: 20px; /* 아이콘 크기 조절 */
+    cursor: pointer;
+}
+
+.red-heart {
+    color: red !important; /* !important를 사용하여 우선순위 부여 */
+}
+
+.gray-heart {
+    color: gray !important; /* !important를 사용하여 우선순위 부여 */
 }

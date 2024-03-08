@@ -6,17 +6,21 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title></title>
 
-    <!-- Bootstrap CSS -->
-    <link th:href="@{https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css}" rel="stylesheet">
+    <!--  CSS 경로  -->
     <link th:href="@{/css/mypage.css}" rel="stylesheet">
     <link th:href="@{/css/new-funding-setter-info.css}" rel="stylesheet">
 
-    <!-- jQuery -->
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <!--  fragments 경로  -->
+    <th:block th:include="~{fragments/common}"></th:block>
 
-    <!-- Fonts -->
+    <!--  JS 경로  -->
+    <script th:src="@{/js/new-funding-setter-info.js}"></script>
+
+    <!-- 폰트 -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet">
+
 </head>
 
 <body>
@@ -77,8 +81,12 @@
                 </div>
             </div>
             <div class="button-group">
-                <button class="back-button" onclick="location.href='/content/funding/insertFunding/new-funding-terms-of-use'">이전</button>
-                <button class="next-button" onclick="location.href='/content/funding/insertFunding/new-funding-basic-info'">다음</button>
+                <button class="back-button"
+                        onclick="location.href='/content/funding/insertFunding/new-funding-terms-of-use'">이전
+                </button>
+                <button class="next-button"
+                        onclick="location.href='/content/funding/insertFunding/new-funding-basic-info'">다음
+                </button>
             </div>
             <section class="features-area">
                 <div class="container">
@@ -96,15 +104,7 @@
     </div>
 </div>
 
-<!-- Bootstrap JS -->
-
 <div th:insert="~{/fragments/footer.html}"></div>
-
-<script th:src="@{/js/new-funding-setter-info.js}"></script>
-
-<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
 </body>
 </html>

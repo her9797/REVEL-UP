@@ -6,17 +6,20 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title></title>
 
-    <!-- Bootstrap CSS -->
-    <link th:href="@{https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css}" rel="stylesheet">
+    <!--  CSS 경로  -->
     <link th:href="@{/css/mypage.css}" rel="stylesheet">
     <link th:href="@{/css/new-funding-complete.css}" rel="stylesheet">
 
-    <!-- jQuery -->
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <!--  fragments 경로  -->
+    <th:block th:include="~{fragments/common}"></th:block>
 
-    <!-- Fonts -->
+    <!--  JS 경로  -->
+    <script th:src="@{/js/new-funding-complete.js}"></script>
+
+    <!-- 폰트 -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet">
 
 </head>
 
@@ -34,7 +37,6 @@
                     <p style="color:white; margin-left: 100px;">마이페이지</p>
                 </div>
             </div>
-
         </div>
     </div>
 </section>
@@ -58,7 +60,7 @@
                     <img src="/img/icons/green-check-icon.svg" id="image" alt="완료 버튼">
                     <h3>등록이 완료되었습니다.<br>감사합니다.</h3>
                     <div class="button-group">
-                        <button class="go-to-funding-history-btn" onclick="location.href='/content/'">펀딩 내역 조회</button>
+                        <button class="go-to-funding-history-btn" onclick="location.href='/content/mypage/setter-funding-history'">펀딩 내역 조회</button>
                     </div>
                     <section class="features-area">
                         <div class="container">
@@ -91,12 +93,6 @@
 
 <div th:insert="~{/fragments/footer.html}"></div>
 
-<script th:src="@{/js/new-funding-complete.js}"></script>
-
-<!-- Bootstrap JS -->
-<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
 </body>
 </html>

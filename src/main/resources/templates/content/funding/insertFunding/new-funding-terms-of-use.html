@@ -6,17 +6,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title></title>
 
-    <!-- Bootstrap CSS -->
-    <link th:href="@{https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css}" rel="stylesheet">
     <link th:href="@{/css/mypage.css}" rel="stylesheet">
     <link th:href="@{/css/new-funding-terms-of-use.css}" rel="stylesheet">
 
-    <!-- jQuery -->
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <!--    fragments 경로-->
+    <th:block th:include="~{fragments/common}"></th:block>
 
-    <!-- Fonts -->
+    <!--  JS 경로  -->
+    <script th:src="@{/js/new-funding-terms-of-use.js}"></script>
+
+    <!-- 폰트 -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet">
 
 </head>
 
@@ -116,7 +118,6 @@
                             개인정보의 보유 및 이용기간
                             수집된 개인정보는 지원서 제출 후 위촉기간 만료 시 또는 지원서 삭제 요청 시까지 위 이용 목적을 위하여 보유‧이용됩니다.
                             또한 삭제 요청 시 지원자의 개인정보를 재생이 불가능한 방법으로 즉시 파기합니다.
-                            </p>
                         </div>
                     </div>
                     <div class="checkbox">
@@ -124,7 +125,9 @@
                     </div>
 
                     <div class="button-group">
-                        <button class="next-button" onclick="location.href='/content/funding/insertFunding/new-funding-setter-info'">다음</button>
+                        <button class="next-button"
+                                onclick="location.href='/content/funding/insertFunding/new-funding-setter-info'">다음
+                        </button>
                     </div>
 
                 </div>
@@ -147,12 +150,6 @@
 </section>
 
 <div th:insert="~{/fragments/footer.html}"></div>
-
-<script th:src="@{/js/new-funding-terms-of-use.js}"></script>
-
-<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
 </body>
 

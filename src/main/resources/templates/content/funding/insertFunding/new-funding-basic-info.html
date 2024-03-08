@@ -6,17 +6,20 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title></title>
 
-    <!-- Bootstrap CSS -->
-    <link th:href="@{https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css}" rel="stylesheet">
+    <!--    CSS 경로-->
     <link th:href="@{/css/mypage.css}" rel="stylesheet">
     <link th:href="@{/css/new-funding-basic-info.css}" rel="stylesheet">
 
-    <!-- jQuery -->
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <!--fragments 경로-->
+    <th:block th:include="~{fragments/common}"></th:block>
 
-    <!-- Fonts -->
+    <!--JS 경로-->
+    <script th:src="@{/js/new-funding-basic-info.js}"></script>
+
+    <!-- 폰트 -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet">
 
 </head>
 
@@ -53,7 +56,8 @@
             <a style="margin-bottom: 300px; font-size: 18px;">나의 펀딩 내역 &gt; <b>펀딩 신규 등록</b></a>
 
             <div class="col-lg-1.5 col-md-1.5 col-sm-1.5">
-                <p class="title" style="font-size: 14px; font-weight: bold; margin-top: 30px;">새로운 펀딩을 등록하기 위해 아래 정보를 입력 및 필요한 파일을 업로드해주세요.</p>
+                <p class="title" style="font-size: 14px; font-weight: bold; margin-top: 30px;">새로운 펀딩을 등록하기 위해 아래 정보를 입력
+                    및 필요한 파일을 업로드해주세요.</p>
                 <div class="contents">
                     <h3>기본정보</h3>
                     <div class="input-group">
@@ -77,8 +81,18 @@
                     </div>
 
                     <div class="input-group">
-                        <input type="file" id="image" accept="image/*" onchange="setThumbnail(event);" multiple />
-                        <div id="image_container"></div>
+                        <div class="image">
+                            <input type="file" id="image" accept="image/*" onchange="setThumbnail(event);" multiple/>
+                            <div class="image_container">
+                                <ul>
+                                    <li><a href=""><img src="/img/thumbnail/t1.jpg" alt=""></a></li>
+                                    <li><a href=""><img src="/img/thumbnail/t2.jpg" alt=""></a></li>
+                                    <li><a href=""><img src="/img/thumbnail/t3.jpg" alt=""></a></li>
+                                    <li><a href=""><img src="/img/thumbnail/t4.jpg" alt=""></a></li>
+                                    <li><a href=""><img src="/img/thumbnail/t1.jpg" alt=""></a></li>
+                                </ul>
+                            </div>
+                        </div>
                     </div>
 
                     <div class="input-group">
@@ -103,9 +117,11 @@
                     </div>
                     <div class="button-group">
                         <button class="back-button"
-                                onclick="location.href='/content/funding/insertFunding/new-funding-setter-info'">이전</button>
+                                onclick="location.href='/content/funding/insertFunding/new-funding-setter-info'">이전
+                        </button>
                         <button class="next-button"
-                                onclick="location.href='/content/funding/insertFunding/new-funding-story'">다음</button>
+                                onclick="location.href='/content/funding/insertFunding/new-funding-story'">다음
+                        </button>
                     </div>
                     <section class="features-area">
                         <div class="container">
@@ -125,12 +141,6 @@
 </div>
 
 <div th:insert="~{/fragments/footer.html}"></div>
-
-<script th:src="@{/js/new-funding-basic-info.js}"></script>
-
-<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
 </body>
 

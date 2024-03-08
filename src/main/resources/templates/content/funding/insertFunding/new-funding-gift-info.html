@@ -6,17 +6,20 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title></title>
 
-    <!-- Bootstrap CSS -->
-    <link th:href="@{https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css}" rel="stylesheet">
+    <!--  CSS 경로  -->
     <link th:href="@{/css/mypage.css}" rel="stylesheet">
     <link th:href="@{/css/new-funding-gift-info.css}" rel="stylesheet">
 
-    <!-- jQuery -->
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <!--  fragments 경로  -->
+    <th:block th:include="~{fragments/common}"></th:block>
 
-    <!-- Fonts -->
+    <!--  JS 경로  -->
+    <script th:src="@{/js/new-funding-gift-info.js}"></script>
+
+    <!-- 폰트 -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet">
 
 </head>
 
@@ -71,7 +74,7 @@
                         <input type="text" id="gift-name" placeholder="예시) 장인이 폐이불을 재활용해 한땀 한땀 만든 에코백 1세트">
                     </div>
                     <div class="input-group">
-                        <label for="gift-limit">제한 수량</label>
+                        <label for="gift-limit">선물 생산 가능 수량</label>
                         <div class="input-with-unit">
                             <input type="number" id="gift-limit" placeholder="0">
                             <span>개</span>
@@ -79,9 +82,11 @@
                     </div>
                     <div class="button-group">
                         <button class="back-button"
-                                onclick="location.href='/content/funding/insertFunding/new-funding-story'">이전</button>
+                                onclick="location.href='/content/funding/insertFunding/new-funding-story'">이전
+                        </button>
                         <button class="next-button"
-                                onclick="location.href='/content/funding/insertFunding/new-funding-complete'">다음</button>
+                                onclick="location.href='/content/funding/insertFunding/new-funding-complete'">다음
+                        </button>
                     </div>
                     <section class="features-area">
                         <div class="container">
@@ -113,13 +118,6 @@
 </section>
 
 <div th:insert="~{/fragments/footer.html}"></div>
-
-<script th:src="@{/js/new-funding-gift-info.js}"></script>
-
-<!-- Bootstrap JS -->
-<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
 </body>
 </html>

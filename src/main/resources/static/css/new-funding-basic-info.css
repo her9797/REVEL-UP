@@ -12,6 +12,40 @@
     align-items: first baseline;
 }
 
+.image {
+    position: relative;
+    padding: 0 0 0 325px;
+    width: 962px;
+    box-sizing: border-box;
+}
+
+.image .input-group .image_container {
+    position: absolute;
+    left: 0;
+    top: 0;
+}
+
+.image .input-group .image_container > img {
+    width: 368px;
+    height: 370px;
+    border: 1px solid black;
+}
+
+.input-group .image_container li:after {
+    content: "";
+    display: block;
+    clear: both;
+    width: 100%;
+}
+
+.input-group .image_container li {
+    float: left;
+}
+
+.input-group .image_container li.on img {
+    border-color: #0CC291;
+}
+
 .input-group input[type="text"],
 .input-group input[type="file"],
 .input-group input[type="date"],
@@ -66,10 +100,13 @@
 
 /* 대표 이미지 tip 스타일*/
 .thumbnail-tip {
-    width: 582px; height: 300px;
-    border-radius: 15px; background-color: #FFFAE3;
+    width: 582px;
+    height: 300px;
+    border-radius: 15px;
+    background-color: #FFFAE3;
     border: 0.5px solid black;
-    white-space: pre-line; margin: 0 auto 20px;
+    white-space: pre-line;
+    margin: 0 auto 20px;
     display: flex;
     justify-content: center;
     line-height: 100%;
