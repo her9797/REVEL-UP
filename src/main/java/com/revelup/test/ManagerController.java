@@ -9,10 +9,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class ManagerController {
 
     // 매니저 공지사항 페이지이동(푸터 공지사항에 링크 걸어둠)
-    @GetMapping("/manager-notice")
-    public String managerNoticePage() {
-        return "/manager/manager-notice";
-    }
+//    @GetMapping("/manager-notice")
+//    public String managerNoticePage() {
+//        return "/manager/manager-notice";
+//    }
 
     @GetMapping("/manager-inquiry")
     public String managerInquiryPage() {
