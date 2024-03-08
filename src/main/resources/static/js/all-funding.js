@@ -24,3 +24,22 @@ function loadHeaderAndFooter() {
 
 // 페이지 로드 시 헤더와 푸터를 가져오도록 호출
 window.onload = loadHeaderAndFooter;
+
+// 찜하기 버튼 클릭시 색상 변경 스크립트
+function toggleHeart(button) {
+    button.classList.toggle('red-heart');
+    button.classList.toggle('gray-heart');
+
+    console.log('toggleHeart called');
+    if (button.classList.contains('red-heart')) {
+        console.log('Removing red-heart class');
+        button.classList.remove('red-heart');
+        console.log('Adding gray-heart class');
+        button.classList.add('gray-heart');
+    } else {
+        console.log('Removing gray-heart class');
+        button.classList.remove('gray-heart');
+        console.log('Adding red-heart class');
+        button.classList.add('red-heart');
+    }
+}
