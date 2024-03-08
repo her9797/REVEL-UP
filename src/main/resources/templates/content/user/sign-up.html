@@ -16,6 +16,7 @@
     <script th:src="@{/js/sign-up.js}"></script>
 
 
+
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -37,11 +38,13 @@
     <div class="col-lg-8">
 
         <div class="col-lg-1.5 col-md-1.5 col-sm-1.5">
-            <form action="/content/user/sign-up" method="post">
+            <form th:action="@{/content/user/sign-up}" method="post">
             <!-- 아이디 입력 -->
             <div class="username">
                 <div class="label" style="margin-left: 30px;">아이디</div>
                 <input id="userId" name="userId" type="text" class="input" placeholder="아이디를 입력하세요">
+                <th:form:erros path="userId"/>
+                <button onclick="return false;" type="button" id="idCheck">중복확인</button>
             </div>
             <!-- 이름 입력 -->
             <div class="name" style="margin-top: 10px;">
@@ -184,7 +187,7 @@
                 </div>
             </div>
         <!-- 가입 버튼 -->
-        <button class="btn-user" style="margin-top: 50px; margin-bottom: 120px">가입하기</button>
+        <button id="btn-user" class="btn-user" type="submit" style="margin-top: 50px; margin-bottom: 120px">가입하기</button>
     </form>
     </div>
     </div>

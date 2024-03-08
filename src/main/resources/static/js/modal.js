@@ -1,4 +1,7 @@
 $(document).ready(function() {
+    // 페이지 로드될 때 가입하기 버튼 비활성화
+    $('.btn-user').prop('disabled', true);
+    
     // 이메일 유효성 검사를 위한 정규식
     var emailPattern = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
 
@@ -54,6 +57,7 @@ $(document).ready(function() {
             $('#emailModal').removeClass("hidden");
             $('.modal-layer').removeClass("hidden");
             $('body').css("overflow", "hidden");
+            console.log("버튼을 비활성화합니다.");
             $('.btn-user').prop('disabled', true); // 가입하기 버튼 비활성화
         } else if (emailCode === $('#authCode').val()){
             $('#emailModal .modal-text h5').text("🎉인증 성공🎉");
@@ -90,5 +94,3 @@ function closeModal() {
     $('.modal-layer').addClass('hidden');
     $('body').css('overflow', ''); // 스크롤 허용
 }
-
-

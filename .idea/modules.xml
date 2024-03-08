@@ -2,9 +2,8 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/revelup.iml" filepath="$PROJECT_DIR$/.idea/modules/revelup.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/com.revelup.revelup.main.iml" filepath="$PROJECT_DIR$/.idea/modules/com.revelup.revelup.main.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/revelup.main.iml" filepath="$PROJECT_DIR$/.idea/modules/revelup.main.iml" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/revelup.test.iml" filepath="$PROJECT_DIR$/.idea/modules/revelup.test.iml" />
     </modules>
   </component>
 </project>

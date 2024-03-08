@@ -28,15 +28,15 @@
     <div class="login_box">
         <div class="left">
             <div class="contact">
-                <form action="">
+                <form th:action="@{/content/user/login}" method="post">
                     <h3>SIGN IN</h3>
-                    <input type="text" placeholder="USERNAME">
-                    <input type="password" placeholder="PASSWORD">
+                    <input type="text" name="userId" id="userId" placeholder="USERNAME">
+                    <input type="password" name="userPw" id="userPw" placeholder="PASSWORD">
                     <div class="find-user">
-                        <a th:href="@{/content/user/user-find}">forget your id/password ?</a>
+                        <a type="button" th:href="@{/content/user/user-find}">forget your id/password ?</a>
                     </div>
                     <button class="submit" onclick="">SIGN-IN</button>
-                    <button class="submit2" onclick="redirectToSignUp()">SIGN-UP</button>
+                    <button type="button" class="submit2" onclick="location.href='/content/user/sign-up'">SIGN-UP</button>
                 </form>
             </div>
         </div>

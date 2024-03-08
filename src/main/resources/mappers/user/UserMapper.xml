@@ -4,17 +4,19 @@
         "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.revelup.user.model.dao.UserMapper">
 
-    <resultMap id="userResultMap" type="com.revelup.user.model.dto.UserDTO">
+
+    <resultMap id="login" type="com.revelup.user.model.dto.LoginUserDTO">
         <id property="userId" column="USER_ID"/>
         <result property="userName" column="USER_NAME"/>
         <result property="userPw" column="USER_PW"/>
         <result property="userPhone" column="USER_PHONE"/>
         <result property="userAdd" column="USER_ADD"/>
         <result property="userEmail" column="USER_EMAIL"/>
-        <result property="userAuth" column="USER_AUTH"/>
+        <result property="userRole" column="USER_ROLE"/>
+
     </resultMap>
 
-    <insert id="signupUser" parameterType="com.revelup.user.model.dto.UserDTO">
+    <insert id="signup" parameterType="com.revelup.user.model.dto.UserDTO">
         INSERT INTO USER(
                          USER_ID
                         ,USER_NAME
@@ -32,5 +34,23 @@
                 ,#{ userEmail }
         )
     </insert>
+
+    <select id="findByUserId" resultMap="login">
+        SELECT
+                USER_ID
+                ,USER_NAME
+                ,USER_PW
+                ,USER_PHONE
+                ,USER_ADD
+                ,USER_EMAIL
+                ,USER_ROLE
+        FROM   USER
+        WHERE  USER_ID = #{ userId }
+    </select>
+
+    <select id="findByLoginId" resultMap="login">
+        SELECT * FROM USER
+        WHERE USER_ID = #{ userId}
+    </select>
 
 </mapper>

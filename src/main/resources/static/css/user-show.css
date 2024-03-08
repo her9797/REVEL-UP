@@ -1,103 +1,88 @@
-    .input-group {
-        margin-top: 20px;
-        margin-bottom: 1px; /* 라벨끼리 위아래 간격 조절 */
-        display: flex;
-        align-items: center;
-    }
+.input-group {
+    margin-top: 40px;
+    margin-bottom: 1px; /* 라벨끼리 위아래 간격 조절 */
+    display: flex;
+    align-items: center;
+    background-color: #a1a1a1;
+}
 
-    .username,
-    .name,
-    .password,
-    .phone,
-    .address
-    {
-        margin-bottom: 10px; /* 아래 여백 추가 */
-        width: 700px; /* 모든 입력 필드의 너비를 컨테이너에 맞게 자동 조절 */
-    }
-
-
-
-    .address-input,
-    .detail-address-input {
-        flex: 1;
-        padding: 10px;
-        border: 1px solid #ccc;
-        border-radius: 5px;
-        font-size: 16px;
-        box-sizing: border-box;
-        width: 362px; /* 원하는 너비로 조정 */
-
-    }
-
-    .postcode-input {
-        width: calc(50% - 5px); /* 반응형으로 조정 가능한 너비 */
-        padding: 10px;
-        border: 1px solid #ccc;
-        border-radius: 5px;
-        font-size: 16px;
-        box-sizing: border-box;
-        margin-bottom: 10px; /* 아래 여백 추가 */
-    }
+.username,
+.name,
+.password,
+.phone,
+.address,
+.email,
+.role {
+    margin-bottom: 20px;
+    width: 700px;
+    display: flex;
+    flex-direction: column; /* 요소를 세로 방향으로 배치 */
+    align-items: center;
+}
 
 
-    .btn-modify {
-        padding: 10px 16px; /* 버튼의 길이 조정 */
-        background-color: #0CC291;
-        border: none;
-        border-radius: 5px;
-        color: #fff;
-        font-size: 16px;
-        cursor: pointer;
-        transition: background-color 0.3s ease;
-        margin-top: 10px; /* 버튼 위쪽 간격 조정 */
-    }
+.btn-modify {
+    padding: 10px 16px; /* 버튼의 길이 조정 */
+    background-color: #0CC291;
+    border: none;
+    border-radius: 5px;
+    color: #fff;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin-top: 10px; /* 버튼 위쪽 간격 조정 */
+}
 
-    .btn-modify:hover {
-        background-color: #0dd6a0;
-    }
+.btn-modify:hover {
+    background-color: #0dd6a0;
+}
 
-    .btn-mo {
-        background-color: #0CC291;
-        border: none;
-        border-radius: 5px;
-        color: #fff;
-        font-size: 16px;
-        cursor: pointer;
-        transition: background-color 0.3s ease;
-        display: block; /* 가운데 정렬을 위해 블록 레벨 요소로 지정 */
-        width: 150px; /* 원하는 너비 값으로 조정하세요 */
-        height: 50px;
-        margin: 0 auto; /* 가운데 정렬 */
-        text-decoration: none; /* 텍스트 밑줄 제거 */
-        text-align: center; /* 텍스트를 가운데 정렬 */
-        justify-content: center; /* 수평 가운데 정렬 */
-        align-items: center; /* 수직 가운데 정렬 */
-    }
+.btn-mo {
+    background-color: #0CC291;
+    border: none;
+    border-radius: 5px;
+    color: #fff;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    display: block; /* 가운데 정렬을 위해 블록 레벨 요소로 지정 */
+    width: 150px; /* 원하는 너비 값으로 조정하세요 */
+    height: 50px;
+    margin: 0 auto; /* 가운데 정렬 */
+    text-decoration: none; /* 텍스트 밑줄 제거 */
+    text-align: center; /* 텍스트를 가운데 정렬 */
+    justify-content: center; /* 수평 가운데 정렬 */
+    align-items: center; /* 수직 가운데 정렬 */
+}
 
-    .btn-mo > a {
-        margin-top: 20px;
-    }
+.btn-mo > a {
+    margin-top: 20px;
+}
 
-    .btn-mo:hover {
-        color: #000000; /* hover 시 텍스트 색상 */
-        text-decoration: none; /* hover 시 텍스트 밑줄 제거 */
-        background-color: #0dd6a0;
+.btn-mo:hover {
+    color: #000000; /* hover 시 텍스트 색상 */
+    text-decoration: none; /* hover 시 텍스트 밑줄 제거 */
+    background-color: #0dd6a0;
+}
 
-    }
+.label {
+    font-size: 16px;
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 1px; /* 라벨 아래 여백 조정 */
+    margin-left: -350px;
+}
 
-    .label {
-        margin-right: 10px;
-        font-size: 16px;
-        font-weight: bold;
-        margin-bottom: 3px;
-    }
+.input {
+    width: 400px;
+    padding: 8px;
+    border: 1px solid #525252;
+    border-radius: 5px;
+    font-size: 16px;
+    box-sizing: border-box;
+    background-color: #d2d2d2;
+    text-align: center;
+    margin-bottom: 20px; /* 입력(span) 요소 아래 여백 조정 */
+}
 
-    .input {
-        width: 100%;
-        padding: 10px;
-        border: 1px solid #ccc;
-        border-radius: 5px;
-        font-size: 16px;
-        box-sizing: border-box;
-    }
 
