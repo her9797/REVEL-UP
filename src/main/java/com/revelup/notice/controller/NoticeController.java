@@ -44,12 +44,15 @@ public class NoticeController {
     }
 
 
-    @GetMapping("/manager-notice-details/{ntcTitle}")
+    @GetMapping("/manager-notice/{ntcTitle}")
     @ResponseBody
     public ResponseEntity<NoticeDTO> getNoticeDetails(@PathVariable("ntcTitle") String ntcTitle) {
         NoticeDTO notice = noticeService.selectOneNoticeList(ntcTitle);
         return ResponseEntity.ok().body(notice);
     }
+
+
+
 
 
 
