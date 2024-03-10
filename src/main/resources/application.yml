@@ -1,9 +1,9 @@
 spring:
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://localhost:3306/jdbctest
-    username: ohgiraffers
-    password: ohgiraffers
+    url: jdbc:mysql://localhost:3306/menudb
+    username: minsup
+    password: m
   mail:
     host: smtp.gmail.com
     port: 587
@@ -18,7 +18,6 @@ spring:
             enable: true
             required: true
             auth: ture
-            nickname: 'admin'
 #SMTP 서버 호스트 (Google)
 #SMTP 서버 포트 (Google 경우 587 사용)
 #SMTP 서버 로그인 아이디 (풀주소 사용 가능! Ex. Test@google.com)

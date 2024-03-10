@@ -8,14 +8,16 @@ import org.apache.ibatis.annotations.Param;
 @Mapper
 public interface UserMapper {
 
+    /* 회원가입 ID 중복체크 */
+    int idCheck(String userId);
+
     /* 회원가입  */
     int signup(UserDTO userDTO);
 
-    /* 로그인 */
+    /* 로그인할 때 필요한 ID */
     LoginUserDTO findByUserId(String userId);
 
-    /* 로그인한 정보 */
+    /* 로그인한 정보 출력 */
     LoginUserDTO findByLoginId(String loginUserId);
 
-    UserDTO checkUserId(@Param("userId") String userId);
 }

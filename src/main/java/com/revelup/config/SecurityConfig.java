@@ -38,7 +38,7 @@ public class SecurityConfig  {
             /* 인가를 받지 않아도 (비회원이어도 접속할 수 있는 페이지 or 파일들) */
             auth.requestMatchers("/content/user/login", "/content/user/sign-up", "/content/user/fail", "/content/user/modal",
                                     "/content/user/user-find", "/content/user/user-find-id","/content/user/user-find-password",
-                                    "/", "/main",("/content/user/sendMail"),
+                                    "/", "/main",("/content/user/sendMail"),("/content/user/idCheck"),
                                     ("/css/**"),("/fragments/**"),("/img/**"),("/js/**")).permitAll();
             auth.requestMatchers("/**").hasAnyAuthority(UserRole.게터.getRole()); /* role의 상태가 게터면 접속할 수 있는 페이지 */
             auth.requestMatchers("/**").hasAnyAuthority(UserRole.매니저.getRole()); /* role의 상태가 매니저면 접속할 수 있는 페이지 */

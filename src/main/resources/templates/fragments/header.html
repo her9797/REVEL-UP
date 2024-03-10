@@ -35,7 +35,7 @@
                                     <a class="header-btn3" th:href="@{/content/user/user-show}">마이페이지</a>
                                 </span>
                                 <span th:if="${#authorization.expression('isAnonymous()')}">
-                                <a href="content/user/sign-up" class="header-btn2">회원가입</a>
+                                <a class="header-btn2" th:href="@{/content/user/sign-up}">회원가입</a>
                                 </span>
                             </li>
                         </ul>

@@ -20,7 +20,6 @@ public class UserService {
 
     @Autowired
     private UserMapper userMapper;
-//    private final UserMapper userMapper;
 
     @Autowired
     private PasswordEncoder passwordEncoder;
@@ -54,7 +53,7 @@ public class UserService {
         return result;
    }
 
-    /** 로그인 후 정보 조회 후 정보 출력 */
+    /** 로그인 한 정보 조회 후 정보 출력 */
     public LoginUserDTO findByLoginId(String loginUserId) {
 
         return userMapper.findByLoginId(loginUserId);
@@ -62,11 +61,9 @@ public class UserService {
     }
 
     /** 아이디 중복 체크 */
-    public boolean checkUserId(String userId) {
+    public boolean idCheck(String userId) {
 
-        UserDTO check = userMapper.checkUserId(userId);
-
-        return check == null;
-
+        int count = userMapper.idCheck(userId);
+        return count > 0;
     }
 }
