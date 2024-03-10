@@ -1,4 +1,16 @@
+
 <!DOCTYPE html>
+
+<!-- jQuery -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+<script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+
+<script th:src="@{/js/user-update.js}"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -54,11 +66,11 @@
     <div class="image-box"> <!-- 컨테이너 스타일-->
         <img th:src="@{/img/product/p1.png}" class="image"> <!--사진에 대한 이미지 css적용시 사용-->
         <p class="image-desc">
-            <a style="font-weight: bold;">청바지로 만든 슬리퍼</a><br>
-            <a><strong>선물가격 : </strong> 40,000원</a><br>
+            <a id="itemName" style="font-weight: bold;">청바지로 만든 슬리퍼</a><br>
+            <a><strong>선물가격 : </strong></a><a id="itemPrice">40000</a><br>
             <a><strong>후원날짜 : </strong> 2024-02-25</a><br>
             <a><strong>색상 :</strong> 블루 </a><br>
-            <a><strong>수량 :</strong>1개</a><br>
+            <a><strong>수량 : </strong></a><a id="quantity"><strong></strong>1</a><br>
             <a><strong>마감일 :</strong>2024-04-25</a><br>
         </p>
     </div>
@@ -67,22 +79,13 @@
 <section class="pay">
     <!-- 결제하기 , 카카오 페이 버튼-->
     <div class="paybutton">결제하기</div>
-    <button onclick="redirectToKakaoPayDemo()" class="form-paybutton">카카오페이</button>
+    <button onclick="payForKakao()" class="form-paybutton">카카오페이</button>
 </section>
 <br>
 <br>
 <br>
 <br>
 <div id="footer"></div>
-<!-- jQuery -->
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-
-<script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
-
-<script th:src="@{/js/user-update.js}"></script>
-<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
 <div th:insert="~{/fragments/footer.html}"></div>
 </body>

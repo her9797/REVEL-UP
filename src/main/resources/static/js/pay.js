@@ -19,28 +19,34 @@ function postApi() {
         }
     }).open();
 }
-$(function (){
-    $('#apibtn').click(function (){
-        $ajax({
-            url:'/cls/jq/kakaopay.cls' ,
-            dataType:'json' ,
-            success:function(data){
-                alert(data);
-            },
-            error:function(error){
-                alert(error);
-            }
-        })
+
+function payForKakao() {
+    const requestData = {
+        item_name: $('#itemName').text(), //상품명
+        quantity: parseInt($('#quantity').text(), 10), //상품 수량
+        total_amount: parseInt($('#quantity').text(), 10) * parseInt($('#itemPrice').text(), 10), //상품 총액
+    }
+    sendDataToUrl("POST", "/content/pay/ready", requestData)
+}
+
+
+
+function sendDataToUrl(method, url, data) {
+    $.ajax({
+        type: method,
+        url: url,
+        contentType: "application/json",
+        data: JSON.stringify(data),
+        success: function(response) {
+            var popupWidth = 480;
+            var popupHeight = 600;
+            var left = (window.screen.width - popupWidth) / 2;
+            var top = (window.screen.height - popupHeight) / 2;
+            var popup = window.open(response, 'popupName', 'width=' + popupWidth + ', height=' + popupHeight + ', left=' + left + ', top=' + top);
+        },
+        error: function(xhr) {
+            console.error("데이터 전송 중 오류가 발생했습니다.");
+            alert("에러발생이요")
         }
-
-    )
-})
-function redirectToKakaoPayDemo() {
-    // 카카오페이 데모 사이트 URL
-    var kakaoPayDemoUrl = "https://mockup-pg-web.kakao.com/v1/payment/ready";
-
-    // 실제 프로덕션에서는 위 URL 대신 카카오페이 데모 사이트의 실제 URL을 사용해야 합니다.
-
-    // 새 창에서 데모 사이트 열기
-    window.open(kakaoPayDemoUrl, "_blank");
+    });
 }

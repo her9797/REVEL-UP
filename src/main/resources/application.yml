@@ -1,9 +1,9 @@
 spring:
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://localhost:3306/jdbctest
-    username: ohgiraffers
-    password: ohgiraffers
+    url: jdbc:mysql://localhost:3306/revelupdb
+    username: revelup
+    password: revelup
   mail:
     host: smtp.gmail.com
     port: 587
@@ -31,3 +31,10 @@ mybatis:
   mapper-locations: mappers/**/*.xml
 
 
+kakao:
+  host: https://open-api.kakaopay.com
+  test_secret_key: DEVA243586048F8D1D11294F403ED8BA5D8A9F8C
+  cid: TC0ONETIME
+  approval_url: http://localhost:8080/content/pay/success
+  cancel_url: http://localhost:8080/content/pay/cancel
+  fail_url: http://localhost:8080/content/pay/fail
