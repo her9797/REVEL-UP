@@ -17,5 +17,5 @@ public interface UserMapper {
     /* 로그인한 정보 */
     LoginUserDTO findByLoginId(String loginUserId);
 
-    UserDTO checkUserId(@Param("username") String username);
+    UserDTO checkUserId(@Param("userId") String userId);
 }

@@ -44,7 +44,8 @@
                 <div class="label" style="margin-left: 30px;">아이디</div>
                 <input id="userId" name="userId" type="text" class="input" placeholder="아이디를 입력하세요">
                 <th:form:erros path="userId"/>
-                <button onclick="return false;" type="button" id="idCheck">중복확인</button>
+                <button onclick="return flase;" type="button" id="idCheck">중복확인</button>
+                <span id="idCheckResult"></span>
             </div>
             <!-- 이름 입력 -->
             <div class="name" style="margin-top: 10px;">
