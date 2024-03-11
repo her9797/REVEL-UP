@@ -8,10 +8,19 @@ import java.util.List;
 
 @Mapper
 public interface MypageMapper {
+
+    // 후원한 펀딩
+    List<PayDTO> selectAllPlgList(String userId);
+
+    // 후원철회 펀딩
+    List<PayDTO> selectRefundList(String userId);
+
+    // 미달성 펀딩
+    List<PayDTO> selectFailFndList(String userId);
+
+
     List<FundingInfoDTO> sttrFndPro(int fndCode);
 
 
-//    실패
-    List<PayDTO> selectAllPlgList();
-
+    PayDTO selectOnePlg(String userId);
 }

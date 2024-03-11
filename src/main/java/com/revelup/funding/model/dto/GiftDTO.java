@@ -7,6 +7,8 @@ public class GiftDTO implements java.io.Serializable {
     private String giftName; // 선물명
     private int giftProdQty; // 선물 생산 가능 수량
 
+    private FundingInfoDTO fndNo;
+
     public GiftDTO() {
     }
 

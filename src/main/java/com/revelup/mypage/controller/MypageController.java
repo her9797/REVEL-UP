@@ -3,11 +3,12 @@ package com.revelup.mypage.controller;
 import com.revelup.funding.model.dto.FundingInfoDTO;
 import com.revelup.mypage.model.service.MypageService;
 import com.revelup.pay.model.dto.PayDTO;
+import lombok.extern.log4j.Log4j;
+import lombok.extern.log4j.Log4j2;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 import java.security.Principal;
@@ -15,6 +16,7 @@ import java.util.List;
 
 @Controller
 @RequestMapping("/content/mypage")
+@Log4j2
 public class MypageController {
 
     private final MypageService mypageService;
@@ -23,53 +25,105 @@ public class MypageController {
         this.mypageService = mypageService;
     }
 
-    // 실패
     @GetMapping("/getter-ongoing")
-    public ModelAndView selectAllPlgList(ModelAndView mv, Principal principal) {
+    public String selectAllPlgList(Model model, Principal principal) {
         String userId = principal.getName();
-        List<PayDTO> allPlgList = mypageService.selectAllPlgList(userId);
-//        List<PayDTO> allPlgList = mypageService.selectAllPlgList();
-        mv.addObject("allPlgList", allPlgList);
-        mv.setViewName("/content/mypage/getter-ongoing");
-        System.out.println("allPlgList" + allPlgList);
-        return mv;
+        log.info("userId : {}", userId);
+        try {
+            List<PayDTO> allPlgList = mypageService.selectAllPlgList(userId);
+            model.addAttribute("allPlgList", allPlgList);
+            log.info("allPlgList: {}", allPlgList);
+            return "content/mypage/getter-ongoing";
+        } catch (Exception e) {
+            log.error("페이지를 불러오는 중 오류가 발생했습니다.", e);
+            throw new CustomException("페이지를 불러오는 중 오류가 발생했습니다.", e);
+        }
     }
 
-//    @GetMapping("/getter-ongoing")
-//    public String getterOngoingPage(Model model) {
-//        List<PayDTO> allPlgList = mypageService.selectAllPagList();
-//        model.addAttribute("allPlgList", allPlgList);
-//        return "content/mypage/getter-ongoing";
-//    }
+    // 후원철회 버튼 클릭 후 페이지 이동
+    @GetMapping("/getter-refund")
+    public String getterRefundPage(Model model, Principal principal) {
+        String userId = principal.getName();
+        log.info("userId : {}", userId);
+        try {
+            List<PayDTO> allPlgList = mypageService.selectRefundList(userId);
+            model.addAttribute("allPlgList", allPlgList);
+            log.info("allPlgList: {}", allPlgList);
+            return "content/mypage/getter-refund";
+        } catch (Exception e) {
+            log.error("페이지를 불러오는 중 오류가 발생했습니다.", e);
+            throw new CustomException("페이지를 불러오는 중 오류가 발생했습니다.", e);
+        }
+    }
 
-//     나의 후원내역 조회 페이지 이동
-//    @GetMapping("/getter-ongoing")
-//    public String getterOngoingPage() {
-//        return "content/mypage/getter-ongoing";
-//    }
+    // 미달성 펀딩 버튼 클릭 시 페이지 이동
+    @GetMapping("/failed-funding")
+    public String failedFundingPage(Model model, Principal principal) {
+        String userId = principal.getName();
+        log.info("userId : {}", userId);
+        try {
+            List<PayDTO> allPlgList = mypageService.selectFailFndList(userId);
+            model.addAttribute("allPlgList", allPlgList);
+            log.info("allPlgList: {}", allPlgList);
+            return "content/mypage/failed-funding";
+        } catch (Exception e) {
+            log.error("페이지를 불러오는 중 오류가 발생했습니다.", e);
+            throw new CustomException("페이지를 불러오는 중 오류가 발생했습니다.", e);
+        }
+    }
 
-    // 나의 후원내역 상세보기 페이지 이동
+    // 나의 후원내역1 상세보기 페이지 이동
     @GetMapping("/getter-spons-details")
-    public String getterSponsDetailsPage() {
-        return "content/mypage/getter-spons-details";
+    public String selectOnePlg(Model model, Principal principal) {
+        String userId = principal.getName();
+        log.info("userId : {}", userId);
+        try {
+            PayDTO selectOnePlg = mypageService.selectOnePlg(userId);
+            model.addAttribute("selectOnePlg", selectOnePlg);
+            log.info("selectOnePlg: {}", selectOnePlg);
+            return "content/mypage/getter-spons-details";
+        } catch (Exception e) {
+            log.error("페이지를 불러오는 중 오류가 발생했습니다.", e);
+            throw new CustomException("페이지를 불러오는 중 오류가 발생했습니다.", e);
+        }
     }
 
+    // 나의 후원내역2 상세보기 페이지 이동
     @GetMapping("/getter-spons-details2")
     public String getterSponsDetailsTwoPage() {
         return "content/mypage/getter-spons-details2";
     }
 
-    // 후원철회 버튼 클릭 후 페이지 이동
-    @GetMapping("/getter-refund")
-    public String getterRefundPage() {
-        return "content/mypage/getter-refund";
+
+    @ExceptionHandler(CustomException.class)
+    public String handleException(CustomException e, Model model) {
+        model.addAttribute("errorMessage", e.getMessage());
+        log.error("CustomException 발생: {}", e.getMessage());
+        return "error";
     }
 
-    // 미달성 펀딩 버튼 클릭 시 페이지 이동
-    @GetMapping("/failed-funding")
-    public String failedFundingPage() {
-        return "content/mypage/failed-funding";
+    @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
+    public static class CustomException extends RuntimeException {
+        public CustomException(String message, Throwable cause) {
+            super(message, cause);
+        }
     }
+
+
+
+//    // 나의 후원내역 상세보기 페이지 이동
+//    @GetMapping("/getter-spons-details")
+//    public String getterSponsDetailsPage() {
+//        return "content/mypage/getter-spons-details";
+//    }
+//
+//    @GetMapping("/getter-spons-details2")
+//    public String getterSponsDetailsTwoPage() {
+//        return "content/mypage/getter-spons-details2";
+//    }
+//
+
+
 
     // 찜한 목록 조회 페이지 이동
     @GetMapping("/all-wishlist")
@@ -84,17 +138,14 @@ public class MypageController {
 //    }
 
     @GetMapping("/setter-funding-history/{fndCode}")
-    public String sttrFndProPage(@PathVariable("fndCode")int fndCode, Model model) {
+    public String sttrFndProPage(@PathVariable("fndCode")int fndCode, Model model, Principal principal) {
 
+        String userId = principal.getName();
         List<FundingInfoDTO> plgList = mypageService.sttrFndPro(fndCode);
         model.addAttribute("plgList", plgList);
         System.out.println("plgList" + plgList);
 
         return "/content/mypage/setter-funding-history";
     }
-
-
-
-
 
 }

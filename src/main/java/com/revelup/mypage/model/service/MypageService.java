@@ -16,20 +16,40 @@ public class MypageService {
         this.mypageMapper = mypageMapper;
     }
 
-//    public List<PayDTO> selectAllPagList() {
-//        return mypageMapper.selectAllPlgList();
-//    }
+    // 후원한 펀딩
+    public List<PayDTO> selectAllPlgList(String userId) {
+        System.out.println("userID : " + userId);
+        List<PayDTO> payList = mypageMapper.selectAllPlgList(userId);
+        System.out.println("payList : " + payList);
+        return payList;
+    }
+
+    // 후원철회 펀딩
+    public List<PayDTO> selectRefundList(String userId) {
+        System.out.println("userID : " + userId);
+        List<PayDTO> payList = mypageMapper.selectRefundList(userId);
+        System.out.println("payList : " + payList);
+        return payList;
+    }
+
+    // 미달성 펀딩
+    public List<PayDTO> selectFailFndList(String userId) {
+        System.out.println("userID : " + userId);
+        List<PayDTO> payList = mypageMapper.selectFailFndList(userId);
+        System.out.println("payList : " + payList);
+        return payList;
+    }
+
+    public PayDTO selectOnePlg(String userId) {
+        System.out.println("userID : " + userId);
+        PayDTO plgByOne = mypageMapper.selectOnePlg(userId);
+        System.out.println("plgByOne : " + plgByOne);
+        return plgByOne;
+    }
 
     public List<FundingInfoDTO> sttrFndPro(int fndCode) {
         return mypageMapper.sttrFndPro(fndCode);
     }
 
 
-//   실패
-    public List<PayDTO> selectAllPlgList(String userId) {
-        System.out.println("userID : " + userId);
-        List<PayDTO> payList = mypageMapper.selectAllPlgList();
-        System.out.println("payList : " + payList);
-        return payList;
-    }
 }

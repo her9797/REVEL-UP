@@ -13,8 +13,8 @@ import lombok.NoArgsConstructor;
 @Builder
 @Getter
 public class PayCompletionDTO {
-	private String itemName;
-	private Integer totalPrice;
-	private Integer quantity;
-	private LocalDateTime createdAt;
+	private String itemName;			// 선물 이름
+	private Integer totalPrice;			// 후원 금액
+	private Integer quantity;			// 선물 수량
+	private LocalDateTime createdAt;	// 후원 일시
 }

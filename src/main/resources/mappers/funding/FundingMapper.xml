@@ -27,7 +27,7 @@
         ,STTR_ACC_HOLDER
         )
         VALUES (
-        'dlwlsdn'
+        'user02'
         ,#{ sttrCompany }
         ,#{ sttrName }
         ,#{ sttrRegistNo }
@@ -50,8 +50,8 @@
         ,FND_PRG_STAT
         )
         VALUES (
-        'F001'
-        ,'dlwlsdn'
+        '2'
+        ,'user02'
         ,#{ fndName }
         ,#{ fndEndDt }
         ,#{ goalAmt }
