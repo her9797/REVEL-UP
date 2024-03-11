@@ -11,12 +11,13 @@
         <result property="ntcInsertDt" column="NTC_INSERT_DT" />
     </resultMap>
 
-<!--    <select id="findAllNtcList" resultMap="noticeResultMap">-->
-<!--        SELECT NTC_CODE-->
-<!--               , NTC_TITLE-->
-<!--               , NTC_INSERT_DT-->
-<!--          FROM NTC-->
-<!--    </select>-->
+    <select id="findAllNtcList" resultMap="noticeResultMap">
+        SELECT  NTC_CODE
+                ,NTC_TITLE
+                ,NTC_CONT
+                ,NTC_INSERT_DT
+          FROM  NTC
+    </select>
 
 <!--    <update id="incrementNoticeCount" parameterType="int">-->
 <!--        UPDATE NTC-->

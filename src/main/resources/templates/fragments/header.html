@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:sec="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
@@ -16,6 +16,7 @@
             <nav class="navbar navbar-expand-lg navbar-light main_box">
                 <div class="container">
                     <a class="navbar-brand logo_h" th:href="@{/}"><img src="/img/logo.png" alt=""></a>
+
                     <div class="collapse navbar-collapse offset" id="navbarSupportedContent">
                         <ul class="nav navbar-nav menu_nav">
                             <li class="nav-item submenu">
@@ -27,18 +28,22 @@
                         </ul>
                     </div>
 
+
                     <div class="collapse navbar-collapse offset" id="navbarSupportedContent" style="margin-left: 600px;">
-                        <ul class="nav navbar-nav menu_nav ml-auto" >
+
+                        <ul class="nav navbar-nav menu_nav ml-auto">
                             <li class="nav-item" style="font-size: 12px; font-weight: bold;">
 
                                 <span th:if="${#authorization.expression('isAuthenticated()')}">
-                                    <a class="header-btn3" th:href="@{/content/user/user-show}">마이페이지</a>
+                                    <a sec:authorize="hasAnyAuthority('매니저')" class="header-btn3" th:href="@{/content/user/user-show}">관리자페이지</a>
+                                    <a sec:authorize="hasAnyAuthority('게터')" class="header-btn3" th:href="@{/content/user/user-show}">마이페이지</a>
                                 </span>
                                 <span th:if="${#authorization.expression('isAnonymous()')}">
-                                <a class="header-btn2" th:href="@{/content/user/sign-up}">회원가입</a>
+                                    <a class="header-btn2" th:href="@{/content/user/sign-up}">회원가입</a>
                                 </span>
                             </li>
                         </ul>
+
                         <ul class="nav navbar-nav menu_nav ml-auto">
                             <li class="nav-item" style="font-size: 12px; font-weight: bold;">
                                 <span th:if="${#authorization.expression('isAuthenticated()')}">
@@ -49,6 +54,10 @@
                                 </span>
                             </li>
                         </ul>
+
+
+                    </div>
+
                     </div>
                 </div>
             </nav>

@@ -29,19 +29,14 @@ public class NoticeController {
     }
 
     // 공지사항 조회 페이지 이동
-//    @GetMapping("/manager-notice")
-//    public ModelAndView noticeList(ModelAndView mv) {
-//
-//        List<NoticeDTO> ntcList = noticeService.findAllNtcList();
-//
-//        System.out.println("ntcList : " + ntcList + "\n");
-//
-//        mv.addObject("ntcList", ntcList);
-//
-//        mv.setViewName("manager/manager-notice");
-//
-//        return mv;
-//    }
+    @GetMapping("/manager-notice")
+    public String noticeList(NoticeDTO noticeDTO) {
+
+        noticeService.findAllNtcList(noticeDTO);
+
+        return "manager/manager-notice";
+
+    }
 
 
 //    @GetMapping("/manager-notice/{ntcTitle}")

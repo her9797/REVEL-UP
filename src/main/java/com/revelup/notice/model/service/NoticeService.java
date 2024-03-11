@@ -17,19 +17,16 @@ public class NoticeService {
         this.noticeMapper = noticeMapper;
     }
 
-    public List<NoticeDTO> findAllNtcList() {
-        return noticeMapper.findAllNtcList();
+    public List<NoticeDTO> findAllNtcList(NoticeDTO noticeDTO) {
+
+        return noticeMapper.findAllNtcList(noticeDTO);
     }
 
 
-
     @Transactional
-    public void insertNotice(NoticeDTO notice) {
-        int result = noticeMapper.insertNotice(notice);
+    public void insertNotice(NoticeDTO noticeDTO) {
 
-        if(!(result > 0)) {
-            System.out.println("공지사항 등록에 실패하셨습니다.");
-        }
+        noticeMapper.insertNotice(noticeDTO);
 
     }
 

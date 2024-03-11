@@ -27,8 +27,11 @@ public class MypageController {
 
     @GetMapping("/getter-ongoing")
     public String selectAllPlgList(Model model, Principal principal) {
+
         String userId = principal.getName();
+
         log.info("userId : {}", userId);
+
         try {
             List<PayDTO> allPlgList = mypageService.selectAllPlgList(userId);
             model.addAttribute("allPlgList", allPlgList);
