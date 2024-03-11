@@ -1,6 +1,7 @@
 package com.revelup.funding.model.service;
 
 import com.revelup.funding.model.dao.FundingMapper;
+import com.revelup.funding.model.dto.FundingInfoDTO;
 import com.revelup.funding.model.dto.SetterInfoDTO;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
@@ -17,4 +18,10 @@ public FundingServiceImpl(FundingMapper mapper) {this.mapper = mapper; }
     public void insertFND2(SetterInfoDTO setterInfoDTO) {
         mapper.insertFND2(setterInfoDTO);
     }
+
+    @Override
+    public void insertFND3(FundingInfoDTO fundingInfoDTO) {
+        mapper.insertFND3(fundingInfoDTO);
+    }
+
 }
