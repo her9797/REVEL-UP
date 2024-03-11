@@ -1,16 +1,25 @@
 package com.revelup.funding.controller;
 
-
+import com.revelup.funding.model.dto.FundingRequestDTO;
+import com.revelup.funding.model.dto.SetterInfoDTO;
+import com.revelup.funding.model.service.FundingService;
 import lombok.AllArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
 @RequestMapping("/content/funding")
-@AllArgsConstructor
+@Slf4j      // 로그 찍기 위해 선언
 public class FundingController {
+
+    private final FundingService fundingService;
+
+    public FundingController(FundingService fundingService) {
+        this.fundingService = fundingService;
+    }
 
     @GetMapping("/insertFunding/new-funding-terms-of-use")
     public String insertFND1() {
@@ -20,6 +29,13 @@ public class FundingController {
     @GetMapping("/insertFunding/new-funding-setter-info")
     public String insertFND2() {
         return "content/funding/insertFunding/new-funding-setter-info";
+    }
+
+    @PostMapping("/insertFunding/new-funding-setter-info")
+    public String insertFND2(SetterInfoDTO setterInfoDTO) {
+        System.out.println("fundingDTO = " + setterInfoDTO);
+        fundingService.insertFND2(setterInfoDTO);
+        return "content/funding/insertFunding/new-funding-basic-info";
     }
 
     @GetMapping("/insertFunding/new-funding-basic-info")
@@ -52,11 +68,6 @@ public class FundingController {
         return "content/funding/detail-funding";
     }
 
-    @GetMapping("/heart-button")
-    public String heartButton(Model model) {
-        boolean isRedHeart = false; // 사용될 때 null이 될 수 있도록 Boolean으로 선언
-        model.addAttribute("isRedHeart", isRedHeart);
-        return "content/funding/all-funding";
-    }
+
 
 }
