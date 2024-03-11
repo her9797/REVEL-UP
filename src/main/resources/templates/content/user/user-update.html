@@ -53,19 +53,19 @@
         </div>
 
         <!-- 회원 수정 폼 -->
-
+        <form th:action="">
         <div class="col-lg-8">
             <a style="margin-bottom: 20px; font-size: 18px;">내 정보 &gt; <b>내 정보 수정</b></a>
             <div class="col-lg-1.5 col-md-1.5 col-sm-1.5" style="margin-top: 50px;">
                 <!-- 아이디 입력 -->
                 <div class="username" style="text-align: center;">
                     <div class="label" style="margin-right: 450px;">아이디</div>
-                    <input type="text" class="input" placeholder="아이디를 입력하세요">
+                    <input type="text" th:text="${user.username}" class="input" placeholder="아이디를 입력하세요">
                 </div>
                 <!-- 이름 입력 -->
                 <div class="name" style="text-align: center;">
                     <div class="label" style="margin-right: 470px;">이름</div>
-                    <input type="text" class="input" placeholder="이름을 입력하세요">
+                    <input type="text" th:value="${user}" class="input" placeholder="이름을 입력하세요">
                 </div>
                 <!-- 비밀번호 입력 -->
                 <div class="password" style="text-align: center;">
@@ -108,24 +108,12 @@
                 <button onclick="" class="btn-mo" style="margin-top: 50px; display: block; margin-left: auto; margin-right: auto;">
                     수정하기
                 </button>
+                </div>
+                </div>
+                </form>
             </div>
-        </div>
-    </div>
-
-    <section class="features-area">
-        <div class="container">
-            <br>
-            <br>
-            <br>
-            <br>
-            <br>
-            <br>
-            <br>
-        </div>
-    </section>
 
     <div th:insert="~{/fragments/footer.html}"></div>
 </div>
-
 </body>
 </html>
