@@ -24,14 +24,16 @@ import lombok.extern.slf4j.Slf4j;
  * 단건결제: https://developers.kakaopay.com/docs/payment/online/single-payment
  * 이해하기: https://developers.kakaopay.com/docs/payment/online/common
  */
-@Slf4j
+@Slf4j // 롬복 어노테이션 중 로깅을 위한 Logger를 자동으로 생성한다,
 @Controller
 @RequestMapping("/content/pay")
 public class PayController {
+    /*페이지 경로를 지정해준다*/
     public static final String PAY_COMPLETE_PAGE = "/content/pay/pay-complete";
     public static final String PAY_CANCEL_PAGE = "/content/pay/pay-cancel";
     public static final String PAY_FAIL_PAGE = "/content/pay/pay-fail";
 
+    /*의존성 주입 및 생성자 : 페이 서비스와 카카오페이 config를 객체를 주입받는 생성자를 성의*/
     private final PayService payService;
     private final KakaoPayConfig kakaoPayConfig;
 
