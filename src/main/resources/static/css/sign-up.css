@@ -33,7 +33,6 @@
         margin-bottom: 10px;
     }
 
-    .username .input,
     .name .input,
     .password .input,
     .phone .input {
@@ -65,7 +64,8 @@
 
 
     .email-input,
-    .sendEmail-input {
+    .sendEmail-input,
+    .username .input{
         flex: 1;
         padding: 10px;
         border: 1px solid #ccc;
@@ -101,9 +101,23 @@
         margin-top: 10px; /* 버튼 위쪽 간격 조정 */
     }
 
+    .btn-id-check {
+        padding: 10px; /* 버튼의 길이 조정 */
+        width: 135px;
+        background-color: #0CC291;
+        border: none;
+        border-radius: 5px;
+        color: #fff;
+        font-size: 16px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+        margin-top: 10px; /* 버튼 위쪽 간격 조정 */
+    }
+
     .btn-modify:hover,
     .btn-email:hover,
-    .btn-email-check:hover{
+    .btn-email-check:hover,
+    .btn-id-check:hover {
         background-color: #0dd6a0;
     }
 

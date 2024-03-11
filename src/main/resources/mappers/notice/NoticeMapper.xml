@@ -11,12 +11,12 @@
         <result property="ntcInsertDt" column="NTC_INSERT_DT" />
     </resultMap>
 
-    <select id="findAllNtcList" resultMap="noticeResultMap">
-        SELECT NTC_CODE
-               , NTC_TITLE
-               , NTC_INSERT_DT
-          FROM NTC
-    </select>
+<!--    <select id="findAllNtcList" resultMap="noticeResultMap">-->
+<!--        SELECT NTC_CODE-->
+<!--               , NTC_TITLE-->
+<!--               , NTC_INSERT_DT-->
+<!--          FROM NTC-->
+<!--    </select>-->
 
 <!--    <update id="incrementNoticeCount" parameterType="int">-->
 <!--        UPDATE NTC-->
@@ -24,26 +24,26 @@
 <!--         WHERE NTC_CODE = #{ ntcCode }-->
 <!--    </update>-->
 
-    <select id="selectOneNoticeList" resultMap="noticeResultMap">
-        SELECT NTC_CODE
-                , NTC_TITLE
-                , NTC_INSERT_DT
-                , NTC_CONT
-          FROM NTC
-         WHERE NTC_Title = #{ ntcTitle }
+<!--    <select id="selectOneNoticeList" resultMap="noticeResultMap">-->
+<!--        SELECT NTC_CODE-->
+<!--                , NTC_TITLE-->
+<!--                , NTC_INSERT_DT-->
+<!--                , NTC_CONT-->
+<!--          FROM NTC-->
+<!--         WHERE NTC_Title = #{ ntcTitle }-->
 
-    </select>
+<!--    </select>-->
 
 
-    <insert id="insertNotice" parameterType="com.revelup.notice.model.dto.NoticeDTO">
-        INSERT INTO NTC ( NTC_TITLE
-                          , NTC_CONT
-                          , NTC_INSERT_DATE
-        )
-        VALUES ( #{ ntcTitle }
-                 , #{ ntcCont }
-                 , NOW()
-        )
-    </insert>
+<!--    <insert id="insertNotice" parameterType="com.revelup.notice.model.dto.NoticeDTO">-->
+<!--        INSERT INTO NTC ( NTC_TITLE-->
+<!--                          , NTC_CONT-->
+<!--                          , NTC_INSERT_DATE-->
+<!--        )-->
+<!--        VALUES ( #{ ntcTitle }-->
+<!--                 , #{ ntcCont }-->
+<!--                 , NOW()-->
+<!--        )-->
+<!--    </insert>-->
 
 </mapper>

@@ -42,10 +42,8 @@
             <!-- 아이디 입력 -->
             <div class="username">
                 <div class="label" style="margin-left: 30px;">아이디</div>
-                <input id="userId" name="userId" type="text" class="input" placeholder="아이디를 입력하세요">
-                <th:form:erros path="userId"/>
-                <button onclick="return flase;" type="button" id="idCheck">중복확인</button>
-                <span id="idCheckResult"></span>
+                <input id="userId" name="userId" type="text" class="input" placeholder="4글자 이상 아이디를 입력하세요">
+                <button type="button" id="idCheck" class="btn-id-check">중복확인</button>
             </div>
             <!-- 이름 입력 -->
             <div class="name" style="margin-top: 10px;">
@@ -61,7 +59,7 @@
                 <div class="label" style="margin-left: 80px;">비밀번호 확인</div>
                 <input type="password" id="userPwCheck" name="userPwCheck" class="input" placeholder="비밀번호를 입력하세요" onkeyup="validatePassword()">
                 <!-- 비밀번호 일치 여부 메시지 -->
-                <div id="passwordMatch" style="color: red; margin-left: 80px;"></div>
+                <div id="passwordMatch" style="color: red;"></div>
             </div>
             <!-- 휴대폰 번호 입력 -->
             <div class="phone" style="margin-top: 10px;">
