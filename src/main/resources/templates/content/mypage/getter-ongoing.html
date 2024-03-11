@@ -50,23 +50,25 @@
             </div>
 
             <div class="image-box-group">
-                <div class="image-box">
-                    <p class="support-date">2024-04-25</p>
-                    <p>후원번호 : <a>12341235</a></p>
+                <div class="image-box" th:each="allPlg : ${allPlgList}">
+                    <p class="support-date" th:text="${allPlg.plgDttm}">2024-04-25</p>
+                    <p>후원번호 : <a th:text="${allPlg.plgCode}">12341235</a></p>
                     <img th:src="@{/img/product/p1.png}" alt="product1">
                     <p class="image-desc">
                     <div>
-                        <a style="font-weight: bold;">[개굴기업]</a><br>
-                        <a style="font-weight: bold;">알뜰살뜰 모아모아 레인보우 협탁1</a><br>
-                        <a>· 레인보우 1개</a><br>
-                        <a>· 70,000원</a><br>
+                        <a style="font-weight: bold;" th:text="${allPlg.fndName}">[개굴기업] 알뜰살뜰 모아모아 레인보우 협탁1</a><br>
+                        <a th:text="'· ' + ${allPlg.giftName}">· 레인보우</a><br>
+                        <a th:text="${allPlg.giftQty}">1개</a>
+                        <a th:text="'· ' + ${allPlg.giftPrice} + '원'">· 70,000원</a><br>
                     </div>
                     <div class="button-group">
-                        <button onclick="location.href='/content/mypage/getter-spons-details'" class="button-detail"> 상세조회</button>
-                        <button class="button-support-cancel">후원철회</button>
+                        <button type="button" onclick="location.href='/content/mypage/getter-spons-details'" class="button-detail"> 상세조회</button>
+                        <button type="button" class="button-support-cancel">후원철회</button>
                     </div>
                     </p>
                 </div>
+
+
                 <div class="image-box">
                     <p class="support-date">2024-04-25</p>
                     <p>후원번호 : <a>12341235</a></p>
@@ -78,44 +80,44 @@
                         <a>· 레인보우 1개</a><br>
                         <a>· 70,000원</a><br>
                     </div>
-                    <div class="button-group"> <!-- 버튼을 감싸는 div 생성 -->
-                        <button onclick="location.href='/content/mypage/getter-spons-details'" class="button-detail"> 상세조회</button>
-                        <button class="button-support-cancel">후원철회</button>
-                    </div>
-                    </p>
-                </div>
-                <div class="image-box">
-                    <p class="support-date">2024-04-25</p>
-                    <p>후원번호 : <a>12341235</a></p>
-                    <img th:src="@{/img/product/p1.png}" alt="product1">
-                    <p class="image-desc">
-                    <div>
-                        <a style="font-weight: bold;">[개굴기업]</a><br>
-                        <a style="font-weight: bold;">알뜰살뜰 모아모아 레인보우 협탁3</a><br>
-                        <a>· 레인보우 1개</a><br>
-                        <a>· 70,000원</a><br>
-                    </div>
-                    <div class="button-group"> <!-- 버튼을 감싸는 div 생성 -->
-                        <button onclick="location.href='/content/mypage/getter-spons-details'" class="button-detail"> 상세조회</button>
-                        <button class="button-support-cancel">후원철회</button>
-                    </div>
-                    </p>
-                </div>
-                <div class="image-box">
-                    <p class="support-date">2024-04-25</p>
-                    <p>후원번호 : <a>12341235</a></p>
-                    <img th:src="@{/img/product/p1.png}" alt="product1">
-                    <p class="image-desc">
-                    <div>
-                        <a style="font-weight: bold;">[개굴기업]</a><br>
-                        <a style="font-weight: bold;">알뜰살뜰 모아모아 레인보우 협탁4</a><br>
-                        <a>· 레인보우 1개</a><br>
-                        <a>· 70,000원</a><br>
-                    </div>
-                    <div class="button-group">
-                        <button onclick="location.href='/content/mypage/getter-spons-details2'" class="button-detail"> 상세조회</button>
-                        <button class="button-support-cancel">후원철회</button>
-                    </div>
+<!--                    <div class="button-group"> &lt;!&ndash; 버튼을 감싸는 div 생성 &ndash;&gt;-->
+<!--                        <button onclick="location.href='/content/mypage/getter-spons-details'" class="button-detail"> 상세조회</button>-->
+<!--                        <button class="button-support-cancel">후원철회</button>-->
+<!--                    </div>-->
+<!--                    </p>-->
+<!--                </div>-->
+<!--                <div class="image-box">-->
+<!--                    <p class="support-date">2024-04-25</p>-->
+<!--                    <p>후원번호 : <a>12341235</a></p>-->
+<!--                    <img th:src="@{/img/product/p1.png}" alt="product1">-->
+<!--                    <p class="image-desc">-->
+<!--                    <div>-->
+<!--                        <a style="font-weight: bold;">[개굴기업]</a><br>-->
+<!--                        <a style="font-weight: bold;">알뜰살뜰 모아모아 레인보우 협탁3</a><br>-->
+<!--                        <a>· 레인보우 1개</a><br>-->
+<!--                        <a>· 70,000원</a><br>-->
+<!--                    </div>-->
+<!--                    <div class="button-group"> &lt;!&ndash; 버튼을 감싸는 div 생성 &ndash;&gt;-->
+<!--                        <button onclick="location.href='/content/mypage/getter-spons-details'" class="button-detail"> 상세조회</button>-->
+<!--                        <button class="button-support-cancel">후원철회</button>-->
+<!--                    </div>-->
+<!--                    </p>-->
+<!--                </div>-->
+<!--                <div class="image-box">-->
+<!--                    <p class="support-date">2024-04-25</p>-->
+<!--                    <p>후원번호 : <a>12341235</a></p>-->
+<!--                    <img th:src="@{/img/product/p1.png}" alt="product1">-->
+<!--                    <p class="image-desc">-->
+<!--                    <div>-->
+<!--                        <a style="font-weight: bold;">[개굴기업]</a><br>-->
+<!--                        <a style="font-weight: bold;">알뜰살뜰 모아모아 레인보우 협탁4</a><br>-->
+<!--                        <a>· 레인보우 1개</a><br>-->
+<!--                        <a>· 70,000원</a><br>-->
+<!--                    </div>-->
+<!--                    <div class="button-group">-->
+<!--                        <button onclick="location.href='/content/mypage/getter-spons-details2'" class="button-detail"> 상세조회</button>-->
+<!--                        <button class="button-support-cancel">후원철회</button>-->
+<!--                    </div>-->
                     <!-- 후원 철회 모달 창 추가 -->
                     <div id="cancel-modal" class="modal">
                         <div class="modal-content">
