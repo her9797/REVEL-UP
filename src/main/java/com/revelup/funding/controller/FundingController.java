@@ -1,5 +1,6 @@
 package com.revelup.funding.controller;
 
+import com.revelup.funding.model.dto.FundingInfoDTO;
 import com.revelup.funding.model.dto.FundingRequestDTO;
 import com.revelup.funding.model.dto.SetterInfoDTO;
 import com.revelup.funding.model.service.FundingService;
@@ -41,6 +42,12 @@ public class FundingController {
     @GetMapping("/insertFunding/new-funding-basic-info")
     public String insertFND3() {
         return "content/funding/insertFunding/new-funding-basic-info";
+    }
+
+    @PostMapping("/insertFunding/new-funding-basic-info")
+    public String insertFND3(FundingInfoDTO fundingInfoDTO) {
+        System.out.println("fundingInfoDTO = " + fundingInfoDTO);
+        return "content/funding/insertFunding/new-funding-story";
     }
 
     @GetMapping("/insertFunding/new-funding-story")
