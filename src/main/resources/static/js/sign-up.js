@@ -13,7 +13,7 @@ function validatePassword() {
         document.getElementById("passwordMatch").innerHTML = "비밀번호가 일치하지 않습니다";
     } else if (!pwPattern.test(userPw)) {
         $('.btn-user').prop('disabled', true);
-        document.getElementById("passwordMatch").innerHTML = "유효하지 않은 비밀번호 : 영문+숫자+특수기호를 사용하여 조합해주세요";
+        document.getElementById("passwordMatch").innerHTML = "유효하지 않은 비밀번호 : 영문+숫자+특수기호[ !@#$% ]를 사용하여 조합해주세요";
     } else {
         document.getElementById("passwordMatch").innerHTML = "";
         $('.btn-user').prop('disabled', false);

@@ -5,25 +5,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title></title>
 
-    <!-- Bootstrap CSS -->
-    <link th:href="@{https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css}" rel="stylesheet">
+    <th:block th:include="fragments/common"></th:block>
     <link th:href="@{/css/mypage.css}" rel="stylesheet">
     <link th:href="@{/css/getter-refund.css}" rel="stylesheet">
     <script th:src="@{/js/getter-refund.js}"></script>
-
-    <!-- jQuery -->
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-
-    <!-- Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet">
 
 </head>
 <body>
 
 <!-- 헤더 부분 -->
-<div th:insert="@{/fragments/header.html}"></div>
+<div th:insert="~{/fragments/header.html}"></div>
 
 <!-- 배너 부분 -->
 <section class="banner2-area">
@@ -58,15 +49,17 @@
             </div>
 
             <div class="image-box-group">
-                <div class="image-box">
-                    <p class="support-date">2024-04-25</p>
-                    <p>후원번호 : <a>12341235</a></p>
+                <div class="image-box" th:each="allPlg : ${allPlgList}">
+                    <p class="support-date" th:text="${allPlg.plgCanDt}">2024-04-25</p>
+                    <p>후원번호 : <a th:text="${allPlg.plgCode}">12341235</a></p>
                     <img th:src="@{/img/product/p1.png}" alt="product1">
                     <p class="image-desc">
-                    <div>
-                        <a style="font-weight: bold;">[개굴기업] 알뜰살뜰 모아모아 레인보우 협탁1</a><br>
-                        <a>· 레인보우 1개</a><br>
-                        <a>· 70,000원</a><br>
+                    <div th:each="fundingInfo : ${ allPlg.fundingInfo }">
+                        <a style="font-weight: bold;" th:text="${fundingInfo.fndName}">[개굴기업] 알뜰살뜰 모아모아 레인보우 협탁1</a><br>
+                        <a  th:each="gift : ${allPlg.gift}"
+                            th:text="'· ' + ${gift.giftName}">· 레인보우</a>
+                        <a th:text="${allPlg.giftQty} + '개'">1개</a><br>
+                        <a th:text="'· ' + ${allPlg.plgPrice} + '원'">· 70,000원</a><br>
                     </div>
                     <div class="button-container">
                         <button id="button-support-cancel-reason"  class="button-support-cancel-reason">후원철회사유</button>
