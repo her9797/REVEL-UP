@@ -14,10 +14,6 @@ public class KakaoPayReadyResponseDTO {
 	private String nextRedirectMobileUrl;
 	@JsonProperty("next_redirect_pc_url")
 	private String nextRirectPcUrl;
-	@JsonProperty("android_app_scheme")
-	private String nextRedirecAppScheme;
-	@JsonProperty("ios_app_scheme")
-	private String iosAppScheme;
 	@JsonProperty("created_at")
 	private String createdAt;
 }
