@@ -19,6 +19,19 @@
           FROM  NTC
     </select>
 
+    <insert id="insertNotice" parameterType="com.revelup.notice.model.dto.NoticeDTO">
+        INSERT INTO NTC (
+                          NTC_TITLE
+                         ,NTC_CONT
+                         ,NTC_INSERT_DT
+                        )
+        VALUES (
+                    #{ ntcTitle }
+                    ,#{ ntcCont }
+                    ,NOW()
+                )
+    </insert>
+
 <!--    <update id="incrementNoticeCount" parameterType="int">-->
 <!--        UPDATE NTC-->
 <!--           SET NTC_CODE = NTC_CODE + 1-->
@@ -36,15 +49,5 @@
 <!--    </select>-->
 
 
-<!--    <insert id="insertNotice" parameterType="com.revelup.notice.model.dto.NoticeDTO">-->
-<!--        INSERT INTO NTC ( NTC_TITLE-->
-<!--                          , NTC_CONT-->
-<!--                          , NTC_INSERT_DATE-->
-<!--        )-->
-<!--        VALUES ( #{ ntcTitle }-->
-<!--                 , #{ ntcCont }-->
-<!--                 , NOW()-->
-<!--        )-->
-<!--    </insert>-->
 
 </mapper>

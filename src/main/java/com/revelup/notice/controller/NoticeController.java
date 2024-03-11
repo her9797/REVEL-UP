@@ -30,52 +30,21 @@ public class NoticeController {
 
     // 공지사항 조회 페이지 이동
     @GetMapping("/manager-notice")
-    public String noticeList(NoticeDTO noticeDTO) {
+    public String noticeList(Model model) {
 
-        noticeService.findAllNtcList(noticeDTO);
-
+        List<NoticeDTO> noticeList = noticeService.findAllNtcList();
+        model.addAttribute("noticeList", noticeList);
         return "manager/manager-notice";
 
     }
 
 
-//    @GetMapping("/manager-notice/{ntcTitle}")
-//    @ResponseBody
-//    public ResponseEntity<NoticeDTO> getNoticeDetails(@PathVariable("ntcTitle") String ntcTitle) {
-//        NoticeDTO notice = noticeService.selectOneNoticeList(ntcTitle);
-//        return ResponseEntity.ok().body(notice);
-//    }
+    @PostMapping("/insert-notice")
+    public String insertNotice(NoticeDTO noticeDTO){
 
-
-
-
-
-
-//    @GetMapping("/{ntcTitle}")
-//    public String selectOneList(@PathVariable("ntcTitle") String ntcTitle, Model model) {
-//
-//        NoticeDTO notice = noticeService.selectOneNoticeList(ntcTitle);
-//
-//        System.out.println("notice : " + notice + "\n");
-//
-//        model.addAttribute("notice", notice);
-//
-//        return "manager/manager-notice";
-//    }
-
-
-
-//    @GetMapping("/manager-insert-notice")
-//    public String insertNotice() {
-//        return "manager/manager-insert-notice";
-//    }
-//    @PostMapping("/manager-insert-notice")
-//    public String insertNoticPage(@ModelAttribute NoticeDTO notice, RedirectAttributes rttr) {
-//        noticeService.insertNotice(notice);
-//        rttr.addFlashAttribute("message", "공지사항 등록에 성공하였습니다.");
-//        return "redirect:/manager/manager-notice";
-//
-//    }
+        noticeService.insertNotice(noticeDTO);
+        return "redirect:/manager/manager-notice";
+    }
 
 
 

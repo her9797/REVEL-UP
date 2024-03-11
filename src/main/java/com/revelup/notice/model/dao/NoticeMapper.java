@@ -9,9 +9,10 @@ import java.util.List;
 @Mapper
 public interface NoticeMapper {
 
-    List<NoticeDTO> findAllNtcList(NoticeDTO noticeDTO);
+    List<NoticeDTO> findAllNtcList();
 
-    int insertNotice(NoticeDTO notice);
+    /* 공지사항 등록 */
+    void insertNotice(NoticeDTO notice);
 
-    NoticeDTO selectOneNoticeList(String ntcTitle);
+//    NoticeDTO selectOneNoticeList(String ntcTitle);
 }

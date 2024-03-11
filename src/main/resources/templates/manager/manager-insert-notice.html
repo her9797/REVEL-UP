@@ -41,34 +41,34 @@
 <!--</div>-->
 
 
-<!--         신규 등록을 위한 모달창 -->
-        <div id="insert-modal" class="insert-modal">
-            <div class="insert-modal-content">
+<!--  신규 등록을 위한 모달창 -->
+<div id="insert-modal" class="insert-modal">
+    <div class="insert-modal-content">
 
-            <span id="close-insert-btn">&times;</span>  <!-- x를 나타내는 문자유니코드 U+00D7 -->
-                <form name="insertNotice" th:action="@{/manager/manager-insert-notice}" method="post">
-                <h4>신규 등록</h4>
-                <div class="notice-content">
-                    <div class="notice-header">
-                        <label style="margin-top: 8%;">제목</label>
-                        <input type="text" id="insert-title" class="text-box"  name="ntcTitle"><br>
-                        <label style="margin-top: 30px;">작성날짜</label>
-                        <input type="date" id="insert-date" class="text-box" name="ntcInsertDt">
-                    </div>
+        <span id="close-insert-btn">&times;</span>  <!-- x를 나타내는 문자유니코드 U+00D7 -->
+        <form name="insertNotice" th:action="@{/manager/manager-insert-notice}" method="post">
+            <h4>신규 등록</h4>
+            <div class="notice-content">
+                <div class="notice-header">
+                    <label style="margin-top: 8%;">제목</label>
+                    <input type="text" id="insert-title" class="text-box"  name="ntcTitle"><br>
+                    <label style="margin-top: 30px;">작성날짜</label>
+                    <input type="date" id="insert-date" class="text-box" name="ntcInsertDt">
+                </div>
 
-                    <div class="contents">
-                        <div class="contract">
-                            <label id="insert-text">내용</label>
-                            <textarea id="insert-content" class="text" name="ntcCont"></textarea>
-                        </div>
-                    </div>
-                    <div class="insert-modal-button" style="justify-content: center;">
-                        <button type="submit" id="insert-confirm-btn">등록하기</button>
+                <div class="contents">
+                    <div class="contract">
+                        <label id="insert-text">내용</label>
+                        <textarea id="insert-content" class="text" name="ntcCont"></textarea>
                     </div>
                 </div>
-                </form>
+                <div class="insert-modal-button" style="justify-content: center;">
+                    <button type="submit" id="insert-confirm-btn">등록하기</button>
+                </div>
             </div>
-        </div>
+        </form>
+    </div>
+</div>
 
 </body>
 </html>

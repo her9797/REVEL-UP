@@ -17,9 +17,9 @@ public class NoticeService {
         this.noticeMapper = noticeMapper;
     }
 
-    public List<NoticeDTO> findAllNtcList(NoticeDTO noticeDTO) {
+    public List<NoticeDTO> findAllNtcList() {
 
-        return noticeMapper.findAllNtcList(noticeDTO);
+        return noticeMapper.findAllNtcList();
     }
 
 
@@ -30,7 +30,7 @@ public class NoticeService {
 
     }
 
-    public NoticeDTO selectOneNoticeList(String ntcTitle) {
-        return noticeMapper.selectOneNoticeList(ntcTitle);
-    }
+//    public NoticeDTO selectOneNoticeList(String ntcTitle) {
+//        return noticeMapper.selectOneNoticeList(ntcTitle);
+//    }
 }
