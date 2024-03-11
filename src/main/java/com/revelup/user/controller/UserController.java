@@ -6,14 +6,20 @@ import com.revelup.user.model.dto.UserDTO;
 import com.revelup.user.model.service.EmailService;
 import com.revelup.user.model.service.UserService;
 import lombok.AllArgsConstructor;
+import lombok.extern.java.Log;
 import org.apache.catalina.User;
 import org.apache.catalina.connector.Response;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.Authentication;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+
+import java.security.Principal;
 
 @Controller
 @RequestMapping("/content/user")
@@ -22,9 +28,7 @@ public class UserController {
 
     @Autowired
     public final UserService userService;
-
-    @Autowired
-    public final EmailService emailService;
+    
 
 
     /** 회원가입 */
@@ -48,15 +52,6 @@ public class UserController {
         return userService.idCheck(userId);
     }
 
-    /** 이메일 전송 메소드 -> 회원가입 시 이메일 전송 */
-    @GetMapping("/sendMail")
-    @ResponseBody
-    public String sendMail(@RequestParam("email") String email) throws Exception {
-
-        return emailService.sendMailReject(email);
-
-    }
-
     /** 로그인한 유저 정보 조회 및 출력 -> userShow PAGE */
     @GetMapping("/user-show")
     public String userShow (@AuthenticationPrincipal UserDetails userDetails, Model model) {
@@ -70,6 +65,27 @@ public class UserController {
         return "content/user/user-show";
     }
 
+    @GetMapping("/user-update")
+    public String userUpdatePage(Principal principal, Model model) {
+
+        String loginUserId = principal.getName();
+
+        LoginUserDTO userDTO = userService.findByLoginId(loginUserId);
+
+        model.addAttribute("user", userDTO);
+
+        return "content/user/user-update";
+    }
+
+    /** 회원 정보 수정 */
+    @PostMapping("/user-update")
+    public String userUpdate(LoginUserDTO loginUserDTO) {
+
+        userService.userUpdate(loginUserDTO);
+
+        return "redirect:/content/user/user-show";
+    }
+
 
     // 아이디 비밀번호 찾기 페이지 이동
     @GetMapping("/user-find")
@@ -77,10 +93,6 @@ public class UserController {
         return "content/user/user-find";
     }
 
-    @GetMapping("/user-update")
-    public String userUpdatePage() {
-        return "content/user/user-update";
-    }
 
     @GetMapping("/user-delete1")
     public String delete1Page() {

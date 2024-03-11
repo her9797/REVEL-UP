@@ -2,6 +2,7 @@ package com.revelup.user.model.dao;
 
 import com.revelup.user.model.dto.LoginUserDTO;
 import com.revelup.user.model.dto.UserDTO;
+import org.apache.catalina.User;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 
@@ -20,4 +21,6 @@ public interface UserMapper {
     /* 로그인한 정보 출력 */
     LoginUserDTO findByLoginId(String loginUserId);
 
+
+    void userUpdate(LoginUserDTO loginUserDTO);
 }

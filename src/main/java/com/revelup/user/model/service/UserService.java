@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.parameters.P;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import javax.print.DocFlavor;
 import java.util.Objects;
@@ -65,5 +66,9 @@ public class UserService {
 
         int count = userMapper.idCheck(userId);
         return count > 0;
+    }
+
+    public void userUpdate(LoginUserDTO loginUserDTO) {
+        userMapper.userUpdate(loginUserDTO);
     }
 }

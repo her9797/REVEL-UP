@@ -81,5 +81,13 @@
         WHERE  USER_ID = #{ userId }
     </select>
 
+    <update id="userUpdate" parameterType="com.revelup.user.model.dto.LoginUserDTO" >
+        UPDATE  USER
+           SET  USER_PHONE = #{ userPhone }
+                ,USER_ADD = #{ userAdd }
+                ,USER_EMAIL = #{ userEmail }
+         WHERE USER_ID = #{ userId }
+    </update>
+
 
 </mapper>

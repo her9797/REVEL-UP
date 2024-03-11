@@ -20,6 +20,11 @@
     align-items: center;
 }
 
+.input-container {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+}
 
 .btn-modify {
     padding: 10px 16px; /* 버튼의 길이 조정 */
@@ -85,4 +90,58 @@
     margin-bottom: 20px; /* 입력(span) 요소 아래 여백 조정 */
 }
 
+.postcode-input {
+    width: 150px; /* 우편번호 입력 필드의 너비 조정 */
+    padding: 8px;
+    border: 1px solid #525252;
+    border-radius: 5px;
+    font-size: 16px;
+    box-sizing: border-box;
+    margin-right: 10px; /* 우편번호 입력 필드 간격 조정 */
+}
 
+.userAdd,
+.userDetailAddress {
+    width: 120px; /* 주소 입력 필드의 너비 조정 */
+    padding: 8px;
+    border: 1px solid #525252;
+    border-radius: 5px;
+    font-size: 16px;
+    box-sizing: border-box;
+    margin-bottom: 10px; /* 주소 입력 필드 간격 조정 */
+    text-align: center; /* 텍스트를 가운데 정렬 */
+}
+
+.email-input {
+    width: 150px; /* 이메일 입력 필드의 너비 조정 */
+    padding: 8px;
+    border: 1px solid #525252;
+    border-radius: 5px;
+    font-size: 16px;
+    box-sizing: border-box;
+    margin-right: 10px; /* 이메일 입력 필드 간격 조정 */
+}
+
+.authCode-input {
+    width: 20px; /* 인증번호 입력 필드의 너비 조정 */
+    padding: 8px;
+    border: 1px solid #525252;
+    border-radius: 5px;
+    font-size: 16px;
+    box-sizing: border-box;
+    margin-right: 10px; /* 인증번호 입력 필드 간격 조정 */
+}
+
+.userAdd,
+.userDetailAddress,
+.email-input,
+.authCode-input {
+    width: 150px; /* 주소, 상세주소, 이메일, 인증번호 입력 필드의 너비 조정 */
+    padding: 8px;
+    border: 1px solid #525252;
+    border-radius: 5px;
+    font-size: 16px;
+    box-sizing: border-box;
+    margin-bottom: 10px; /* 입력 필드 간격 조정 */
+    text-align: center; /* 텍스트를 가운데 정렬 */
+}

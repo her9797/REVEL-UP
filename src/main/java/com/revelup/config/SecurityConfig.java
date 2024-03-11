@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.security.servlet.PathRequest;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityCustomizer;
@@ -32,6 +33,7 @@ public class SecurityConfig  {
                 .requestMatchers(PathRequest.toStaticResources().atCommonLocations());
     }
 
+
     @Bean
     public SecurityFilterChain configure(HttpSecurity http) throws Exception {
         http.authorizeHttpRequests(auth -> {
@@ -40,8 +42,8 @@ public class SecurityConfig  {
                                     "/content/user/user-find", "/content/user/user-find-id","/content/user/user-find-password",
                                     "/", "/main",("/content/user/sendMail"),("/content/user/idCheck"),
                                     ("/css/**"),("/fragments/**"),("/img/**"),("/js/**")).permitAll();
-            auth.requestMatchers("/**").hasAnyAuthority(UserRole.게터.getRole()); /* role의 상태가 게터면 접속할 수 있는 페이지 */
-            auth.requestMatchers("/**").hasAnyAuthority(UserRole.매니저.getRole()); /* role의 상태가 매니저면 접속할 수 있는 페이지 */
+            auth.requestMatchers(UserRole.게터.getRole()).permitAll(); /* role의 상태가 게터면 접속할 수 있는 페이지 */
+            auth.requestMatchers(UserRole.매니저.getRole()).permitAll(); /* role의 상태가 매니저면 접속할 수 있는 페이지 */
             auth.anyRequest().authenticated();
 
         }).formLogin(login -> {
