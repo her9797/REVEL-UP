@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.revelup.funding.model.dao.FundingMapper">
+
+    <resultMap type="com.revelup.funding.model.dto.SetterInfoDTO" id="insertFundingResultMap">
+        <id property="fndCode" column="FND_CODE"/>
+        <result property="userId" column="USER_ID"/>
+        <result property="fndName" column="FND_NAME"/>
+        <result property="fndEndDt" column="FND_END_DT"/>
+        <result property="goalAmt" column="GOAL_AMT"/>
+        <result property="fndDescr" column="FND_DESCR"/>
+        <result property="successAmt" column="SUCCESS_AMT"/>
+        <result property="fndDelYn" column="FND_DEL_YN"/>
+        <result property="fndPrgStat" column="FND_PRG_STAT"/>
+    </resultMap>
+
+    <insert id="insertFND2" parameterType="com.revelup.funding.model.dto.SetterInfoDTO">
+        INSERT INTO STTR_INFO(
+        USER_ID
+        ,STTR_COMPANY
+        ,STTR_NAME
+        ,STTR_REGIST_NO
+        ,STTR_BANK
+        ,STTR_ACC_NO
+        ,STTR_ACC_HOLDER
+        )
+        VALUES (
+        'dlwlsdn'
+        ,#{ sttrCompany }
+        ,#{ sttrName }
+        ,#{ sttrRegistNo }
+        ,#{ sttrBank }
+        ,#{ sttrAccNo }
+        ,#{ sttrAccHolder }
+        )
+    </insert>
+
+    <insert id="insertFND3" parameterType="com.revelup.funding.model.dto.FundingInfoDTO">
+        INSERT INTO FND_INFO(
+        FND_CODE
+        ,USER_ID
+        ,FND_NAME
+        ,FND_END_DT
+        ,GOAL_AMT
+        ,FND_DESCR
+        ,SUCCESS_AMT
+        ,FND_DEL_YN
+        ,FND_PRG_STAT
+        )
+        VALUES (
+        'F001'
+        ,'dlwlsdn'
+        ,#{ fndName }
+        ,#{ fndEndDt }
+        ,#{ goalAmt }
+        ,#{ fndDescr }
+        ,#{ successAmt }
+        ,'N'
+        ,'P'
+        )
+    </insert>
+
+</mapper>
