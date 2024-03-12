@@ -85,20 +85,20 @@ public class MypageController {
     }
 
     // 미달성 펀딩 버튼 클릭 시 페이지 이동
-//    @GetMapping("/failed-funding")
-//    public String failedFundingPage(Model model, Principal principal) {
-//        String userId = principal.getName();
-//        log.info("userId : {}", userId);
-//        try {
-//            List<PayDTO> allPlgList = mypageService.selectFailFndList(userId);
-//            model.addAttribute("allPlgList", allPlgList);
-//            log.info("allPlgList: {}", allPlgList);
-//            return "content/mypage/failed-funding";
-//        } catch (Exception e) {
-//            log.error("페이지를 불러오는 중 오류가 발생했습니다.", e);
-//            throw new CustomException("페이지를 불러오는 중 오류가 발생했습니다.", e);
-//        }
-//    }
+    @GetMapping("/failed-funding")
+    public String failedFundingPage(Model model, Principal principal) {
+        String userId = principal.getName();
+        log.info("userId : {}", userId);
+        try {
+            List<PayDTO> allPlgList = mypageService.selectFailFndList(userId);
+            model.addAttribute("allPlgList", allPlgList);
+            log.info("allPlgList: {}", allPlgList);
+            return "content/mypage/failed-funding";
+        } catch (Exception e) {
+            log.error("페이지를 불러오는 중 오류가 발생했습니다.", e);
+            throw new CustomException("페이지를 불러오는 중 오류가 발생했습니다.", e);
+        }
+    }
 
 
 

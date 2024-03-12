@@ -41,12 +41,12 @@ public class MypageService {
     }
 
     // 미달성 펀딩
-//    public List<PayDTO> selectFailFndList(String userId) {
-//        System.out.println("userID : " + userId);
-//        List<PayDTO> payList = mypageMapper.selectFailFndList(userId);
-//        System.out.println("payList : " + payList);
-//        return payList;
-//    }
+    public List<PayDTO> selectFailFndList(String userId) {
+        System.out.println("userID : " + userId);
+        List<PayDTO> payList = mypageMapper.selectFailFndList(userId);
+        System.out.println("payList : " + payList);
+        return payList;
+    }
 
 
 
