@@ -90,4 +90,6 @@ public class SetterInfoDTO implements java.io.Serializable {
                 ", sttrAccHolder='" + sttrAccHolder + '\'' +
                 '}';
     }
+
+
 }

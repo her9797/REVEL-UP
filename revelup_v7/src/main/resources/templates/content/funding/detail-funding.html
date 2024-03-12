@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+
+    <!--  CSS 경로  -->
+    <link th:href="@{/css/mypage.css}" rel="stylesheet">
+    <link th:href="@{/css/detail-funding.css}" rel="stylesheet">
+
+    <!--  fragments 경로  -->
+    <th:block th:include="~{fragments/common}"></th:block>
+
+    <!--  JS 경로  -->
+    <script th:src="@{/js/detail-funding.js}"></script>
+
+    <!-- 폰트 -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet">
+
+</head>
+
+
+
+<body>
+<div th:insert="~{/fragments/header.html}"></div>
+
+<main class="container1">
+    <!-- 좌측 컬럼1 / 썸네일 이미지 -->
+    <div class="left-column1">
+        <div class="section">
+            <input type="radio" name="slide" id="slide01" checked>
+            <input type="radio" name="slide" id="slide02">
+            <input type="radio" name="slide" id="slide03">
+            <div class="slidewrap">
+                <ul class="slidelist">
+                    <li>
+                        <a>
+                            <img th:src="@{/img/thumbnail/t1.jpg}" alt="">
+                        </a>
+                    </li>
+                    <li>
+                        <a>
+                            <img th:src="@{/img/thumbnail/t2.jpg}" alt="">
+                        </a>
+                    </li>
+                    <li>
+                        <a>
+                            <img th:src="@{/img/thumbnail/t3.jpg}" alt="">
+                        </a>
+                    </li>
+                </ul>
+
+                <div class="slide-control">
+                    <div class="control01">
+                        <label for="slide03" class="left"></label>
+                        <label for="slide02" class="right"></label>
+                    </div>
+                    <div class="control02">
+                        <label for="slide01" class="left"></label>
+                        <label for="slide03" class="right"></label>
+                    </div>
+                    <div class="control03">
+                        <label for="slide02" class="left"></label>
+                        <label for="slide01" class="right"></label>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+    <!-- 우측 컬럼1 / 펀딩 정보 -->
+    <div class="right-column1">
+
+        <!-- 펀딩 정보 -->
+        <div class="funding-description">
+            <h1><b>폐플라스틱으로 만든 양털이불: Almost 양털, 환경을 생각하는 선택</b></h1>
+            <!-- 달성율 그래프 -->
+            <div class="progress" role="progressbar" aria-label="Success example" aria-valuenow="75"
+                 aria-valuemin="0"
+                 aria-valuemax="100" style="height: 30px;">
+                <div class="progress-bar bg-success" style="width: 75%">75% 달성</div>
+            </div>
+        </div>
+
+        <!-- 기본 수량의 선물 금액 -->
+        <div class="funding-price">
+            <span id="unit-price">50,000</span>원
+        </div>
+
+        <!-- 선물 수량 입력 및 찜하기, 후원하기 버튼 -->
+        <div class="order-details">
+            <div class="quantity">
+                <button id="decrease" onclick="decreaseQuantity()">-</button>
+                <input id="quantity" class="quantity" min="1" name="form-0-quantity" value="1" type="number"
+                       oninput="updateTotalPrice()" readonly>
+                <button id="increase" onclick="increaseQuantity()">+</button>
+            </div>
+            <span class="wishlist-btn" onclick="addToWishlist()"
+                  style="text-align: center; align-items: center;">찜하기</span>
+            <span class="pay-btn" onclick="goToPayPage()">후원하기</span>
+        </div>
+
+        <!-- 총 후원금액 정보 -->
+        <div class="total-price">
+            <p>총 후원금액</p>
+            <span id="total-price">50,000</span><span id="currency-unit">원</span>
+        </div>
+
+        <!--  후원 관련 정보 테이블  -->
+        <h4>총 160명 참여</h4>
+        <table class="table">
+            <tr>
+                <td class="left-margin">모금 달성액</td>
+                <td></td>
+                <td></td>
+                <td>3,000,000원</td>
+            </tr>
+            <tr>
+                <td class="left-margin">모금 달성액</td>
+                <td></td>
+                <td></td>
+                <td>1,500,000원</td>
+            </tr>
+            <tr>
+                <td class="left-margin">펀딩 마감일</td>
+                <td></td>
+                <td></td>
+                <td>2024년 4월 20일</td>
+            </tr>
+            <tr>
+                <td>남은 펀딩 기간</td>
+                <td></td>
+                <td></td>
+                <td>55일</td>
+            </tr>
+            <tr>
+                <td>펀딩 달성 시 선물 예상 발송일</td>
+                <td></td>
+                <td></td>
+                <td>7월 21일 ~ 7월 27일</td>
+            </tr>
+        </table>
+
+        <!--  신고하기 버튼  -->
+        <table class="rpt-group">
+            <colgroup>
+                <col style="width: 50px;">
+            </colgroup>
+            <tbody>
+            <tr>
+                <th>펀딩에 문제가 있나요?</th>
+                <td>
+                    <button class="rpt-btn" onclick="location.href=''">신고하기</button>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+
+    </div>
+</main>
+<main class="container2">
+    <!-- 좌측 컬럼2 / 펀딩 스토리 -->
+    <div class="left-column2">
+        <div class="funding-story">
+            <p><strong>제품 설명:</strong><br>
+                이 양털 이불은 자바르 얼모스트 양털로 만들어져 양털의 특징을 그대로 유지하면서 부담을 최소화한 제품입니다.<br>
+                고밀도 진짜 정품 극세사 M2 DTY 소재를 사용하여 편안하고 섬세한 질감과 두께감을 느낄 수 있습니다.<br>
+                양털과 같은 퀄리티를 자랑하는 장모와 뒷면의 진짜 양모로 제작되어 특별한 퀄리티를 제공합니다.<br>
+                또한, 환경 친화적인 소재로 만들어져 폐플라스틱을 재활용하고 있으며, 이를 구현하는 데는 2년이라는 시간이 소요되었습니다.<br>
+                감촉이 뛰어나 제품을 닿기만 해도 그 특별함을 느낄 수 있습니다.<br>
+                <br>
+                <strong>제품 특징:</strong><br>
+                - 자바르 얼모스트 양털 이불: 양털의 장점을 그대로 유지하면서 부담을 최소화한 제품입니다.<br>
+                - 소재감과 두께감: 양털의 질감을 선명하게 살린 고밀도 진짜 정품 극세사 M2 DTY 소재를 사용하여 편안한 두께를 자랑합니다.<br>
+                - 퀄리티 높은 재료: 양털과 같은 퀄리티를 제공하는 얖면의 장모와 뒷면의 진짜 양모로 제작되었습니다.<br>
+                - 환경 친화적 소재 활용: 폐플라스틱 추출을 통해 만들어진 친환경 제품으로, 구현에는 2년이 소요되었습니다.</p>
+        </div>
+    </div>
+
+    <div class="right-column2">
+        <img src="/img/setterProfile/setter1.png" alt="">
+    </div>
+</main>
+
+
+<!-- 공지사항 -->
+<div class="notice" th:type="text" style="overflow-scrolling: auto;">
+    <table class="ntc-group">
+        <colgroup>
+            <col style="width:900px">
+            <col>
+        </colgroup>
+        <tr align="center" class="ntc-header">
+            <p>
+                <td colspan="3">공지사항</td>
+            </p>
+        </tr>
+        <tr align="center">
+            <td>내용</td>
+            <td>내용 등록 일자</td>
+        </tr>
+        <tr>
+            <td class="content">부자재 공급 차질이 지속됨에 따라 예정된 선물 발송 예상일정이 기존 고지된 7월 27일에서 2주 지연되어 8월 13일에 발송될 예정입니다. 불편을 끼쳐드려
+                죄송합니다.
+            </td>
+            <td class="date">2024-07-23</td>
+        </tr>
+        <tr>
+            <td class="content">게터분들의 뜨거운 응원과 지지로 인해 성공적으로 펀딩에 성공하였습니다. 7월 27일부터 얼모스트 양털 이불을 순차적으로 배송합니다. 오래 기다려주셔서
+                감사합니다.
+            </td>
+            <td class="date">2024-07-20</td>
+        </tr>
+
+    </table>
+</div>
+<main class="container3">
+    <!--  상세페이지  -->
+    <div class="image-box">
+        <img class="funding-image" src="/img/detail/funding-image1.jpeg" alt="">
+    </div>
+</main>
+
+<div th:insert="~{fragments/footer.html}"></div>
+
+</body>
+
+</html>
