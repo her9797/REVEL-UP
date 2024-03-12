@@ -63,6 +63,20 @@
                         </span>
                     </li>
                 </ul>
+
+                <table>
+                    <tr>
+                        <th>펀딩명</th>
+                        <th>달성률</th>
+                        <th>선물금액</th>
+                    </tr>
+                    <tr th:each="funding: ${fundingList}" style="border: #0AA37F solid 1px">
+                        <td th:text="${funding.fndName}"></td>
+                        <td th:text="${funding.successAmt}"></td>
+                        <td th:text="${funding.giftPrice}"></td>
+                    </tr>
+                </table>
+
             </div>
 
             <!--🤍 ❤️ -->

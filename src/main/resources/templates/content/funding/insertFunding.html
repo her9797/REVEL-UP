@@ -52,7 +52,9 @@
       <div class="col-lg-1.5 col-md-1.5 col-sm-1.5">
         <a style="margin-bottom: 300px; font-size: 18px;">나의 펀딩 내역 &gt; <b>펀딩 신규 등록</b></a>
         <div class="contract">
-          <h2 style="padding-top: 30px;"> 사용자 아이디 님, 반갑습니다!</h2>
+
+            <h2 style="padding-top: 30px;" th:text="${user.userId}">님, 반갑습니다!</h2>
+          </div>
           <p class="title" style="font-size: 14px; font-weight: bold; margin-top: 30px;">당신의 멋진 아이디어가 빛날 수
             있도록
             레벨업이 도와드리겠습니다.<br>필수 약관을 동의하셔야 신규 펀딩 등록 심사를 신청하실 수 있습니다.</p>
@@ -130,6 +132,11 @@
         </div>
 
         <form action="/content/funding/insertFunding" method="post">
+
+          <!--          <div th:if="${user != null}">-->
+          <!--            <h2 style="padding-top: 30px;" th:unless="${#execInfo.throwable != null}" th:value="${user.userId}"> 님, 반갑습니다!</h2>-->
+          <!--          </div>-->
+
           <p class="title" style="font-size: 14px; font-weight: bold; margin-top: 30px;">새로운 펀딩을 등록하기
             위해
             아래
@@ -138,6 +145,10 @@
 
             <h3><b>세터 정보</b></h3>
             <div class="input-group">
+              <div class="hidden">
+                <label for="USER_ID">아이디</label>
+                <input type="text" name="userId" id="USER_ID" th:value="${user.userId}">
+              </div>
               <label for="regist-no">사업자 등록 번호(10자리)</label>
               <div class="input-with-unit">
                 <input type="number" name="sttrRegistNo" id="regist-no"
@@ -201,6 +212,12 @@
                        placeholder="펀딩명을 입력해 주세요.">
               </div>
               <label for="thumbnail">대표 이미지</label>
+<!--              <div class="text">최소 한 장의 이미지에서 최대 다섯 장의 이미지까지 업로드해주세요.-->
+<!--                첫번째 이미지가 펀딩의 대표 이미지로 지정되요.-->
+<!--                이미지에는 텍스트나 테두리를 넣을 수 없어요.-->
+<!--                선물이 중앙에 위치한 사진으로 골라보세요.-->
+<!--                미리 보기 화면에서 이미지의 비율이나 화질이 깨지지 않는지 꼭 확인하세요.-->
+<!--                잘못된 이미지 사용은 반려 사유가 될 수 있으니 주의해주세요.</div>-->
               <div class="thumbnail-tip" rows="6">
                 <ul>
                   <li>최소 한 장의 이미지에서 최대 다섯 장의 이미지까지<br>업로드해주세요.</li>
