@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>찜한 내역</title>
+
+    <link th:href="@{/css/mypage.css}" rel="stylesheet">
+    <link th:href="@{/css/all-wishlist.css}" rel="stylesheet">
+
+    <th:block th:include="fragments/common"></th:block>
+
+    <script th:src="@{/js/all-wishlist.js}"></script>
+
+
+</head>
+<body>
+
+<!-- 헤더 부분 -->
+<div th:insert="~{/fragments/header.html}"></div>
+
+<!-- 배너 부분 -->
+<section class="banner2-area">
+    <div class="container">
+        <div class="row fullscreen align-items-center">
+            <div class="col-lg-10">
+                <div class="banner2-content">
+                    <h1 style="font-weight: bold; margin-left: 94px;">마이페이지</h1>
+                    <br>
+                    <p style="color:white; margin-left: 100px;">마이페이지</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<div class="container" style="border-top: 1px solid lightgray; margin-top: 15px;">
+    <br>
+    <div class="row">
+
+        <div class="col-lg-3">
+
+            <div th:insert="~{/fragments/sidebar.html}"></div>
+
+        </div>
+
+        <div class="col-lg-8 col-md-8 col-sm-8">
+            <a style="margin-bottom: 20px; font-size: 18px;">찜한 내역 관리 &gt; <b> 찜한 목록 조회</b></a>
+
+            <div class="image-box-group">
+                <div class="image-box">
+                    <img th:src="@{/img/product/p1.png}" alt="product1">
+                    <p class="image-desc">
+                    <div>
+                        <a style="font-weight: bold;">[개굴기업] 알뜰살뜰 모아모아 레인보우 협탁1</a><br>
+                        <a>선물가격 : 40,000원</a><br>
+                        <a>달성액 : 28,000,000원</a><br>
+                        <a>달성률 : 71%</a><br>
+                        <a>마감일 : 2024-04-25</a><br>
+                    </div>
+                    <div class="button-group">
+                        <span><button class="likebtn" style="color: red; font-size: 20px; " value="">❤</button></span>
+                        <!--🤍 ❤️ -->
+                        <button onclick="location.href='/content/funding/detail-funding'" class="button-detail"> 상세조회</button>
+                    </div>
+                    </p>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Features Area -->
+<section class="features-area">
+    <div class="container">
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+    </div>
+</section>
+</div>
+
+<div th:insert="~{/fragments/footer.html}"></div>
+
+</body>
+</html>

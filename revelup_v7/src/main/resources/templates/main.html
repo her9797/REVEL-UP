@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    <!-- css -->
+    <link rel="stylesheet" type="text/css" th:href="@{/css/main.css}">
+
+    <th:block th:include="fragments/common"></th:block>
+
+    <script th:src="@{/js/main.js}"></script>
+
+</head>
+<body>
+
+<div th:insert="~{/fragments/header.html}"></div>
+
+<!-- 배너 부분 -->
+<section class="banner-area">
+    <div class="container">
+        <div class="row fullscreen align-items-center">
+            <div class="col-lg-8">
+                <div class="banner-content">
+                    <h1 style="font-weight: bold;">쓰레기는 아직 쓰일 곳을 <br> 찾기 못한 자원입니다. </h1>
+                    <br>
+                    <p>환경 오염 해결을 위한 아이디어<br>
+                        환경을 지키고픈 친환경 기업<br>
+                        리사이클 & 업사이클 친환경 제품</p>
+                </div>
+            </div>
+            <div class="col-lg-4">
+
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- 4칸짜리 섹션 -->
+<section class="features-area">
+    <div class="container">
+        <div class="row features-inner">
+            <div class="col-lg-3 col-md-6 col-sm-6">
+                <div class="single-features">
+                    <div class="f-icon">
+                        <img th:src="@{/img/features/f-icon1.png}" alt="">
+                    </div>
+                    <h6 class="highlight">RECYCLE</h6>
+                    <p>Free Shipping on all orders</p>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6 col-sm-6">
+                <div class="single-features">
+                    <div class="f-icon">
+                        <img th:src="@{/img/features/f-icon2.png}" alt="">
+                    </div>
+                    <h6 class="highlight">UPCYCLE</h6>
+                    <p>Free Shipping on all orders</p>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6 col-sm-6">
+                <div class="single-features">
+                    <div class="f-icon">
+                        <img th:src="@{/img/features/f-icon3.png}" alt="">
+                    </div>
+                    <h6 class="highlight">FUNDING</h6>
+                    <p>Free Shipping on all orders</p>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6 col-sm-6">
+                <div class="single-features">
+                    <div class="f-icon">
+                        <img th:src="@{/img/features/f-icon4.png}" alt="">
+                    </div>
+                    <h6 class="highlight">ENVIRONMENT</h6>
+                    <p>Free Shipping on all orders</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- 제품 섹션 -->
+<section class="single-product-slider" style="margin-top: -80px;">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-6 text-center">
+                <div class="section-title">
+                    <h1>Products</h1>
+                    <p> 사용이 불가한 폐기물들을 이용하여 만든 다양한 <br> 업사이클 & 리사이클 제품들이 함께합니다.</p>
+                </div>
+            </div>
+        </div>
+        <br>
+        <div class="row">
+            <div class="col-lg-3 col-md-6">
+                <div class="single-product">
+                    <img class="img-fluid" th:src="@{/img/product/p1.png}" alt="" style="width: 100%; height: 200px;">
+                    <div class="product-details">
+                        <br>
+                        <h6>청바지를 재활용한 슬리퍼</h6>
+                        <div class="price">
+                            <h6>8,000원</h6>
+                        </div>
+                        <div id="sales-achievement" style="margin: 5px; padding: 0;">
+                            <p style="margin: 0; padding: 0;">Sales: <span id="sales-amount" style="margin: 0; padding: 0;">0</span></p>
+                            <p style="margin: 0; padding: 0;">Achievement: <span id="achievement" style="margin: 0; padding: 0;">0%</span></p>
+                        </div>
+                        <div class="prd-bottom">
+                            <a href="#" class="btn-product">Add to Bag</a>
+                            <a th:href="@{/content/funding/detail-funding.html}" class="btn-product">펀딩 상세 조회</a>
+                            <a href="/content/pay/pay" class="btn-product">Pay</a>
+                        </div>
+                        <!-- <canvas id="salesChart" width="200" height="100"></canvas> -->
+                    </div>
+                </div>
+            </div>
+            <!-- 새로운 상품 2 -->
+            <div class="col-lg-3 col-md-6">
+                <div class="single-product">
+                    <img class="img-fluid" th:src="@{/img/product/p2.jpg}" alt="" style="width: 100%; height: 200px;">
+                    <div class="product-details">
+                        <br>
+                        <h6>청바지를 재활용한 가방</h6>
+                        <div class="price">
+                            <h6>20,000원</h6>
+                        </div>
+                        <div id="sales-achievement" style="margin: 5px; padding: 0;">
+                            <p style="margin: 0; padding: 0;">Sales: <span id="sales-amount" style="margin: 0; padding: 0;">0</span></p>
+                            <p style="margin: 0; padding: 0;">Achievement: <span id="achievement" style="margin: 0; padding: 0;">0%</span></p>
+                        </div>
+                        <div class="prd-bottom">
+                            <a href="#" class="btn-product">Add to Bag</a>
+                            <a href="#" class="btn-product">Project</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- 새로운 상품 3 -->
+            <div class="col-lg-3 col-md-6">
+                <div class="single-product">
+                    <img class="img-fluid" th:src="@{/img/product/p3.jpg}" alt="" style="width: 100%; height: 200px;">
+                    <div class="product-details">
+                        <br>
+                        <h6>테니스공을 활용한 모자</h6>
+                        <div class="price">
+                            <h6>50,000원</h6>
+                        </div>
+                        <div id="sales-achievement" style="margin: 5px; padding: 0;">
+                            <p style="margin: 0; padding: 0;">Sales: <span id="sales-amount" style="margin: 0; padding: 0;">0</span></p>
+                            <p style="margin: 0; padding: 0;">Achievement: <span id="achievement" style="margin: 0; padding: 0;">0%</span></p>
+                        </div>
+                        <div class="prd-bottom">
+                            <a href="#" class="btn-product">Add to Bag</a>
+                            <a href="#" class="btn-product">Project</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- 새로운 상품 4 -->
+            <div class="col-lg-3 col-md-6">
+                <div class="single-product">
+                    <img class="img-fluid" th:src="@{/img/product/p4.jpg}" alt="" style="width: 100%; height: 200px;">
+                    <div class="product-details">
+                        <br>
+                        <h6>테니스공을 활용한 장갑</h6>
+                        <div class="price">
+                            <h6>100,000원</h6>
+                        </div>
+                        <div id="sales-achievement" style="margin: 5px; padding: 0;">
+                            <p style="margin: 0; padding: 0;">Sales: <span id="sales-amount" style="margin: 0; padding: 0;">0</span></p>
+                            <p style="margin: 0; padding: 0;">Achievement: <span id="achievement" style="margin: 0; padding: 0;">0%</span></p>
+                        </div>
+                        <div class="prd-bottom">
+                            <a href="#" class="btn-product">Add to Bag</a>
+                            <a href="#" class="btn-product">Project</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<div th:insert="~{/fragments/footer.html}"></div>
+
+</body>
+</html>

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    <th:block th:include="fragments/common"></th:block>
+    <link th:href="@{/css/mypage.css}" rel="stylesheet">
+
+</head>
+<body>
+
+    <div class="sidebar" style="font-size: 15px; color: #000; padding-top: 10px; padding-bottom: 10px;">
+        <ul class="list">
+            <a style="font-weight: bold; font-size: 18px; background-color: rgb(240, 240, 240); display: block; padding: 10px; text-decoration: none;">내 정보</a>
+            <a th:href="@{/content/user/user-show}" class="sidebar-main" style="display: block; padding: 5px 10px; text-decoration: none;">나의 정보 조회</a>
+            <a th:href="@{/content/user/user-delete1}" class="sidebar-main" style="display: block; padding: 5px 10px; text-decoration: none;">회원 탈퇴</a>
+            <a style="font-weight: bold; font-size: 18px; background-color: rgb(240, 240, 240); display: block; padding: 10px; text-decoration: none;">나의 후원 내역</a>
+            <a th:href="@{/content/mypage/getter-ongoing}" class="sidebar-main" style="display: block; padding: 5px 10px; text-decoration: none;">후원 내역 조회</a>
+            <a style="font-weight: bold; font-size: 18px; background-color: rgb(240, 240, 240); display: block; padding: 10px; text-decoration: none;">나의 펀딩 내역</a>
+            <a th:href="@{/content/mypage/setter-funding-history}" class="sidebar-main" style="display: block; padding: 5px 10px; text-decoration: none;">펀딩 내역 조회</a>
+            <a th:href="@{/content/funding/insertFunding/new-funding-terms-of-use}" class="sidebar-main" style="display: block; padding: 5px 10px; text-decoration: none;">펀딩 신규 등록</a>
+            <a style="font-weight: bold; font-size: 18px; background-color: rgb(240, 240, 240); display: block; padding: 10px; text-decoration: none;">찜한 내역 관리</a>
+            <a th:href="@{/content/mypage/all-wishlist}" class="sidebar-main" style="display: block; padding: 5px 10px; text-decoration: none;">찜한 목록 조회</a>
+        </ul>
+    </div>
+
+</body>
+</html>

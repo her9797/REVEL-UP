@@ -1,0 +1,40 @@
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/revelupdb
+    username: revelup
+    password: revelup
+  mail:
+    host: smtp.gmail.com
+    port: 587
+    username: simkoon0120@gmail.com
+    password: svhwtyyeoyflwnvl
+    properties:
+      mail:
+        debug: true
+        smtp:
+          connectiontimeout: 5000
+          starttls:
+            enable: true
+            required: true
+            auth: ture
+            nickname: 'admin'
+#SMTP 서버 호스트 (Google)
+#SMTP 서버 포트 (Google 경우 587 사용)
+#SMTP 서버 로그인 아이디 (풀주소 사용 가능! Ex. Test@google.com)
+#SMTP 서버 로그인 패스워드 - 발급받은 앱 비밀번호!
+#SMTP Debug - 메일 전송시 상황, 로그를 확인 하는것.
+#TimeOut 제한
+#starttls 설정 = true --> SSL/TLS 기반의 SMTPS 기능 즉 보안기능 활성화
+
+mybatis:
+  mapper-locations: mappers/**/*.xml
+
+
+kakao:
+  host: https://open-api.kakaopay.com
+  test_secret_key: DEVA243586048F8D1D11294F403ED8BA5D8A9F8C
+  cid: TC0ONETIME
+  approval_url: http://localhost:8080/content/pay/success
+  cancel_url: http://localhost:8080/content/pay/cancel
+  fail_url: http://localhost:8080/content/pay/fail

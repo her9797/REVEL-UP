@@ -1,0 +1,380 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="e433b530-40e6-4da2-833b-22c8c2392008" name="Changes" comment=": 240312-02 재푸시">
+      <change afterPath="$PROJECT_DIR$/.github/ISSUE_TEMPLATE/feature_request.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.gradle/8.5/checksums/checksums.lock" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.gradle/8.5/dependencies-accessors/dependencies-accessors.lock" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.gradle/8.5/dependencies-accessors/gc.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.gradle/8.5/executionHistory/executionHistory.bin" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.gradle/8.5/executionHistory/executionHistory.lock" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.gradle/8.5/fileChanges/last-build.bin" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.gradle/8.5/fileHashes/fileHashes.bin" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.gradle/8.5/fileHashes/fileHashes.lock" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.gradle/8.5/fileHashes/resourceHashesCache.bin" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.gradle/8.5/gc.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/cache.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.gradle/file-system.probe" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.gradle/vcs-1/gc.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/.name" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/jarRepositories.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/HELP.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/classes/java/main/com/revelup/user/model/service/UserService.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/resources/main/static/js/sign-up.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/resources/main/static/js/user-delete1.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/resources/main/templates/content/funding/detail-funding.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/resources/main/templates/content/funding/insertFunding/new-funding-setter-info.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/resources/main/templates/content/funding/insertFunding/new-funding-terms-of-use.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/gradle/wrapper/gradle-wrapper.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/gradle/wrapper/gradle-wrapper.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/gradlew" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/gradlew.bat" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/settings.gradle" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/revelup/ProjectRevelupApplication.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/revelup/audit/controller/AuditController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/revelup/audit/model/dao/AuditMapper.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/revelup/audit/model/dto/AuditDTO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/revelup/audit/model/service/AuditService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/revelup/auth/controller/AuthController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/revelup/auth/controller/LoginViewController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/revelup/auth/controller/MainController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/revelup/auth/model/AuthDetails.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/revelup/auth/model/service/AuthService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/revelup/common/UserRole.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/revelup/config/KakaoPayConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/revelup/config/MyBatisConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/revelup/config/SecurityConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/revelup/config/SpringConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/revelup/config/handler/AuthFailHandler.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/revelup/mypage/ManagerController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/revelup/mypage/MypageController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/revelup/mypage/controller/MypageController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/revelup/mypage/fundingController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/revelup/mypage/model/dao/MypageMapper.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/revelup/mypage/model/service/MypageService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/revelup/notice/controller/NoticeController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/revelup/notice/model/dao/NoticeMapper.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/revelup/notice/model/dto/NoticeDTO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/revelup/notice/model/service/NoticeService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/revelup/pay/controller/InquiryController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/revelup/pay/controller/PayController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/revelup/pay/controller/RecipientController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/revelup/pay/model/dao/InquiryDAO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/revelup/pay/model/dao/InquiryMapper.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/revelup/pay/model/dao/PayDAO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/revelup/pay/model/dao/RecipientDAO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/revelup/pay/model/dto/KaKaoPayApproveResponseDTO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/revelup/pay/model/dto/KakaoPayApproveDTO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/revelup/pay/model/dto/KakaoPayReadyDTO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/revelup/pay/model/dto/KakaoPayReadyResponseDTO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/revelup/pay/model/dto/PayCompletionDTO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/revelup/pay/model/dto/PayDTO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/revelup/pay/model/service/InquiryService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/revelup/pay/model/service/PayService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/revelup/pay/model/service/RecipientService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/revelup/report/controller/ReportController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/revelup/report/model/dao/ReportMapper.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/revelup/report/model/dto/ReportDTO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/revelup/report/model/service/ReportService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/revelup/user/controller/ApiController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/revelup/user/controller/UserController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/revelup/user/model/dao/UserMapper.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/revelup/user/model/dto/LoginUserDTO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/revelup/user/model/dto/UserDTO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/revelup/user/model/service/EmailService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/revelup/user/model/service/UserService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/application.yml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/mappers/mypage/MypageMapper.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/mappers/notice/NoticeMapper.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/mappers/user/UserMapper.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/css/all-funding.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/css/all-wishlist.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/css/common/font.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/css/common/manager-modal.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/css/detail-funding.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/css/failed-funding.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/css/footer.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/css/getter-ongoing.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/css/getter-refund.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/css/getter-spons-details.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/css/getter-spons-details2.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/css/header.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/css/login.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/css/main.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/css/manager-calculate.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/css/manager-find-select.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/css/manager-inquiry.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/css/manager-notice.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/css/manager-report.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/css/modal.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/css/mypage.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/css/new-funding-basic-info.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/css/new-funding-complete.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/css/new-funding-gift-info.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/css/new-funding-setter-info.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/css/new-funding-terms-of-use.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/css/new-funding.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/css/pay.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/css/pay_complect.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/css/setter-funding-history.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/css/sign-up-modal.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/css/sign-up.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/css/user-delete1.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/css/user-delete2.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/css/user-find-id.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/css/user-find-modal.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/css/user-find-password.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/css/user-find.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/css/user-show.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/css/user-update.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/img/banner/banner1.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/img/banner/banner2.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/img/banner/login.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/img/detail/funding-image1.jpeg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/img/detail/funding-image2.jpeg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/img/features/f-icon1.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/img/features/f-icon2.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/img/features/f-icon3.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/img/features/f-icon4.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/img/icons/green-check-icon.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/img/icons/next-btn.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/img/icons/previous-btn.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/img/id.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/img/logo.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/img/password.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/img/product/p1.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/img/product/p10.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/img/product/p11.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/img/product/p12.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/img/product/p2.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/img/product/p3.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/img/product/p4.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/img/product/p5.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/img/product/p6.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/img/product/p7.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/img/product/p8.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/img/product/p9.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/img/thumbnail/t1.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/img/thumbnail/t2.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/img/thumbnail/t3.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/img/thumbnail/t4.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/img/tree.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/js/all-funding.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/js/all-wishlist.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/js/detail-funding.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/js/email-resend.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/js/getter-ongoing.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/js/getter-refund.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/js/getter-spons-details2.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/js/header.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/js/login.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/js/manager-find-select.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/js/manager-inquiry.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/js/manager-insert-notice.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/js/manager-notice-details.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/js/manager-notice.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/js/manager-report.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/js/modal.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/js/new-funding-basic-info.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/js/new-funding-complete.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/js/new-funding-gift-info.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/js/new-funding-setter-info.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/js/new-funding-story.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/js/new-funding-terms-of-use.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/js/pay.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/js/setter-funding-history.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/js/sign-up.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/js/user-delete1.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/js/user-find-id.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/js/user-find-password.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/js/user-find.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/static/js/user-update.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/content/funding/insertFunding/new-funding-basic-info.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/content/funding/insertFunding/new-funding-complete.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/content/funding/insertFunding/new-funding-gift-info.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/content/funding/insertFunding/new-funding-setter-info.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/content/funding/insertFunding/new-funding-story.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/content/funding/insertFunding/new-funding-terms-of-use.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/content/mypage/all-wishlist.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/content/mypage/failed-funding.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/content/mypage/getter-ongoing.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/content/mypage/getter-refund.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/content/mypage/getter-spons-details.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/content/mypage/getter-spons-details2.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/content/mypage/setter-funding-history.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/content/pay/pay-cancel.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/content/pay/pay-complete.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/content/pay/pay-fail.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/content/pay/pay.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/content/user/fail.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/content/user/login.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/content/user/modal.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/content/user/sign-up.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/content/user/user-delete1.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/content/user/user-delete2.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/content/user/user-find-id.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/content/user/user-find-password.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/content/user/user-find.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/content/user/user-show.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/content/user/user-update.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/fragments/common.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/fragments/footer.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/fragments/head.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/fragments/header.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/fragments/sidebar.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/main.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/manager/manager-calculate.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/manager/manager-find-select.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/manager/manager-inquiry.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/manager/manager-insert-notice.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/manager/manager-notice-details.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/manager/manager-notice.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/manager/manager-report.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/manager/modal.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/com/revelup/ProjectRevelupApplicationTests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/revelup/funding/model/service/FundingServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/revelup/funding/model/service/FundingServiceImpl.java" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ExternalProjectsData">
+    <projectState path="$PROJECT_DIR$">
+      <ProjectState />
+    </projectState>
+  </component>
+  <component name="ExternalProjectsManager">
+    <system id="GRADLE">
+      <state>
+        <projects_view>
+          <tree_state>
+            <expand>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="revelup" type="f1a62948:ProjectNode" />
+              </path>
+            </expand>
+            <select />
+          </tree_state>
+        </projects_view>
+      </state>
+    </system>
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="HTML File" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$/.." value="Jay_240312-01" />
+      </map>
+    </option>
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 8
+}</component>
+  <component name="ProjectId" id="2dZj0BjgqbP9tctzMtcaieoNAlA" />
+  <component name="ProjectViewState">
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "DefaultHtmlFileTemplate": "HTML File",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "git-widget-placeholder": "Jay__240312-02",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "/Users/jaylee/Documents/SemiFinal/revelup/revelup_v7",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "vue.rearranger.settings.migration": "true"
+  }
+}]]></component>
+  <component name="RunManager">
+    <configuration name="ProjectRevelupApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
+      <option name="FRAME_DEACTIVATION_UPDATE_POLICY" value="UpdateClassesAndResources" />
+      <module name="revelup.main" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.revelup.ProjectRevelupApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+  </component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="jdk-17.0.9-corretto-17.0.9-3183f394aec4-5f3ff201" />
+      </set>
+    </attachedChunks>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="e433b530-40e6-4da2-833b-22c8c2392008" name="Changes" comment="" />
+      <created>1710222268576</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1710222268576</updated>
+      <workItem from="1710222269648" duration="342000" />
+      <workItem from="1710222623387" duration="2453000" />
+    </task>
+    <task id="LOCAL-00001" summary=": 펀딩 등록 controller, service, serviceimple, mapper 작성 완료 (첨부파일 등록 제외)">
+      <option name="closed" value="true" />
+      <created>1710222583322</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1710222583322</updated>
+    </task>
+    <task id="LOCAL-00002" summary=": 240312-02 재푸시">
+      <option name="closed" value="true" />
+      <created>1710223289594</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1710223289594</updated>
+    </task>
+    <task id="LOCAL-00003" summary=": 240312-02 재푸시">
+      <option name="closed" value="true" />
+      <created>1710223500400</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1710223500400</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value=": 펀딩 등록 controller, service, serviceimple, mapper 작성 완료 (첨부파일 등록 제외)" />
+    <MESSAGE value=": 240312-02 재푸시" />
+    <option name="LAST_COMMIT_MESSAGE" value=": 240312-02 재푸시" />
+  </component>
+</project>

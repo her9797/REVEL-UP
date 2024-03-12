@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+
+    <th:block th:include="fragments/common"></th:block>
+    <link th:href="@{/css/mypage.css}" rel="stylesheet">
+    <link th:href="@{/css/getter-refund.css}" rel="stylesheet">
+    <script th:src="@{/js/getter-refund.js}"></script>
+
+</head>
+<body>
+
+<!-- 헤더 부분 -->
+<div th:insert="~{/fragments/header.html}"></div>
+
+<!-- 배너 부분 -->
+<section class="banner2-area">
+    <div class="container">
+        <div class="row fullscreen align-items-center">
+            <div class="col-lg-10">
+                <div class="banner2-content">
+                    <h1 style="font-weight: bold; margin-left: 94px;">마이페이지</h1>
+                    <br>
+                    <p style="color:white; margin-left: 100px;">마이페이지</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<div class="container" style="border-top: 1px solid lightgray; margin-top: 15px;">
+    <br>
+    <div class="row">
+
+        <div class="col-lg-3">
+
+            <div th:insert="~{/fragments/sidebar.html}"></div>
+
+        </div>
+
+        <div class="col-lg-8 col-md-8 col-sm-8">
+            <div class="title-box">
+                <button onclick="location.href='/content/mypage/getter-ongoing'">후원내역</button>
+                <button onclick="location.href='/content/mypage/getter-refund'" style="background-color: #0CC291;">후원철회</button>
+                <button onclick="location.href='/content/mypage/failed-funding'">미달성펀딩</button>
+            </div>
+
+            <div class="image-box-group">
+                <div class="image-box" th:each="allPlg : ${allPlgList}">
+                    <p class="support-date" th:text="${allPlg.plgCanDt}">2024-04-25</p>
+                    <p>후원번호 : <a th:text="${allPlg.plgCode}">12341235</a></p>
+                    <img th:src="@{/img/product/p1.png}" alt="product1">
+                    <p class="image-desc">
+                    <div th:each="fundingInfo : ${ allPlg.fundingInfo }">
+                        <a style="font-weight: bold;" th:text="${fundingInfo.fndName}">[개굴기업] 알뜰살뜰 모아모아 레인보우 협탁1</a><br>
+                        <a  th:each="gift : ${allPlg.gift}"
+                            th:text="'· ' + ${gift.giftName}">· 레인보우</a>
+                        <a th:text="${allPlg.giftQty} + '개'">1개</a><br>
+                        <a th:text="'· ' + ${allPlg.plgPrice} + '원'">· 70,000원</a><br>
+                    </div>
+                    <div class="button-container">
+                        <button id="button-support-cancel-reason"  class="button-support-cancel-reason">후원철회사유</button>
+
+                        <!-- 후원 철회 모달 창 추가 -->
+                        <div id="cancel-modal" class="modal">
+                            <div class="modal-content">
+                                <h4>후원 철회 사유</h4>
+                                <p id="cancel-reason">리워드 변경으로 인해 후원을 철회하셨습니다.</p>
+                                <button id="confirm-btn">확인</button>
+                            </div>
+                        </div>
+                    </div>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Features Area -->
+<section class="features-area">
+    <div class="container">
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+    </div>
+</section>
+</div>
+
+<div th:insert="~{/fragments/footer.html}"></div>
+
+</body>
+</html>

@@ -1,0 +1,11 @@
+.single_footer_widget ul.list a {
+    color: black;
+}
+
+.return-home {
+    text-decoration: none;
+}
+
+.footer_area a:hover {
+    text-decoration: none; /* 호버 시 밑줄 제거 */
+}
