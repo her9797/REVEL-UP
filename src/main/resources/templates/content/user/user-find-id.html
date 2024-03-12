@@ -32,7 +32,7 @@
             <!-- Name Input -->
             <div class="name" style="margin-top: 10px;">
                 <div class="label" style="margin-bottom: 20px;">회원님의 아이디 입니다.</div>
-                <input type="id" class="input" placeholder="회원 아이디">
+                <span th:text="${user.userId}" id="userId" type="id" class="input"/>
             </div>
         </div>
 

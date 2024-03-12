@@ -6,6 +6,8 @@ import org.apache.catalina.User;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 
+import java.util.List;
+
 @Mapper
 public interface UserMapper {
 
@@ -15,12 +17,15 @@ public interface UserMapper {
     /* 회원가입  */
     int signup(UserDTO userDTO);
 
-    /* 로그인할 때 필요한 ID */
+    /* 로그인할 때 필요한 ID 체크 */
     LoginUserDTO findByUserId(String userId);
 
     /* 로그인한 정보 출력 */
     LoginUserDTO findByLoginId(String loginUserId);
 
-
+    /* 회원 정보 수정 */
     void userUpdate(LoginUserDTO loginUserDTO);
+
+    /* ID 찾기 */
+    UserDTO findId(UserDTO userDTO) throws Exception;
 }

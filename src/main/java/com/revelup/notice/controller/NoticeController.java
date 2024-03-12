@@ -28,7 +28,7 @@ public class NoticeController {
         this.noticeService = noticeService;
     }
 
-    // 공지사항 조회 페이지 이동
+    /** 공지사항 페이지 이동 */
     @GetMapping("/manager-notice")
     public String noticeList(Model model) {
 
@@ -38,7 +38,7 @@ public class NoticeController {
 
     }
 
-
+    /** 공지사항 등록 */
     @PostMapping("/insert-notice")
     public String insertNotice(NoticeDTO noticeDTO){
 
@@ -46,12 +46,14 @@ public class NoticeController {
         return "redirect:/manager/manager-notice";
     }
 
+    /** 공지사항 상세조회 */
     @GetMapping("/manager-notice/{ntcCode}")
     @ResponseBody
     public NoticeDTO noticeDetails(@PathVariable int ntcCode) {
         return noticeService.selectByDetails(ntcCode);
     }
 
+    /** 공지사항 삭제 */
     @PostMapping("/delete/{ntcCode}")
     @ResponseBody
     public String deleteNotice(@PathVariable int ntcCode) {
@@ -61,6 +63,7 @@ public class NoticeController {
         return "redirect:/main";
     }
 
+    /** 공지사항 수정 */
     @PostMapping("/update")
     public String updateNotice(NoticeDTO noticeDTO){
 

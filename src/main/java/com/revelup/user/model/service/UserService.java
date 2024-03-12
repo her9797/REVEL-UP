@@ -11,8 +11,10 @@ import org.springframework.security.core.parameters.P;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.print.DocFlavor;
+import java.util.List;
 import java.util.Objects;
 
 @Service
@@ -25,6 +27,12 @@ public class UserService {
     @Autowired
     private PasswordEncoder passwordEncoder;
 
+
+    /** 아이디 찾기 */
+    public UserDTO findId(UserDTO userDTO) throws Exception {
+
+        return userMapper.findId(userDTO);
+    }
 
     /** 로그인 시 아이디 비교 */
     public LoginUserDTO findByUserId(String userId) {
@@ -41,6 +49,7 @@ public class UserService {
 
     /** 회원가입 */
     public int signup(UserDTO userDTO) {
+
         userDTO.setUserPw(passwordEncoder.encode(userDTO.getUserPw()));
 
         int result = 0;
@@ -68,7 +77,9 @@ public class UserService {
         return count > 0;
     }
 
+    /** 회원 정보 수정 */
     public void userUpdate(LoginUserDTO loginUserDTO) {
         userMapper.userUpdate(loginUserDTO);
     }
+
 }

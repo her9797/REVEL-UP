@@ -33,17 +33,19 @@
     <div class="col-lg-8">
         <div class="col-lg-1.5 col-md-1.5 col-sm-1.5">
             <!-- 이름 입력 -->
-            <div class="name" style="margin-top: 10px;">
-                <div class="label"  style="margin-right: 465px;">이름</div>
-                <input type="text" class="input" placeholder="이름을 입력하세요">
-            </div>
-            <!-- 비밀번호 입력 -->
-            <div class="password" style="margin-top: 10px;">
-                <div class="label" style="margin-right: 437px;">비밀번호</div>
-                <input type="password" id="password1" class="input" placeholder="비밀번호를 입력하세요">
-            </div>
+            <form th:action="@{/content/user/findId}" method="get">
+                <div class="name" style="margin-top: 10px;">
+                    <div class="label"  style="margin-right: 465px;">이름</div>
+                    <input id="$userName" type="id" class="input" placeholder="이름을 입력하세요" name="userName">
+                </div>
+                <!-- 비밀번호 입력 -->
+                <div class="password" style="margin-top: 10px;">
+                    <div class="label" style="margin-right: 437px;">이메일</div>
+                    <input type="email" id="userPw" class="input" placeholder="이메일을 입력하세요" name="userEmail">
+                </div>
+                <button id="findIdBtn" class="btn-id" style="margin-top: 30px; font-size: 15px;">아이디 찾기</button>
+            </form>
         </div>
-        <button onclick="location.href='/content/user/user-find-id'" id="findIdBtn" class="btn-id" style="margin-top: 30px; font-size: 15px;">아이디 찾기</button>
     </div>
 </section>
 

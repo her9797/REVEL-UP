@@ -34,12 +34,13 @@ public class SecurityConfig  {
     }
 
 
+
     @Bean
     public SecurityFilterChain configure(HttpSecurity http) throws Exception {
         http.authorizeHttpRequests(auth -> {
             /* 인가를 받지 않아도 (비회원이어도 접속할 수 있는 페이지 or 파일들) */
             auth.requestMatchers("/content/user/login", "/content/user/sign-up", "/content/user/fail", "/content/user/modal",
-                    "/content/user/user-find", "/content/user/user-find-id","/content/user/user-find-password",
+                    "/content/user/user-find", "/content/user/user-find-id","/content/user/user-find-password",("/content/user/findId"),
                     "/", "/main",("/content/user/sendMail"),("/content/user/idCheck"),
                     ("/css/**"),("/fragments/**"),("/img/**"),("/js/**")).permitAll();
             auth.requestMatchers(UserRole.게터.getRole()).permitAll(); /* role의 상태가 게터면 접속할 수 있는 페이지 */
@@ -67,4 +68,6 @@ public class SecurityConfig  {
 
         return http.build();
     }
+
+
 }

@@ -5,6 +5,7 @@ import com.revelup.user.model.dto.LoginUserDTO;
 import com.revelup.user.model.dto.UserDTO;
 import com.revelup.user.model.service.EmailService;
 import com.revelup.user.model.service.UserService;
+import jakarta.servlet.http.HttpServletResponse;
 import lombok.AllArgsConstructor;
 import lombok.extern.java.Log;
 import org.apache.catalina.User;
@@ -13,13 +14,16 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
+import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import java.security.Principal;
+import java.util.List;
 
 @Controller
 @RequestMapping("/content/user")
@@ -28,7 +32,47 @@ public class UserController {
 
     @Autowired
     public final UserService userService;
-    
+
+    @Autowired
+    private PasswordEncoder passwordEncoder;
+
+
+//     아이디 비밀번호 찾기 페이지 이동
+    @GetMapping("/user-find")
+    public String userFindPage() {
+
+        return "content/user/user-find";
+    }
+
+
+    @GetMapping("/findId")
+    public String findId(Model model,
+                         @RequestParam("userName") String userName,
+                         @RequestParam("userEmail") String userEmail, UserDTO userDTO) throws Exception{
+
+        try {
+            userDTO.setUserName(userName);
+            userDTO.setUserEmail(userEmail);
+            UserDTO user = userService.findId(userDTO);
+
+            model.addAttribute("user", user);
+        } catch (Exception e){
+            model.addAttribute("msg", "오류");
+            e.printStackTrace();
+        }
+
+        return "content/user/user-find-id";
+    }
+
+
+    @GetMapping("/user-find-password")
+    public String userFindPassword(){
+        return "content/user/user-find-password";
+    }
+
+
+    /** 아이디 찾기 */
+    /** 비밀번호 재설정 */
 
 
     /** 회원가입 */
@@ -65,6 +109,7 @@ public class UserController {
         return "content/user/user-show";
     }
 
+    /** 회원정보 수정 */
     @GetMapping("/user-update")
     public String userUpdatePage(Principal principal, Model model) {
 
@@ -87,11 +132,7 @@ public class UserController {
     }
 
 
-    // 아이디 비밀번호 찾기 페이지 이동
-    @GetMapping("/user-find")
-    public String userFindPage() {
-        return "content/user/user-find";
-    }
+
 
 
     @GetMapping("/user-delete1")
@@ -102,16 +143,6 @@ public class UserController {
     @GetMapping("/user-delete2")
     public String delete2Page(){
         return "content/user/user-delete2";
-    }
-
-    @GetMapping("/user-find-id")
-    public String userFindId() {
-        return "content/user/user-find-id";
-    }
-
-    @GetMapping("/user-find-password")
-    public String userFindPassword(){
-        return "content/user/user-find-password";
     }
 
 
