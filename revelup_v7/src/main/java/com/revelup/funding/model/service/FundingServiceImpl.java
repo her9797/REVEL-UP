@@ -16,6 +16,8 @@ public class FundingServiceImpl implements FundingService {
     public FundingServiceImpl(FundingMapper mapper) {
         this.mapper = mapper;
     }
+
+
     //    @Override
 //    public void insertFunding(FundingFileDTO fundingFileDTO, FundingInfoDTO fundingInfoDTO, GiftDTO giftDTO, SetterFileDTO setterFileDTO, SetterInfoDTO setterInfoDTO) {
 //        mapper.insertSetterInfo(setterInfoDTO);

@@ -1,0 +1,236 @@
+    .sign-up {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh; /* 화면 전체 높이에 대해 가운데 정렬 */
+        margin-top: 50px;
+    }
+
+    .col-lg-8 {
+        text-align: center; /* 내용을 수평 가운데 정렬 */
+        max-width: 600px; /* 폼의 최대 너비 설정 */
+        width: 100%; /* 폼의 너비를 화면 너비에 맞게 설정 */
+    }
+
+    .col-lg-1 {
+        display: inline-block;
+        vertical-align: top;
+    }
+
+    .input-group {
+        margin-top: 20px;
+        margin-bottom: 1px; /* 라벨끼리 위아래 간격 조절 */
+        display: flex;
+        align-items: center;
+    }
+
+    .input {
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        font-size: 16px;
+        box-sizing: border-box;
+        margin-bottom: 10px;
+    }
+
+    .name .input,
+    .password .input,
+    .phone .input {
+        width: 500px; /* 인풋 박스의 너비를 부모 요소에 맞게 설정 */
+        box-sizing: border-box; /* 패딩과 테두리를 포함한 너비로 설정 */
+    }
+
+    .address-input,
+    .detail-address-input {
+        flex: 1;
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        font-size: 16px;
+        box-sizing: border-box;
+        margin-bottom: 10px;
+        width: 248px; /* 원하는 너비로 조정 */
+    }
+
+    .postcode-input {
+        width: 364px; /* 반응형으로 조정 가능한 너비 */
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        font-size: 16px;
+        box-sizing: border-box;
+        margin-bottom: 10px; /* 아래 여백 추가 */
+    }
+
+
+    .email-input,
+    .sendEmail-input,
+    .username .input{
+        flex: 1;
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        font-size: 16px;
+        box-sizing: border-box;
+        margin-bottom: 10px;
+        width: 364px; /* 원하는 너비로 조정 */
+    }
+
+    .confirmEmail-input,
+    .authCode-input {
+        width: 364px;
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        font-size: 16px;
+        box-sizing: border-box;
+        margin-bottom: 10px; /* 아래 여백 추가 */
+    }
+
+    .btn-modify,
+    .btn-email-check,
+    .btn-email {
+        padding: 10px 16px; /* 버튼의 길이 조정 */
+        background-color: #0CC291;
+        border: none;
+        border-radius: 5px;
+        color: #fff;
+        font-size: 16px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+        margin-top: 10px; /* 버튼 위쪽 간격 조정 */
+    }
+
+    .btn-id-check {
+        padding: 10px; /* 버튼의 길이 조정 */
+        width: 135px;
+        background-color: #0CC291;
+        border: none;
+        border-radius: 5px;
+        color: #fff;
+        font-size: 16px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+        margin-top: 10px; /* 버튼 위쪽 간격 조정 */
+    }
+
+    .btn-modify:hover,
+    .btn-email:hover,
+    .btn-email-check:hover,
+    .btn-id-check:hover {
+        background-color: #0dd6a0;
+    }
+
+    .btn-mo {
+        padding: 10px 16px; /* 버튼의 길이 조정 */
+        background-color: #0CC291;
+        border: none;
+        border-radius: 5px;
+        color: #fff;
+        font-size: 16px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+        margin-top: 10px; /* 버튼 위쪽 간격 조정 */
+        display: block; /* 가운데 정렬을 위해 블록 레벨 요소로 지정 */
+        margin: 0 auto; /* 수평 가운데 정렬 */
+    }
+
+    .btn-mo:hover {
+        background-color: #0dd6a0;
+    }
+
+    .label {
+        margin-right: 10px;
+        font-size: 16px;
+        font-weight: bold;
+        margin-bottom: 3px;
+        margin-right: 480px;
+    }
+
+    .btn-user{
+        background:#0dd6a0;
+        width: 150px;
+        color:#fff;
+        border:none;
+        border-radius: 5px;
+        position:relative;
+        height:60px;
+        font-size:18px;
+        padding:0 2em;
+        cursor:pointer;
+        transition:800ms ease all;
+        outline:none;
+    }
+
+    .btn-user:hover{
+        background:#fff;
+        color:#0dd6a0;
+    }
+    .btn-user:before,.btn-user:after{
+        content:'';
+        position:absolute;
+        top:0;
+        right:0;
+        height:2px;
+        width:0;
+        background: #0dd6a0;
+        transition:400ms ease all;
+    }
+    .btn-user:after{
+        right:inherit;
+        top:inherit;
+        left:0;
+        bottom:0;
+    }
+    .btn-user:hover:before,.btn-user:hover:after{
+        width:100%;
+        transition:800ms ease all;
+    }
+
+    .user-banner {
+        text-align: center; /* 텍스트를 가운데 정렬 */
+    }
+
+    .user-banner img {
+        width: 140px; /* 이미지를 부모 요소에 맞게 너비 설정 */
+        max-width: 140px; /* 이미지의 최대 너비 설정 */
+        height: auto; /* 이미지의 높이 자동 조정 */
+    }
+
+    .user-banner p {
+        font-size: 18px; /* 텍스트 크기 설정 */
+        margin-top: 10px; /* 이미지와 텍스트 사이 간격 조정 */
+    }
+
+    .banner {
+        margin-top: 50px;
+        margin-left: -10px;
+        font-weight: bold;
+    }
+
+    hr {
+        border: 0;
+        height: 1px;
+        background-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0));
+        width: 50%;
+    }
+
+
+    .modal-group {
+        margin-left: 750px;
+        margin-top: 20px;
+        text-align: left;
+        font-size: 12px;
+    }
+
+    /* 체크된 상태의 체크박스를 초록색으로 스타일링 */
+    input[type="checkbox"]:checked + label::before {
+        background-color: green !important; /* !important 키워드를 사용하여 우선순위 설정 */
+        border-color: green !important;
+    }
+
+    .modal-body {
+        max-height: 300px; /* 스크롤바가 나타날 최대 높이 */
+        overflow-y: auto; /* 세로 스크롤바 표시 */
+    }
+

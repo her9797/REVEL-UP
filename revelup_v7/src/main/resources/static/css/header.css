@@ -1,0 +1,41 @@
+.header-btn2 {
+    background-color: #0CC291;
+    color: white; /* 기본 텍스트 색상을 흰색으로 설정합니다. */
+    border: none;
+    padding: 8px 10px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 12px;
+    cursor: pointer;
+    border-radius: 10px;
+    transition: background-color 0.3s ease, transform 0.2s ease; /* 배경색 및 크기에 대한 전환 효과를 추가합니다. */
+}
+
+.header-btn2:hover {
+    background-color: #54d3b0;
+    color: black; /* 호버 시 텍스트 색상을 검정색으로 변경합니다. */
+    transform: scale(1.05); /* 마우스를 갖다 대면 살짝 커지는 애니메이션을 적용합니다. */
+    text-decoration: none; /* 호버 시 텍스트의 밑줄을 없애줍니다. */
+}
+
+.header-btn3 {
+    background-color: #000000; /* 디폴트 버튼 색상을 검정색으로 설정합니다. */
+    color: white; /* 디폴트 텍스트 색상을 흰색으로 설정합니다. */
+    border: none;
+    padding: 8px 10px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 12px;
+    cursor: pointer;
+    border-radius: 10px;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.header-btn3:hover {
+    background-color: #848484; /* 호버 시 배경색을 어두운 회색으로 변경합니다. */
+    color: #FFFFFF; /* 호버 시 텍스트 색상을 흰색으로 변경합니다. */
+    transform: scale(1.05);
+    text-decoration: none;
+}

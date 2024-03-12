@@ -1,0 +1,62 @@
+/* 버튼 그룹 스타일 */
+.button-group {
+    margin-top: 100px;
+    display: flex;
+    justify-content: flex-end; /* 이전 버튼을 오른쪽으로 정렬 */
+}
+
+/* 이전 버튼 스타일 */
+.back-button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    background-color: #f95252;
+    color: #fff;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    margin-right: 5px;
+}
+
+/* 다음 버튼 스타일 */
+.next-button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    background-color: #0cc291;
+    color: #fff;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+/* 다음 버튼 마우스 호버 스타일 */
+.next-button:hover {
+    background-color: #52cdac;
+}
+
+/* 이전 버튼 마우스 호버 스타일 */
+.back-button:hover {
+    background-color: #f87878;
+}
+
+/* 이용약관 및 개인정보 이용 동의 약관 스타일*/
+.contract {
+    width: 80%; margin: 5px auto 80px;
+    border-radius: 15px; background-color: white;
+}
+
+/* "반갑습니다!" 문구 스타일 */
+.contract h3 {
+    text-align: left; font-size: 24px;
+}
+
+/* 약관 내용 텍스트 스타일 */
+.contract .text {
+    height: 230px; border: 0.5px solid black; margin-left: 22.7%;
+    white-space: pre-line; overflow-y: scroll; margin: 0 auto 20px;
+}
+
+/* 체크박스 스타일 */
+.checkbox {
+    text-align: right;
+    margin-left: 50px;
+}

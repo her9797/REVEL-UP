@@ -1,0 +1,146 @@
+.input-group {
+    margin-top: 40px;
+    margin-bottom: 1px;
+    display: flex;
+    align-items: center;
+    background-color: #ffffff;
+
+}
+
+.password1-input{
+
+}
+
+.username,
+.name,
+.password,
+.phone,
+.email,
+.role,
+.address {
+    margin-bottom: 20px;
+    width: 800px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+}
+
+
+.btn-modify {
+    padding: 10px 16px;
+    background-color: #0CC291;
+    border: none;
+    border-radius: 5px;
+    color: #fff;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin-top: 10px;
+}
+
+.btn-modify:hover {
+    background-color: #0dd6a0;
+}
+
+.btn-mo {
+    background-color: #0CC291;
+    border: none;
+    border-radius: 5px;
+    color: #fff;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    display: block;
+    width: 150px;
+    height: 50px;
+    text-decoration: none;
+    /*text-align: center;*/
+    /*justify-content: center;*/
+    /*align-items: center;*/
+    margin-right: -5px;
+}
+
+.btn-mo > a {
+    margin-top: 20px;
+}
+
+.btn-mo:hover {
+    color: #000000;
+    text-decoration: none;
+    background-color: #0dd6a0;
+}
+
+.label {
+    font-size: 16px;
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 1px;
+    margin-left: -480px;
+}
+
+.input {
+    width: 500px;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+    box-sizing: border-box;
+    background-color: #ffffff;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.userId-input,
+.userName-input {
+    width: 500px;
+    padding: 8px;
+    border: 1px solid black;
+    border-radius: 5px;
+    font-size: 16px;
+    box-sizing: border-box;
+    background-color: #d9d9d9;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.userAdd,
+.userDetailAddress {
+    flex: 1;
+    padding: 10px;
+    width: 250px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+    box-sizing: border-box;
+    margin-bottom: 10px;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    background-color: white;
+}
+
+.postcode-input {
+    width: 365px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+    box-sizing: border-box;
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+.postcode-input,
+.authCode-input,
+.email-input {
+    width: 370px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+    box-sizing: border-box;
+    margin-bottom: 10px;
+    text-align: center;
+}

@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.revelup.notice.model.dao.NoticeMapper">
+
+    <resultMap id="noticeResultMap" type="com.revelup.notice.model.dto.NoticeDTO">
+        <id property="ntcCode" column="NTC_CODE"/>
+        <result property="ntcTitle" column="NTC_TITLE"/>
+        <result property="ntcCont" column="NTC_CONT" />
+        <result property="ntcInsertDt" column="NTC_INSERT_DT" />
+    </resultMap>
+
+    <select id="findAllNtcList" resultMap="noticeResultMap">
+        SELECT  NTC_CODE
+                ,NTC_TITLE
+                ,NTC_CONT
+                ,NTC_INSERT_DT
+          FROM  NTC
+    </select>
+
+    <insert id="insertNotice" parameterType="com.revelup.notice.model.dto.NoticeDTO">
+        INSERT INTO NTC (
+                          NTC_TITLE
+                         ,NTC_CONT
+                         ,NTC_INSERT_DT
+                        )
+        VALUES (
+                    #{ ntcTitle }
+                    ,#{ ntcCont }
+                    ,NOW()
+                )
+    </insert>
+
+<!--    <update id="incrementNoticeCount" parameterType="int">-->
+<!--        UPDATE NTC-->
+<!--           SET NTC_CODE = NTC_CODE + 1-->
+<!--         WHERE NTC_CODE = #{ ntcCode }-->
+<!--    </update>-->
+
+<!--    <select id="selectOneNoticeList" resultMap="noticeResultMap">-->
+<!--        SELECT NTC_CODE-->
+<!--                , NTC_TITLE-->
+<!--                , NTC_INSERT_DT-->
+<!--                , NTC_CONT-->
+<!--          FROM NTC-->
+<!--         WHERE NTC_Title = #{ ntcTitle }-->
+
+<!--    </select>-->
+
+
+
+</mapper>

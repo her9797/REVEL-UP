@@ -1,0 +1,147 @@
+    /* 모달 스타일 */
+    /* 모달 창의 모서리를 둥글게 변경 */
+    .modal-dialog {
+        border-radius: 15px !important; /* 모달 창의 모서리를 둥글게 변경 */
+    }
+
+    /* 모달 내용 스타일 */
+    .modal-content {
+        padding: 20px; /* 내부 여백 추가 */
+        border: none !important; /* 내부 선 제거 */
+        border: none;
+    }
+
+    /* 모달 헤더 스타일 */
+    .modal-header {
+        background-color: #ffffff; /* 모달 헤더 배경색 (분홍색) */
+        border-top-left-radius: 15px; /* 헤더 모서리 둥글게 */
+        border-top-right-radius: 15px; /* 헤더 모서리 둥글게 */
+        display: flex; /* Flexbox를 사용하여 수직 가운데 정렬 */
+        align-items: center; /* 수직 가운데 정렬 */
+        border: none;
+    }
+
+    /* 모달 푯말 스타일 */
+    .modal-footer {
+        background-color: #ffffff; /* 모달 푯말 배경색 (분홍색) */
+        border-bottom-left-radius: 15px; /* 푯말 모서리 둥글게 */
+        border-bottom-right-radius: 15px; /* 푯말 모서리 둥글게 */
+        display: flex; /* Flexbox를 사용하여 수직 가운데 정렬 */
+        align-items: center; /* 수직 가운데 정렬 */
+        border: none;
+    }
+
+    /* 닫기 버튼 스타일 */
+    .close {
+        color: #000; /* 닫기 버튼 색상 (검정색) */
+        font-size: 28px;
+        font-weight: bold;
+        cursor: pointer;
+        border: none; /* 버튼 테두리 제거 */
+        background: none; /* 배경색 제거 */
+        position: absolute; /* 절대 위치 */
+        top: 10px; /* 위에서 10px 떨어진 위치 */
+        right: 10px; /* 오른쪽에서 10px 떨어진 위치 */
+    }
+
+    .close:hover,
+    .close:focus {
+        color: #ff1493; /* 닫기 버튼 호버시 색상 (분홍색) */
+        text-decoration: none;
+    }
+
+    .modal-body {
+        border: none;
+    }
+
+    .modal {
+        display: none;
+    }
+
+    /* sign-up  modal*/
+    /* 모달 스타일 */
+    .emailModal {
+        display: none; /* 초기에는 숨겨진 상태 */
+        position: fixed; /* 화면에 고정 */
+        z-index: 1; /* 다른 요소들보다 위에 위치 */
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        overflow: auto; /* 화면 크기를 벗어나면 스크롤 가능하도록 */
+        background-color: rgba(0,0,0,0.5); /* 흐린 배경 */
+    }
+
+    /* 모달 컨텐츠 스타일 */
+    .modal-text {
+        background-color: #fefefe;
+        margin: 15% auto; /* 모달을 화면 중앙에 위치시키기 위한 여백 */
+        padding: 20px;
+        border: none;
+        width: 80%; /* 모달의 너비 */
+    }
+    .modal-text h5 {
+        font-weight: bold;
+        margin-bottom: 50px;
+        margin-top: -20px;
+    }
+
+    .modal-text p {
+        font-size: 13px;
+    }
+
+    .hidden {
+        display: none;
+    }
+
+    /* modal.css */
+    .modal--bg {
+        position: fixed; /* 화면 상단에 고정 */
+        top: 50%; /* 화면 세로 중앙에 위치 */
+        left: 50%; /* 화면 가로 중앙에 위치 */
+        transform: translate(-50%, -50%); /* 화면 가운데 정렬 */
+        z-index: 9999; /* 다른 요소 위에 표시 */
+        background-color: #fff; /* 배경색 설정 */
+        width: 80%; /* 모달 너비 조절 */
+        max-width: 400px; /* 최대 너비 지정 */
+        padding: 20px; /* 안쪽 여백 지정 */
+        border-radius: 10px; /* 모달 둥근 테두리 */
+        color: #000; /* 텍스트 색상 */
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* 그림자 효과 추가 */
+    }
+
+    .modal--bg.hidden {
+        display: none; /* 숨김 처리 */
+    }
+
+    .modal-text {
+        text-align: center; /* 텍스트 가운데 정렬 */
+    }
+
+    .close-btn {
+        position: absolute;
+        bottom: 10px;
+        left: 50%;
+        transform: translateX(-50%);
+        background-color: #ddd; /* 회색 바탕색 */
+        border: none;
+        color: #000;
+        padding: 8px 16px; /* 버튼 내부 여백 */
+        border-radius: 10px; /* 모서리를 둥글게 */
+        cursor: pointer;
+        transition: background-color 0.3s; /* 배경색 변화에 트랜지션 효과 추가 */
+    }
+
+    .close-btn:hover {
+        background-color: #bbb; /* 마우스를 올렸을 때 더 진한 회색으로 배경색 변경 */
+    }
+
+    .modal-layer {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.5); /* 반투명한 검은색 배경 */
+        z-index: 1000; /* 모달보다 더 높은 z-index 값 */
+    }
