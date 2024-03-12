@@ -64,3 +64,107 @@
 .insert-modal-content button:hover {
     background-color: #0AA87E;
 }
+
+
+/* 두개 다른 모달임 */
+/* 두개 다른 모달임 */
+
+/* 모달 내부 스타일 */
+.modal-content2 {
+    background-color: #fefefe; /* 모달 내부 배경색 */
+    margin: 10% auto; /* 모달을 화면 중앙에 배치 */
+    padding: 30px;
+    border: 2px solid #0CC291;
+    width: 600px; /* 모달의 너비 */
+    height: 700px; /* 모달의 높이 */
+    border-radius: 10px; /* 모달 테두리의 둥글기 */
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.3); /* 그림자 효과 */
+}
+
+/* 모달 닫기 버튼 스타일 */
+#close-btn2 {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+#close-btn2:hover,
+#close-btn2:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+/* 모달 내용 스타일 */
+.notice-header2 {
+    margin-top: 20px;
+}
+
+/*.text-box2 {*/
+/*    padding: 12px; !* 텍스트 입력란 내부 여백 *!*/
+/*    border: 1px solid #ccc;*/
+/*    border-radius: 5px;*/
+/*    margin-top: 15px;*/
+/*    width: calc(100% - 24px); !* 텍스트 박스의 너비 *!*/
+/*}*/
+.text-box2 {
+    padding: 12px; /* 텍스트 입력란 내부 여백 */
+    border: 1px solid #ccc;
+    height: 50px;
+    border-radius: 5px;
+    margin-top: 15px;
+    width: calc(100% - 24px); /* 텍스트 박스의 너비 */
+    resize: none; /* 텍스트 입력란 크기 조절 비활성화 */
+}
+
+.text-box3 {
+    padding: 12px; /* 텍스트 입력란 내부 여백 */
+    border: 1px solid #ccc;
+    height: 200px;
+    border-radius: 5px;
+    margin-top: 15px;
+    width: calc(100% - 24px); /* 텍스트 박스의 너비 */
+    resize: none; /* 텍스트 입력란 크기 조절 비활성화 */
+}
+
+.contents2 {
+    margin-top: 20px;
+}
+
+.contract2 {
+    margin-top: 20px;
+}
+
+/* 모달 버튼 스타일 */
+.update-btn {
+    margin-right: 10px;
+    padding: 12px 24px;
+    border: none;
+    border-radius: 5px;
+    background-color: #0CC291;
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.3s;
+
+}
+
+.delete-btn {
+     margin-right: 10px;
+     padding: 12px 24px;
+     border: none;
+     border-radius: 5px;
+     background-color: #f95252;
+     color: white;
+     cursor: pointer;
+     transition: background-color 0.3s;
+
+ }
+
+.update-btn:hover {
+    background-color: #0AA37F;
+}
+
+.delete-btn:hover {
+    background-color: #f87878;
+}

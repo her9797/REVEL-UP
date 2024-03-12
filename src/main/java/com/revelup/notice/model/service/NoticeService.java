@@ -30,6 +30,11 @@ public class NoticeService {
 
     }
 
+    public NoticeDTO findByOne(String findByNotice) {
+
+        return noticeMapper.findByOne(findByNotice);
+    }
+
 //    public NoticeDTO selectOneNoticeList(String ntcTitle) {
 //        return noticeMapper.selectOneNoticeList(ntcTitle);
 //    }

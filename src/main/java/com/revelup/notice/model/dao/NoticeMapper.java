@@ -14,5 +14,7 @@ public interface NoticeMapper {
     /* 공지사항 등록 */
     void insertNotice(NoticeDTO notice);
 
+    NoticeDTO findByOne(String findByNotice);
+
 //    NoticeDTO selectOneNoticeList(String ntcTitle);
 }

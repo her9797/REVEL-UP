@@ -32,21 +32,22 @@
                 )
     </insert>
 
+    <select id="findByOne" resultMap="noticeResultMap">
+        SELECT  NTC_CODE
+                ,NTC_TITLE
+                ,NTC_INSERT_DT
+                ,NTC_CONT
+          FROM NTC
+         WHERE NTC_Title = #{ ntcTitle }
+
+    </select>
+
 <!--    <update id="incrementNoticeCount" parameterType="int">-->
 <!--        UPDATE NTC-->
 <!--           SET NTC_CODE = NTC_CODE + 1-->
 <!--         WHERE NTC_CODE = #{ ntcCode }-->
 <!--    </update>-->
 
-<!--    <select id="selectOneNoticeList" resultMap="noticeResultMap">-->
-<!--        SELECT NTC_CODE-->
-<!--                , NTC_TITLE-->
-<!--                , NTC_INSERT_DT-->
-<!--                , NTC_CONT-->
-<!--          FROM NTC-->
-<!--         WHERE NTC_Title = #{ ntcTitle }-->
-
-<!--    </select>-->
 
 
 

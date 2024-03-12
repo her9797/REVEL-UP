@@ -44,7 +44,6 @@
     </div>
     <div class="row">
         <table class="manager_table" border="0">
-
             <tr align="center" bgcolor="#0CC291" style="font-weight: bold">
                 <td>공지 코드</td>
                 <td>공지 제목</td>
@@ -52,7 +51,10 @@
             </tr>
             <tr th:each="notice : ${noticeList}" align="center">
                 <td th:text="${notice.ntcCode}"></td>
-                <td th:text="${notice.ntcTitle}"></td>
+                <!-- 클릭 가능한 링크로 변경 -->
+                <td>
+                    <a style="color:black" href="#" th:text="${notice.ntcTitle}" onclick="openModal('${notice.ntcTitle}'); return false;"></a>
+                </td>
                 <td th:text="${notice.ntcInsertDt}"></td>
             </tr>
         </table>
@@ -104,36 +106,37 @@
             <i class="fa-solid fa-angles-right" id="last_page"></i>
         </div>
 
-<!--         공지사항 내용을 보여줄 모달창-->
-        <div  id="notice-modal" class="modal display-none">
-            <div class="open-modal">
-            <form action="/manager-notice" method="post">
-            <div class="modal-content">
-                <span id="close-btn">&times;</span>  <!-- x를 나타내는 문자유니코드 U+00D7 -->
-                <h4>NOTICE</h4>
-                <div class="notice-content">
-                    <div class="notice-header">
-                        <label style="margin-top: 8%;">제목</label>
-                        <span class="text-box" id="text-block" ></span><br>
-                        <label style="margin-top: 30px;">작성날짜</label>
-                        <span class="text-box" t></span>
-                    </div>
+<!-- 공지사항 내용을 보여줄 모달창-->
 
-                    <div class="contents">
-                        <div class="contract">
-                            <label id="title">내용</label>
-                            <div class="text" ></div>
+
+        <div id="notice-modal" class="modal display-none" th:each="notice : ${noticeList}">
+            <div class="open-modal">
+                <div class="modal-content2">
+                    <span id="close-btn2">&times;</span>
+                    <h4 style="margin-left: 225px">NOTICE</h4>
+                    <div class="notice-content">
+                        <div class="notice-header2">
+                            <label for="modal-title2" style="margin-top: 15px;">제목</label>
+                            <textarea th:text="${notice.ntcTitle}" type="text" id="modal-title2" class="text-box2" name="ntcTitle"/><br>
+                            <label for="modal-date2" style="margin-top: 20px;">작성날짜</label>
+                            <textarea th:text="${notice.ntcInsertDt}" type="text" id="modal-date2" class="text-box2" name="ntcDate" readonly/><br>
                         </div>
-                    </div>
-                    <div class="modal-button" style="justify-content: center;">
-                        <button id="delete-btn">삭제하기</button>
-                        <button id="update-btn">수정하기</button>
+
+                        <div class="contents2">
+                            <div class="contract2">
+                                <label for="modal-content2" id="content" style="margin-top: 20px;">내용</label>
+                                <textarea th:text="${notice.ntcCont}" id="modal-content2" class="text-box3" name="ntcCont"></textarea>
+                            </div>
+                        </div>
+                        <div class="modal-button2" style="margin-left: 150px; margin-top: 20px;">
+                            <button class="delete-btn" id="delete-btn">삭제하기</button>
+                            <button class="update-btn" id="update-btn">수정하기</button>
+                        </div>
                     </div>
                 </div>
             </div>
-            </form>
-            </div>
         </div>
+
     </div>
 </div>
 
