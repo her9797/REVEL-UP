@@ -54,6 +54,22 @@
             document.getElementById('cancel-modal').style.display = 'none'; // 모달 창 닫기
             // 후원 철회 사유 확인 및 처리 코드를 여기에 추가할 수 있습니다.
         });
+
+        // 모든 '상세 조회' 버튼에 대한 클릭 이벤트 리스너 추가
+        document.querySelectorAll('.button-detail').forEach((button) => {
+            button.addEventListener('click', function() {
+                // 데이터 속성에서 후원번호(plgCode) 읽어오기
+                const plgCode = this.getAttribute('data-plgcode');
+
+                // 동적으로 URL 생성
+                const url = `/content/mypage/getter-spons-details1?plgCode=${plgCode}`;
+
+                // 생성된 URL로 페이지 이동
+                window.location.href = url;
+            });
+        });
+
+
     });
 
 

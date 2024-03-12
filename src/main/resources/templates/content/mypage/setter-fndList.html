@@ -54,12 +54,12 @@
                 <div class="image-box">
                     <img th:src="@{/img/product/p1.png}" alt="product1">
                     <p class="image-desc">
-                    <div>
-                        <a style="font-weight: bold;">알뜰살뜰 모아모아 레인보우 협탁1</a><br>
-                        <a>목표액 : 1,500,000원</a><br>
-                        <a>달성액 : 900,000원</a><br>
-                        <a>달성률 : 64%</a><br>
-                        <a>마감일 : 2024-05-07</a><br>
+                    <div th:each="allFnd : ${ allFndList }">
+                        <a style="font-weight: bold;" th:text="${allFnd.fndName}">알뜰살뜰 모아모아 레인보우 협탁1</a><br>
+                        <a id="goalAmt" th:text="'목표액 : ' + ${allFnd.goalAmt} + '원'">목표액 : 1,500,000원</a><br>
+                        <a id="successAmt" th:text="'달성액 : ' + ${allFnd.successAmt} + '원'">달성액 : 900,000원</a><br>
+                        <a th:text="'달성률 : ' + ${#numbers.formatDecimal((allFnd.successAmt * 1.0) / allFnd.goalAmt * 100, 0, 0)} + '%'">달성률 : 64%</a><br>
+                        <a th:text="'마감일 : ' + ${allFnd.fndEndDt}">마감일 : 2024-05-07</a><br>
                     </div>
                     <div class="button-group">
                         <button class="notice-insert-btn"> 공지사항등록</button>

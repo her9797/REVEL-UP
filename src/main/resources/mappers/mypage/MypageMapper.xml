@@ -68,132 +68,122 @@
     </resultMap>
 
 <!--        PLG ResultMap 후원 -->
-    <resultMap id="plgResultMap" type="com.revelup.pay.model.dto.PayCompletionDTO">
-        <id property="plgCode" column="PLG_CODE" />
-        <result property="userId" column="USER_ID" />
-        <result property="fndCode" column="FND_CODE" />
-        <result property="giftQty" column="GIFT_QTY" />
-        <result property="plgDttm" column="PLG_DTTM" />
-        <result property="plgPrice" column="PLG_PRICE" />
-        <result property="plgCanDt" column="PLG_CAN_DT" />
-        <association property="fndName" resultMap="fndInfoResultMap" />
-        <association property="deliv" resultMap="delivResultMap" />
-        <association property="loginUser" resultMap="login"/>
-        <association property="giftName" resultMap="giftResultMap" />
-    </resultMap>
-
-<!--     후원내역조회 상세조회 -->
-    <select id="selectOne" resultMap="plgResultMap">
-        SELECT
-        P.PLG_DTTM
-        ,F.FND_NAME
-        ,G.GIFT_NAME
-        ,P.GIFT_QTY
-        ,P.PLG_PRICE
-        ,F.FND_END_DT
-        ,D.TRACKING_NO
-        ,U.USER_ADD
-        ,U.USER_NAME
-        ,U.USER_PHONE
-        FROM PLG P
-        JOIN USER U ON P.USER_ID = U.USER_ID
-        JOIN DELIV D ON P.PLG_CODE = D.PLG_CODE
-        JOIN FND_INFO F ON P.FND_CODE = F.FND_CODE
-        JOIN GIFT G ON G.FND_CODE = F.FND_CODE
-        WHERE P.PLG_CODE = #{ plgCode }
-    </select>
-
-<!--    <resultMap id="twoPlgResultMap" type="com.revelup.pay.model.dto.PayDTO">-->
-<!--        <id property="plgC56ode" column="PLG_CODE" />-->
+<!--    <resultMap id="plgResultMap" type="com.revelup.pay.model.dto.PayCompletionDTO">-->
+<!--        <id property="plgCode" column="PLG_CODE" />-->
 <!--        <result property="userId" column="USER_ID" />-->
 <!--        <result property="fndCode" column="FND_CODE" />-->
 <!--        <result property="giftQty" column="GIFT_QTY" />-->
 <!--        <result property="plgDttm" column="PLG_DTTM" />-->
 <!--        <result property="plgPrice" column="PLG_PRICE" />-->
-<!--        <result property="fndName" column="FND_NAME" />-->
-<!--        <result property="giftName" column="GIFT_NAME" />-->
-<!--        <result property="fndEndDt" column="FND_END_DT" />-->
-<!--        <result property="trackingNo" column="TRACKING_NO" />-->
-<!--        <result property="userAdd" column="USER_ADD" />-->
-<!--        <result property="userName" column="USER_NAME" />-->
-<!--        <result property="userPhone" column="USER_PHONE" />-->
+<!--        <result property="plgCanDt" column="PLG_CAN_DT" />-->
+<!--        <association property="fndName" resultMap="fndInfoResultMap" />-->
+<!--        <association property="deliv" resultMap="delivResultMap" />-->
+<!--        <association property="loginUser" resultMap="login"/>-->
+<!--        <association property="giftName" resultMap="giftResultMap" />-->
 <!--    </resultMap>-->
 
-<!--    <select id="selectOne" resultMap="twoPlgResultMap">-->
-<!--        SELECT-->
-<!--                P.PLG_DTTM-->
-<!--                , F.FND_NAME-->
-<!--                , G.GIFT_NAME-->
-<!--                , P.GIFT_QTY-->
-<!--                , P.PLG_PRICE-->
-<!--                , F.FND_END_DT-->
-<!--                , D.TRACKING_NO-->
-<!--                , U.USER_ADD-->
-<!--                , U.USER_NAME-->
-<!--                , U.USER_PHONE-->
-<!--        FROM PLG P-->
-<!--        JOIN USER U ON P.USER_ID = U.USER_ID-->
-<!--        JOIN DELIV D ON P.PLG_CODE = D.PLG_CODE-->
-<!--        JOIN FND_INFO F ON P.FND_CODE = F.FND_CODE-->
-<!--        JOIN GIFT G ON G.FND_CODE = F.FND_CODE-->
-<!--        WHERE P.PLG_CODE = #{plgCode}-->
-<!--    </select>-->
+<!--        PLG ResultMap 후원 -->
+    <resultMap id="twoPlgResultMap" type="com.revelup.pay.model.dto.PayCompletionDTO">
+        <id property="plgC56ode" column="PLG_CODE" />
+        <result property="userId" column="USER_ID" />
+        <result property="fndCode" column="FND_CODE" />
+        <result property="giftQty" column="GIFT_QTY" />
+        <result property="plgDttm" column="PLG_DTTM" />
+        <result property="plgPrice" column="PLG_PRICE" />
+        <result property="fndName" column="FND_NAME" />
+        <result property="giftName" column="GIFT_NAME" />
+        <result property="fndEndDt" column="FND_END_DT" />
+        <result property="trackingNo" column="TRACKING_NO" />
+        <result property="userAdd" column="USER_ADD" />
+        <result property="userName" column="USER_NAME" />
+        <result property="userPhone" column="USER_PHONE" />
+    </resultMap>
 
 
     <!-- 후원내역조회 후원내역 -->
     <select id="selectAllPlgList" resultMap="payResultMap">
         SELECT
-        P.PLG_CODE
-        ,P.PLG_DTTM
-        ,F.FND_CODE
-        ,F.FND_NAME
-        ,G.GIFT_NAME
-        ,p.GIFT_QTY
-        ,G.GIFT_PRICE
-        ,P.PLG_PRICE
-        FROM PLG P
-        JOIN FND_INFO F ON P.FND_CODE = F.FND_CODE
-        JOIN GIFT G ON G.FND_CODE = F.FND_CODE
-        WHERE F.FND_PRG_STAT = 'L'
+                P.PLG_CODE
+                ,P.PLG_DTTM
+                ,F.FND_CODE
+                ,F.FND_NAME
+                ,G.GIFT_NAME
+                ,p.GIFT_QTY
+                ,G.GIFT_PRICE
+                ,P.PLG_PRICE
+          FROM PLG P
+          JOIN FND_INFO F ON P.FND_CODE = F.FND_CODE
+          JOIN GIFT G ON G.FND_CODE = F.FND_CODE
+         WHERE F.FND_PRG_STAT = 'L'
     </select>
 
     <!-- 후원내역조회 후원철회 -->
     <select id="selectRefundList" resultMap="payResultMap">
         SELECT
-        P.PLG_CAN_DT
-        ,P.PLG_CODE
-        ,F.FND_CODE
-        ,F.FND_NAME
-        ,G.GIFT_NAME
-        ,p.GIFT_QTY
-        ,G.GIFT_PRICE
-        ,P.PLG_PRICE
-        FROM PLG P
-        JOIN FND_INFO F ON P.FND_CODE = F.FND_CODE
-        JOIN GIFT G ON G.FND_CODE = F.FND_CODE
-        WHERE F.FND_PRG_STAT = 'C'
+                P.PLG_CAN_DT
+                ,P.PLG_CODE
+                ,F.FND_CODE
+                ,F.FND_NAME
+                ,G.GIFT_NAME
+                ,p.GIFT_QTY
+                ,G.GIFT_PRICE
+                ,P.PLG_PRICE
+          FROM PLG P
+          JOIN FND_INFO F ON P.FND_CODE = F.FND_CODE
+          JOIN GIFT G ON G.FND_CODE = F.FND_CODE
+         WHERE F.FND_PRG_STAT = 'C'
     </select>
 
     <!-- 후원내역조회 미달성 -->
     <select id="selectFailFndList" resultMap="payResultMap">
         SELECT
-        P.PLG_DTTM
-        ,P.PLG_CODE
-        ,F.FND_CODE
-        ,F.FND_NAME
-        ,G.GIFT_NAME
-        ,p.GIFT_QTY
-        ,G.GIFT_PRICE
-        ,P.PLG_PRICE
-        ,F.FND_PRG_STAT
-        FROM PLG P
-        JOIN FND_INFO F ON P.FND_CODE = F.FND_CODE
-        JOIN GIFT G ON G.FND_CODE = F.FND_CODE
-        WHERE F.FND_PRG_STAT = 'U'
+                P.PLG_DTTM
+                ,P.PLG_CODE
+                ,F.FND_CODE
+                ,F.FND_NAME
+                ,G.GIFT_NAME
+                ,p.GIFT_QTY
+                ,G.GIFT_PRICE
+                ,P.PLG_PRICE
+                ,F.FND_PRG_STAT
+          FROM PLG P
+          JOIN FND_INFO F ON P.FND_CODE = F.FND_CODE
+          JOIN GIFT G ON G.FND_CODE = F.FND_CODE
+         WHERE F.FND_PRG_STAT = 'U'
         <!--        AND USER_ID = #{ userId }-->
     </select>
 
+    <!--     후원내역조회 상세조회 -->
+    <select id="selectOne" resultMap="twoPlgResultMap">
+        SELECT
+                P.PLG_DTTM
+                , F.FND_NAME
+                , G.GIFT_NAME
+                , P.GIFT_QTY
+                , P.PLG_PRICE
+                , F.FND_END_DT
+                , D.TRACKING_NO
+                , U.USER_ADD
+                , U.USER_NAME
+                , U.USER_PHONE
+          FROM PLG P
+          JOIN USER U ON P.USER_ID = U.USER_ID
+          JOIN DELIV D ON P.PLG_CODE = D.PLG_CODE
+          JOIN FND_INFO F ON P.FND_CODE = F.FND_CODE
+          JOIN GIFT G ON G.FND_CODE = F.FND_CODE
+         WHERE P.PLG_CODE = #{plgCode}
+    </select>
 
+    <!--     후원내역조회 상세조회 -->
+    <select id="allFndList" resultMap="fndInfoResultMap">
+        SELECT
+                FND_NAME
+                ,GOAL_AMT
+                ,SUCCESS_AMT
+                ,FND_END_DT
+          FROM FND_INFO
+         WHERE FND_PRG_STAT = 'E'
+    </select>
 
     <!--    <select id="sttrFndPro" resultMap="com.revelup.funding.model.dao.FundingMapper">-->
 <!--        SELECT P.PLG_DTTM-->
