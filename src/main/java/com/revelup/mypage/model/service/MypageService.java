@@ -41,16 +41,25 @@ public class MypageService {
         return payList;
     }
 
-    public PayCompletionDTO selectOnePlg(String userId) {
-        System.out.println("userID : " + userId);
-        PayCompletionDTO plgByOne = mypageMapper.selectOnePlg(userId);
+    // 후원내역 상세조회
+    public PayCompletionDTO selectOne(int plgCode) {
+        System.out.println("plgCode : " + plgCode);
+        PayCompletionDTO plgByOne = mypageMapper.selectOne(plgCode);
         System.out.println("plgByOne : " + plgByOne);
         return plgByOne;
     }
 
+    // 펀딩내역 상세조회
     public List<FundingInfoDTO> sttrFndPro(int fndCode) {
 //        return mypageMapper.sttrFndPro(fndCode);
         return new ArrayList<>();
     }
 
+    // 펀딩내역 조회
+    public List<FundingInfoDTO> allFndList() {
+        List<FundingInfoDTO> fndList = mypageMapper.allFndList();
+        System.out.println("fndList : " + fndList);
+        return fndList;
+
+    }
 }

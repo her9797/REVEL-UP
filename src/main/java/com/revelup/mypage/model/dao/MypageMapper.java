@@ -22,6 +22,8 @@ public interface MypageMapper {
 //    List<FundingInfoDTO> sttrFndPro(int fndCode);
 
 
-    PayCompletionDTO selectOnePlg(String userId);
+    PayCompletionDTO selectOne(int plgCode);
+
+    List<FundingInfoDTO> allFndList();
 
 }
