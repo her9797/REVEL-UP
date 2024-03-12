@@ -60,4 +60,6 @@ public class GiftDTO implements java.io.Serializable {
                 ", giftProdQty=" + giftProdQty +
                 '}';
     }
+
+
 }

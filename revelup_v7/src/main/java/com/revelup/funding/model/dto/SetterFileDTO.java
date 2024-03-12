@@ -58,4 +58,6 @@ public class SetterFileDTO implements java.io.Serializable {
                 ", siSaveFile='" + siSaveFile + '\'' +
                 '}';
     }
+
+
 }

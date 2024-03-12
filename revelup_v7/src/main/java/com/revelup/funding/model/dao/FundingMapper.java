@@ -21,4 +21,7 @@ public interface FundingMapper {
     void insertGift(GiftDTO giftDTO);
 
     List<FundingInfoDTO> selectAllFunding();
+
+
+
 }
