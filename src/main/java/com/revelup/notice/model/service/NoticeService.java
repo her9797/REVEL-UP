@@ -10,12 +10,13 @@ import java.util.List;
 @Service
 public class NoticeService {
 
-
     private final NoticeMapper noticeMapper;
+
 
     public NoticeService(NoticeMapper noticeMapper) {
         this.noticeMapper = noticeMapper;
     }
+
 
     public List<NoticeDTO> findAllNtcList() {
 

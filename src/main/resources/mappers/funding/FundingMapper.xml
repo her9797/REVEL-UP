@@ -18,22 +18,22 @@
 
     <insert id="insertFND2" parameterType="com.revelup.funding.model.dto.SetterInfoDTO">
         INSERT INTO STTR_INFO(
-        USER_ID
-        ,STTR_COMPANY
-        ,STTR_NAME
-        ,STTR_REGIST_NO
-        ,STTR_BANK
-        ,STTR_ACC_NO
-        ,STTR_ACC_HOLDER
+                        USER_ID
+                        ,STTR_COMPANY
+                        ,STTR_NAME
+                        ,STTR_REGIST_NO
+                        ,STTR_BANK
+                        ,STTR_ACC_NO
+                        ,STTR_ACC_HOLDER
         )
         VALUES (
-        'user02'
-        ,#{ sttrCompany }
-        ,#{ sttrName }
-        ,#{ sttrRegistNo }
-        ,#{ sttrBank }
-        ,#{ sttrAccNo }
-        ,#{ sttrAccHolder }
+                'user02'
+                ,#{ sttrCompany }
+                ,#{ sttrName }
+                ,#{ sttrRegistNo }
+                ,#{ sttrBank }
+                ,#{ sttrAccNo }
+                ,#{ sttrAccHolder }
         )
     </insert>
 

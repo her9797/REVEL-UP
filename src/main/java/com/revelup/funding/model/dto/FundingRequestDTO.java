@@ -68,4 +68,6 @@ public class FundingRequestDTO implements java.io.Serializable {
                 ", setterInfoDTO=" + setterInfoDTO +
                 '}';
     }
+
+
 }

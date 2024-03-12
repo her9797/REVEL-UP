@@ -74,7 +74,7 @@ public class PayController {
         KaKaoPayApproveResponseDTO approveResponse = payService.kakaoPayApprove(userDetails.getUsername(), pgToken);
 
         PayCompletionDTO payCompletionDTO = PayCompletionDTO.builder()
-                .itemName(approveResponse.getItemName())
+                .giftName(approveResponse.getGiftName())
                 .totalPrice(approveResponse.getAmount().getTotal())
                 .createdAt(approveResponse.getApprovedAt())
                 .quantity(approveResponse.getQuantity())

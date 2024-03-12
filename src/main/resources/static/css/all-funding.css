@@ -1,0 +1,114 @@
+body {  /* 전체 설정 */
+    color: #444444;
+    font-family: "";
+}
+
+.container {
+    font-size: 18px;
+}
+
+.funding-name {
+    margin-bottom: 5px;
+}
+
+.row {
+    width: 100%;
+    padding-top:50px;
+    display: flex;
+    justify-content: space-between; /* 자식 요소 사이의 간격을 최대화하여 오른쪽 정렬 */
+    align-items: center; /* 수직 가운데 정렬 */
+}
+
+.items {
+    width: 260px;
+    margin: 0 auto;
+    float: left;
+    list-style: none;
+}
+
+.col-lg-3 {
+    flex-grow: 1;
+    /* 자식 요소가 부모 요소의 사용 가능한 공간을 모두 차지하도록 설정 */
+}
+
+.items img {
+    display: flex;
+    justify-content: center;
+    height: 145px;
+}
+
+.items .funding-name {
+    font-weight: bold;
+    margin-top: 20px;
+}
+
+.items .funding-success-rate {
+    display: flex;
+    justify-content: space-between;
+}
+
+.items .funding-price {
+    margin-bottom: 5px;
+}
+
+/* 버튼 그룹 스타일 */
+.button-group {
+    margin-top: 4px;
+    display: flex;
+    justify-content: space-between;
+}
+
+/* 후원하기 버튼 스타일 */
+.items .pay-button {
+    width: 183px;
+    padding: 5px 10px;
+    border: none;
+    border-radius: 5px;
+    background-color: #0cc291;
+    color: #fff;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    margin-right: 2px;
+}
+
+/* 후원하기 버튼 마우스 호버 스타일 */
+.items .pay-button:hover {
+    background-color: #52cdac;
+    transform: scale(1.05); /* 마우스 호버 시 약간 확대하여 강조 */
+}
+
+/* 찜하기 버튼 스타일 */
+.items .heart-button {
+    color:red;
+    font-size: 20px;
+    margin: 0 auto;
+    border: none; /* 기본 버튼 스타일 제거 */
+    background: none;
+    outline: none;
+    cursor: pointer; /* 마우스 커서를 손가락 모양으로 변경 */
+}
+
+
+/* 찜하기 버튼 마우스 호버 스타일 */
+.items .save-button:hover {
+    color: rgb(255, 74, 74);
+    transform: scale(1.05); /* 마우스 호버 시 약간 확대하여 강조 */
+}
+
+.test input{
+    display: none;
+}
+
+/* 찜하기 버튼 */
+.heart-button {
+    font-size: 20px; /* 아이콘 크기 조절 */
+    cursor: pointer;
+}
+
+.red-heart {
+    color: red !important; /* !important를 사용하여 우선순위 부여 */
+}
+
+.gray-heart {
+    color: gray !important; /* !important를 사용하여 우선순위 부여 */
+}
