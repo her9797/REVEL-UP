@@ -5,12 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title></title>
 
-    <link th:href="@{/css/mypage.css}" rel="stylesheet">
-    <link th:href="@{/css/getter-spons-details.css}" rel="stylesheet">
-
     <th:block th:include="fragments/common"></th:block>
 
-    <script th:src="@{/js/getter-spons-details.js}"></script>
+    <link th:href="@{/css/mypage.css}" rel="stylesheet">
+    <link th:href="@{/css/getter-spons-details2.css}" rel="stylesheet">
+
+    <script th:src="@{/js/getter-spons-details3.js}"></script>
 
 </head>
 <body>
@@ -36,18 +36,19 @@
 <div class="container" style="border-top: 1px solid lightgray; margin-top: 15px;">
     <br>
     <div class="row">
+
         <div class="col-lg-3">
 
             <div th:insert="~{/fragments/sidebar.html}"></div>
 
         </div>
 
-        <!-- 세터가 운송장 등록 후 변경될 후원상세페이지 -->
+        <!-- 배송 완료 후 후원확정을 누를 후원상세페이지(하드 코딩으로 생성 예정) -->
 
         <div class="col-lg-8 col-md-8 col-sm-8">
             <a style="margin-bottom: 20px; font-size: 18px;">나의 후원 내역 &gt; 후원내역 &gt; <b>상세조회</b></a>
 
-            <p class="title" style="font-size: 14px; font-weight: bold; margin-top: 10px;" th:text="">후원 <!--후원일 불러옴-->2024-02-21</p>
+            <p class="title" style="font-size: 14px; font-weight: bold; margin-top: 10px;">후원 <!--후원일 불러옴-->2024-02-21</p>
 
             <div class="image-box">
                 <img th:src="@{/img/product/p1.png}" alt="product1">
@@ -64,7 +65,23 @@
 
             <p class="title" style="font-size: 14px; font-weight: bold; margin-top: 50px;">배송조회</p>
             <div class="deliv-info-container">
-                <div id="deliv-status">배송중</div>
+                <div id="deliv-status">배송완료 |
+                    <button id="confirmation"  onclick="openModalConfir()">후원확정</button>
+
+                    <div id="confirmation-modal" class="modal">
+                        <div class="modal-content">
+                            <h3 style="color: #000; font-weight: bold;">후원확정</h3>
+                            <p style="color: #000; font-size: 18px; font-weight: normal; margin-top: 20px;">
+                                후원 확정 시 후원취소 불가능합니다. <br>
+                                후원확정 진행하시겠습니까?
+                            </p>
+                            <div class="button-group"> <!-- 버튼 그룹 div 추가 -->
+                                <button id="submit-btn">확인</button>
+                                <button id="cancel-btn">취소</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
 
                 <div class="deliv-info">
                     <span style="font-weight: bold;">우체국</span> : <span style="font-weight: normal;">101012121313<!-- 운송장 번호 불러옴 --> </span>

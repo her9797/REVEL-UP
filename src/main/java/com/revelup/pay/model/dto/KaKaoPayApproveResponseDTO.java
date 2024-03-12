@@ -24,10 +24,10 @@ public class KaKaoPayApproveResponseDTO {
 	private Amount amount;
 	@JsonProperty("card_info")
 	private CardInfo cardInfo;
-	@JsonProperty("item_name")
-	private String itemName;
-	@JsonProperty("item_code")
-	private String itemCode;
+	@JsonProperty("giftName")
+	private String giftName;
+	@JsonProperty("gift_code")
+	private String giftCode;
 	private Integer quantity;
 	@JsonProperty("created_at")
 	private LocalDateTime createdAt;

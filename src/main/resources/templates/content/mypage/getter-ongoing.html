@@ -50,7 +50,22 @@
             </div>
 
             <div class="image-box-group">
-                <div class="image-box" th:each="allPlg : ${allPlgList}">
+                <div class="image-box">
+                    <p class="support-date">2024-04-25</p>
+                    <p>후원번호 : <a>13</a></p>
+                    <img th:src="@{/img/product/p1.png}" alt="product1">
+                    <p class="image-desc">
+                    <div>
+                        <a style="font-weight: bold;">[개굴기업]</a><br>
+                        <a style="font-weight: bold;">알뜰살뜰 모아모아 레인보우 협탁1</a><br>
+                        <a>· 레인보우 1개</a><br>
+                        <a>· 70,000원</a><br>
+                    </div>
+                    <div class="button-group">
+                        <button onclick="location.href='/content/mypage/getter-spons-details3'" class="button-detail"> 상세조회</button>
+                    </div>
+                </div>
+                <div class="image-box" th:if="${allPlgList != null}" th:each="allPlg : ${allPlgList}">
                     <p class="support-date" th:text="${allPlg.plgDttm}">2024-04-25</p>
                     <p>후원번호 : <a th:text="${allPlg.plgCode}">12341235</a></p>
                     <img th:src="@{/img/product/p1.png}" alt="product1">
@@ -63,8 +78,9 @@
                         <a th:text="'· ' + ${allPlg.plgPrice} + '원'">· 70,000원</a><br>
                     </div>
                     <div class="button-group">
-                        <button type="button" class="button-detail" id="deliveryStatus"> 상세조회</button>
-                        <button type="button" class="button-support-cancel">후원철회</button>
+                        <button type="button"  th:attr="onclick=|location.href='/content/mypage/getter-spons-details1?plgCode=' + ${allPlg.plgCode}|" class="button-detail"> 상세조회</button>
+<!--                        <button type="button" onclick="location.href='/content/mypage/getter-spons-details1'" class="button-detail"> 상세조회</button>-->
+                        <button type="button" class="button-support-cancel" id="cancel-btn">후원철회</button>
                     </div>
                 </div>
 
