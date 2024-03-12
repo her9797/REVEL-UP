@@ -1,8 +1,6 @@
 package com.revelup.funding.controller;
 
-import com.revelup.funding.model.dto.FundingInfoDTO;
-import com.revelup.funding.model.dto.GiftDTO;
-import com.revelup.funding.model.dto.SetterInfoDTO;
+import com.revelup.funding.model.dto.*;
 import com.revelup.funding.model.service.FundingService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -11,6 +9,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import java.security.Principal;
 import java.util.List;
 
 @Controller

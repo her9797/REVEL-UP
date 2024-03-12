@@ -4,7 +4,7 @@
         "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.revelup.funding.model.dao.FundingMapper">
 
-    <resultMap type="com.revelup.funding.model.dto.SetterInfoDTO" id="insertFundingResultMap">
+    <resultMap type="com.revelup.funding.model.dto.FundingInfoDTO" id="selectAllFunding">
         <id property="fndCode" column="FND_CODE"/>
         <result property="userId" column="USER_ID"/>
         <result property="fndName" column="FND_NAME"/>
@@ -16,50 +16,107 @@
         <result property="fndPrgStat" column="FND_PRG_STAT"/>
     </resultMap>
 
-    <insert id="insertFND2" parameterType="com.revelup.funding.model.dto.SetterInfoDTO">
-        INSERT INTO STTR_INFO(
-                        USER_ID
-                        ,STTR_COMPANY
-                        ,STTR_NAME
-                        ,STTR_REGIST_NO
-                        ,STTR_BANK
-                        ,STTR_ACC_NO
-                        ,STTR_ACC_HOLDER
-        )
-        VALUES (
-                'user02'
-                ,#{ sttrCompany }
-                ,#{ sttrName }
-                ,#{ sttrRegistNo }
-                ,#{ sttrBank }
-                ,#{ sttrAccNo }
-                ,#{ sttrAccHolder }
+    <!-- 세터 정보 삽입 -->
+    <insert id="insertSetterInfo" parameterType="com.revelup.funding.model.dto.SetterInfoDTO">
+        INSERT INTO STTR_INFO (
+        USER_ID
+        , STTR_COMPANY
+        , STTR_NAME
+        , STTR_REGIST_NO
+        , STTR_BANK
+        , STTR_ACC_NO
+        , STTR_ACC_HOLDER
+        ) VALUES (
+        'test8'
+        , #{sttrCompany}
+        , #{sttrName}
+        , #{sttrRegistNo}
+        , #{sttrBank}
+        , #{sttrAccNo}
+        , #{sttrAccHolder}
         )
     </insert>
 
-    <insert id="insertFND3" parameterType="com.revelup.funding.model.dto.FundingInfoDTO">
-        INSERT INTO FND_INFO(
+    <!-- 펀딩 정보 삽입 -->
+    <insert id="insertFundingInfo" parameterType="com.revelup.funding.model.dto.FundingInfoDTO">
+        INSERT INTO FND_INFO (
         FND_CODE
-        ,USER_ID
-        ,FND_NAME
-        ,FND_END_DT
-        ,GOAL_AMT
-        ,FND_DESCR
-        ,SUCCESS_AMT
-        ,FND_DEL_YN
-        ,FND_PRG_STAT
-        )
-        VALUES (
-        '2'
-        ,'user02'
-        ,#{ fndName }
-        ,#{ fndEndDt }
-        ,#{ goalAmt }
-        ,#{ fndDescr }
-        ,#{ successAmt }
-        ,'N'
-        ,'P'
+        , USER_ID
+        , FND_NAME
+        , FND_END_DT
+        , GOAL_AMT
+        , FND_DESCR
+        , SUCCESS_AMT
+        , FND_DEL_YN
+        , FND_PRG_STAT
+        ) VALUES (
+        3333
+        , 'test8'
+        , #{fndName}
+        , #{fndEndDt}
+        , #{goalAmt}
+        , #{fndDescr}
+        , #{successAmt}
+        , 'N'
+        , 'L'
         )
     </insert>
+
+    <!-- 펀딩 등록 파일 삽입 -->
+    <!--    <insert id="insertFundingFileInfo" parameterType="com.revelup.funding.model.dto.FundingFileDTO">-->
+    <!--        INSERT INTO FND_INSERT_FILE (-->
+    <!--                                        FND_CODE-->
+    <!--                                        , FND_FILE_LOC-->
+    <!--                                        , FND_ORG_FILE-->
+    <!--                                        , FND_SAVE_FILE-->
+    <!--                                        , FILE_DIV-->
+    <!--                            ) VALUES (-->
+    <!--                                        1111-->
+    <!--                                        , #{fndFileLoc}-->
+    <!--                                        , #{fndOrgFile}-->
+    <!--                                        , #{fndSaveFile}-->
+    <!--                                        , #{fileDiv}-->
+    <!--                                    )-->
+    <!--    </insert>-->
+
+    <!-- 세터 정보 파일 삽입 -->
+    <!--    <insert id="insertSetterInfoFile" parameterType="com.revelup.funding.model.dto.SetterFileDTO">-->
+    <!--        INSERT INTO STTR_INFO_FILE (-->
+    <!--                                    USER_ID-->
+    <!--                                    , SI_FILE_LOC-->
+    <!--                                    , SI_ORG_FILE-->
+    <!--                                    , SI_SAVE_FILE-->
+    <!--                            ) VALUES (-->
+    <!--                                    'test6'-->
+    <!--                                    , #{siFileLoc}-->
+    <!--                                    , #{siOrgFile}-->
+    <!--                                    , #{siSaveFile}-->
+    <!--        )-->
+    <!--    </insert>-->
+
+
+
+    <!-- Gift 정보 삽입 -->
+    <insert id="insertGift" parameterType="com.revelup.funding.model.dto.GiftDTO">
+        INSERT INTO GIFT (
+        FND_CODE
+        , GIFT_PRICE
+        , GIFT_NAME
+        , GIFT_PROD_QTY
+        ) VALUES (
+        3333
+        , #{giftPrice}
+        , #{giftName}
+        , #{giftProdQty}
+        )
+    </insert>
+
+
+    <select id="selectAllFunding" resultType="com.revelup.funding.model.dto.FundingInfoDTO">
+        SELECT *
+        FROM FND_INFO
+        ORDER BY FND_CODE desc;
+    </select>
+
 
 </mapper>

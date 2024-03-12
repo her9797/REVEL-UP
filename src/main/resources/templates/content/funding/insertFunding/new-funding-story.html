@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+
+    <!--  CSS 경로  -->
+    <link th:href="@{/css/mypage.css}" rel="stylesheet">
+    <link th:href="@{/css/new-funding-story.css}" rel="stylesheet">
+
+    <!--  fragments 경로  -->
+    <th:block th:include="~{fragments/common}"></th:block>
+
+    <!--  JS 경로  -->
+    <script th:src="@{/js/new-funding-story.js}"></script>
+
+    <!-- 폰트 -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet">
+
+</head>
+
+<body>
+<div th:insert="~{/fragments/header.html}"></div>
+
+<!-- 배너 부분 -->
+<section class="banner2-area">
+    <div class="container">
+        <div class="row fullscreen align-items-center">
+            <div class="col-lg-10">
+                <div class="banner2-content">
+                    <h1 style="font-weight: bold; margin-left: 94px;">마이페이지</h1>
+                    <br>
+                    <p style="color:white; margin-left: 100px;">마이페이지</p>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<div class="container" style="border-top: 1px solid lightgray; margin-top: 15px;">
+    <br>
+    <div class="row">
+        <div class="col-lg-3">
+
+            <div th:insert="~{/fragments/sidebar.html}"></div>
+
+        </div>
+
+        <div class="col-lg-8">
+
+            <a style="margin-bottom: 300px; font-size: 18px;">나의 펀딩 내역 &gt; <b>펀딩 신규 등록</b></a>
+
+            <div class="col-lg-1.5 col-md-1.5 col-sm-1.5">
+
+                <p class="title" style="font-size: 14px; font-weight: bold; margin-top: 30px;">세터님의 펀딩을 간략하게 설명해
+                    주세요.</p>
+                <div class="contents">
+                    <h3><b>스토리 정보 작성</b></h3>
+                    <div class="input-group">
+                        <label for="thumbnail">상세페이지 사진 등록</label>
+                        <p class="title" style="font-size: 12px; color: #C1C1C1; margin-top: 20px;">펀딩 상세페이지를 등록해
+                            주세요.</p>
+                    </div>
+                    <!-- 노란색 텍스트 박스안에 하기 내용 추가 필요 + 불렛포인트로 리스트 형식으로 작성 -->
+                    <!-- 사진 1개 이상 등록 필수
+                        - 이미지 용량 제한
+                        - JPG, JPEG, PNG: 10MB 이하, 해상도 760x480 픽셀 이상
+                        - 최대 5장까지 등록 가능
+                        - 사진을 선택시 이미지 확대 가능
+                        - 사진을 길게 누르고 이동시 사진 순서 변경 가능 -->
+                    <div class="input-group">
+                        <label for="funding-story">펀딩 스토리</label>
+                        <textarea id="funding-story" placeholder="대표 이미지와 상세 페이지 사이에 보이는 글이에요. 펀딩을 쉽고 간결하게 소개해 주세요."
+                                  rows="10"></textarea>
+                    </div>
+                </div>
+            </div>
+
+            <div class="button-group">
+                <button class="back-button"
+                        onclick="location.href='/content/funding/insertFunding/new-funding-basic-info'">이전
+                </button>
+                <button class="next-button"
+                        onclick="location.href='/content/funding/insertFunding/new-funding-gift-info'">다음
+                </button>
+            </div>
+
+            <section class="features-area">
+                <div class="container">
+                    <br>
+                    <br>
+                    <br>
+                    <br>
+                    <br>
+                    <br>
+                    <br>
+                </div>
+            </section>
+        </div>
+    </div>
+</div>
+
+<div th:insert="~{/fragments/footer.html}"></div>
+
+</body>
+</html>

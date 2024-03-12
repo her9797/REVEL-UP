@@ -1,5 +1,6 @@
 package com.revelup.funding.model.dto;
 
+import com.revelup.pay.model.dto.PayDTO;
 import lombok.*;
 
 @NoArgsConstructor
