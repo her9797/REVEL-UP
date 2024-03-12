@@ -5,6 +5,7 @@ import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
+import java.util.Optional;
 
 @Mapper
 public interface NoticeMapper {
@@ -14,7 +15,8 @@ public interface NoticeMapper {
     /* 공지사항 등록 */
     void insertNotice(NoticeDTO notice);
 
-    NoticeDTO findByOne(String findByNotice);
+
+    NoticeDTO selectByDetails(int ntcCode);
 
 //    NoticeDTO selectOneNoticeList(String ntcTitle);
 }

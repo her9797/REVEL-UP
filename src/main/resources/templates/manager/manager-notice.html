@@ -50,14 +50,15 @@
                 <td>공지사항 작성일</td>
             </tr>
             <tr th:each="notice : ${noticeList}" align="center">
-                <td th:text="${notice.ntcCode}"></td>
-                <!-- 클릭 가능한 링크로 변경 -->
                 <td>
-                    <a style="color:black" href="#" th:text="${notice.ntcTitle}" onclick="openModal('${notice.ntcTitle}'); return false;"></a>
+                    <!-- 공지 코드를 클릭할 때 해당 공지에 대한 모달 창 열기 -->
+                    <a style="color:black; cursor:pointer;" th:text="${notice.ntcCode}" onclick="openModal(this)">${notice.ntcCode}</a>
                 </td>
+                <td th:text="${notice.ntcTitle}"></td>
                 <td th:text="${notice.ntcInsertDt}"></td>
             </tr>
         </table>
+    </div>
 
 
         <button type="button" id="insert-btn" data-toggle="modal" data-target="insert-modal" style="font-weight: bold">신규등록</button>
@@ -109,7 +110,7 @@
 <!-- 공지사항 내용을 보여줄 모달창-->
 
 
-        <div id="notice-modal" class="modal display-none" th:each="notice : ${noticeList}">
+        <div id="notice-modal" class="modal" th:each="notice : ${noticeList}">
             <div class="open-modal">
                 <div class="modal-content2">
                     <span id="close-btn2">&times;</span>

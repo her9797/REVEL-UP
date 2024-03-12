@@ -5,7 +5,7 @@ window.onload = function() {
         // 모달 엘리먼트 가져오기
         var modal = document.getElementById('insert-modal');
         // 모달 보이도록 스타일 변경
-        modal.style.display = 'block';
+        modal.style.display = 'block'; // 이 스타일 변경은 부트스트랩을 사용하지 않을 때만 필요하므로, 부트스트랩을 사용한다면 이 줄은 삭제하세요.
     });
 
     // 모달 닫기 버튼 클릭 시 모달 숨기기
@@ -13,7 +13,7 @@ window.onload = function() {
         // 모달 엘리먼트 가져오기
         var modal = document.getElementById('insert-modal');
         // 모달 숨기도록 스타일 변경
-        modal.style.display = 'none';
+        modal.style.display = 'none'; // 이 스타일 변경은 부트스트랩을 사용하지 않을 때만 필요하므로, 부트스트랩을 사용한다면 이 줄은 삭제하세요.
     });
 
     // 현재 시간 표시
@@ -34,39 +34,28 @@ function displayCurrentTime() {
     document.getElementById("current-time-value").textContent = formattedTime;
 }
 
-
-
-
 // 모달 열기 함수
-function openModal(title) {
-    // 모달을 먼저 표시합니다.
-    var modal = new bootstrap.Modal(document.getElementById('notice-modal'));
-    modal.show();
+function openModal(eventTarget) {
+    const ntcCode = eventTarget.innerHTML;
 
-    // 클릭된 공지 제목에 해당하는 내용을 가져와서 모달에 표시합니다.
-    var content = getContentByTitle(title);
-    document.getElementById('modal-title').textContent = title;
-    document.getElementById('modal-content').textContent = content;
-}
+    console.log(ntcCode);
+    // AJAX를 사용하여 해당 공지사항의 상세 정보를 요청
+    $.ajax({
+        url: "/manager/manager-notice/" + ntcCode,
+        type: "GET",
+        dataType: "json", // 응답 데이터 형식은 JSON
+        success: function(response) {
+            // 응답 받은 데이터를 사용하여 모달 창에 값을 채워 넣기
+            $('#modal-title2').text(response.ntcTitle); // 제목 설정
+            $('#modal-date2').text(response.ntcInsertDt); // 작성날짜 설정
+            $('#modal-content2').text(response.ntcCont); // 내용 설정
 
-// 공지 제목에 해당하는 내용 가져오기 (가정)
-function getContentByTitle(title) {
-    // 여기서는 noticeList 배열에서 제목에 해당하는 내용을 찾아서 반환합니다.
-    // 실제로는 서버에서 데이터를 가져오는 방식에 따라 코드를 변경해야 합니다.
-    for (var i = 0; i < noticeList.length; i++) {
-        if (noticeList[i].ntcTitle === title) {
-            return noticeList[i].ntcCont;
+            // 모달 창 열기
+            $('#notice-modal').modal('show');
+        },
+        error: function(xhr, status, error) {
+            // 오류 처리 로직
+            console.error(error);
         }
-    }
-    return ''; // 해당하는 내용이 없으면 빈 문자열을 반환합니다.
-}
-
-function openNoticeModal(title, content, date) {
-    // 모달에 제목, 내용, 작성일을 설정
-    document.getElementById('modal-title').textContent = title;
-    document.getElementById('modal-content').textContent = content;
-    document.getElementById('modal-date').textContent = date;
-
-    // 모달을 보이도록 설정
-    $('#notice-modal').modal('show');
+    });
 }

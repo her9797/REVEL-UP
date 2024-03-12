@@ -46,14 +46,10 @@ public class NoticeController {
         return "redirect:/manager/manager-notice";
     }
 
-    @GetMapping("/findByNotice")
-    public Model findByOneNotice(Model model, NoticeDTO noticeDTO) {
-
-        String findByNotice = noticeDTO.getNtcTitle();
-
-        NoticeDTO notice = noticeService.findByOne(findByNotice);
-
-        return model.addAttribute("notice", notice);
+    @GetMapping("/manager-notice/{ntcCode}")
+    @ResponseBody
+    public NoticeDTO noticeDetails(@PathVariable int ntcCode) {
+        return noticeService.selectByDetails(ntcCode);
     }
 
 

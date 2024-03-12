@@ -32,13 +32,13 @@
                 )
     </insert>
 
-    <select id="findByOne" resultMap="noticeResultMap">
+    <select id="selectByDetails" resultMap="noticeResultMap" parameterType="int">
         SELECT  NTC_CODE
                 ,NTC_TITLE
                 ,NTC_INSERT_DT
                 ,NTC_CONT
           FROM NTC
-         WHERE NTC_Title = #{ ntcTitle }
+         WHERE NTC_CODE = #{ ntcCode }
 
     </select>
 
