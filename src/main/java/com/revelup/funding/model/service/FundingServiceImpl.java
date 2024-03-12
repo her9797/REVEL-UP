@@ -35,6 +35,9 @@ public class FundingServiceImpl implements FundingService {
 
     @Override
     public List<FundingInfoDTO> selectAllFunding() {
+//        List<FundingInfoDTO> fundingInfoDTOList = mapper.selectAllFunding();
+//        System.out.println("fundingInfoDTOList 서비스 구현체 : " + fundingInfoDTOList);
+//        return fundingInfoDTOList;
         return mapper.selectAllFunding();
     }
 
