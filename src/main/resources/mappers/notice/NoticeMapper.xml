@@ -42,13 +42,18 @@
 
     </select>
 
-<!--    <update id="incrementNoticeCount" parameterType="int">-->
-<!--        UPDATE NTC-->
-<!--           SET NTC_CODE = NTC_CODE + 1-->
-<!--         WHERE NTC_CODE = #{ ntcCode }-->
-<!--    </update>-->
+    <update id="updateNotice" parameterType="com.revelup.notice.model.dto.NoticeDTO">
+        UPDATE  NTC
+           SET  NTC_TITLE = #{ ntcTitle }
+                ,NTC_CONT = #{ ntcCont }
+         WHERE NTC_CODE = #{ ntcCode }
+    </update>
 
-
+    <delete id="deleteNotice" parameterType="com.revelup.notice.model.dto.NoticeDTO">
+        DELETE
+          FROM NTC
+         WHERE NTC_CODE = #{ ntcCode }
+    </delete>
 
 
 </mapper>

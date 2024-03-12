@@ -35,4 +35,11 @@ public class NoticeService {
         return noticeMapper.selectByDetails(ntcCode);
     }
 
+    public void deleteNotice(int ntcCode) {
+        noticeMapper.deleteNotice(ntcCode);
+    }
+
+    public void updateNotice(NoticeDTO noticeDTO) {
+        noticeMapper.updateNotice(noticeDTO);
+    }
 }

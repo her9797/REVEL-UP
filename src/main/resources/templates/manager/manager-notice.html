@@ -116,22 +116,24 @@
                     <span id="close-btn2">&times;</span>
                     <h4 style="margin-left: 225px">NOTICE</h4>
                     <div class="notice-content">
+
                         <div class="notice-header2">
-                            <label for="modal-title2" style="margin-top: 15px;">제목</label>
-                            <textarea th:text="${notice.ntcTitle}" type="text" id="modal-title2" class="text-box2" name="ntcTitle"/><br>
+                            <label for="ntcTitle" style="margin-top: 15px;">제목</label>
+                            <textarea th:text="${notice.ntcTitle}" type="text" id="ntcTitle" class="text-box2" name="ntcTitle"></textarea><br>
                             <label for="modal-date2" style="margin-top: 20px;">작성날짜</label>
                             <textarea th:text="${notice.ntcInsertDt}" type="text" id="modal-date2" class="text-box2" name="ntcDate" readonly/><br>
                         </div>
 
                         <div class="contents2">
                             <div class="contract2">
-                                <label for="modal-content2" id="content" style="margin-top: 20px;">내용</label>
-                                <textarea th:text="${notice.ntcCont}" id="modal-content2" class="text-box3" name="ntcCont"></textarea>
+                                <label for="ntcCont" id="content" style="margin-top: 20px;">내용</label>
+                                <textarea th:text="${notice.ntcCont}" type="text" id="ntcCont" class="text-box3" name="ntcCont"></textarea>
                             </div>
                         </div>
                         <div class="modal-button2" style="margin-left: 150px; margin-top: 20px;">
-                            <button class="delete-btn" id="delete-btn">삭제하기</button>
                             <button class="update-btn" id="update-btn">수정하기</button>
+
+                            <button class="delete-btn" id="delete-btn">삭제하기</button>
                         </div>
                     </div>
                 </div>

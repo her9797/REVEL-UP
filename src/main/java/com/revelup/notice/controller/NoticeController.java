@@ -52,5 +52,23 @@ public class NoticeController {
         return noticeService.selectByDetails(ntcCode);
     }
 
+    @PostMapping("/delete/{ntcCode}")
+    @ResponseBody
+    public String deleteNotice(@PathVariable int ntcCode) {
+
+        noticeService.deleteNotice(ntcCode);
+
+        return "redirect:/main";
+    }
+
+    @PostMapping("/update")
+    public String updateNotice(NoticeDTO noticeDTO){
+
+        noticeService.updateNotice(noticeDTO);
+
+        return "redirect:/manager/manager-notice";
+
+    }
+
 
 }

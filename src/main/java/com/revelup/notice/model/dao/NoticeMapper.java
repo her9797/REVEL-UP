@@ -10,13 +10,20 @@ import java.util.Optional;
 @Mapper
 public interface NoticeMapper {
 
+    /** 공지사항 전체 목록 조회 */
     List<NoticeDTO> findAllNtcList();
 
-    /* 공지사항 등록 */
+    /** 공지사항 등록 */
     void insertNotice(NoticeDTO notice);
 
-
+    /** 공지사항 상세조회 */
     NoticeDTO selectByDetails(int ntcCode);
 
-//    NoticeDTO selectOneNoticeList(String ntcTitle);
+    /** 공지사항 삭제 */
+    void deleteNotice(int ntcCode);
+
+    /** 공지사항 수정 */
+    void updateNotice(NoticeDTO noticeDTO);
+
+
 }
