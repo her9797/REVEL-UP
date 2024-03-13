@@ -28,7 +28,7 @@ public class PayCompletionDTO {
 	private String userId;
 	private int fndCode;
 	private int giftQty;
-	private Date plgDttm;
+	private String plgDttm;
 	private int plgPrice;
 	private Date plgCanDt;
 
@@ -36,6 +36,7 @@ public class PayCompletionDTO {
 	private String giftName; // Gift name
 	private Date fndEndDt; // Funding end date
 	private String trackingNo; // Delivery tracking number
+	private String delivStat; // Delivery status
 	private String userAdd; // User address
 	private String userName; // User name
 	private String userPhone; // User phone number

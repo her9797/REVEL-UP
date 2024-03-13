@@ -42,6 +42,29 @@ public class MypageController {
         }
     }
 
+    // 나의 후원내역1 상세보기 페이지 이동
+    @GetMapping("/getter-spons-details1")
+    public String selectOnePlg(@RequestParam("plgCode") int plgCode, Model model) {
+
+        log.info("plgCode : {}", plgCode);
+        try {
+            PayCompletionDTO plgDetails = mypageService.selectOne(plgCode);
+            System.out.println("plgDetails :" + plgDetails);
+            if (plgDetails == null) { // 조회 결과가 없는 경우
+                log.info("해당 plgCode에 대한 데이터가 존재하지 않습니다: {}", plgCode);
+                model.addAttribute("message", "해당 정보를 찾을 수 없습니다."); // 모델에 메시지 추가
+            } else { // 조회 결과가 있는 경우
+                log.info("plgDetails: {}", plgDetails); // 조회된 후원 내역 로깅
+                model.addAttribute("plgDetails", plgDetails); // 모델에 후원 내역 추가
+            }
+            return "content/mypage/getter-spons-details1"; // 후원 내역 상세보기 페이지로 이동
+        } catch (Exception e) { // 예외 처리
+            log.error("페이지를 불러오는 중 오류가 발생했습니다.", e); // 오류 로깅
+            // 예외를 발생시켜 공통 예외 처리 기능을 통해 사용자에게 적절한 응답을 할 수 있도록 함
+            throw new RuntimeException("페이지를 불러오는 중 오류가 발생했습니다.", e);
+        }
+    }
+
     // 후원철회 버튼 클릭 후 페이지 이동
     @GetMapping("/getter-refund")
     public String getterRefundPage(Model model, Principal principal) {
@@ -74,28 +97,7 @@ public class MypageController {
         }
     }
 
-    // 나의 후원내역1 상세보기 페이지 이동
-    @GetMapping("/getter-spons-details1")
-    public String selectOnePlg(@RequestParam("plgCode") Integer plgCode, Model model) {
 
-        log.info("plgCode : {}", plgCode);
-        try {
-            PayCompletionDTO plgDetails = mypageService.selectOne(plgCode);
-
-            if (plgDetails == null) { // 조회 결과가 없는 경우
-                log.info("해당 plgCode에 대한 데이터가 존재하지 않습니다: {}", plgCode);
-                model.addAttribute("message", "해당 정보를 찾을 수 없습니다."); // 모델에 메시지 추가
-            } else { // 조회 결과가 있는 경우
-                log.info("plgDetails: {}", plgDetails); // 조회된 후원 내역 로깅
-                model.addAttribute("plgDetails", plgDetails); // 모델에 후원 내역 추가
-            }
-            return "content/mypage/getter-spons-details1"; // 후원 내역 상세보기 페이지로 이동
-        } catch (Exception e) { // 예외 처리
-            log.error("페이지를 불러오는 중 오류가 발생했습니다.", e); // 오류 로깅
-            // 예외를 발생시켜 공통 예외 처리 기능을 통해 사용자에게 적절한 응답을 할 수 있도록 함
-            throw new RuntimeException("페이지를 불러오는 중 오류가 발생했습니다.", e);
-        }
-    }
 
     // 나의 후원내역2 상세보기 페이지 이동
     @GetMapping("/getter-spons-details2")
@@ -109,15 +111,13 @@ public class MypageController {
         return "content/mypage/getter-spons-details3";
     }
 
+
+    // 세터의 펀딩 목록
     @GetMapping("/setter-fndList")
-    public String setterFndListPage(Model model, FundingInfoDTO fundingInfoDTO) {
-
-//        double successAmt = mypageService.get
-
+    public String setterFndListPage(Model model) {
 
         try {
             List<FundingInfoDTO> allFndList = mypageService.allFndList();
-//            Double fndRate = fundingInfoDTO.setSuccessAmt();
             model.addAttribute("allFndList", allFndList);
             log.info("allFndList: {}", allFndList);
             return "content/mypage/setter-fndList";
@@ -128,20 +128,22 @@ public class MypageController {
 
     }
 
-    // 펀딩 내역조회 상세페이지 이동
-//    @GetMapping("/setter-funding-history")
-//    public String setterFundingHistoryProgressPage() {
-//        return "/content/mypage/setter-funding-history";
-//    }
-
+    // 세터의 펀딩목록 상세조회
     @GetMapping("/setter-funding-history/{fndCode}")
-    public String sttrFndProPage(@PathVariable("fndCode")int fndCode, Model model, Principal principal) {
+    public String setterSelectOneFnd(@PathVariable("fndCode")int fndCode, Model model) {
 
-        String userId = principal.getName();
-        List<FundingInfoDTO> plgList = mypageService.sttrFndPro(fndCode);
+        log.info("fndCode : " + fndCode);
+
+        FundingInfoDTO selectOneFnd = mypageService.sttrSelectOneFnd(fndCode);
+        log.info("selectOne");
+
+        List<PayCompletionDTO> plgList = mypageService.plgList(fndCode);
+
+        model.addAttribute("selectOneFnd", selectOneFnd);
+        System.out.println("selectOneFnd" + selectOneFnd);
+
         model.addAttribute("plgList", plgList);
         System.out.println("plgList" + plgList);
-
         return "/content/mypage/setter-funding-history";
     }
 

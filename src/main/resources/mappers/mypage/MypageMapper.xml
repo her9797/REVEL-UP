@@ -26,6 +26,8 @@
         <result property="successAmt" column="SUCCESS_AMT" />
         <result property="fndDelYn" column="FND_DEL_YN" />
         <result property="fndPrgStat" column="FND_PRG_STAT" />
+        <result property="auditApprDt" column="AUDIT_APPR_DT" />
+        <result property="giftName" column="GIFT_NAME" />
     </resultMap>
 
     <!--    fnd_file ResultMap 펀딩 파일 -->
@@ -36,6 +38,14 @@
         <result property="fndOrgFile" column="FND_ORG_FILE" />
         <result property="fndSaveFile" column="FND_SAVE_FILE" />
         <result property="fileDiv" column="FILE_DIV" />
+    </resultMap>
+
+    <!--    aud ResultMa 심사 -->
+    <resultMap id="audResultMap" type="com.revelup.audit.model.dto.AuditDTO">
+        <id property="fndCode" column="FND_CODE" />
+        <result property="auditStat" column="AUDIT_STAT" />
+        <result property="fndInsertDttm" column="FND_INSERT_DTTM" />
+        <result property="auditApprDt" column="AUDIT_APPR_DT" />
     </resultMap>
 
     <!--    gift ResultMap 선물 -->
@@ -62,29 +72,15 @@
         <result property="plgDttm" column="PLG_DTTM" />
         <result property="plgPrice" column="PLG_PRICE" />
         <result property="plgCanDt" column="PLG_CAN_DT" />
+        <collection property="delivery" resultMap="delivResultMap" />
         <collection property="login" resultMap="login"/>
         <collection property="gift" resultMap="giftResultMap" />
         <collection property="fundingInfo" resultMap="fndInfoResultMap" />
     </resultMap>
 
 <!--        PLG ResultMap 후원 -->
-<!--    <resultMap id="plgResultMap" type="com.revelup.pay.model.dto.PayCompletionDTO">-->
-<!--        <id property="plgCode" column="PLG_CODE" />-->
-<!--        <result property="userId" column="USER_ID" />-->
-<!--        <result property="fndCode" column="FND_CODE" />-->
-<!--        <result property="giftQty" column="GIFT_QTY" />-->
-<!--        <result property="plgDttm" column="PLG_DTTM" />-->
-<!--        <result property="plgPrice" column="PLG_PRICE" />-->
-<!--        <result property="plgCanDt" column="PLG_CAN_DT" />-->
-<!--        <association property="fndName" resultMap="fndInfoResultMap" />-->
-<!--        <association property="deliv" resultMap="delivResultMap" />-->
-<!--        <association property="loginUser" resultMap="login"/>-->
-<!--        <association property="giftName" resultMap="giftResultMap" />-->
-<!--    </resultMap>-->
-
-<!--        PLG ResultMap 후원 -->
     <resultMap id="twoPlgResultMap" type="com.revelup.pay.model.dto.PayCompletionDTO">
-        <id property="plgC56ode" column="PLG_CODE" />
+        <id property="plgCode" column="PLG_CODE" />
         <result property="userId" column="USER_ID" />
         <result property="fndCode" column="FND_CODE" />
         <result property="giftQty" column="GIFT_QTY" />
@@ -94,6 +90,7 @@
         <result property="giftName" column="GIFT_NAME" />
         <result property="fndEndDt" column="FND_END_DT" />
         <result property="trackingNo" column="TRACKING_NO" />
+        <result property="delivStat" column="DELIV_STAT" />
         <result property="userAdd" column="USER_ADD" />
         <result property="userName" column="USER_NAME" />
         <result property="userPhone" column="USER_PHONE" />
@@ -153,7 +150,7 @@
         <!--        AND USER_ID = #{ userId }-->
     </select>
 
-    <!--     후원내역조회 상세조회 -->
+    <!-- 후원내역조회 상세조회 -->
     <select id="selectOne" resultMap="twoPlgResultMap">
         SELECT
                 P.PLG_DTTM
@@ -174,18 +171,54 @@
          WHERE P.PLG_CODE = #{plgCode}
     </select>
 
-    <!--     후원내역조회 상세조회 -->
+    <!-- 세터 펀딩내역 전체조회 -->
     <select id="allFndList" resultMap="fndInfoResultMap">
         SELECT
-                FND_NAME
+                FND_CODE
+                ,FND_NAME
                 ,GOAL_AMT
                 ,SUCCESS_AMT
                 ,FND_END_DT
           FROM FND_INFO
-         WHERE FND_PRG_STAT = 'E'
+         WHERE FND_PRG_STAT = 'L'
     </select>
 
-    <!--    <select id="sttrFndPro" resultMap="com.revelup.funding.model.dao.FundingMapper">-->
+    <!-- 세터 펀딩내역 상세조회(펀딩) -->
+    <select id="sttrSelectOneFnd" resultMap="fndInfoResultMap">
+        SELECT
+                A.AUDIT_APPR_DT
+                ,F.FND_CODE
+                ,F.FND_NAME
+                ,G.GIFT_NAME
+                ,F.GOAL_AMT
+                ,F.SUCCESS_AMT
+                ,F.FND_END_DT
+          FROM FND_INFO F
+          JOIN AUD A ON A.FND_CODE = F.FND_CODE
+          JOIN GIFT G ON G.FND_CODE = F.FND_CODE
+         WHERE F.FND_CODE = #{fndCode}
+    </select>
+
+    <!-- 세터 펀딩내역 상세조회(후원자) -->
+    <select id="plgList" resultMap="payResultMap">
+        SELECT
+                P.PLG_CODE
+                , U.USER_NAME
+                , P.PLG_PRICE
+                , P.PLG_DTTM
+                , F.FND_END_DT
+                , U.USER_ADD
+                , D.DELIV_STAT
+                , D.TRACKING_NO
+          FROM PLG P
+          JOIN USER U ON P.USER_ID = U.USER_ID
+          JOIN DELIV D ON P.PLG_CODE = D.PLG_CODE
+          JOIN FND_INFO F ON P.FND_CODE = F.FND_CODE
+         WHERE P.PLG_CODE = #{plgCode}
+    </select>
+
+
+<!--        <select id="sttrFndPro" resultMap="com.revelup.funding.model.dao.FundingMapper">-->
 <!--        SELECT P.PLG_DTTM-->
 <!--        ,F.FND_NAME-->
 <!--        ,G.GIFT_NAME-->
@@ -204,3 +237,22 @@
 
 
 </mapper>
+
+
+
+
+
+        <!--        PLG ResultMap 후원 -->
+        <!--    <resultMap id="plgResultMap" type="com.revelup.pay.model.dto.PayCompletionDTO">-->
+        <!--        <id property="plgCode" column="PLG_CODE" />-->
+        <!--        <result property="userId" column="USER_ID" />-->
+        <!--        <result property="fndCode" column="FND_CODE" />-->
+        <!--        <result property="giftQty" column="GIFT_QTY" />-->
+        <!--        <result property="plgDttm" column="PLG_DTTM" />-->
+        <!--        <result property="plgPrice" column="PLG_PRICE" />-->
+        <!--        <result property="plgCanDt" column="PLG_CAN_DT" />-->
+        <!--        <association property="fndName" resultMap="fndInfoResultMap" />-->
+        <!--        <association property="deliv" resultMap="delivResultMap" />-->
+        <!--        <association property="loginUser" resultMap="login"/>-->
+        <!--        <association property="giftName" resultMap="giftResultMap" />-->
+        <!--    </resultMap>-->

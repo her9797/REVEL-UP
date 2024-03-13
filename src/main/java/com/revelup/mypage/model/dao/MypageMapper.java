@@ -22,8 +22,15 @@ public interface MypageMapper {
 //    List<FundingInfoDTO> sttrFndPro(int fndCode);
 
 
+    // 나의 후원내역 상세조회
     PayCompletionDTO selectOne(int plgCode);
 
+    // 세터 펀딩목록
     List<FundingInfoDTO> allFndList();
+
+    // 세터 펀딩내역 상세조회
+    FundingInfoDTO sttrSelectOneFnd(int fndCode);
+
+    List<PayCompletionDTO> plgList(int fndCode);
 
 }
