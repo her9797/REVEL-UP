@@ -19,6 +19,8 @@ public class KaKaoPayApproveResponseDTO {
 	private String partnerOrderId;
 	@JsonProperty("partner_user_id")
 	private String partnerUserId;
+	@JsonProperty("userId")
+	private String userId;
 	@JsonProperty("payment_method_type")
 	private String paymentMethodtype;
 	private Amount amount;

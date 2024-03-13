@@ -1,0 +1,19 @@
+/* 필수 입력 필드 스타일 */
+.input-container {
+    position: relative;
+}
+
+input:required:not(:focus):placeholder-shown + .placeholder-message {
+    visibility: visible; /* 필수 입력 필드에 포커스가 없고, 입력된 값이 없을 때 메시지 표시 */
+}
+
+.placeholder-message {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    left: 10px; /* 필요한 위치에 맞게 조정 */
+    visibility: hidden;
+    color: red; /* 메시지의 색상 설정 */
+    font-size: 12px; /* 메시지의 글꼴 크기 설정 */
+    transition: visibility 0.3s ease; /* 메시지가 나타나는 트랜지션 설정 */
+}

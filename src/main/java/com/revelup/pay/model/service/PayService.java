@@ -8,13 +8,13 @@ import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ConcurrentLinkedDeque;
 
 import com.revelup.config.KakaoPayConfig;
-import com.revelup.pay.model.dto.KaKaoPayApproveResponseDTO;
-import com.revelup.pay.model.dto.KakaoPayApproveDTO;
-import com.revelup.pay.model.dto.KakaoPayReadyDTO;
-import com.revelup.pay.model.dto.KakaoPayReadyResponseDTO;
+
+import com.revelup.pay.model.dto.*;
 import jakarta.servlet.http.HttpServletRequest;
+import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
@@ -28,6 +28,9 @@ import org.springframework.web.client.RestTemplate;
 public class PayService {
 	private static final ConcurrentHashMap<String, String> tidCacheMap = new ConcurrentHashMap();
 	private final KakaoPayConfig kakaoPayConfig;
+
+	@Autowired
+//	private final PayMapper paymapper;
 	public PayService(KakaoPayConfig kakaoPayConfig) {
 		this.kakaoPayConfig = kakaoPayConfig;
 	}
@@ -82,7 +85,6 @@ public class PayService {
 		return redirectUrl;
 	}
 
-
 	@Transactional
 	public KaKaoPayApproveResponseDTO kakaoPayApprove(String userName, String pgToken) {
 		String url = kakaoPayConfig.getHost() + "/online/v1/payment/approve";
@@ -105,8 +107,11 @@ public class PayService {
 		log.info(response.toString());
 		//TODO: 결제정보 DB에 저장.
 
+
 		return response;
 	}
 
 
+	public void insert(PayCompletionDTO payCompletionDTO) {
+	}
 }
