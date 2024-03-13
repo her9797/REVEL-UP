@@ -22,6 +22,7 @@ public interface FundingMapper {
 
     List<FundingInfoDTO> selectAllFunding();
 
+    //    void updateViews(int fndCode);
 
-
+    FundingInfoDTO findByCode(int fndCode);
 }

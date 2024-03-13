@@ -8,6 +8,7 @@ public class FundingFileDTO implements java.io.Serializable {
     private String fndOrgFile; // 기존 파일명
     private String fndSaveFile; // 저장 파일명
     private String fileDiv; // 파일 구분
+    private int fileAttached; // 파일 첨부 여부
 
     public FundingFileDTO() {
     }

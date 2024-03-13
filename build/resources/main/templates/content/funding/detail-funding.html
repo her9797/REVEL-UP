@@ -160,6 +160,22 @@
             </tbody>
         </table>
 
+        <table style="border: 1px solid black; border-collapse: collapse">
+            <tr>
+                <th>펀딩명</th>
+                <td th:text="${funding.fndName}"></td>
+            </tr>
+            <tr>
+                <th>선물 금액</th>
+                <td th:text="${funding.giftPrice}"></td>
+            </tr>
+            <tr>
+                <th>펀딩 스토리</th>
+                <td th:text="${funding.fndDescr}"></td>
+            </tr>
+        </table>
+        <button onclick="listReq()">돌아가기</button>
+
     </div>
 </main>
 <main class="container2">
@@ -228,5 +244,9 @@
 <div th:insert="~{fragments/footer.html}"></div>
 
 </body>
-
+<script>
+    const listReq = () => {
+        location.href = "content/funding/all-funding";
+    }
+</script>
 </html>

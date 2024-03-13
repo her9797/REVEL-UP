@@ -16,6 +16,12 @@
         <result property="fndPrgStat" column="FND_PRG_STAT"/>
     </resultMap>
 
+    <resultMap type="com.revelup.funding.model.dto.FundingInfoDTO" id="findByCode">
+        <id property="fndCode" column="FND_CODE"/>
+        <result property="fndName" column="FND_NAME"/>
+        <result property="giftPrice" column="GIFT_PRICE"/>
+    </resultMap>
+
     <!-- 세터 정보 삽입 -->
     <insert id="insertSetterInfo" parameterType="com.revelup.funding.model.dto.SetterInfoDTO">
         INSERT INTO STTR_INFO (
@@ -107,11 +113,28 @@
                             )
     </insert>
 
-
+    <!--전체 펀딩 리스트 조회 쿼리-->
     <select id="selectAllFunding" resultMap="selectAllFunding">
         SELECT *
         FROM FND_INFO
         ORDER BY FND_CODE desc;
+    </select>
+
+<!--    &lt;!&ndash; 조회수 업데이트 쿼리   &ndash;&gt;-->
+<!--    <update id="updateViews" parameterType="int">-->
+<!--        UPDATE FND_INFO-->
+<!--        SET FND_VIEWS=FND_VIEWS+1-->
+<!--        WHERE FND_CODE=#{FND_CODE}-->
+<!--    </update>-->
+
+    <!--    펀딩 코드로 검색하는 쿼리-->
+    <select id="findByCode" resultMap="findByCode">
+        SELECT fi.FND_CODE
+               , fi.FND_NAME
+               , gi.GIFT_PRICE
+          FROM FND_INFO fi
+          JOIN GIFT gi ON fi.FND_CODE = gi.FND_CODE
+         WHERE fi.FND_CODE = #{fndCode}
     </select>
 
 

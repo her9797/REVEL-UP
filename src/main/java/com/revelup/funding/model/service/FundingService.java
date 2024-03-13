@@ -13,4 +13,7 @@ public interface FundingService {
     List<FundingInfoDTO> selectAllFunding();
 
 
+//    void updateViews(int fndCode);
+
+    FundingInfoDTO findByCode(int fndCode);
 }

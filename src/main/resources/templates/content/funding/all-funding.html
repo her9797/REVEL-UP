@@ -24,7 +24,6 @@
 </head>
 
 
-
 <body>
 <div th:insert="~{/fragments/header.html}"></div>
 
@@ -59,19 +58,18 @@
                         <button class="pay-button" onclick="location.href='/content/funding/detail-funding'">후원하기
                         </button>
                         <span>
-                            <button class="heart-button" th:style="${isRedHeart != null and isRedHeart} ? 'color: red;' : 'color: gray;'" onclick="toggleHeart(this)">❤️</button>
+                            <button class="heart-button"
+                                    th:style="${isRedHeart != null and isRedHeart} ? 'color: red;' : 'color: gray;'"
+                                    onclick="toggleHeart(this)">❤️</button>
                         </span>
                     </li>
                 </ul>
 
                 <table>
-                    <tr>
-                        <th>펀딩명</th>
-                        <th>달성률</th>
-                        <th>선물금액</th>
-                    </tr>
                     <tr th:each="funding: ${fundingList}" style="border: #0AA37F solid 1px">
-                        <td th:text="${funding.fndName}"></td>
+                        <td>
+                            <a th:text="${funding.fndName}" th:href="@{|/content/funding/all-funding/${funding.fndCode}|}" style="cursor: pointer"></a>
+                        </td>
                         <td th:text="${funding.successAmt}"></td>
                         <td th:text="${funding.giftPrice}"></td>
                     </tr>
@@ -92,7 +90,9 @@
                         <button class="pay-button" onclick="location.href='/content/funding/detail-funding'">후원하기
                         </button>
                         <span>
-                            <button class="heart-button" th:style="${isRedHeart != null and isRedHeart} ? 'color: red;' : 'color: gray;'" onclick="toggleHeart(this)">❤️</button>
+                            <button class="heart-button"
+                                    th:style="${isRedHeart != null and isRedHeart} ? 'color: red;' : 'color: gray;'"
+                                    onclick="toggleHeart(this)">❤️</button>
                         </span>
                     </li>
                 </ul>
@@ -108,7 +108,9 @@
                         <button class="pay-button" onclick="location.href='/content/funding/detail-funding'">후원하기
                         </button>
                         <span>
-                            <button class="heart-button" th:style="${isRedHeart != null and isRedHeart} ? 'color: red;' : 'color: gray;'" onclick="toggleHeart(this)">❤️</button>
+                            <button class="heart-button"
+                                    th:style="${isRedHeart != null and isRedHeart} ? 'color: red;' : 'color: gray;'"
+                                    onclick="toggleHeart(this)">❤️</button>
                         </span>
                     </li>
                 </ul>
@@ -124,7 +126,9 @@
                         <button class="pay-button" onclick="location.href='/content/funding/detail-funding'">후원하기
                         </button>
                         <span>
-                            <button class="heart-button" th:style="${isRedHeart != null and isRedHeart} ? 'color: red;' : 'color: gray;'" onclick="toggleHeart(this)">❤️</button>
+                            <button class="heart-button"
+                                    th:style="${isRedHeart != null and isRedHeart} ? 'color: red;' : 'color: gray;'"
+                                    onclick="toggleHeart(this)">❤️</button>
                         </span>
                     </li>
                 </ul>
@@ -146,7 +150,9 @@
                         <button class="pay-button" onclick="location.href='/content/funding/detail-funding'">후원하기
                         </button>
                         <span>
-                            <button class="heart-button" th:style="${isRedHeart != null and isRedHeart} ? 'color: red;' : 'color: gray;'" onclick="toggleHeart(this)">❤️</button>
+                            <button class="heart-button"
+                                    th:style="${isRedHeart != null and isRedHeart} ? 'color: red;' : 'color: gray;'"
+                                    onclick="toggleHeart(this)">❤️</button>
                         </span>
                     </li>
                 </ul>
@@ -162,7 +168,9 @@
                         <button class="pay-button" onclick="location.href='/content/funding/detail-funding'">후원하기
                         </button>
                         <span>
-                            <button class="heart-button" th:style="${isRedHeart != null and isRedHeart} ? 'color: red;' : 'color: gray;'" onclick="toggleHeart(this)">❤️</button>
+                            <button class="heart-button"
+                                    th:style="${isRedHeart != null and isRedHeart} ? 'color: red;' : 'color: gray;'"
+                                    onclick="toggleHeart(this)">❤️</button>
                         </span>
                     </li>
                 </ul>
@@ -178,7 +186,9 @@
                         <button class="pay-button" onclick="location.href='/content/funding/detail-funding'">후원하기
                         </button>
                         <span>
-                            <button class="heart-button" th:style="${isRedHeart != null and isRedHeart} ? 'color: red;' : 'color: gray;'" onclick="toggleHeart(this)">❤️</button>
+                            <button class="heart-button"
+                                    th:style="${isRedHeart != null and isRedHeart} ? 'color: red;' : 'color: gray;'"
+                                    onclick="toggleHeart(this)">❤️</button>
                         </span>
                     </li>
                 </ul>
@@ -194,7 +204,9 @@
                         <button class="pay-button" onclick="location.href='/content/funding/detail-funding'">후원하기
                         </button>
                         <span>
-                            <button class="heart-button" th:style="${isRedHeart != null and isRedHeart} ? 'color: red;' : 'color: gray;'" onclick="toggleHeart(this)">❤️</button>
+                            <button class="heart-button"
+                                    th:style="${isRedHeart != null and isRedHeart} ? 'color: red;' : 'color: gray;'"
+                                    onclick="toggleHeart(this)">❤️</button>
                         </span>
                     </li>
                 </ul>
@@ -216,7 +228,9 @@
                         <button class="pay-button" onclick="location.href='/content/funding/detail-funding'">후원하기
                         </button>
                         <span>
-                            <button class="heart-button" th:style="${isRedHeart != null and isRedHeart} ? 'color: red;' : 'color: gray;'" onclick="toggleHeart(this)">❤️</button>
+                            <button class="heart-button"
+                                    th:style="${isRedHeart != null and isRedHeart} ? 'color: red;' : 'color: gray;'"
+                                    onclick="toggleHeart(this)">❤️</button>
                         </span>
                     </li>
                 </ul>
@@ -232,7 +246,9 @@
                         <button class="pay-button" onclick="location.href='/content/funding/detail-funding'">후원하기
                         </button>
                         <span>
-                            <button class="heart-button" th:style="${isRedHeart != null and isRedHeart} ? 'color: red;' : 'color: gray;'" onclick="toggleHeart(this)">❤️</button>
+                            <button class="heart-button"
+                                    th:style="${isRedHeart != null and isRedHeart} ? 'color: red;' : 'color: gray;'"
+                                    onclick="toggleHeart(this)">❤️</button>
                         </span>
                     </li>
                 </ul>
@@ -249,7 +265,9 @@
                         <button class="pay-button" onclick="location.href='/content/funding/detail-funding'">후원하기
                         </button>
                         <span>
-                            <button class="heart-button" th:style="${isRedHeart != null and isRedHeart} ? 'color: red;' : 'color: gray;'" onclick="toggleHeart(this)">❤️</button>
+                            <button class="heart-button"
+                                    th:style="${isRedHeart != null and isRedHeart} ? 'color: red;' : 'color: gray;'"
+                                    onclick="toggleHeart(this)">❤️</button>
                         </span>
                     </li>
                 </ul>
@@ -265,7 +283,9 @@
                         <button class="pay-button" onclick="location.href='/content/funding/detail-funding'">후원하기
                         </button>
                         <span>
-                            <button class="heart-button" th:style="${isRedHeart != null and isRedHeart} ? 'color: red;' : 'color: gray;'" onclick="toggleHeart(this)">❤️</button>
+                            <button class="heart-button"
+                                    th:style="${isRedHeart != null and isRedHeart} ? 'color: red;' : 'color: gray;'"
+                                    onclick="toggleHeart(this)">❤️</button>
                         </span>
                     </li>
                 </ul>

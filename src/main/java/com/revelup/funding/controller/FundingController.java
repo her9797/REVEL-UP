@@ -44,9 +44,9 @@ public class FundingController {
         System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
 //        System.out.println("fundingFileDTO = " + fundingFileDTO);
         System.out.println("fundingInfoDTO = " + fundingInfoDTO);
-        System.out.println("");
+        System.out.println(" ");
         System.out.println("giftDTO = " + giftDTO);
-        System.out.println("");
+        System.out.println(" ");
 //        System.out.println("setterFileDTO = " + setterFileDTO);
         System.out.println("setterInfoDTO = " + setterInfoDTO);
 //        fundingService.insertFunding(fundingFileDTO, fundingInfoDTO, giftDTO, setterFileDTO, setterInfoDTO);
@@ -59,19 +59,20 @@ public class FundingController {
     public String selectAllFunding(Model model) {
         List<FundingInfoDTO> fundingInfoDTOList = fundingService.selectAllFunding();
         model.addAttribute("fundingList", fundingInfoDTOList);
-        System.out.println("??????????????????????????????????????????????????????????????????????");
-        System.out.println("fundingInfoDTOList 컨트롤러 = " + fundingInfoDTOList);
+        System.out.println("fundingInfoDTOList 컨트롤러 selectAllFunding = " + fundingInfoDTOList);
         return "content/funding/all-funding";
     }
 
-    @GetMapping("/{id}")
-    public String findById(@PathVariable("id") Long id, Model model) {
+    @GetMapping("/all-funding/{fndCode}")
+    public String findByCode(@PathVariable("fndCode") int fndCode, Model model) {
+         // 조회수 처리
+         // fundingService.updateViews(fndCode);
 
-        // 조회수 처리
-
-        // 상세내용 가져옴
-
-        return null;
+         // 상세내용 가져옴
+        FundingInfoDTO fundingInfoDTO = fundingService.findByCode(fndCode);
+        model.addAttribute("funding", fundingInfoDTO);
+        System.out.println("fundingInfoDTO 컨트롤러 findByCode = " + fundingInfoDTO);
+        return "content/funding/detail-funding";
     }
 
     @GetMapping("/detail-funding")

@@ -33,16 +33,25 @@ public class FundingServiceImpl implements FundingService {
         mapper.insertGift(giftDTO);
     }
 
+    //    requestdto에서 구분값을 가지고있으면 인서트를 할지안할지 조회하는 로직이 있어야함. 있으면 신규 insert가 아니라 update.
+
+
     @Override
     public List<FundingInfoDTO> selectAllFunding() {
-//        List<FundingInfoDTO> fundingInfoDTOList = mapper.selectAllFunding();
-//        System.out.println("fundingInfoDTOList 서비스 구현체 : " + fundingInfoDTOList);
-//        return fundingInfoDTOList;
         return mapper.selectAllFunding();
     }
 
+//    @Override
+//    public void updateViews(int fndCode) {
+//        mapper.updateViews(fndCode);
+//    }
 
-//    requestdto에서 구분값을 가지고있으면 인서트를 할지안할지 조회하는 로직이 있어야함. 있으면 신규 insert가 아니라 update.
+    @Override
+    public FundingInfoDTO findByCode(int fndCode) {
+        return mapper.findByCode(fndCode);
+    }
+
+
 
 
 
