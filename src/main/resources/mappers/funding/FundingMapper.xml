@@ -149,6 +149,12 @@
          WHERE FND_CODE = #{fndCode}
     </select>
 
+    <!-- 전체 펀딩 목록에 대표 이미지 호출 -->
+    <select id="findThumbnail" resultMap="findFile">
+        SELECT *
+        FROM FND_INSERT_FILE
+    </select>
+
     <!-- 펀딩 심사 리스트 등록 -->
     <insert id="insertAudit" parameterType="com.revelup.audit.model.dto.AuditDTO">
 

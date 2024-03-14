@@ -1,14 +1,9 @@
 package com.revelup.funding.controller;
 
-import com.revelup.audit.model.dto.AuditDTO;
 import com.revelup.funding.model.dto.*;
 import com.revelup.funding.model.service.FundingService;
-import com.revelup.user.controller.UserController;
 import com.revelup.user.model.dto.LoginUserDTO;
 import com.revelup.user.model.service.UserService;
-import org.springframework.security.core.annotation.AuthenticationPrincipal;
-import org.springframework.security.core.userdetails.User;
-import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -54,16 +49,20 @@ public class FundingController {
         return "content/funding/insertFunding/new-funding-complete";
     }
 
-    @GetMapping("/all-funding-test")
+    @GetMapping("/all-funding")
     public String selectAllFunding(Model model) {
         List<FundingInfoDTO> fundingInfoDTOList = fundingService.selectAllFunding();
         model.addAttribute("fundingList", fundingInfoDTOList);
         System.out.println("fundingInfoDTOList 컨트롤러 selectAllFunding = " + fundingInfoDTOList);
-        return "content/funding/all-funding-test";
+
+        List<FundingFileDTO> fundingFileDTOList = fundingService.findThumbnail();
+        model.addAttribute("fundingThumbnailList", fundingFileDTOList);
+
+
+        return "content/funding/all-funding";
     }
 
-
-    @GetMapping("/all-funding-test/{fndCode}")
+    @GetMapping("/all-funding/{fndCode}")
     public String findByCode(@PathVariable("fndCode") int fndCode, Model model) {
         // 조회수 처리
         // fundingService.updateViews(fndCode);
