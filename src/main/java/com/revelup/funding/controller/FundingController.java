@@ -12,6 +12,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import java.io.IOException;
 import java.security.Principal;
 import java.util.List;
 
@@ -40,7 +41,7 @@ public class FundingController {
     @PostMapping("/insertFunding")
     public String insertFunding(@ModelAttribute FundingInfoDTO fundingInfoDTO,
                                 @ModelAttribute GiftDTO giftDTO,
-                                @ModelAttribute SetterInfoDTO setterInfoDTO) {
+                                @ModelAttribute SetterInfoDTO setterInfoDTO) throws IOException {
         System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
 //        System.out.println("fundingFileDTO = " + fundingFileDTO);
         System.out.println("fundingInfoDTO = " + fundingInfoDTO);
@@ -49,9 +50,7 @@ public class FundingController {
         System.out.println(" ");
 //        System.out.println("setterFileDTO = " + setterFileDTO);
         System.out.println("setterInfoDTO = " + setterInfoDTO);
-//        fundingService.insertFunding(fundingFileDTO, fundingInfoDTO, giftDTO, setterFileDTO, setterInfoDTO);
         fundingService.insertFunding(fundingInfoDTO, giftDTO, setterInfoDTO);
-//        return "content/funding/insertFunding";
         return "content/funding/insertFunding/new-funding-complete";
     }
 
@@ -65,13 +64,18 @@ public class FundingController {
 
     @GetMapping("/all-funding/{fndCode}")
     public String findByCode(@PathVariable("fndCode") int fndCode, Model model) {
-         // 조회수 처리
-         // fundingService.updateViews(fndCode);
+        // 조회수 처리
+        // fundingService.updateViews(fndCode);
 
-         // 상세내용 가져옴
+        // 상세내용 가져옴
         FundingInfoDTO fundingInfoDTO = fundingService.findByCode(fndCode);
         model.addAttribute("funding", fundingInfoDTO);
         System.out.println("fundingInfoDTO 컨트롤러 findByCode = " + fundingInfoDTO);
+
+        // 첨부파일 가져옴
+        List<FundingFileDTO> fundingFileDTOList = fundingService.findFile(fndCode);
+        model.addAttribute("fundingFileList", fundingFileDTOList);
+
         return "content/funding/detail-funding";
     }
 
@@ -79,10 +83,6 @@ public class FundingController {
     public String selectDetailFunding() {
         return "content/funding/detail-funding";
     }
-
-
-
-
 
 
 }

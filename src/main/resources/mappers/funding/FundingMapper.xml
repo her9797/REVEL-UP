@@ -22,48 +22,63 @@
         <result property="giftPrice" column="GIFT_PRICE"/>
     </resultMap>
 
+    <resultMap type="com.revelup.funding.model.dto.FundingFileDTO" id="findFile">
+        <id property="fileCode" column="FILE_CODE"/>
+        <result property="fndCode" column="FND_CODE"/>
+        <result property="fndFileLoc" column="FND_FILE_LOC"/>
+        <result property="fndOrgFile" column="FND_ORG_FILE"/>
+        <result property="fndSaveFile" column="FND_SAVE_FILE"/>
+        <result property="fileDiv" column="FILE_DIV"/>
+    </resultMap>
+
     <!-- 세터 정보 삽입 -->
     <insert id="insertSetterInfo" parameterType="com.revelup.funding.model.dto.SetterInfoDTO">
         INSERT INTO STTR_INFO (
-        USER_ID
-        , STTR_COMPANY
-        , STTR_NAME
-        , STTR_REGIST_NO
-        , STTR_BANK
-        , STTR_ACC_NO
-        , STTR_ACC_HOLDER
-        ) VALUES (
-        #{userId}
-        , #{sttrCompany}
-        , #{sttrName}
-        , #{sttrRegistNo}
-        , #{sttrBank}
-        , #{sttrAccNo}
-        , #{sttrAccHolder}
-        )
+                                USER_ID
+                                , STTR_COMPANY
+                                , STTR_NAME
+                                , STTR_REGIST_NO
+                                , STTR_BANK
+                                , STTR_ACC_NO
+                                , STTR_ACC_HOLDER
+                    ) VALUES (
+                                #{userId}
+                                , #{sttrCompany}
+                                , #{sttrName}
+                                , #{sttrRegistNo}
+                                , #{sttrBank}
+                                , #{sttrAccNo}
+                                , #{sttrAccHolder}
+                             )
     </insert>
 
     <!-- 펀딩 정보 삽입 -->
-    <insert id="insertFundingInfo" parameterType="com.revelup.funding.model.dto.FundingInfoDTO">
+    <insert id="insertFundingInfo" parameterType="com.revelup.funding.model.dto.FundingInfoDTO" useGeneratedKeys="true" keyProperty="fndCode">
         INSERT INTO FND_INFO (
-        USER_ID
-        , FND_NAME
-        , FND_END_DT
-        , GOAL_AMT
-        , FND_DESCR
-        , SUCCESS_AMT
-        , FND_DEL_YN
-        , FND_PRG_STAT
-        ) VALUES (
-        #{userId}
-        , #{fndName}
-        , #{fndEndDt}
-        , #{goalAmt}
-        , #{fndDescr}
-        , #{successAmt}
-        , 'N'
-        , 'L'
-        )
+                                USER_ID
+                                , FND_NAME
+                                , FND_END_DT
+                                , GOAL_AMT
+                                , FND_DESCR
+                                , SUCCESS_AMT
+                                , FND_DEL_YN
+                                , FND_PRG_STAT
+                                , FILE_ATTACHED
+                  ) VALUES (
+                                #{userId}
+                                , #{fndName}
+                                , #{fndEndDt}
+                                , #{goalAmt}
+                                , #{fndDescr}
+                                , #{successAmt}
+                                , 'N'
+                                , 'L'
+                                , #{fileAttached}
+                             )
+        <selectKey keyProperty="fndCode" order="AFTER" resultType="_int">
+            <!-- 여러 사용자가 동시에 작업했어도, 내 커넥션에서 발생한 키값을 불러옴 -->
+            SELECT LAST_INSERT_ID()
+        </selectKey>
     </insert>
 
     <!-- 펀딩 등록 파일 삽입 -->
@@ -98,22 +113,22 @@
     <!--        )-->
     <!--    </insert>-->
 
-
-
     <!-- Gift 정보 삽입 -->
     <insert id="insertGift" parameterType="com.revelup.funding.model.dto.GiftDTO">
         INSERT INTO GIFT (
-                            GIFT_PRICE
+                            FND_CODE
+                            , GIFT_PRICE
                             , GIFT_NAME
                             , GIFT_PROD_QTY
                 ) VALUES (
-                            #{giftPrice}
+                            #{fndCode}
+                            , #{giftPrice}
                             , #{giftName}
                             , #{giftProdQty}
                             )
     </insert>
 
-    <!--전체 펀딩 리스트 조회 쿼리-->
+    <!--전체 펀딩 리스트 조회 -->
     <select id="selectAllFunding" resultMap="selectAllFunding">
         SELECT *
         FROM FND_INFO
@@ -135,6 +150,28 @@
           FROM FND_INFO fi
           JOIN GIFT gi ON fi.FND_CODE = gi.FND_CODE
          WHERE fi.FND_CODE = #{fndCode}
+    </select>
+
+    <insert id="insertFile" parameterType="com.revelup.funding.model.dto.FundingFileDTO">
+        INSERT INTO FND_INSERT_FILE (
+                                    FND_CODE
+                                    , FND_FILE_LOC
+                                    , FND_ORG_FILE
+                                    , FND_SAVE_FILE
+                                    , FILE_DIV
+                           ) VALUES (
+                                    #{fndCode}
+                                    , #{fndFileLoc}
+                                    , #{fndOrgFile}
+                                    , #{fndSaveFile}
+                                    , 'R'
+                                    )
+    </insert>
+
+    <select id="findFile" resultMap="findFile">
+        SELECT *
+          FROM FND_INSERT_FILE
+         WHERE FND_CODE = #{fndCode}
     </select>
 
 

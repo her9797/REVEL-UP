@@ -37,10 +37,8 @@
             <input type="radio" name="slide" id="slide03">
             <div class="slidewrap">
                 <ul class="slidelist">
-                    <li>
-                        <a>
-                            <img th:src="@{/img/thumbnail/t1.jpg}" alt="">
-                        </a>
+                    <li th:each="fundingFile: ${fundingFileList}">
+                            <img th:src="@{|/upload/${fundingFile.fndSaveFile}|}" alt="">
                     </li>
                     <li>
                         <a>
@@ -244,9 +242,9 @@
 <div th:insert="~{fragments/footer.html}"></div>
 
 </body>
-<script>
+<script th:inline="javascript">
     const listReq = () => {
-        location.href = "content/funding/all-funding";
+        location.href = "/content/funding/all-funding";
     }
 </script>
 </html>
