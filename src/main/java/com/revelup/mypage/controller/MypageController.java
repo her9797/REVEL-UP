@@ -5,6 +5,7 @@ import com.revelup.funding.model.dto.FundingInfoDTO;
 import com.revelup.mypage.model.service.MypageService;
 import com.revelup.notice.model.dto.NoticeDTO;
 import com.revelup.pay.model.dto.PayCompletionDTO;
+import com.revelup.pay.model.dto.PayDTO;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
@@ -34,7 +35,7 @@ public class MypageController {
         log.info("userId : {}", userId);
 
         try {
-            List<PayCompletionDTO> allPlgList = mypageService.selectAllPlgList(userId);
+            List<PayDTO> allPlgList = mypageService.selectAllPlgList(userId);
             model.addAttribute("allPlgList", allPlgList);
             log.info("allPlgList: {}", allPlgList);
             return "content/mypage/getter-ongoing";
@@ -50,7 +51,7 @@ public class MypageController {
 
         log.info("plgCode : {}", plgCode);
         try {
-            PayCompletionDTO plgDetails = mypageService.selectOne(plgCode);
+            PayDTO plgDetails = mypageService.selectOne(plgCode);
             System.out.println("plgDetails :" + plgDetails);
             if (plgDetails == null) { // 조회 결과가 없는 경우
                 log.info("해당 plgCode에 대한 데이터가 존재하지 않습니다: {}", plgCode);
@@ -73,7 +74,7 @@ public class MypageController {
         String userId = principal.getName();
         log.info("userId : {}", userId);
         try {
-            List<PayCompletionDTO> allPlgList = mypageService.selectRefundList(userId);
+            List<PayDTO> allPlgList = mypageService.selectRefundList(userId);
             model.addAttribute("allPlgList", allPlgList);
             log.info("allPlgList: {}", allPlgList);
             return "content/mypage/getter-refund";
@@ -89,7 +90,7 @@ public class MypageController {
         String userId = principal.getName();
         log.info("userId : {}", userId);
         try {
-            List<PayCompletionDTO> allPlgList = mypageService.selectFailFndList(userId);
+            List<PayDTO> allPlgList = mypageService.selectFailFndList(userId);
             model.addAttribute("allPlgList", allPlgList);
             log.info("allPlgList: {}", allPlgList);
             return "content/mypage/failed-funding";
@@ -139,7 +140,7 @@ public class MypageController {
         FundingInfoDTO selectOneFnd = mypageService.sttrSelectOneFnd(fndCode);
         log.info("selectOne");
 
-        List<PayCompletionDTO> plgList = mypageService.plgList(fndCode);
+        List<PayDTO> plgList = mypageService.plgList(fndCode);
 
         model.addAttribute("selectOneFnd", selectOneFnd);
         System.out.println("selectOneFnd" + selectOneFnd);

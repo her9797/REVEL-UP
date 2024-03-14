@@ -64,7 +64,7 @@
     </resultMap>
 
     <!--    PLG ResultMap 후원 -->
-    <resultMap id="payResultMap" type="com.revelup.pay.model.dto.PayCompletionDTO">
+    <resultMap id="payResultMap" type="com.revelup.pay.model.dto.PayDTO">
         <id property="plgCode" column="PLG_CODE" />
         <result property="userId" column="USER_ID" />
         <result property="fndCode" column="FND_CODE" />
@@ -79,7 +79,7 @@
     </resultMap>
 
 <!--        PLG ResultMap 후원 -->
-    <resultMap id="twoPlgResultMap" type="com.revelup.pay.model.dto.PayCompletionDTO">
+    <resultMap id="twoPlgResultMap" type="com.revelup.pay.model.dto.PayDTO">
         <id property="plgCode" column="PLG_CODE" />
         <result property="userId" column="USER_ID" />
         <result property="fndCode" column="FND_CODE" />
