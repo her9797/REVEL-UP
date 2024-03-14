@@ -1,5 +1,6 @@
 package com.revelup.funding.controller;
 
+import com.revelup.audit.model.dto.AuditDTO;
 import com.revelup.funding.model.dto.*;
 import com.revelup.funding.model.service.FundingService;
 import com.revelup.user.controller.UserController;
@@ -76,8 +77,15 @@ public class FundingController {
         List<FundingFileDTO> fundingFileDTOList = fundingService.findFile(fndCode);
         model.addAttribute("fundingFileList", fundingFileDTOList);
 
+
+        // 펀딩 심사
+//        insertAudit(fndCode);
+
+
         return "content/funding/detail-funding";
     }
+
+//    private void insertAudit(int fndCode);
 
     @GetMapping("/detail-funding")
     public String selectDetailFunding() {

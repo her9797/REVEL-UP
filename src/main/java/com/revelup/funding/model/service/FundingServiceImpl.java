@@ -83,5 +83,10 @@ public class FundingServiceImpl implements FundingService {
         return mapper.findFile(fndCode);
     }
 
+    @Override
+    public AuditDTO insertAudit(int fndCode) {
+        return mapper.insertAudit(fndCode);
+    }
+
 
 }

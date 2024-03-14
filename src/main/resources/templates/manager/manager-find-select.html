@@ -65,8 +65,12 @@
                        th:href="@{|/manager/manager-find-select/${funding.fndCode}|}"></a>
                 </td>
                 <td>
-                    <a th:text="${funding.fndPrgStat}"
-                       th:href="@{|/manager/manager-find-select/${funding.fndCode}|}"></a>
+                    <a th:switch="${funding.fndPrgStat}"
+                       th:href="@{|/manager/manager-find-select/${funding.fndCode}|}">
+                        <span th:case="L">진행 중</span>
+                        <span th:case="U">종료</span>
+                        <span th:case="C">등록 취소</span>
+                    </a>
                 </td>
                 <td>
                     <a th:text="${funding.fndEndDt}" th:href="@{|/manager/manager-find-select/${funding.fndCode}|}"></a>
