@@ -81,38 +81,6 @@
         </selectKey>
     </insert>
 
-    <!-- 펀딩 등록 파일 삽입 -->
-    <!--    <insert id="insertFundingFileInfo" parameterType="com.revelup.funding.model.dto.FundingFileDTO">-->
-    <!--        INSERT INTO FND_INSERT_FILE (-->
-    <!--                                        FND_CODE-->
-    <!--                                        , FND_FILE_LOC-->
-    <!--                                        , FND_ORG_FILE-->
-    <!--                                        , FND_SAVE_FILE-->
-    <!--                                        , FILE_DIV-->
-    <!--                            ) VALUES (-->
-    <!--                                        1111-->
-    <!--                                        , #{fndFileLoc}-->
-    <!--                                        , #{fndOrgFile}-->
-    <!--                                        , #{fndSaveFile}-->
-    <!--                                        , #{fileDiv}-->
-    <!--                                    )-->
-    <!--    </insert>-->
-
-    <!-- 세터 정보 파일 삽입 -->
-    <!--    <insert id="insertSetterInfoFile" parameterType="com.revelup.funding.model.dto.SetterFileDTO">-->
-    <!--        INSERT INTO STTR_INFO_FILE (-->
-    <!--                                    USER_ID-->
-    <!--                                    , SI_FILE_LOC-->
-    <!--                                    , SI_ORG_FILE-->
-    <!--                                    , SI_SAVE_FILE-->
-    <!--                            ) VALUES (-->
-    <!--                                    'test6'-->
-    <!--                                    , #{siFileLoc}-->
-    <!--                                    , #{siOrgFile}-->
-    <!--                                    , #{siSaveFile}-->
-    <!--        )-->
-    <!--    </insert>-->
-
     <!-- Gift 정보 삽입 -->
     <insert id="insertGift" parameterType="com.revelup.funding.model.dto.GiftDTO">
         INSERT INTO GIFT (
@@ -128,7 +96,7 @@
                             )
     </insert>
 
-    <!--전체 펀딩 리스트 조회 -->
+    <!-- 전체 펀딩 리스트 조회 -->
     <select id="selectAllFunding" resultMap="selectAllFunding">
         SELECT *
         FROM FND_INFO
