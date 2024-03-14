@@ -19,4 +19,20 @@
           FROM AUD
     </select>
 
+    <select id="auditDetails" resultMap="audit" parameterType="int">
+        SELECT  FND_CODE
+                ,FND_INSERT_DTTM
+                ,AUDIT_STAT
+                ,AUDIT_APPR_DT
+          FROM  AUD
+        WHERE FND_CODE = #{ fndCode }
+    </select>
+
+    <update id="updateAudit" parameterType="com.revelup.audit.model.dto.AuditDTO">
+        UPDATE  AUD
+        SET  AUDIT_STAT = #{ auditStat },
+             AUDIT_APPR_DT = NOW()
+        WHERE FND_CODE = #{ fndCode }
+    </update>
+
 </mapper>

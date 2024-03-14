@@ -20,7 +20,6 @@ public class AuditService {
     private AuditMapper auditMapper;
 
     public List<AuditDTO> auditList(AuditDTO auditDTO) {
-        System.out.println("서비스 : " + auditMapper.auditList(auditDTO));
         return auditMapper.auditList(auditDTO);
     }
 
@@ -28,5 +27,11 @@ public class AuditService {
     public AuditDTO auditDetails(int fndCode) {
 
         return auditMapper.auditDetails(fndCode);
+    }
+
+    public void updateAudit(AuditDTO auditDTO) {
+
+        auditMapper.updateAudit(auditDTO);
+
     }
 }

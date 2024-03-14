@@ -11,4 +11,6 @@ public interface AuditMapper {
     List<AuditDTO> auditList(AuditDTO auditDTO);
 
     AuditDTO auditDetails(int fndCode);
+
+    void updateAudit(AuditDTO auditDTO);
 }

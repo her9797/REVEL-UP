@@ -6,7 +6,7 @@
     <title>공지사항</title>
 
     <th:block th:include="fragments/common"></th:block>
-    <link th:href="@{/css/manager-notice.css}" rel="stylesheet">
+    <link th:href="@{/css/manager-audit.css}" rel="stylesheet">
     <link th:href="@{/css/common/manager-modal.css}" rel="stylesheet">
     <script th:src="@{/js/manager-audit.js}"></script>
     <link th:href="@{/css/mypage.css}" rel="stylesheet">
@@ -88,30 +88,24 @@
     <!-- 공지사항 내용을 보여줄 모달창-->
 
 
-    <div id="audit-modal" class="modal" th:each="notice : ${noticeList}">
+    <div id="audit-modal" class="modal" th:each="audit : ${audit}">
         <div class="open-modal">
-            <div class="modal-content2">
+            <div class="modal-content3">
                 <span id="close-btn2">&times;</span>
-                <h4 style="margin-left: 225px">NOTICE</h4>
+                <h4 style="margin-left: 170px">펀딩 승인</h4>
                 <div class="notice-content">
 
                     <div class="notice-header2">
-                        <label for="ntcTitle" style="margin-top: 15px;">제목</label>
-                        <textarea th:text="${notice.ntcTitle}" type="text" id="ntcTitle" class="text-box2" name="ntcTitle"></textarea><br>
-                        <label for="modal-date2" style="margin-top: 20px;">작성날짜</label>
-                        <textarea th:text="${notice.ntcInsertDt}" type="text" id="modal-date2" class="text-box2" name="ntcDate" readonly/><br>
+                        <label for="fndCode" style="margin-top: 15px; margin-bottom: -50px">펀딩코드</label>
+                        <textarea th:text="${audit.fndCode}" type="text" id="fndCode" class="text-box2" name="fndCode" readonly></textarea><br>
+                        <label for="fndInsertDttm" style="margin-top: 20px; margin-bottom: -50px">펀딩 등록 날짜</label>
+                        <textarea th:text="${audit.fndInsertDttm}" type="text" id="fndInsertDttm" class="text-box2" name="fndInsertDttm" readonly/><br>
+                        <label for="auditStat" id="content" style="margin-top: 20px; margin-bottom: -50px">심사 상태</label>
+                        <textarea th:text="${audit.auditStat}" type="text" id="auditStat" class="text-box2" name="auditStat"></textarea>
                     </div>
-
-                    <div class="contents2">
-                        <div class="contract2">
-                            <label for="ntcCont" id="content" style="margin-top: 20px;">내용</label>
-                            <textarea th:text="${notice.ntcCont}" type="text" id="ntcCont" class="text-box3" name="ntcCont"></textarea>
-                        </div>
-                    </div>
-                    <div class="modal-button2" style="margin-left: 150px; margin-top: 20px;">
-                        <button class="update-btn" id="update-btn">수정하기</button>
-
-                        <button class="delete-btn" id="delete-btn">삭제하기</button>
+                    <div class="modal-button2" style="margin-left: 100px; margin-top: 40px;">
+                        <button class="update-btn2" id="update-btn2">승인하기</button>
+                        <button class="update-btn3" id="update-btn3">반려하기</button>
                     </div>
                 </div>
             </div>
