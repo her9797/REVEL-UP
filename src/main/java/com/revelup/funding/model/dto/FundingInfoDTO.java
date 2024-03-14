@@ -1,8 +1,10 @@
 package com.revelup.funding.model.dto;
 
 import lombok.*;
+import org.springframework.web.multipart.MultipartFile;
 
-import java.sql.Date;
+import java.util.Date;
+import java.util.List;
 
 @NoArgsConstructor
 @AllArgsConstructor
@@ -26,6 +28,8 @@ public class FundingInfoDTO implements java.io.Serializable {
     private String fndOrgFile; // 기존 파일명
     private String fndSaveFile; // 저장 파일명
     private String fileDiv; // 파일 구분
+    private int fileAttached; // 파일 존재 유무
+    private List<MultipartFile> fundingFile; // 파일 저장
 
     private int giftPrice; // 선물 금액
     private String giftName; // 선물명
@@ -41,9 +45,4 @@ public class FundingInfoDTO implements java.io.Serializable {
     private String sttrBank;    // 은행
     private String sttrAccNo;   // 계좌번호
     private String sttrAccHolder;   // 예금주
-
-    private String auditApprDt;
-
-
-
 }

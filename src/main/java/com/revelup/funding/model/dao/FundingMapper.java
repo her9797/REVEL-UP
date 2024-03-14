@@ -14,14 +14,20 @@ public interface FundingMapper {
 
     void insertFundingInfo(FundingInfoDTO fundingInfoDTO);
 
-//    void insertFundingFileInfo(FundingFileDTO fundingFileDTO);
-
-//    void insertSetterInfoFile(SetterFileDTO setterFileDTO);
+//    FundingInfoDTO selectFundingInfo(int fndCode);
+//    FundingFileDTO selectFundingFile(int fndCode);
 
     void insertGift(GiftDTO giftDTO);
 
+    void insertFile(FundingFileDTO fundingFileDTO);
+
+
     List<FundingInfoDTO> selectAllFunding();
 
+    //    void updateViews(int fndCode);
 
+    FundingInfoDTO findByCode(int fndCode);
+
+    List<FundingFileDTO> findFile(int fndCode);
 
 }

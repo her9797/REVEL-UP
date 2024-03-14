@@ -53,7 +53,7 @@
         <a style="margin-bottom: 300px; font-size: 18px;">나의 펀딩 내역 &gt; <b>펀딩 신규 등록</b></a>
         <div class="contract">
 
-            <h2 style="padding-top: 30px;" th:text="${user.userId}">님, 반갑습니다!</h2>
+            <h2 style="padding-top: 30px;" th:text="${user.userId} + '님, 반갑습니다!'"></h2>
           </div>
           <p class="title" style="font-size: 14px; font-weight: bold; margin-top: 30px;">당신의 멋진 아이디어가 빛날 수
             있도록
@@ -131,7 +131,7 @@
           </button>
         </div>
 
-        <form action="/content/funding/insertFunding" method="post">
+        <form action="/content/funding/insertFunding" method="post" enctype="multipart/form-data">
 
           <!--          <div th:if="${user != null}">-->
           <!--            <h2 style="padding-top: 30px;" th:unless="${#execInfo.throwable != null}" th:value="${user.userId}"> 님, 반갑습니다!</h2>-->
@@ -229,8 +229,8 @@
                 </ul>
               </div>
               <div class="image">
-                <input type="file" id="image" accept="image/*" onchange="setThumbnail(event);"
-                       multiple/>
+                <input type="file" id="image" name="fundingFile" accept="image/*" onchange="setThumbnail(event);"
+                       multiple>
                 <div class="image_container">
                   <ul>
                     <li><a href=""><img src="" alt=""></a></li>
@@ -318,10 +318,7 @@
               </div>
             </div>
             <div class="button-group">
-              <button class="back-button"
-                      onclick="location.href='/content/funding/insertFunding/new-funding-story'">
-                이전
-              </button>
+              <button class="back-button" onclick="location.href='/content/funding/insertFunding/new-funding-story'">이전</button>
               <button class="next-button" type="submit">다음</button>
             </div>
           </div>

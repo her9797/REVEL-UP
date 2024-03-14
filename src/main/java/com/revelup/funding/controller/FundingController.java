@@ -12,6 +12,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import java.io.IOException;
 import java.security.Principal;
 import java.util.List;
 
@@ -40,18 +41,16 @@ public class FundingController {
     @PostMapping("/insertFunding")
     public String insertFunding(@ModelAttribute FundingInfoDTO fundingInfoDTO,
                                 @ModelAttribute GiftDTO giftDTO,
-                                @ModelAttribute SetterInfoDTO setterInfoDTO) {
+                                @ModelAttribute SetterInfoDTO setterInfoDTO) throws IOException {
         System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
 //        System.out.println("fundingFileDTO = " + fundingFileDTO);
         System.out.println("fundingInfoDTO = " + fundingInfoDTO);
-        System.out.println("");
+        System.out.println(" ");
         System.out.println("giftDTO = " + giftDTO);
-        System.out.println("");
+        System.out.println(" ");
 //        System.out.println("setterFileDTO = " + setterFileDTO);
         System.out.println("setterInfoDTO = " + setterInfoDTO);
-//        fundingService.insertFunding(fundingFileDTO, fundingInfoDTO, giftDTO, setterFileDTO, setterInfoDTO);
         fundingService.insertFunding(fundingInfoDTO, giftDTO, setterInfoDTO);
-//        return "content/funding/insertFunding";
         return "content/funding/insertFunding/new-funding-complete";
     }
 
@@ -59,29 +58,31 @@ public class FundingController {
     public String selectAllFunding(Model model) {
         List<FundingInfoDTO> fundingInfoDTOList = fundingService.selectAllFunding();
         model.addAttribute("fundingList", fundingInfoDTOList);
-        System.out.println("??????????????????????????????????????????????????????????????????????");
-        System.out.println("fundingInfoDTOList 컨트롤러 = " + fundingInfoDTOList);
+        System.out.println("fundingInfoDTOList 컨트롤러 selectAllFunding = " + fundingInfoDTOList);
         return "content/funding/all-funding";
     }
 
-    @GetMapping("/{id}")
-    public String findById(@PathVariable("id") Long id, Model model) {
-
+    @GetMapping("/all-funding/{fndCode}")
+    public String findByCode(@PathVariable("fndCode") int fndCode, Model model) {
         // 조회수 처리
+        // fundingService.updateViews(fndCode);
 
         // 상세내용 가져옴
+        FundingInfoDTO fundingInfoDTO = fundingService.findByCode(fndCode);
+        model.addAttribute("funding", fundingInfoDTO);
+        System.out.println("fundingInfoDTO 컨트롤러 findByCode = " + fundingInfoDTO);
 
-        return null;
+        // 첨부파일 가져옴
+        List<FundingFileDTO> fundingFileDTOList = fundingService.findFile(fndCode);
+        model.addAttribute("fundingFileList", fundingFileDTOList);
+
+        return "content/funding/detail-funding";
     }
 
     @GetMapping("/detail-funding")
     public String selectDetailFunding() {
         return "content/funding/detail-funding";
     }
-
-
-
-
 
 
 }
