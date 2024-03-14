@@ -31,7 +31,7 @@ public interface FundingMapper {
 
     List<FundingFileDTO> findFile(int fndCode);
 
-    void insertAudit(AuditDTO auditDTO);
+    AuditDTO insertAudit(int fndCode);
 
-
+    List<FundingFileDTO> findThumbnail();
 }

@@ -5,6 +5,7 @@ body {  /* 전체 설정 */
 
 .container {
     font-size: 18px;
+    width: 1110px;
 }
 
 .funding-name {

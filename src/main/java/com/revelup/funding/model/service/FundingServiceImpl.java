@@ -24,15 +24,14 @@ public class FundingServiceImpl implements FundingService {
 
     @Override
     @Transactional
-    public void insertFunding(FundingInfoDTO fundingInfoDTO, GiftDTO giftDTO, SetterInfoDTO setterInfoDTO, AuditDTO auditDTO) throws IOException {
+    public void insertFunding(FundingInfoDTO fundingInfoDTO, GiftDTO giftDTO, SetterInfoDTO setterInfoDTO) throws IOException {
         mapper.insertSetterInfo(setterInfoDTO);
         mapper.insertFundingInfo(fundingInfoDTO);
         int fndCode = fundingInfoDTO.getFndCode();
-
+        AuditDTO auditDTO = new AuditDTO();
         giftDTO.setFndCode(fndCode);// GiftDTO에 방금 직전에 동시에 생성된 펀딩코드를 담아줌.
         auditDTO.setFndCode(fndCode);
 
-        mapper.insertAudit(auditDTO);
         mapper.insertGift(giftDTO);
 
         // 파일만 따로 가져오기
@@ -53,8 +52,8 @@ public class FundingServiceImpl implements FundingService {
         fundingFileDTO.setFndCode(fndCode);                     // 펀딩 코드 삽입
 
         // 파일 저장용 폴더에 파일 저장 처리
-//        String fndFileLoc = "/Users/jaylee/Documents/SemiFinal/fndFileLoc/" + fndSaveFile; // Mac용 저장경로
-        String fndFileLoc = "C:/Users/hi/Desktop/revelupimg/" + fndSaveFile; // Window용 저장경로
+        String fndFileLoc = "/Users/jaylee/Documents/SemiFinal/fndFileLoc/" + fndSaveFile; // Mac용 저장경로
+//        String fndFileLoc = "C:/Users/thunder/Desktop/revelup/" + fndSaveFile; // Window용 저장경로
         fundingFileDTO.setFndFileLoc(fndFileLoc);
         fundingFile.transferTo(new File(fndFileLoc));
         mapper.insertFile(fundingFileDTO);
@@ -84,6 +83,15 @@ public class FundingServiceImpl implements FundingService {
         return mapper.findFile(fndCode);
     }
 
+    @Override
+    public AuditDTO insertAudit(int fndCode) {
+        return mapper.insertAudit(fndCode);
+    }
+
+    @Override
+    public List<FundingFileDTO> findThumbnail() {
+        return mapper.findThumbnail();
+    }
 
 
 }

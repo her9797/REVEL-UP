@@ -1,14 +1,9 @@
 package com.revelup.funding.controller;
 
-import com.revelup.audit.model.dto.AuditDTO;
 import com.revelup.funding.model.dto.*;
 import com.revelup.funding.model.service.FundingService;
-import com.revelup.user.controller.UserController;
 import com.revelup.user.model.dto.LoginUserDTO;
 import com.revelup.user.model.service.UserService;
-import org.springframework.security.core.annotation.AuthenticationPrincipal;
-import org.springframework.security.core.userdetails.User;
-import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -42,17 +37,15 @@ public class FundingController {
     @PostMapping("/insertFunding")
     public String insertFunding(@ModelAttribute FundingInfoDTO fundingInfoDTO,
                                 @ModelAttribute GiftDTO giftDTO,
-                                @ModelAttribute SetterInfoDTO setterInfoDTO,
-                                @ModelAttribute AuditDTO auditDTO) throws IOException {
+                                @ModelAttribute SetterInfoDTO setterInfoDTO) throws IOException {
         System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
-//        System.out.println("fundingFileDTO = " + fundingFileDTO);
         System.out.println("fundingInfoDTO = " + fundingInfoDTO);
         System.out.println(" ");
         System.out.println("giftDTO = " + giftDTO);
         System.out.println(" ");
 //        System.out.println("setterFileDTO = " + setterFileDTO);
         System.out.println("setterInfoDTO = " + setterInfoDTO);
-        fundingService.insertFunding(fundingInfoDTO, giftDTO, setterInfoDTO, auditDTO);
+        fundingService.insertFunding(fundingInfoDTO, giftDTO, setterInfoDTO);
         return "content/funding/insertFunding/new-funding-complete";
     }
 
@@ -61,6 +54,11 @@ public class FundingController {
         List<FundingInfoDTO> fundingInfoDTOList = fundingService.selectAllFunding();
         model.addAttribute("fundingList", fundingInfoDTOList);
         System.out.println("fundingInfoDTOList 컨트롤러 selectAllFunding = " + fundingInfoDTOList);
+
+        List<FundingFileDTO> fundingFileDTOList = fundingService.findThumbnail();
+        model.addAttribute("fundingThumbnailList", fundingFileDTOList);
+
+
         return "content/funding/all-funding";
     }
 
@@ -78,17 +76,13 @@ public class FundingController {
         List<FundingFileDTO> fundingFileDTOList = fundingService.findFile(fndCode);
         model.addAttribute("fundingFileList", fundingFileDTOList);
 
-
         return "content/funding/detail-funding";
     }
-
-
 
     @GetMapping("/detail-funding")
     public String selectDetailFunding() {
         return "content/funding/detail-funding";
     }
-
 
 
 
