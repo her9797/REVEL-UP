@@ -15,7 +15,7 @@ import java.util.List;
 @AllArgsConstructor
 public class AuditService {
 
-    private AuditMapper auditMapper;
+//    private AuditMapper auditMapper;
 
 
 

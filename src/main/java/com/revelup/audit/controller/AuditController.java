@@ -15,13 +15,13 @@ import java.util.List;
 @RequestMapping("/manager")
 public class AuditController {
 
-    private AuditService auditService;
-
-    @GetMapping("/manager-audit")
-    public String userFindPage() {
-
-        return "manager/manager-audit";
-    }
+//    private AuditService auditService;
+//
+//    @GetMapping("/manager-audit")
+//    public String userFindPage() {
+//
+//        return "manager/manager-audit";
+//    }
 
 //    /** 펀딩 심사 목록 전체 리스트 */
 //    @GetMapping("auditList")

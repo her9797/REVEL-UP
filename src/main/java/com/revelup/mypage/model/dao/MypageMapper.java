@@ -11,6 +11,9 @@ import java.util.List;
 @Mapper
 public interface MypageMapper {
 
+    // 운송장번호
+    int updateTrackingNo(DeliveryDTO deliveryDTO);
+
     // 후원한 펀딩
     List<PayDTO> selectAllPlgList(String userId);
 
@@ -35,7 +38,7 @@ public interface MypageMapper {
 
     List<PayDTO> plgList(int fndCode);
 
-    int updateTrackingNo(DeliveryDTO deliveryDTO);
+
 
 
 //    void updateTrackingNum(DeliveryDTO deliveryDTO);
