@@ -37,7 +37,7 @@
 <div class="container" style="border-top: 1px solid lightgray; margin-top: 15px;">
     <div class="title-box">
         <button onclick="location.href='/manager/manager-find-select'" style="background-color: #0CC291;">펀딩조회</button>
-        <button onclick="location.href=''">펀딩심사</button>
+        <button onclick="location.href='/manager/manager-aud'">펀딩심사</button>
         <button onclick="location.href='/manager/manager-report'">신고처리</button>
         <button onclick="location.href='/manager/manager-notice'">공지사항</button>
         <button onclick="location.href='/manager/manager-inquiry'">문의사항</button>
@@ -53,85 +53,27 @@
                 <td>시작일</td>
                 <td>종료일</td>
             </tr>
-            <tr align="center">
-                <td>F-001</td>
-                <td>청바지를 활용한 슬리퍼1</td>
-                <td>10%</td>
-                <td>진행중</td>
-                <td>2024-01-01</td>
-                <td>2024-03-15</td>
-            </tr>
-            <tr align="center">
-                <td>F-002</td>
-                <td>청바지를 활용한 슬리퍼2</td>
-                <td>20%</td>
-                <td>진행중</td>
-                <td>2024-01-01</td>
-                <td>2024-03-15</td>
-            </tr>
-            <tr align="center">
-                <td>F-003</td>
-                <td>청바지를 활용한 슬리퍼3</td>
-                <td>10%</td>
-                <td>진행중</td>
-                <td>2024-01-01</td>
-                <td>2024-03-15</td>
-            </tr>
-            <tr align="center">
-                <td>F-004</td>
-                <td>청바지를 활용한 슬리퍼4</td>
-                <td>10%</td>
-                <td>반려</td>
-                <td>2024-01-01</td>
-                <td>2024-03-15</td>
-            </tr>
-            <tr align="center">
-                <td>F-005</td>
-                <td>청바지를 활용한 슬리퍼5</td>
-                <td>10%</td>
-                <td>진행중</td>
-                <td>2024-01-01</td>
-                <td>2024-03-15</td>
-            </tr>
-            <tr align="center">
-                <td>F-006</td>
-                <td>청바지를 활용한 슬리퍼6</td>
-                <td>10%</td>
-                <td>종료</td>
-                <td>2024-01-01</td>
-                <td>2024-03-15</td>
-            </tr>
-            <tr align="center">
-                <td>F-007</td>
-                <td>청바지를 활용한 슬리퍼</td>
-                <td>10%</td>
-                <td>진행중</td>
-                <td>2024-01-01</td>
-                <td>2024-03-15</td>
-            </tr>
-            <tr align="center">
-                <td>F-008</td>
-                <td>청바지를 활용한 슬리퍼8</td>
-                <td>10%</td>
-                <td>등록취소</td>
-                <td>2024-01-01</td>
-                <td>2024-03-15</td>
-            </tr>
-            <tr align="center">
-                <td>F-009</td>
-                <td>청바지를 활용한 슬리퍼9</td>
-                <td>10%</td>
-                <td>진행중</td>
-                <td>2024-01-01</td>
-                <td>2024-03-15</td>
-            </tr>
-            <tr align="center">
-                <td>F-010</td>
-                <td>청바지를 활용한 슬리퍼10</td>
-                <td>10%</td>
-                <td>진행중</td>
-                <td>2024-01-01</td>
-                <td>2024-03-15</td>
+            <tr align="center" th:each="funding: ${fundingManagerList}">
+                <td>
+                    <a th:text="${funding.fndCode}" th:href="@{|/manager/manager-find-select/${funding.fndCode}|}"></a>
+                </td>
+                <td>
+                    <a th:text="${funding.fndName}" th:href="@{|/manager/manager-find-select/${funding.fndCode}|}"></a>
+                </td>
+                <td>
+                    <a th:text="${funding.successAmt}"
+                       th:href="@{|/manager/manager-find-select/${funding.fndCode}|}"></a>
+                </td>
+                <td>
+                    <a th:text="${funding.fndPrgStat}"
+                       th:href="@{|/manager/manager-find-select/${funding.fndCode}|}"></a>
+                </td>
+                <td>
+                    <a th:text="${funding.fndEndDt}" th:href="@{|/manager/manager-find-select/${funding.fndCode}|}"></a>
+                </td>
+                <td>
+                    <a th:text="${funding.fndEndDt}" th:href="@{|/manager/manager-find-select/${funding.fndCode}|}"></a>
+                </td>
             </tr>
         </table>
 
@@ -155,7 +97,6 @@
             <i class="fa-solid fa-angle-right" id="next_page"></i>
             <i class="fa-solid fa-angles-right" id="last_page"></i>
         </div>
-
 
 
     </div>

@@ -29,11 +29,6 @@ public class ManagerController {
         return "/manager/manager-report";
     }
 
-    @GetMapping("/manager-find-select")
-    public String managerFindSelectPage() {
-        return "/manager/manager-find-select";
-    }
-
 
 
 }
