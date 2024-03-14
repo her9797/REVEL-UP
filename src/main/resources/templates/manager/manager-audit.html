@@ -53,7 +53,7 @@
             <tr th:each="audit : ${audit}" align="center">
                 <td>
 <!--                    &lt;!&ndash; 공지 코드를 클릭할 때 해당 공지에 대한 모달 창 열기 &ndash;&gt;-->
-                    <a style="color:black; cursor:pointer;" th:text="${audit.fndCode}" onclick="openModal(this)">${audit.fndCode}</a>
+                    <a style="color:black; cursor:pointer;" th:text="${audit.fndCode}" onclick="openModal1(this)">${audit.fndCode}</a>
                 </td>
                 <!--/*@thymesVar id="fndCode" type=""*/-->
 <!--                <td style="color:black; cursor:pointer;" th:text="${audit.fndCode}"> </td>-->

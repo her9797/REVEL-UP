@@ -1,5 +1,24 @@
-// 모달 열기 함수
-function openModal(eventTarget) {
+$('#audit-modal').on('show.bs.modal', function() {
+    var modal = $(this);
+
+    // 삭제 버튼 클릭 시
+    $('#delete-btn').off('click').on('click', function() {
+        var ntcCode = $(this).data('ntc-code'); // 삭제할 공지사항의 코드 가져오기
+        deleteNotice(ntcCode);
+        // 모달 닫기
+        modal.modal('hide');
+    });
+
+    // 수정 버튼 클릭 시
+    $('#update-btn2').off('click').on('click', function() {
+        var fndCode = $(this).data('fndCode'); // 수정할 공지사항의 코드 가져오기
+        updateAudit(fndCode);
+        // 모달 닫기
+        modal.modal('hide');
+    });
+});
+
+function openModal1(eventTarget) {
     const fndCode = eventTarget.innerHTML;
 
     console.log(fndCode);
@@ -9,11 +28,10 @@ function openModal(eventTarget) {
         url: "/manager/auditDetails/" + fndCode,
         type: "GET",
         dataType: "json", // 응답 데이터 형식은 JSON
-        data:
-            {fndCode: fndCode},
+        data: { fndCode: fndCode },
         success: function(response) {
             // 응답 받은 데이터를 사용하여 모달 창에 값을 채워 넣기
-            console.log("zzzzzzzzzzz"+fndCode);
+            console.log("zzzzzzzzzzz" + fndCode);
             $('#ntcTitle').text(response.fndCode); // 제목 설정
             $('#modal-date2').text(response.fndInsertDttm); // 작성날짜 설정
             console.log(fndCode);
@@ -29,26 +47,8 @@ function openModal(eventTarget) {
             console.error(error);
         }
     });
-
-    // 삭제 버튼 클릭 시 해당 공지사항 삭제
-    $('#delete-btn').on('click', function() {
-        var ntcCode = $(this).data('ntc-code'); // 삭제할 공지사항의 코드 가져오기
-        deleteNotice(ntcCode);
-        // 모달 닫기
-        $('#notice-modal').modal('hide');
-    });
-
-    // 수정 버튼 클릭 시 해당 공지사항 수정
-    $('#update-btn2').on('click', function() {
-        var fndCode = $(this).data('fndCode'); // 수정할 공지사항의 코드 가져오기
-        updateAudit(fndCode);
-        console.log(fndCode)
-        // 모달 닫기
-        $('#notice-modal').modal('hide');
-    });
 }
 
-// 공지사항 삭제 함수
 function deleteNotice(ntcCode) {
     // AJAX를 사용하여 서버에 POST 요청 보내기
     $.ajax({
@@ -71,11 +71,8 @@ function deleteNotice(ntcCode) {
     });
 }
 
-// 공지사항 수정 함수
 function updateAudit(fndCode) {
     var auditStat = $('#auditStat').val();
-
-    console.log(fndCode)
 
     $.ajax({
         url: '/manager/updateAudit', // 포스트매핑으로 요청을 처리할 URL
