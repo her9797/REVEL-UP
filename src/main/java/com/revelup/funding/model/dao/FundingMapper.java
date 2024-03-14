@@ -1,5 +1,6 @@
 package com.revelup.funding.model.dao;
 
+import com.revelup.audit.model.dto.AuditDTO;
 import com.revelup.funding.model.dto.*;
 import org.apache.ibatis.annotations.Mapper;
 
@@ -30,4 +31,5 @@ public interface FundingMapper {
 
     List<FundingFileDTO> findFile(int fndCode);
 
+    AuditDTO insertAudit(int fndCode);
 }

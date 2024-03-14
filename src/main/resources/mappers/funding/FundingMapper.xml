@@ -31,6 +31,13 @@
         <result property="fileDiv" column="FILE_DIV"/>
     </resultMap>
 
+    <resultMap id="audit" type="com.revelup.audit.model.dto.AuditDTO">
+        <id property="fndCode" column="FND_CODE"/>
+        <result property="fndInsertDttm" column="FND_INSERT_DTTM"/>
+        <result property="auditStat" column="AUDIT_STAT"/>
+        <result property="auditApprDt" column="AUDIT_APPR_DT"/>
+    </resultMap>
+
     <!-- 세터 정보 삽입 -->
     <insert id="insertSetterInfo" parameterType="com.revelup.funding.model.dto.SetterInfoDTO">
         INSERT INTO STTR_INFO (
@@ -141,6 +148,23 @@
           FROM FND_INSERT_FILE
          WHERE FND_CODE = #{fndCode}
     </select>
+
+    <!-- 펀딩 심사 리스트 등록 -->
+    <insert id="insertAudit" parameterType="com.revelup.audit.model.dto.AuditDTO">
+
+    INSERT INTO AUD (FND_CODE
+                    , FND_INSERT_DTTM
+                    , AUDIT_STAT
+                    , AUDIT_APPR_DT
+
+        VALUES (
+                FND_CODE = { fndCode }
+                , FND_INSERT_DTTM = #{ fndInsertDttm }
+                , AUDIT_STAT = #{ auditStat }
+                , AUDIT_APPR_DT = #{ auditApprDt }
+        )
+    </insert>
+
 
 
 </mapper>

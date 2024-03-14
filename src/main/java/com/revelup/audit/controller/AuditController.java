@@ -23,15 +23,15 @@ public class AuditController {
         return "manager/manager-audit";
     }
 
-    /** 펀딩 심사 목록 전체 리스트 */
-    @GetMapping("auditList")
-    public String auditList(Model model, FundingInfoDTO fundingInfoDTO, AuditDTO auditDTO){
-
-        List<AuditDTO> auditList = auditService.auditList(fundingInfoDTO, auditDTO);
-
-        model.addAttribute("auditList", auditList);
-
-        return "manager/manager-audit";
-    }
+//    /** 펀딩 심사 목록 전체 리스트 */
+//    @GetMapping("auditList")
+//    public String auditList(Model model, FundingInfoDTO fundingInfoDTO, AuditDTO auditDTO){
+//
+//        List<AuditDTO> auditList = auditService.auditList(fundingInfoDTO, auditDTO);
+//
+//        model.addAttribute("auditList", auditList);
+//
+//        return "manager/manager-audit";
+//    }
 
 }

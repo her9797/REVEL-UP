@@ -1,5 +1,6 @@
 package com.revelup.funding.model.service;
 
+import com.revelup.audit.model.dto.AuditDTO;
 import com.revelup.funding.model.dto.*;
 
 import java.io.IOException;
@@ -16,4 +17,6 @@ public interface FundingService {
     FundingInfoDTO findByCode(int fndCode);
 
     List<FundingFileDTO> findFile(int fndCode);
+
+    AuditDTO insertAudit(int fndCode);
 }

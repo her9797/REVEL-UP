@@ -21,14 +21,14 @@ public class AuditService {
 
 
 
-    public List<AuditDTO> auditList(FundingInfoDTO fundingInfoDTO, AuditDTO auditDTO) {
-
-//        int fundCode = fundingInfoDTO.getFndCode();
-//        String dttm = fundingInfoDTO.getFndInsertDttm();
+//    public List<AuditDTO> auditList(FundingInfoDTO fundingInfoDTO, AuditDTO auditDTO) {
 //
-//        auditDTO.setFndCode(fundCode);
-//        auditDTO.setFndInsertDttm(dttm);
-
-        return auditMapper.auditList();
-    }
+////        int fundCode = fundingInfoDTO.getFndCode();
+////        String dttm = fundingInfoDTO.getFndInsertDttm();
+////
+////        auditDTO.setFndCode(fundCode);
+////        auditDTO.setFndInsertDttm(dttm);
+//
+//        return auditMapper.auditList();
+//    }
 }
