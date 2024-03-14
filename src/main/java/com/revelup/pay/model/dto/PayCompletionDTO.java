@@ -28,7 +28,7 @@ public class PayCompletionDTO {
 	private String userId;
 	private int fndCode;
 	private int giftQty;
-	private String plgDttm;
+	private Date plgDttm;
 	private int plgPrice;
 	private Date plgCanDt;
 

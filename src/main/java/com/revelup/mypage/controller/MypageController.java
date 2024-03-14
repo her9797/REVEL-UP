@@ -169,6 +169,8 @@ public class MypageController {
         return "redirect:setter-funding-history";
 //        return "redirect:/content/mypage/setter-funding-history";
 
+
+        // 운송장 입력 모달
     }
 
 
