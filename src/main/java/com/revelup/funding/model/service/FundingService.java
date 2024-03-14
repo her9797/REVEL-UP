@@ -8,7 +8,7 @@ import java.util.List;
 
 public interface FundingService {
 
-    void insertFunding(FundingInfoDTO fundingInfoDTO, GiftDTO giftDTO, SetterInfoDTO setterInfoDTO) throws IOException;
+    void insertFunding(FundingInfoDTO fundingInfoDTO, GiftDTO giftDTO, SetterInfoDTO setterInfoDTO, AuditDTO auditDTO) throws IOException;
 
     List<FundingInfoDTO> selectAllFunding();
 
@@ -18,5 +18,6 @@ public interface FundingService {
 
     List<FundingFileDTO> findFile(int fndCode);
 
-    AuditDTO insertAudit(int fndCode);
+
+
 }

@@ -152,18 +152,19 @@
     <!-- 펀딩 심사 리스트 등록 -->
     <insert id="insertAudit" parameterType="com.revelup.audit.model.dto.AuditDTO">
 
-    INSERT INTO AUD (FND_CODE
+    INSERT INTO AUD ( FND_CODE
                     , FND_INSERT_DTTM
-                    , AUDIT_STAT
-                    , AUDIT_APPR_DT
-
+                    )
         VALUES (
-                FND_CODE = { fndCode }
-                , FND_INSERT_DTTM = #{ fndInsertDttm }
-                , AUDIT_STAT = #{ auditStat }
-                , AUDIT_APPR_DT = #{ auditApprDt }
-        )
+                 #{ fndCode }
+                ,NOW()
+                )
+        <selectKey keyProperty="fndCode" order="AFTER" resultType="_int">
+            <!-- 여러 사용자가 동시에 작업했어도, 내 커넥션에서 발생한 키값을 불러옴 -->
+            SELECT LAST_INSERT_ID()
+        </selectKey>
     </insert>
+
 
 
 

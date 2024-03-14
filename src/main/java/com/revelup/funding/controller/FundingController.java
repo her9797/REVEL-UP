@@ -42,7 +42,8 @@ public class FundingController {
     @PostMapping("/insertFunding")
     public String insertFunding(@ModelAttribute FundingInfoDTO fundingInfoDTO,
                                 @ModelAttribute GiftDTO giftDTO,
-                                @ModelAttribute SetterInfoDTO setterInfoDTO) throws IOException {
+                                @ModelAttribute SetterInfoDTO setterInfoDTO,
+                                @ModelAttribute AuditDTO auditDTO) throws IOException {
         System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
 //        System.out.println("fundingFileDTO = " + fundingFileDTO);
         System.out.println("fundingInfoDTO = " + fundingInfoDTO);
@@ -51,7 +52,7 @@ public class FundingController {
         System.out.println(" ");
 //        System.out.println("setterFileDTO = " + setterFileDTO);
         System.out.println("setterInfoDTO = " + setterInfoDTO);
-        fundingService.insertFunding(fundingInfoDTO, giftDTO, setterInfoDTO);
+        fundingService.insertFunding(fundingInfoDTO, giftDTO, setterInfoDTO, auditDTO);
         return "content/funding/insertFunding/new-funding-complete";
     }
 
@@ -78,19 +79,16 @@ public class FundingController {
         model.addAttribute("fundingFileList", fundingFileDTOList);
 
 
-        // 펀딩 심사
-//        insertAudit(fndCode);
-
-
         return "content/funding/detail-funding";
     }
 
-//    private void insertAudit(int fndCode);
+
 
     @GetMapping("/detail-funding")
     public String selectDetailFunding() {
         return "content/funding/detail-funding";
     }
+
 
 
 
