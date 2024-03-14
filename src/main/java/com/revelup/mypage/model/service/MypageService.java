@@ -4,6 +4,7 @@ import com.revelup.funding.model.dto.DeliveryDTO;
 import com.revelup.funding.model.dto.FundingInfoDTO;
 import com.revelup.mypage.model.dao.MypageMapper;
 import com.revelup.pay.model.dto.PayCompletionDTO;
+import com.revelup.pay.model.dto.PayDTO;
 import lombok.extern.log4j.Log4j;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.stereotype.Service;
@@ -22,14 +23,14 @@ public class MypageService {
     }
 
     // 후원한 펀딩
-    public List<PayCompletionDTO> selectAllPlgList(String userId) {
+    public List<PayDTO> selectAllPlgList(String userId) {
         System.out.println("userID : " + userId);
-        List<PayCompletionDTO> payList = mypageMapper.selectAllPlgList(userId);
+        List<PayDTO> payList = mypageMapper.selectAllPlgList(userId);
         System.out.println("payList : " + payList);
         return payList;
     }
     // 후원내역 상세조회
-    public PayCompletionDTO selectOne(int plgCode) {
+    public PayDTO selectOne(int plgCode) {
         System.out.println("plgCode : " + plgCode);
 //        PayCompletionDTO plgByOne = mypageMapper.selectOne(plgCode);
 //        System.out.println("plgByOne : " + plgByOne);
@@ -37,17 +38,17 @@ public class MypageService {
         return mypageMapper.selectOne(plgCode);
     }
     // 후원철회 펀딩
-    public List<PayCompletionDTO> selectRefundList(String userId) {
+    public List<PayDTO> selectRefundList(String userId) {
         System.out.println("userID : " + userId);
-        List<PayCompletionDTO> payList = mypageMapper.selectRefundList(userId);
+        List<PayDTO> payList = mypageMapper.selectRefundList(userId);
         System.out.println("payList : " + payList);
         return payList;
     }
 
     // 미달성 펀딩
-    public List<PayCompletionDTO> selectFailFndList(String userId) {
+    public List<PayDTO> selectFailFndList(String userId) {
         System.out.println("userID : " + userId);
-        List<PayCompletionDTO> payList = mypageMapper.selectFailFndList(userId);
+        List<PayDTO> payList = mypageMapper.selectFailFndList(userId);
         System.out.println("payList : " + payList);
         return payList;
     }
@@ -74,10 +75,10 @@ public class MypageService {
     }
 
     // 펀딩내역 상세조회(후원자)
-    public List<PayCompletionDTO> plgList(int fndCode) {
+    public List<PayDTO> plgList(int fndCode) {
         System.out.println("fndCode : " + fndCode);
         log.info(fndCode);
-        List<PayCompletionDTO> plgList = mypageMapper.plgList(fndCode);
+        List<PayDTO> plgList = mypageMapper.plgList(fndCode);
         log.info(plgList);
         return plgList;
     }

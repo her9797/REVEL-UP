@@ -20,9 +20,9 @@ public class KakaoPayReadyDTO {
 	@JsonProperty("partner_user_id")
 	private String partnerUserId; //가맹점 회원id , 최대 100자
 	@JsonProperty("item_name")
-	private String giftName; //상품명, 최대 100자
+	private String itemName; //상품명, 최대 100자
 	@JsonProperty("item_code")
-	private String giftCode; //상품코드, 최대 100자
+	private String itemCode; //상품코드, 최대 100자
 	private Integer quantity; //상품수량
 	@JsonProperty("total_amount")
 	private Integer totalAmount; //상품총액

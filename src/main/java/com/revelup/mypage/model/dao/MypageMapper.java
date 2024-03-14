@@ -3,6 +3,7 @@ package com.revelup.mypage.model.dao;
 import com.revelup.funding.model.dto.DeliveryDTO;
 import com.revelup.funding.model.dto.FundingInfoDTO;
 import com.revelup.pay.model.dto.PayCompletionDTO;
+import com.revelup.pay.model.dto.PayDTO;
 import org.apache.ibatis.annotations.Mapper;
 
 import java.util.List;
@@ -11,20 +12,20 @@ import java.util.List;
 public interface MypageMapper {
 
     // 후원한 펀딩
-    List<PayCompletionDTO> selectAllPlgList(String userId);
+    List<PayDTO> selectAllPlgList(String userId);
 
     // 후원철회 펀딩
-    List<PayCompletionDTO> selectRefundList(String userId);
+    List<PayDTO> selectRefundList(String userId);
 
     // 미달성 펀딩
-    List<PayCompletionDTO> selectFailFndList(String userId);
+    List<PayDTO> selectFailFndList(String userId);
 
 
 //    List<FundingInfoDTO> sttrFndPro(int fndCode);
 
 
     // 나의 후원내역 상세조회
-    PayCompletionDTO selectOne(int plgCode);
+    PayDTO selectOne(int plgCode);
 
     // 세터 펀딩목록
     List<FundingInfoDTO> allFndList();
@@ -32,7 +33,7 @@ public interface MypageMapper {
     // 세터 펀딩내역 상세조회
     FundingInfoDTO sttrSelectOneFnd(int fndCode);
 
-    List<PayCompletionDTO> plgList(int fndCode);
+    List<PayDTO> plgList(int fndCode);
 
     int updateTrackingNo(DeliveryDTO deliveryDTO);
 
