@@ -22,6 +22,15 @@ public class MypageService {
         this.mypageMapper = mypageMapper;
     }
 
+    // 운송장번호 UPDATE
+    public int updateTrackingNo(DeliveryDTO deliveryDTO) {
+
+        int result = mypageMapper.updateTrackingNo(deliveryDTO);
+
+        return result;
+    }
+
+
     // 후원한 펀딩
     public List<PayDTO> selectAllPlgList(String userId) {
         System.out.println("userID : " + userId);
@@ -83,12 +92,7 @@ public class MypageService {
         return plgList;
     }
 
-    public int updateTrackingNo(DeliveryDTO deliveryDTO) {
 
-        int result = mypageMapper.updateTrackingNo(deliveryDTO);
-
-        return result;
-    }
 
 //    public void updateTrackingNum(DeliveryDTO deliveryDTO) {
 //        mypageMapper.updateTrackingNum(deliveryDTO);

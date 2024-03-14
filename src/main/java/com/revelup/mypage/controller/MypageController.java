@@ -11,6 +11,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.security.Principal;
 import java.util.List;
@@ -24,6 +25,30 @@ public class MypageController {
 
     public MypageController(MypageService mypageService) {
         this.mypageService = mypageService;
+    }
+
+    // 운송장번호 UPDATE
+//    @ResponseBody // @ResponseBody return을 문자 그대로 반환하라는 의미 여기서는 사용하지 않음
+    @PostMapping("/updateTrackingNo")
+    public String updateTrackingNo(@RequestParam("plgCode") int plgCode, @RequestParam("trackingNo") String trackingNo, Model model){
+
+        DeliveryDTO deliveryDTO = new DeliveryDTO();
+        deliveryDTO.setPlgCode(plgCode);
+        deliveryDTO.setTrackingNo(trackingNo);
+        model.addAttribute("deliveryDTO", deliveryDTO);
+        System.out.println(deliveryDTO);
+
+
+        int result = mypageService.updateTrackingNo(deliveryDTO);
+
+        if(result > 0) {
+            System.out.println("성공!!!!!");
+        } else {
+            System.out.println("실패!!!!!");
+        }
+
+//        return "redirect:setter-funding-history";
+        return "redirect:/setter-funding-history";
     }
 
     // 후원내역조회
@@ -44,8 +69,8 @@ public class MypageController {
             throw new CustomException("페이지를 불러오는 중 오류가 발생했습니다.", e);
         }
     }
-
     // 나의 후원내역1 상세보기 페이지 이동
+
     @GetMapping("/getter-spons-details1")
     public String selectOnePlg(@RequestParam("plgCode") int plgCode, Model model) {
 
@@ -67,8 +92,8 @@ public class MypageController {
             throw new RuntimeException("페이지를 불러오는 중 오류가 발생했습니다.", e);
         }
     }
-
     // 후원철회 버튼 클릭 후 페이지 이동
+
     @GetMapping("/getter-refund")
     public String getterRefundPage(Model model, Principal principal) {
         String userId = principal.getName();
@@ -83,8 +108,8 @@ public class MypageController {
             throw new CustomException("페이지를 불러오는 중 오류가 발생했습니다.", e);
         }
     }
-
     // 미달성 펀딩 버튼 클릭 시 페이지 이동
+
     @GetMapping("/failed-funding")
     public String failedFundingPage(Model model, Principal principal) {
         String userId = principal.getName();
@@ -101,21 +126,21 @@ public class MypageController {
     }
 
 
-
     // 나의 후원내역2 상세보기 페이지 이동
+
     @GetMapping("/getter-spons-details2")
     public String getterSponsDetailsTwoPage() {
         return "content/mypage/getter-spons-details2";
     }
-
     // 나의 후원내역3 상세보기 페이지 이동
+
     @GetMapping("/getter-spons-details3")
     public String getterSponsDetailsThreePage() {
         return "content/mypage/getter-spons-details3";
     }
 
-
     // 세터의 펀딩 목록
+
     @GetMapping("/setter-fndList")
     public String setterFndListPage(Model model) {
 
@@ -130,8 +155,8 @@ public class MypageController {
         }
 
     }
-
     // 세터의 펀딩목록 상세조회
+
     @GetMapping("/setter-funding-history/{fndCode}")
     public String setterSelectOneFnd(@PathVariable("fndCode")int fndCode, Model model) {
 
@@ -150,29 +175,6 @@ public class MypageController {
         return "/content/mypage/setter-funding-history";
     }
 
-
-    @ResponseBody
-    @PostMapping("/updateTrackingNo")
-    public String updateTrackingNo(@RequestParam("plgCode") int plgCode, @RequestParam("trackingNo") String trackingNo){
-
-        DeliveryDTO deliveryDTO = new DeliveryDTO();
-        deliveryDTO.setPlgCode(plgCode);
-        deliveryDTO.setTrackingNo(trackingNo);
-
-        int result = mypageService.updateTrackingNo(deliveryDTO);
-
-        if(result > 0) {
-            System.out.println("성공!!!!!");
-        } else {
-            System.out.println("실패!!!!!");
-        }
-
-        return "redirect:setter-funding-history";
-//        return "redirect:/content/mypage/setter-funding-history";
-
-
-        // 운송장 입력 모달
-    }
 
 
 //    @ResponseBody

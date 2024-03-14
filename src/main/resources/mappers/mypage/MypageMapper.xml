@@ -96,6 +96,13 @@
         <result property="userPhone" column="USER_PHONE" />
     </resultMap>
 
+    <!-- 운송장번호 UPDATE -->
+    <update id="updateTrackingNo" parameterType="com.revelup.funding.model.dto.DeliveryDTO">
+        UPDATE DELIV
+           SET TRACKING_NO = #{ trackingNo }
+         WHERE PLG_CODE = #{ plgCode }
+        <!--         WHERE FND_CODE = #{ fndCode }-->
+    </update>
 
     <!-- 후원내역조회 후원내역 -->
     <select id="selectAllPlgList" resultMap="payResultMap">
@@ -218,13 +225,7 @@
     </select>
 
 
-    <update id="updateTrackingNo" parameterType="com.revelup.funding.model.dto.DeliveryDTO">
-        UPDATE DELIV
-           SET TRACKING_NO = #{ trackingNo }
-         WHERE PLG_CODE = #{ plgCode }
-<!--         WHERE FND_CODE = #{ fndCode }-->
 
-    </update>
 
 
 </mapper>
