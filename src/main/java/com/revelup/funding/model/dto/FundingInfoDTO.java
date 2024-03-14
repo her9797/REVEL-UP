@@ -3,7 +3,7 @@ package com.revelup.funding.model.dto;
 import lombok.*;
 import org.springframework.web.multipart.MultipartFile;
 
-import java.util.Date;
+import java.sql.Date;
 import java.util.List;
 
 @NoArgsConstructor
@@ -45,4 +45,9 @@ public class FundingInfoDTO implements java.io.Serializable {
     private String sttrBank;    // 은행
     private String sttrAccNo;   // 계좌번호
     private String sttrAccHolder;   // 예금주
+
+    private Date auditApprDt;       // 심사승인일자
+
+
+
 }

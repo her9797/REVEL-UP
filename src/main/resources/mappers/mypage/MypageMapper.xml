@@ -214,7 +214,7 @@
           JOIN USER U ON P.USER_ID = U.USER_ID
           JOIN DELIV D ON P.PLG_CODE = D.PLG_CODE
           JOIN FND_INFO F ON P.FND_CODE = F.FND_CODE
-         WHERE P.PLG_CODE = #{plgCode}
+         WHERE F.FND_CODE = #{fndCode}
     </select>
 
 
