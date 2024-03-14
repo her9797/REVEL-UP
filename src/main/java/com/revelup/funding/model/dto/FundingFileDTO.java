@@ -5,6 +5,8 @@ import lombok.Setter;
 import lombok.ToString;
 import org.springframework.web.multipart.MultipartFile;
 
+import java.util.List;
+
 @Getter
 @Setter
 @ToString
@@ -21,6 +23,7 @@ public class FundingFileDTO implements java.io.Serializable {
     private String fndSaveFile; // 저장 파일명
 
     private String fileDiv; // 파일 구분
+
 
 
 

@@ -1,12 +1,21 @@
 body {  /* 전체 설정 */
-    color: #444444;
-    font-family: "";
+    color: red;
 }
 
 .container {
     font-size: 18px;
     width: 1110px;
 }
+
+.container .item_list {
+    display: flex;
+    flex-wrap: wrap; /* 상위 요소의 너비보다 하위 요소의 너비가 더 클 경우 줄 바꿈 */
+    justify-content: space-between;
+}
+
+
+
+
 
 .funding-name {
     margin-bottom: 5px;

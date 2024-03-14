@@ -24,13 +24,15 @@ public class FundingInfoDTO implements java.io.Serializable {
     private String fndPrgStat; // 펀딩 진행 상태
     private String fndInsertDttm; // 펀딩 심사 등록 일시
 
+
+    private List<FundingFileDTO> fundingFileDTOList;
     private int fileCode; // 파일 코드
     private String fndFileLoc; // 파일 저장 경로
     private String fndOrgFile; // 기존 파일명
     private String fndSaveFile; // 저장 파일명
     private String fileDiv; // 파일 구분
     private int fileAttached; // 파일 존재 유무
-    private List<MultipartFile> fundingFile; // 파일 저장
+        private List<MultipartFile> fundingFile; // 파일 저장
 
     private int giftPrice; // 선물 금액
     private String giftName; // 선물명

@@ -57,7 +57,7 @@ public class FundingController {
 
         List<FundingFileDTO> fundingFileDTOList = fundingService.findThumbnail();
         model.addAttribute("fundingThumbnailList", fundingFileDTOList);
-
+        System.out.println("둘리사진 한장만 나오게해라둘리사진 한장만 나오게해라둘리사진 한장만 나오게해라" + fundingFileDTOList);
 
         return "content/funding/all-funding";
     }
