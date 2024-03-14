@@ -96,9 +96,8 @@
                         </td>
 <!--                        <td th:each="delivery : ${plgOne.delivery}" th:text="${delivery.delivStat}">배송중</td>-->
 <!--                        <td th:each="delivery : ${plgOne.trackingNo}" th:text="${delivery.trackingNo}"  class="trackingNoCell" id="trackingNoCell">123456789123</td>-->
-                        <tr th:each="delivery : ${delivery}">
-                        <td th:text="${deliveryStat.trackingNo}"  class="trackingNoCell" id="trackingNoCell">123456789123</td>
-                        </tr>
+<!--                        <tr th:each="delivery : ${plgOne.delivery}">-->
+                        <td th:each="delivery : ${plgOne.delivery}" th:text="${delivery.trackingNo}"  class="trackingNoCell" id="trackingNoCell">123456789123</td>
                     </tr>
                 </table>
 

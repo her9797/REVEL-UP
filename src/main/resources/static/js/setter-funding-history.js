@@ -62,11 +62,11 @@
 // }
 
 // 모달창 닫힘
-function closeModal() {
-    const delivModal = document.getElementById('deliv-modal');
-    delivModal.style.display = "none"; // 모달창을 숨깁니다
-    delivModal.classList.remove('showmodal'); // 'showmodal' 클래스를 제거합니다
-}
+// function closeModal() {
+//     const delivModal = document.getElementById('deliv-modal');
+//     delivModal.style.display = "none"; // 모달창을 숨깁니다
+//     delivModal.classList.remove('showmodal'); // 'showmodal' 클래스를 제거합니다
+// }
 
 
 
