@@ -19,6 +19,8 @@ import com.revelup.pay.model.service.PayService;
 import jakarta.servlet.http.HttpServletRequest;
 import lombok.extern.slf4j.Slf4j;
 
+import java.security.Principal;
+
 /**
  * 아래 두개의 페이지 참고.
  * 단건결제: https://developers.kakaopay.com/docs/payment/online/single-payment
@@ -66,7 +68,7 @@ public class PayController {
 
     //결제 승인
     @GetMapping("/success")
-    public String kakaoPaySuccess(
+    public String kakaoPaySuccess( Principal principal,
             @AuthenticationPrincipal UserDetails userDetails,
             @RequestParam("pg_token") String pgToken,
             Model model) {
@@ -80,6 +82,7 @@ public class PayController {
                 .quantity(approveResponse.getQuantity())
                 .build();
         model.addAttribute("item", payCompletionDTO);
+
         return PAY_COMPLETE_PAGE;
     }
 

@@ -34,6 +34,20 @@ public class UserService {
         return userMapper.findId(userDTO);
     }
 
+    /** 비번찾기-1 */
+    public UserDTO findPw(UserDTO userDTO) {
+        return userMapper.findPw(userDTO);
+
+    }
+
+    /** 비번찾기-2 */
+    public void updatePw(UserDTO userDTO) {
+        String hashedPassword = passwordEncoder.encode(userDTO.getUserPw());
+        userDTO.setUserPw(hashedPassword);
+        userMapper.updatePw(userDTO);
+    }
+
+
     /** 로그인 시 아이디 비교 */
     public LoginUserDTO findByUserId(String userId) {
 
@@ -46,6 +60,7 @@ public class UserService {
         }
 
     }
+
 
     /** 회원가입 */
     public int signup(UserDTO userDTO) {
@@ -82,4 +97,17 @@ public class UserService {
         userMapper.userUpdate(loginUserDTO);
     }
 
+    /** 이름 체크 */
+    public boolean nameCheck(String userName) {
+
+        int count = userMapper.nameCheck(userName);
+        return count > 0;
+    }
+
+    /** 이메일 체크 */
+    public boolean emailCheck(String userEmail) {
+
+        int count = userMapper.emailCheck(userEmail);
+        return count > 0;
+    }
 }

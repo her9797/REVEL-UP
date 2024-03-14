@@ -28,4 +28,16 @@ public interface UserMapper {
 
     /* ID 찾기 */
     UserDTO findId(UserDTO userDTO) throws Exception;
+
+    /* PW 찾기 */
+    UserDTO findPw(UserDTO userDTO);
+
+    /* 이름 찾기 */
+    int nameCheck(String userName);
+
+    /* 이메일 찾기 */
+    int emailCheck(String userEmail);
+
+    /* PW 재설정 */
+    void updatePw(UserDTO userDTO);
 }

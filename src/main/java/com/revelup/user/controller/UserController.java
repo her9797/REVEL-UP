@@ -16,6 +16,7 @@ import org.springframework.security.authentication.UsernamePasswordAuthenticatio
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
+import org.springframework.security.core.parameters.P;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
@@ -37,18 +38,18 @@ public class UserController {
     private PasswordEncoder passwordEncoder;
 
 
-//     아이디 비밀번호 찾기 페이지 이동
+    /** 아이디 비번 찾기 페이지 이동 */
     @GetMapping("/user-find")
     public String userFindPage() {
 
         return "content/user/user-find";
     }
 
-
+    /** 아이디 찾기 */
     @GetMapping("/findId")
     public String findId(Model model,
                          @RequestParam("userName") String userName,
-                         @RequestParam("userEmail") String userEmail, UserDTO userDTO) throws Exception{
+                         @RequestParam("userEmail") String userEmail, UserDTO userDTO){
 
         try {
             userDTO.setUserName(userName);
@@ -65,14 +66,39 @@ public class UserController {
     }
 
 
-    @GetMapping("/user-find-password")
-    public String userFindPassword(){
+    /** 비밀번호 재설정 1단계 */
+    @GetMapping("/findPw")
+    public String findPw(Model model,
+                         @RequestParam("userId") String userId,
+                         @RequestParam("userName") String userName,
+                         @RequestParam("userEmail") String userEmail , UserDTO userDTO){
+
+        System.out.println(userDTO);
+        try {
+            userDTO.setUserId(userId);
+            userDTO.setUserName(userName);
+            userDTO.setUserEmail(userEmail);
+
+            UserDTO user = userService.findPw(userDTO);
+
+            model.addAttribute("user", user);
+        } catch (Exception e) {
+
+
+        }
+
         return "content/user/user-find-password";
     }
 
+    /** 비밀번호 재설정 2단계 */
+    @PostMapping("updatePw")
+    public String updatePw(UserDTO userDTO){
 
-    /** 아이디 찾기 */
-    /** 비밀번호 재설정 */
+        userService.updatePw(userDTO);
+
+        return "redirect:/main";
+
+    }
 
 
     /** 회원가입 */
@@ -95,6 +121,21 @@ public class UserController {
 
         return userService.idCheck(userId);
     }
+
+    /** DB 아이디 찾기 */
+    @PostMapping("/nameCheck")
+    @ResponseBody
+    public boolean nameCheck(@RequestParam("userName") String userName){
+        return userService.nameCheck(userName);
+    }
+
+    /** DB 이메일 찾기 */
+    @PostMapping("/emailCheck")
+    @ResponseBody
+    public boolean emailCheck(@RequestParam("userEmail") String userEmail) {
+        return userService.emailCheck(userEmail);
+    }
+
 
     /** 로그인한 유저 정보 조회 및 출력 -> userShow PAGE */
     @GetMapping("/user-show")
@@ -132,9 +173,6 @@ public class UserController {
     }
 
 
-
-
-
     @GetMapping("/user-delete1")
     public String delete1Page() {
         return "content/user/user-delete1";
@@ -145,7 +183,11 @@ public class UserController {
         return "content/user/user-delete2";
     }
 
-
+    @PostMapping("/deleteUser")
+    public boolean deleteUser() {
+        return true;
+        /* 커밋용.. */
+    }
 
 
 
