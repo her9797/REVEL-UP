@@ -1,5 +1,6 @@
 package com.revelup.mypage.model.service;
 
+import com.revelup.funding.model.dto.DeliveryDTO;
 import com.revelup.funding.model.dto.FundingInfoDTO;
 import com.revelup.mypage.model.dao.MypageMapper;
 import com.revelup.pay.model.dto.PayCompletionDTO;
@@ -80,6 +81,17 @@ public class MypageService {
         log.info(plgList);
         return plgList;
     }
+
+    public int updateTrackingNo(DeliveryDTO deliveryDTO) {
+
+        int result = mypageMapper.updateTrackingNo(deliveryDTO);
+
+        return result;
+    }
+
+//    public void updateTrackingNum(DeliveryDTO deliveryDTO) {
+//        mypageMapper.updateTrackingNum(deliveryDTO);
+//    }
 
 
 //    public List<FundingInfoDTO> sttrFndPro(int fndCode) {

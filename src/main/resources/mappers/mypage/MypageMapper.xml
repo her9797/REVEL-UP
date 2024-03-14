@@ -218,22 +218,13 @@
     </select>
 
 
-<!--        <select id="sttrFndPro" resultMap="com.revelup.funding.model.dao.FundingMapper">-->
-<!--        SELECT P.PLG_DTTM-->
-<!--        ,F.FND_NAME-->
-<!--        ,G.GIFT_NAME-->
-<!--        ,F.SUCCESS_AMT-->
-<!--        ,F.FND_END_DT-->
-<!--        ,FND_CODE-->
-<!--        ,U.USER_NAME-->
-<!--        ,P.PLG_PRICE-->
-<!--        ,P.PLG_DTTM-->
-<!--        ,U.USER_ADD-->
-<!--        ,D.DELIV_STAT-->
-<!--        ,D.TRACKING_NO-->
-<!--        FROM-->
-<!--        WHERE FND_CODE = @{ fndCode }-->
-<!--    </select>-->
+    <update id="updateTrackingNo" parameterType="com.revelup.funding.model.dto.DeliveryDTO">
+        UPDATE DELIV
+           SET TRACKING_NO = #{ trackingNo }
+         WHERE PLG_CODE = #{ plgCode }
+<!--         WHERE FND_CODE = #{ fndCode }-->
+
+    </update>
 
 
 </mapper>

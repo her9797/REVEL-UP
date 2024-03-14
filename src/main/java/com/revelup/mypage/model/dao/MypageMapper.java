@@ -1,5 +1,6 @@
 package com.revelup.mypage.model.dao;
 
+import com.revelup.funding.model.dto.DeliveryDTO;
 import com.revelup.funding.model.dto.FundingInfoDTO;
 import com.revelup.pay.model.dto.PayCompletionDTO;
 import org.apache.ibatis.annotations.Mapper;
@@ -33,4 +34,8 @@ public interface MypageMapper {
 
     List<PayCompletionDTO> plgList(int fndCode);
 
+    int updateTrackingNo(DeliveryDTO deliveryDTO);
+
+
+//    void updateTrackingNum(DeliveryDTO deliveryDTO);
 }

@@ -1,7 +1,9 @@
 package com.revelup.mypage.controller;
 
+import com.revelup.funding.model.dto.DeliveryDTO;
 import com.revelup.funding.model.dto.FundingInfoDTO;
 import com.revelup.mypage.model.service.MypageService;
+import com.revelup.notice.model.dto.NoticeDTO;
 import com.revelup.pay.model.dto.PayCompletionDTO;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.http.HttpStatus;
@@ -146,6 +148,49 @@ public class MypageController {
         System.out.println("plgList" + plgList);
         return "/content/mypage/setter-funding-history";
     }
+
+
+    @ResponseBody
+    @PostMapping("/updateTrackingNo")
+    public String updateTrackingNo(@RequestParam("plgCode") int plgCode, @RequestParam("trackingNo") String trackingNo){
+
+        DeliveryDTO deliveryDTO = new DeliveryDTO();
+        deliveryDTO.setPlgCode(plgCode);
+        deliveryDTO.setTrackingNo(trackingNo);
+
+        int result = mypageService.updateTrackingNo(deliveryDTO);
+
+        if(result > 0) {
+            System.out.println("성공!!!!!");
+        } else {
+            System.out.println("실패!!!!!");
+        }
+
+        return "redirect:setter-funding-history";
+//        return "redirect:/content/mypage/setter-funding-history";
+
+    }
+
+
+//    @ResponseBody
+//    @PostMapping("/updateShipment")
+//    public String updateShipment(@RequestParam("proCode") int proCode, @RequestParam("estDate") String estDate) {
+//        ProjectDTO estDateDto = new ProjectDTO();
+//        estDateDto.setProCode(proCode);
+//        estDateDto.setEstDate(Date.valueOf(estDate));
+//
+//        int result = projectService.updateShipment(estDateDto);
+//
+//        if(result > 0) {
+//            System.out.println(":)");
+//        }else {
+//            System.out.println(":(");
+//        }
+//
+//        return "redirect:creatorendpj";
+//    }
+
+
 
     // 찜한 목록 조회 페이지 이동
     @GetMapping("/all-wishlist")
