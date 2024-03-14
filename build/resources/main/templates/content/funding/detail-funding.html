@@ -40,16 +40,6 @@
                     <li th:each="fundingFile: ${fundingFileList}">
                             <img th:src="@{|/upload/${fundingFile.fndSaveFile}|}" alt="">
                     </li>
-                    <li>
-                        <a>
-                            <img th:src="@{/img/thumbnail/t2.jpg}" alt="">
-                        </a>
-                    </li>
-                    <li>
-                        <a>
-                            <img th:src="@{/img/thumbnail/t3.jpg}" alt="">
-                        </a>
-                    </li>
                 </ul>
 
                 <div class="slide-control">
@@ -75,7 +65,7 @@
 
         <!-- 펀딩 정보 -->
         <div class="funding-description">
-            <h1><b>폐플라스틱으로 만든 양털이불: Almost 양털, 환경을 생각하는 선택</b></h1>
+            <h1 th:text="${funding.fndName}"></h1>
             <!-- 달성율 그래프 -->
             <div class="progress" role="progressbar" aria-label="Success example" aria-valuenow="75"
                  aria-valuemin="0"
@@ -86,7 +76,7 @@
 
         <!-- 기본 수량의 선물 금액 -->
         <div class="funding-price">
-            <span id="unit-price">50,000</span>원
+            <span id="unit-price" th:text="${funding.giftPrice}"></span>원
         </div>
 
         <!-- 선물 수량 입력 및 찜하기, 후원하기 버튼 -->
@@ -105,7 +95,7 @@
         <!-- 총 후원금액 정보 -->
         <div class="total-price">
             <p>총 후원금액</p>
-            <span id="total-price">50,000</span><span id="currency-unit">원</span>
+            <input type="text" readonly th:value="${funding.giftPrice}"><span>원</span>
         </div>
 
         <!--  후원 관련 정보 테이블  -->

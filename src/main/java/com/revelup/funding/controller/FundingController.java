@@ -44,7 +44,6 @@ public class FundingController {
                                 @ModelAttribute GiftDTO giftDTO,
                                 @ModelAttribute SetterInfoDTO setterInfoDTO) throws IOException {
         System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
-//        System.out.println("fundingFileDTO = " + fundingFileDTO);
         System.out.println("fundingInfoDTO = " + fundingInfoDTO);
         System.out.println(" ");
         System.out.println("giftDTO = " + giftDTO);
@@ -55,15 +54,16 @@ public class FundingController {
         return "content/funding/insertFunding/new-funding-complete";
     }
 
-    @GetMapping("/all-funding")
+    @GetMapping("/all-funding-test")
     public String selectAllFunding(Model model) {
         List<FundingInfoDTO> fundingInfoDTOList = fundingService.selectAllFunding();
         model.addAttribute("fundingList", fundingInfoDTOList);
         System.out.println("fundingInfoDTOList 컨트롤러 selectAllFunding = " + fundingInfoDTOList);
-        return "content/funding/all-funding";
+        return "content/funding/all-funding-test";
     }
 
-    @GetMapping("/all-funding/{fndCode}")
+
+    @GetMapping("/all-funding-test/{fndCode}")
     public String findByCode(@PathVariable("fndCode") int fndCode, Model model) {
         // 조회수 처리
         // fundingService.updateViews(fndCode);
@@ -77,15 +77,8 @@ public class FundingController {
         List<FundingFileDTO> fundingFileDTOList = fundingService.findFile(fndCode);
         model.addAttribute("fundingFileList", fundingFileDTOList);
 
-
-        // 펀딩 심사
-//        insertAudit(fndCode);
-
-
         return "content/funding/detail-funding";
     }
-
-//    private void insertAudit(int fndCode);
 
     @GetMapping("/detail-funding")
     public String selectDetailFunding() {
