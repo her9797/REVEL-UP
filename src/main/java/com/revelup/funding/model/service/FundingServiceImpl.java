@@ -1,5 +1,6 @@
 package com.revelup.funding.model.service;
 
+import com.revelup.audit.model.dto.AuditDTO;
 import com.revelup.funding.model.dao.FundingMapper;
 import com.revelup.funding.model.dto.*;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,7 +28,10 @@ public class FundingServiceImpl implements FundingService {
         mapper.insertSetterInfo(setterInfoDTO);
         mapper.insertFundingInfo(fundingInfoDTO);
         int fndCode = fundingInfoDTO.getFndCode();
-        giftDTO.setFndCode(fndCode);    // GiftDTO에 방금 직전에 동시에 생성된 펀딩코드를 담아줌.
+        AuditDTO auditDTO = new AuditDTO();
+        giftDTO.setFndCode(fndCode);// GiftDTO에 방금 직전에 동시에 생성된 펀딩코드를 담아줌.
+        auditDTO.setFndCode(fndCode);
+
         mapper.insertGift(giftDTO);
 
         // 파일만 따로 가져오기
@@ -48,8 +52,8 @@ public class FundingServiceImpl implements FundingService {
         fundingFileDTO.setFndCode(fndCode);                     // 펀딩 코드 삽입
 
         // 파일 저장용 폴더에 파일 저장 처리
-        String fndFileLoc = "/Users/jaylee/Documents/SemiFinal/fndFileLoc/" + fndSaveFile; // Mac용 저장경로
-//        String fndFileLoc = "D:/저장경로 상위폴더/저장경로 하위폴더/fndFileLoc/" + fndSaveFile; // Window용 저장경로
+//        String fndFileLoc = "/Users/jaylee/Documents/SemiFinal/fndFileLoc/" + fndSaveFile; // Mac용 저장경로
+        String fndFileLoc = "C:/Users/hi/Desktop/revelupimg/" + fndSaveFile; // Window용 저장경로
         fundingFileDTO.setFndFileLoc(fndFileLoc);
         fundingFile.transferTo(new File(fndFileLoc));
         mapper.insertFile(fundingFileDTO);

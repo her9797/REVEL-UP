@@ -13,8 +13,8 @@ import java.sql.Date;
 public class AuditDTO implements java.io.Serializable {
 
     private int fndCode;            // 펀딩코드
+    private String fndInsertDttm;   // 펀딩등록일시
     private String auditStat;         // 심사상태
-    private Date fndInsertDttm;   // 펀딩등록일시
     private String auditApprDt;       // 심사승인일자
 
 

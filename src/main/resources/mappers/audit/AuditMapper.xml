@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.revelup.audit.model.dao.AuditMapper">
+
+    <resultMap id="audit" type="com.revelup.audit.model.dto.AuditDTO">
+        <id property="fndCode" column="FND_CODE"/>
+        <result property="fndInsertDttm" column="FND_INSERT_DTTM"/>
+        <result property="auditStat" column="AUDIT_STAT"/>
+        <result property="auditApprDt" column="AUDIT_APPR_DT"/>
+    </resultMap>
+
+    <select id="auditList" parameterType="com.revelup.audit.model.dto.AuditDTO">
+        SELECT F.FND_CODE
+                , F.FND_INSERT_DTTM
+                , A.AUDIT_STAT
+                , A.AUDIT_APPR_DT
+          FROM AUDIT A
+          JOIN FND_INFO F ON F.FND_CODE = A.FND_CODE
+         WHERE AUDIT_STAT = 'P'
+    </select>
+
+</mapper>
