@@ -77,18 +77,17 @@
                         <a th:text="'· ' + ${allPlg.plgPrice} + '원'">· 70,000원</a><br>
                     </div>
                     <div class="button-group">
-<!--                        <button type="button" data-plgcode="${allPlg.plgCode}" class="button-detail">상세조회</button>-->
-                        <button type="button"  th:attr="onclick=|location.href='/content/mypage/getter-spons-details1?plgCode=' + ${allPlg.plgCode}|" class="button-detail"> 상세조회</button>
-<!--                        <button type="button" onclick="location.href='/content/mypage/getter-spons-details1'" class="button-detail"> 상세조회</button>-->
+                        <button type="button" th:href="@{|/content/mypage/getter-spons-details1/${allPlg.plgCode}|}" class="button-detail">상세조회</button>
                         <button type="button" class="button-support-cancel" id="cancel-btn">후원철회</button>
                     </div>
                 </div>
+
 
                     <!-- 후원 철회 모달 창 추가 -->
                     <div id="cancel-modal" class="modal">
                         <div class="modal-content">
                             <h4>후원 철회 사유를 선택하십시오.</h4>
-                            <form>
+                            <form  th:action="@{/content/mypage/getter-ongoing}" method="post">
                                 <input type="radio" id="simpleChange" name="cancelReason">
                                 <label for="simpleChange">단순 변심</label><br>
                                 <input type="radio" id="rewardChange" name="cancelReason">
@@ -98,8 +97,8 @@
                                 <input type="radio" id="other" name="cancelReason">
                                 <label for="other">기타(직접 입력)</label><br>
                                 <textarea id="otherReason" style="display: none;" placeholder="후원 철회 사유를 입력해 주세요."></textarea>
+                                <button id="confirm-btn">확인</button>
                             </form>
-                            <button id="confirm-btn">확인</button>
                         </div>
                     </div>
                 </div>

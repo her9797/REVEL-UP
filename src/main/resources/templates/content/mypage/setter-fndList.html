@@ -45,16 +45,16 @@
         <div class="col-lg-8 col-md-8 col-sm-8">
             <div class="title-box">
                 <button onclick="location.href='/content/mypage/setter-fndList'" style="background-color: #0CC291;">진행 중인 펀딩</button>
-                <button onclick="location.href='settrr-autreadyList'">심사 대기중인 펀딩</button>
-                <button onclick="location.href='setter-refuseList'">반려된 펀딩</button>
-                <button onclick="location.href='setter-finishList'">종료된 펀딩</button>
+                <button onclick="location.href='/content/mypage/settrr-autreadyList'">심사 대기중인 펀딩</button>
+                <button onclick="location.href='/content/mypage/setter-refuseList'">반려된 펀딩</button>
+                <button onclick="location.href='/content/mypage/setter-finishList'">종료된 펀딩</button>
             </div>
 
             <div class="image-box-group">
-                <div class="image-box">
+                <div class="image-box" th:each="allFnd : ${ allFndList }">
                     <img th:src="@{/img/product/p1.png}" alt="product1">
                     <p class="image-desc">
-                    <div th:each="allFnd : ${ allFndList }">
+                    <div>
                         <a style="font-weight: bold;" th:text="${allFnd.fndName}">알뜰살뜰 모아모아 레인보우 협탁1</a><br>
                         <a id="goalAmt" th:text="'목표액 : ' + ${allFnd.goalAmt} + '원'">목표액 : 1,500,000원</a><br>
                         <a id="successAmt" th:text="'달성액 : ' + ${allFnd.successAmt} + '원'">달성액 : 900,000원</a><br>
@@ -63,11 +63,15 @@
                     </div>
                     <div class="button-group">
                         <button class="notice-insert-btn"> 공지사항등록</button>
-                        <button class="detail-btn" onclick="location.href='/content/mypage/setter-funding-history-progress'">상세조회</button>
+                        <a style="color: #000000; text-decoration:none; text-align:center;" class="detail-btn" th:href="@{|/content/mypage/setter-funding-history/${allFnd.fndCode}|}">상세조회</a>
                         <button class="fnd-delete-btn">삭제</button>
                     </div>
                 </div>
-<!--                <div class="image-box" th:if="${allPlgList != null}" th:each="allPlg : ${allPlgList}">-->
+
+
+                <!--                        <button type="button" class="detail-btn" data-fnd-code="${allFnd.fndCode}">상세조회</button>-->
+
+                <!--                <div class="image-box" th:if="${allPlgList != null}" th:each="allPlg : ${allPlgList}">-->
 <!--                    <p class="support-date" th:text="${allPlg.plgDttm}">2024-04-25</p>-->
 <!--                    <p>후원번호 : <a th:text="${allPlg.plgCode}">12341235</a></p>-->
 <!--                    <img th:src="@{/img/product/p1.png}" alt="product1">-->

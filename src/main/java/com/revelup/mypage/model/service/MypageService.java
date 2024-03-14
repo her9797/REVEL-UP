@@ -1,14 +1,18 @@
 package com.revelup.mypage.model.service;
 
+import com.revelup.funding.model.dto.DeliveryDTO;
 import com.revelup.funding.model.dto.FundingInfoDTO;
 import com.revelup.mypage.model.dao.MypageMapper;
 import com.revelup.pay.model.dto.PayCompletionDTO;
+import lombok.extern.log4j.Log4j;
+import lombok.extern.log4j.Log4j2;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
 
 @Service
+@Log4j2
 public class MypageService {
 
     private final MypageMapper mypageMapper;
@@ -24,7 +28,14 @@ public class MypageService {
         System.out.println("payList : " + payList);
         return payList;
     }
-
+    // 후원내역 상세조회
+    public PayCompletionDTO selectOne(int plgCode) {
+        System.out.println("plgCode : " + plgCode);
+//        PayCompletionDTO plgByOne = mypageMapper.selectOne(plgCode);
+//        System.out.println("plgByOne : " + plgByOne);
+//        return plgByOne;
+        return mypageMapper.selectOne(plgCode);
+    }
     // 후원철회 펀딩
     public List<PayCompletionDTO> selectRefundList(String userId) {
         System.out.println("userID : " + userId);
@@ -41,19 +52,7 @@ public class MypageService {
         return payList;
     }
 
-    // 후원내역 상세조회
-    public PayCompletionDTO selectOne(int plgCode) {
-        System.out.println("plgCode : " + plgCode);
-        PayCompletionDTO plgByOne = mypageMapper.selectOne(plgCode);
-        System.out.println("plgByOne : " + plgByOne);
-        return plgByOne;
-    }
 
-    // 펀딩내역 상세조회
-    public List<FundingInfoDTO> sttrFndPro(int fndCode) {
-//        return mypageMapper.sttrFndPro(fndCode);
-        return new ArrayList<>();
-    }
 
     // 펀딩내역 조회
     public List<FundingInfoDTO> allFndList() {
@@ -62,4 +61,42 @@ public class MypageService {
         return fndList;
 
     }
+
+    // 펀딩내역 상세조회(펀딩)
+    public FundingInfoDTO sttrSelectOneFnd(int fndCode) {
+        System.out.println("fndCode : " + fndCode);
+        log.info(fndCode);
+        FundingInfoDTO fndByOne = mypageMapper.sttrSelectOneFnd(fndCode);
+        System.out.println("fndByOne : " + fndByOne);
+        log.info(fndByOne);
+        return fndByOne;
+
+    }
+
+    // 펀딩내역 상세조회(후원자)
+    public List<PayCompletionDTO> plgList(int fndCode) {
+        System.out.println("fndCode : " + fndCode);
+        log.info(fndCode);
+        List<PayCompletionDTO> plgList = mypageMapper.plgList(fndCode);
+        log.info(plgList);
+        return plgList;
+    }
+
+    public int updateTrackingNo(DeliveryDTO deliveryDTO) {
+
+        int result = mypageMapper.updateTrackingNo(deliveryDTO);
+
+        return result;
+    }
+
+//    public void updateTrackingNum(DeliveryDTO deliveryDTO) {
+//        mypageMapper.updateTrackingNum(deliveryDTO);
+//    }
+
+
+//    public List<FundingInfoDTO> sttrFndPro(int fndCode) {
+////        return mypageMapper.sttrFndPro(fndCode);
+//        return new ArrayList<>();
+//    }
+
 }

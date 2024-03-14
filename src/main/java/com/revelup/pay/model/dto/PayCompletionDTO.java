@@ -19,31 +19,24 @@ import lombok.*;
 @ToString
 public class PayCompletionDTO {
 
-	private int plgCode;
-	private String userId;
-	private String fndCode;
-	private int giftQuantity;
-	private Date plgDateTime;
-	private int plgPrice;
-	private Date plgCancelDate;
-
 	private String itemName;			// 선물 이름
 	private Integer totalPrice;			// 후원 금액
 	private Integer quantity;			// 선물 수량
 	private LocalDateTime createdAt;	// 후원 일시
 
-//	private int plgCode;
-//	private String userId;
-//	private int fndCode;
+	private int plgCode;
+	private String userId;
+	private int fndCode;
 	private int giftQty;
-	private Date plgDttm;
-//	private int plgPrice;
+	private String plgDttm;
+	private int plgPrice;
 	private Date plgCanDt;
 
 	private String fndName; // Funding name
 	private String giftName; // Gift name
 	private Date fndEndDt; // Funding end date
 	private String trackingNo; // Delivery tracking number
+	private String delivStat; // Delivery status
 	private String userAdd; // User address
 	private String userName; // User name
 	private String userPhone; // User phone number

@@ -50,37 +50,24 @@
         <div class="col-lg-8 col-md-8 col-sm-8">
             <a style="margin-bottom: 20px; font-size: 18px;">나의 펀딩 내역 &gt; 펀딩 내역 조회 &gt; <b> 상세조회</b></a>
 
-            <p class="title" style="font-size: 14px; font-weight: bold; margin-top: 10px;">등록일 2024-02-21</p>
+            <p class="title" style="font-size: 14px; font-weight: bold; margin-top: 10px;" th:text="'등록일 ' + ${selectOneFnd.auditApprDt}">등록일 2024-02-21</p>
 
             <div class="image-box">
                 <img th:src="@{/img/product/p1.png}" alt="product1">
                 <p class="image-desc">
                 <div>
-                    <strong class="info-item">펀딩명 </strong>: [개굴기업] 알뜰살뜰 모아모아 레인보우 협탁 <br>
-                    <strong class="info-item">선물명 </strong>: 레인보우 협탁<br>
-                    <strong class="info-item">달성률 </strong>: 71%<br>
-                    <strong class="info-item">달성금액 </strong>: 28,000,000<br>
-                    <strong class="info-item">펀딩 종료일 </strong>: 2024-04-24
+                <strong class="info-item">펀딩명 </strong><a th:text="': ' + ${selectOneFnd.fndName}">: [개굴기업] 알뜰살뜰 모아모아 레인보우 협탁 </a><br>
+                    <strong class="info-item">선물명 </strong><a th:text="': ' + ${selectOneFnd.giftName}">: 레인보우 협탁</a><br>
+                    <strong class="info-item">달성률 </strong><a th:text="': ' + ${#numbers.formatDecimal((selectOneFnd.successAmt * 1.0) / selectOneFnd.goalAmt * 100, 0, 0)} + '%'">: 71%</a><br>
+                    <strong class="info-item">달성금액 </strong><a th:text="': ' + ${selectOneFnd.successAmt}">: 28,000,000</a><br>
+                    <strong class="info-item">펀딩 종료일 </strong><a th:text="': ' + ${selectOneFnd.fndEndDt}">: 2024-04-24</a>
                 </div>
-
                 </p>
             </div>
 
             <div class="table-container" style="margin-top: 80px;">
                 <p class="title" style="font-size: 18px; font-weight: bold; margin-top: 10px;">게터의 후원 내역</p>
                 <button id="open-deliv-modal" onclick="openModal()">운송장입력</button>
-
-                <div id="deliv-modal" class="modal">
-                    <div class="modal-content">
-                        <h4>운송장 번호를 입력하세요.</h4>
-                        <input type="text" id="trackingNumber" name="trackingNumber">
-                        <div class="modal-button" style="justify-content: center;">
-                            <!-- <button id="submit-btn" onclick='alert("아직 등록되지 않은 기능입니다.")'>등록</button> -->
-                            <button id="submit-btn">등록</button>
-                            <button id="cancel-btn" onclick="closeModal()">취소</button>
-                        </div>
-                    </div>
-                </div>
 
                 <table border="1">
                     <tr align="center" bgcolor="#0CC291">
@@ -90,31 +77,41 @@
                         <td>후원 금액</td>
                         <td>후원일</td>
                         <td>후원자 주소</td>
-                        <td>배송중</td>
+                        <td>배송상태</td>
                         <td>운송장번호</td>
                     </tr>
-                    <tr align="center">
+                    <tr align="center" th:each="plgOne : ${ plgList }" >
                         <td><input type="radio" name="check" value="check"></td>
-                        <td>F-001</td>
-                        <td>김자바</td>
-                        <td>70000</td>
-                        <td>2024-02-01</td>
-                        <td>서울 광진구 종곡동 28-11</td>
-                        <td>배송중</td>
-                        <td class="trackingNumberCell" id="trackingNumberCell">123456789123</td>
-
-                    </tr>
-                    <tr align="center">
-                        <td><input type="radio" name="check" value="check"></td>
-                        <td>F-002</td>
-                        <td>홍길동</td>
-                        <td>140000</td>
-                        <td>2024-02-05</td>
-                        <td>서울 중구 인사동 인사로 인사길1212</td>
-                        <td>배송중</td>
-                        <td class="trackingNumberCell" id="trackingNumberCell">-</td>
+                        <td th:text="${plgOne.plgCode}">F-001</td>
+                        <td th:each="login : ${plgOne.login}" th:text="${login.userName}">김자바</td>
+                        <td th:text="${plgOne.plgPrice}">70000</td>
+                        <td th:text="${plgOne.plgDttm}">2024-02-01</td>
+                        <td th:each="login : ${plgOne.login}" th:text="${login.userAdd}">서울 광진구 종곡동 28-11</td>
+                        <td th:each="delivery : ${plgOne.delivery}">
+                            <span th:switch="${delivery.delivStat}">
+                                <span th:case="'R'">선물 준비중</span>
+                                <span th:case="'S'">배송중</span>
+                                <span th:case="'F'">배송완료</span>
+                            </span>
+                        </td>
+<!--                        <td th:each="delivery : ${plgOne.delivery}" th:text="${delivery.delivStat}">배송중</td>-->
+                        <td th:each="delivery : ${plgOne.delivery}" th:text="${plgOne.trackingNo}" class="trackingNumberCell" id="trackingNumberCell">123456789123</td>
                     </tr>
                 </table>
+
+
+                <div id="deliv-modal" class="modal1">
+                    <div class="modal-content" style="border: none">
+                        <h4>운송장 번호를 입력하세요.</h4>
+                        <input type="text" id="trackingNumber" name="trackingNumber" style="border: 1px solid #282828">
+                        <div class="modal-button1" style="justify-content: center;">
+                            <!-- <button id="submit-btn" onclick='alert("아직 등록되지 않은 기능입니다.")'>등록</button> -->
+                            <button id="submit-btn" th:onclick="updateTrackingNo()">등록</button>
+                            <button id="cancel-btn" onclick="closeModal()">취소</button>
+                        </div>
+                    </div>
+                </div>
+
             </div>
         </div>
     </div>
@@ -132,7 +129,6 @@
         <br>
     </div>
 </section>
-</div>
 
 <div th:insert="~{/fragments/footer.html}"></div>
 

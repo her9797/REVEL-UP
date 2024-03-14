@@ -2,7 +2,7 @@ package com.revelup.funding.model.dto;
 
 import lombok.*;
 
-import java.util.Date;
+import java.sql.Date;
 
 @NoArgsConstructor
 @AllArgsConstructor
@@ -42,7 +42,7 @@ public class FundingInfoDTO implements java.io.Serializable {
     private String sttrAccNo;   // 계좌번호
     private String sttrAccHolder;   // 예금주
 
-
+    private String auditApprDt;
 
 
 
