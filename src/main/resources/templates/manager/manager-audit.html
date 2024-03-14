@@ -8,7 +8,7 @@
     <th:block th:include="fragments/common"></th:block>
     <link th:href="@{/css/manager-notice.css}" rel="stylesheet">
     <link th:href="@{/css/common/manager-modal.css}" rel="stylesheet">
-    <script th:src="@{/js/manager-notice.js}"></script>
+    <script th:src="@{/js/manager-audit.js}"></script>
     <link th:href="@{/css/mypage.css}" rel="stylesheet">
 
 </head>
@@ -45,47 +45,23 @@
     <div class="row">
         <table class="manager_table" border="0">
             <tr align="center" bgcolor="#0CC291" style="font-weight: bold">
-                <td>공지 코드</td>
-                <td>공지 제목</td>
-                <td>공지사항 작성일</td>
+                <td>펀딩 코드</td>
+                <td>펀딩 등록일자</td>
+                <td>심사 상태</td>
+                <td>심사 처리일자</td>
             </tr>
-            <tr th:each="audit : ${auditList}" align="center">
+            <tr th:each="audit : ${audit}" align="center">
                 <td>
-                    <!-- 공지 코드를 클릭할 때 해당 공지에 대한 모달 창 열기 -->
-<!--                    <a style="color:black; cursor:pointer;" th:text="${audit.fndCode}" onclick="openModal(this)">${notice.ntcCode}</a>-->
+<!--                    &lt;!&ndash; 공지 코드를 클릭할 때 해당 공지에 대한 모달 창 열기 &ndash;&gt;-->
+                    <a style="color:black; cursor:pointer;" th:text="${audit.fndCode}" onclick="openModal(this)">${audit.fndCode}</a>
                 </td>
-                <td style="color:black; cursor:pointer;" th:text="${audit.fndCode}"> </td>
+                <!--/*@thymesVar id="fndCode" type=""*/-->
+<!--                <td style="color:black; cursor:pointer;" th:text="${audit.fndCode}"> </td>-->
                 <td th:text="${audit.fndInsertDttm}"></td>
                 <td th:text="${audit.auditStat}"></td>
                 <td th:text="${audit.auditApprDt}"></td>
             </tr>
         </table>
-    </div>
-
-
-    <button type="button" id="insert-btn" data-toggle="modal" data-target="insert-modal" style="font-weight: bold">신규등록</button>
-
-    <div id="insert-modal" class="insert-modal">
-        <div class="insert-modal-content" style="border: none;">
-            <span id="close-insert-btn" style="margin-right: -450px; margin-top: -250px">&times;</span>  <!-- x를 나타내는 문자유니코드 U+00D7 -->
-            <form th:action="@{/manager/insert-notice}" method="post">
-                <h4>신규 등록</h4>
-                <div class="notice-content">
-                    <div class="notice-header">
-                        <label id="modal-title" style="margin-bottom: -80px; margin-top: 30px; margin-left: -415px">제목</label>
-                        <input type="text" id="insert-title" class="text-box"  name="ntcTitle"><br>
-                    </div>
-                    <div class="contents">
-                        <div class="contract">
-                            <label id="insert-text" style="margin-bottom: -80px; margin-top: 30px; margin-left: -415px">내용</label>
-                            <textarea style="margin-left: 10px" id="insert-content" class="text" name="ntcCont"></textarea>
-                        </div>
-                    </div>
-                    <p id="current-time" style="font-size: 12px; margin-left: -340px">현재 시간: <span id="current-time-value"></span></p>
-                    <button type="submit" id="insert-confirm-btn" style="width: 120px">등록하기</button>
-                </div>
-            </form>
-        </div>
     </div>
 
 
@@ -112,7 +88,7 @@
     <!-- 공지사항 내용을 보여줄 모달창-->
 
 
-    <div id="notice-modal" class="modal" th:each="notice : ${noticeList}">
+    <div id="audit-modal" class="modal" th:each="notice : ${noticeList}">
         <div class="open-modal">
             <div class="modal-content2">
                 <span id="close-btn2">&times;</span>

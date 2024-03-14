@@ -8,5 +8,7 @@ import java.util.List;
 
 @Mapper
 public interface AuditMapper {
-//    List<AuditDTO> auditList();
+    List<AuditDTO> auditList(AuditDTO auditDTO);
+
+    AuditDTO auditDetails(int fndCode);
 }

@@ -5,6 +5,7 @@ import com.revelup.audit.model.dao.AuditMapper;
 import com.revelup.audit.model.dto.AuditDTO;
 import com.revelup.funding.model.dto.FundingInfoDTO;
 import lombok.AllArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.security.servlet.PathRequest;
 import org.springframework.stereotype.Service;
 
@@ -15,20 +16,17 @@ import java.util.List;
 @AllArgsConstructor
 public class AuditService {
 
-//    private AuditMapper auditMapper;
+    @Autowired
+    private AuditMapper auditMapper;
+
+    public List<AuditDTO> auditList(AuditDTO auditDTO) {
+        System.out.println("서비스 : " + auditMapper.auditList(auditDTO));
+        return auditMapper.auditList(auditDTO);
+    }
 
 
+    public AuditDTO auditDetails(int fndCode) {
 
-
-
-//    public List<AuditDTO> auditList(FundingInfoDTO fundingInfoDTO, AuditDTO auditDTO) {
-//
-////        int fundCode = fundingInfoDTO.getFndCode();
-////        String dttm = fundingInfoDTO.getFndInsertDttm();
-////
-////        auditDTO.setFndCode(fundCode);
-////        auditDTO.setFndInsertDttm(dttm);
-//
-//        return auditMapper.auditList();
-//    }
+        return auditMapper.auditDetails(fndCode);
+    }
 }

@@ -1,14 +1,9 @@
 package com.revelup.funding.controller;
 
-import com.revelup.audit.model.dto.AuditDTO;
 import com.revelup.funding.model.dto.*;
 import com.revelup.funding.model.service.FundingService;
-import com.revelup.user.controller.UserController;
 import com.revelup.user.model.dto.LoginUserDTO;
 import com.revelup.user.model.service.UserService;
-import org.springframework.security.core.annotation.AuthenticationPrincipal;
-import org.springframework.security.core.userdetails.User;
-import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -44,7 +39,6 @@ public class FundingController {
                                 @ModelAttribute GiftDTO giftDTO,
                                 @ModelAttribute SetterInfoDTO setterInfoDTO) throws IOException {
         System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
-//        System.out.println("fundingFileDTO = " + fundingFileDTO);
         System.out.println("fundingInfoDTO = " + fundingInfoDTO);
         System.out.println(" ");
         System.out.println("giftDTO = " + giftDTO);
@@ -60,6 +54,11 @@ public class FundingController {
         List<FundingInfoDTO> fundingInfoDTOList = fundingService.selectAllFunding();
         model.addAttribute("fundingList", fundingInfoDTOList);
         System.out.println("fundingInfoDTOList 컨트롤러 selectAllFunding = " + fundingInfoDTOList);
+
+        List<FundingFileDTO> fundingFileDTOList = fundingService.findThumbnail();
+        model.addAttribute("fundingThumbnailList", fundingFileDTOList);
+
+
         return "content/funding/all-funding";
     }
 
@@ -77,15 +76,8 @@ public class FundingController {
         List<FundingFileDTO> fundingFileDTOList = fundingService.findFile(fndCode);
         model.addAttribute("fundingFileList", fundingFileDTOList);
 
-
-        // 펀딩 심사
-//        insertAudit(fndCode);
-
-
         return "content/funding/detail-funding";
     }
-
-//    private void insertAudit(int fndCode);
 
     @GetMapping("/detail-funding")
     public String selectDetailFunding() {
