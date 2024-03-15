@@ -2,6 +2,7 @@ package com.revelup.funding.model.dao;
 
 import com.revelup.audit.model.dto.AuditDTO;
 import com.revelup.funding.model.dto.*;
+import com.revelup.user.model.dto.UserDTO;
 import org.apache.ibatis.annotations.Mapper;
 
 import java.util.List;
@@ -31,7 +32,10 @@ public interface FundingMapper {
 
     List<FundingFileDTO> findFile(int fndCode);
 
-    AuditDTO insertAudit(int fndCode);
+    /* 심사 등록 절대 삭제X */
+    void insertAudit(AuditDTO auditDTO);
 
     List<FundingFileDTO> findThumbnail();
+
+    void userUpdateRole(UserDTO userDTO);
 }

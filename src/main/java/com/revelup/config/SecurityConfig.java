@@ -44,7 +44,9 @@ public class SecurityConfig  {
                     ("/content/user/findId"),("/content/user/findPw"),("/content/user/updatePw"),("/content/user/emailCheck"),
                     "/", "/main",("/content/user/sendMail"),("/content/user/idCheck"),("/content/user/nameCheck"),
                     ("/css/**"),("/fragments/**"),("/img/**"),("/js/**")).permitAll();
+            auth.requestMatchers(UserRole.회원탈퇴.getRole()).denyAll();
             auth.requestMatchers(UserRole.게터.getRole()).permitAll(); /* role의 상태가 게터면 접속할 수 있는 페이지 */
+            auth.requestMatchers(UserRole.세터.getRole()).permitAll(); /* role의 상태가 세터면 접속할 수 있는 페이지 */
             auth.requestMatchers(UserRole.매니저.getRole()).permitAll(); /* role의 상태가 매니저면 접속할 수 있는 페이지 */
             auth.anyRequest().authenticated();
 

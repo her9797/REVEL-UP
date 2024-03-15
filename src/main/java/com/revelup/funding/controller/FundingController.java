@@ -1,8 +1,10 @@
 package com.revelup.funding.controller;
 
+import com.revelup.audit.model.dto.AuditDTO;
 import com.revelup.funding.model.dto.*;
 import com.revelup.funding.model.service.FundingService;
 import com.revelup.user.model.dto.LoginUserDTO;
+import com.revelup.user.model.dto.UserDTO;
 import com.revelup.user.model.service.UserService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -37,7 +39,8 @@ public class FundingController {
     @PostMapping("/insertFunding")
     public String insertFunding(@ModelAttribute FundingInfoDTO fundingInfoDTO,
                                 @ModelAttribute GiftDTO giftDTO,
-                                @ModelAttribute SetterInfoDTO setterInfoDTO) throws IOException {
+                                @ModelAttribute SetterInfoDTO setterInfoDTO,
+                                @ModelAttribute AuditDTO auditDTO) throws IOException {
         System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
         System.out.println("fundingInfoDTO = " + fundingInfoDTO);
         System.out.println(" ");
@@ -45,8 +48,21 @@ public class FundingController {
         System.out.println(" ");
 //        System.out.println("setterFileDTO = " + setterFileDTO);
         System.out.println("setterInfoDTO = " + setterInfoDTO);
-        fundingService.insertFunding(fundingInfoDTO, giftDTO, setterInfoDTO);
+
+
+        String userId = setterInfoDTO.getUserId();
+        updateUserRole(userId);
+
+        fundingService.insertFunding(fundingInfoDTO, giftDTO, setterInfoDTO, auditDTO);
+
         return "content/funding/insertFunding/new-funding-complete";
+    }
+
+    /** 유저 아이디만 가져가서, 세터로 변경 */
+    private void updateUserRole(String userId){
+
+        userService.updateUserRole(userId);
+
     }
 
     @GetMapping("/all-funding")

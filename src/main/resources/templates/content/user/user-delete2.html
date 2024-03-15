@@ -50,11 +50,11 @@
         <div class="col-lg-8">
             <a style="margin-bottom: 20px; font-size: 18px;">내 정보 &gt; <b>회원 탈퇴</b></a>
             <div class="col-lg-1.5 col-md-1.5 col-sm-1.5" style="margin-top: 20px; text-align: center;">
-                <h6 style="font-weight: bold">정말로 탈퇴 하시겠습니까?</h6>
-
-                <button class="btn-cancel" style="margin-top: 50px;" th:onclick="|window.location.href='@{/content/user/user-show}'|">돌아가기</button>
-                <button class="btn-delete" style="margin-top: 50px;">탈퇴하기</button>
-
+                <form th:action="@{/content/user/user-delete2}" method="post">
+                    <h6 style="font-weight: bold">아이디: <span id="userId" th:text="${loginUser.userId}"></span> 님, 정말로 탈퇴하시겠습니까?</h6>
+                <button type="button" class="btn-cancel" style="margin-top: 50px;" th:onclick="|window.location.href='@{/content/user/user-show}'|">돌아가기</button>
+                <button type="submit" class="btn-delete" style="margin-top: 50px;">탈퇴하기</button>
+                </form>
             </div>
         </div>
     </div>

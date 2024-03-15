@@ -39,7 +39,7 @@
     </resultMap>
 
     <!-- 세터 정보 삽입 -->
-    <insert id="insertSetterInfo" parameterType="com.revelup.funding.model.dto.SetterInfoDTO">
+    <insert id="insertSetterInfo" parameterType="com.revelup.funding.model.dto.SetterInfoDTO" useGeneratedKeys="true" keyProperty="userId">
         INSERT INTO STTR_INFO (
                                 USER_ID
                                 , STTR_COMPANY
@@ -163,14 +163,13 @@
                     )
         VALUES (
                  #{ fndCode }
-                ,NOW()
+                 ,NOW()
                 )
         <selectKey keyProperty="fndCode" order="AFTER" resultType="_int">
             <!-- 여러 사용자가 동시에 작업했어도, 내 커넥션에서 발생한 키값을 불러옴 -->
             SELECT LAST_INSERT_ID()
         </selectKey>
     </insert>
-
 
 
 
