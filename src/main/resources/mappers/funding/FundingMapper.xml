@@ -17,6 +17,7 @@
         <result property="fileCode" column="FILE_CODE"/>
         <result property="fndFileLoc" column="FND_FILE_LOC"/>
         <result property="fndSaveFile" column="FND_SAVE_FILE"/>
+        <result property="auditStat" column="AUDIT_STAT"/>
     </resultMap>
 
     <resultMap type="com.revelup.funding.model.dto.FundingInfoDTO" id="findByCode">
@@ -27,7 +28,7 @@
         <result property="fndEndDt" column="FND_END_DT"/>
         <result property="goalAmt" column="GOAL_AMT"/>
         <result property="successAmt" column="SUCCESS_AMT"/>
-        <result property="giftPrice" column="AUDIT_STAT"/>
+        <result property="auditStat" column="AUDIT_STAT"/>
     </resultMap>
 
     <resultMap type="com.revelup.funding.model.dto.FundingFileDTO" id="findFile">
@@ -121,8 +122,11 @@
                 , fif.FILE_CODE
                 , fif.FND_FILE_LOC
                 , fif.FND_SAVE_FILE
+                , a.AUDIT_STAT
         FROM FND_INFO fi
         JOIN FND_INSERT_FILE fif ON fi.FND_CODE = fif.FND_CODE
+        JOIN AUD a ON fi.FND_CODE = a.FND_CODE
+       WHERE a.AUDIT_STAT = 'A'
         ORDER BY FND_CODE DESC;
     </select>
 

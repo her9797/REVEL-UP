@@ -49,7 +49,7 @@ public class FundingController {
 //        System.out.println("setterFileDTO = " + setterFileDTO);
         System.out.println("setterInfoDTO = " + setterInfoDTO);
 
-
+        // 회원 아이디 조회 후 펀딩 등록과 함께 세터 권한 활성화
         String userId = setterInfoDTO.getUserId();
         updateUserRole(userId);
 
