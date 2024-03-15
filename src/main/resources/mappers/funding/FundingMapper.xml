@@ -14,12 +14,20 @@
         <result property="successAmt" column="SUCCESS_AMT"/>
         <result property="fndDelYn" column="FND_DEL_YN"/>
         <result property="fndPrgStat" column="FND_PRG_STAT"/>
+        <result property="fileCode" column="FILE_CODE"/>
+        <result property="fndFileLoc" column="FND_FILE_LOC"/>
+        <result property="fndSaveFile" column="FND_SAVE_FILE"/>
     </resultMap>
 
     <resultMap type="com.revelup.funding.model.dto.FundingInfoDTO" id="findByCode">
         <id property="fndCode" column="FND_CODE"/>
+        <result property="fndDescr" column="FND_DESCR"/>
         <result property="fndName" column="FND_NAME"/>
         <result property="giftPrice" column="GIFT_PRICE"/>
+        <result property="fndEndDt" column="FND_END_DT"/>
+        <result property="goalAmt" column="GOAL_AMT"/>
+        <result property="successAmt" column="SUCCESS_AMT"/>
+        <result property="giftPrice" column="AUDIT_STAT"/>
     </resultMap>
 
     <resultMap type="com.revelup.funding.model.dto.FundingFileDTO" id="findFile">
@@ -105,9 +113,17 @@
 
     <!-- 전체 펀딩 리스트 조회 -->
     <select id="selectAllFunding" resultMap="selectAllFunding">
-        SELECT *
-        FROM FND_INFO
-        ORDER BY FND_CODE desc;
+        SELECT
+                fi.FND_CODE
+                , fi.FND_NAME
+                , fi.GOAL_AMT
+                , fi.SUCCESS_AMT
+                , fif.FILE_CODE
+                , fif.FND_FILE_LOC
+                , fif.FND_SAVE_FILE
+        FROM FND_INFO fi
+        JOIN FND_INSERT_FILE fif ON fi.FND_CODE = fif.FND_CODE
+        ORDER BY FND_CODE DESC;
     </select>
 
 <!--    &lt;!&ndash; 조회수 업데이트 쿼리   &ndash;&gt;-->
@@ -120,11 +136,18 @@
     <!--    펀딩 코드로 검색하는 쿼리-->
     <select id="findByCode" resultMap="findByCode">
         SELECT fi.FND_CODE
+               , fi.FND_DESCR
                , fi.FND_NAME
                , gi.GIFT_PRICE
+               , fi.FND_END_DT
+               , fi.GOAL_AMT
+               , fi.SUCCESS_AMT
+               , a.AUDIT_STAT
           FROM FND_INFO fi
           JOIN GIFT gi ON fi.FND_CODE = gi.FND_CODE
+          JOIN AUD a ON fi.FND_CODE = a.FND_CODE
          WHERE fi.FND_CODE = #{fndCode}
+           AND a.AUDIT_STAT = 'A';
     </select>
 
     <insert id="insertFile" parameterType="com.revelup.funding.model.dto.FundingFileDTO">
@@ -163,13 +186,14 @@
                     )
         VALUES (
                  #{ fndCode }
-                 ,NOW()
+                ,NOW()
                 )
         <selectKey keyProperty="fndCode" order="AFTER" resultType="_int">
             <!-- 여러 사용자가 동시에 작업했어도, 내 커넥션에서 발생한 키값을 불러옴 -->
             SELECT LAST_INSERT_ID()
         </selectKey>
     </insert>
+
 
 
 

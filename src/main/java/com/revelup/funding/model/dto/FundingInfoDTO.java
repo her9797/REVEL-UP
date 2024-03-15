@@ -24,6 +24,7 @@ public class FundingInfoDTO implements java.io.Serializable {
     private String fndPrgStat; // 펀딩 진행 상태
     private String fndInsertDttm; // 펀딩 심사 등록 일시
 
+
     private int fileCode; // 파일 코드
     private String fndFileLoc; // 파일 저장 경로
     private String fndOrgFile; // 기존 파일명
@@ -48,7 +49,5 @@ public class FundingInfoDTO implements java.io.Serializable {
     private String sttrAccHolder;   // 예금주
 
     private Date auditApprDt;       // 심사승인일자
-
-
-
+    private String auditStat;       // 심사 상태
 }

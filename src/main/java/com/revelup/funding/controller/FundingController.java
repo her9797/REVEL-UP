@@ -71,10 +71,6 @@ public class FundingController {
         model.addAttribute("fundingList", fundingInfoDTOList);
         System.out.println("fundingInfoDTOList 컨트롤러 selectAllFunding = " + fundingInfoDTOList);
 
-        List<FundingFileDTO> fundingFileDTOList = fundingService.findThumbnail();
-        model.addAttribute("fundingThumbnailList", fundingFileDTOList);
-
-
         return "content/funding/all-funding";
     }
 

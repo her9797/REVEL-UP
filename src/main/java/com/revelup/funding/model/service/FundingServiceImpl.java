@@ -89,10 +89,4 @@ public class FundingServiceImpl implements FundingService {
     }
 
 
-    @Override
-    public List<FundingFileDTO> findThumbnail() {
-        return mapper.findThumbnail();
-    }
-
-
 }
