@@ -1,10 +1,12 @@
 package com.revelup.user.model.service;
 
+import com.revelup.common.UserRole;
 import com.revelup.user.model.dao.UserMapper;
 import com.revelup.user.model.dto.LoginUserDTO;
 import com.revelup.user.model.dto.UserDTO;
 import lombok.AllArgsConstructor;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.java.Log;
 import org.apache.catalina.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.parameters.P;
@@ -62,6 +64,9 @@ public class UserService {
     }
 
 
+
+
+
     /** 회원가입 */
     public int signup(UserDTO userDTO) {
 
@@ -110,4 +115,22 @@ public class UserService {
         int count = userMapper.emailCheck(userEmail);
         return count > 0;
     }
+
+    public void updateUserRole(String userId) {
+
+        userMapper.updateUserRole(userId);
+    }
+
+    public LoginUserDTO userDelete(String userId) {
+
+       return userMapper.userDelete(userId);
+    }
+
+    public void userDelete2(LoginUserDTO loginUserDTO) {
+
+
+
+        userMapper.userDelete2(loginUserDTO);
+    }
+
 }

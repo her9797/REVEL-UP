@@ -47,7 +47,7 @@
         </div>
     </div>
 </section>
-<section class="information">
+<section class="information" style="margin-left: 500px">
     <!--이름-->
     <div class="name">이름</div>
     <input type="text" class="name-container"><br>
@@ -62,7 +62,7 @@
     <input type="text" id="sample6_detailAddress" class="address-input" placeholder="상세주소">
 </section>
 
-<section class="product">
+<section class="product" style="margin-right: 100px; margin-top: 40px">
     <div class="image-box"> <!-- 컨테이너 스타일-->
         <img th:src="@{/img/product/p1.png}" class="image"> <!--사진에 대한 이미지 css적용시 사용-->
         <p class="image-desc">
@@ -76,9 +76,9 @@
     </div>
 </section>
 
-<section class="pay">
+<section class="pay" style="margin-right: 150px">
     <!-- 결제하기 , 카카오 페이 버튼-->
-    <div class="paybutton">결제하기</div>
+    <div class="paybutton" >결제하기</div>
     <button onclick="payForKakao()" class="form-paybutton">카카오페이</button>
 </section>
 <br>

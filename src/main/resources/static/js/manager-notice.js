@@ -16,6 +16,8 @@ window.onload = function() {
         modal.style.display = 'none'; // 이 스타일 변경은 부트스트랩을 사용하지 않을 때만 필요하므로, 부트스트랩을 사용한다면 이 줄은 삭제하세요.
     });
 
+
+
     // 현재 시간 표시
     displayCurrentTime();
 };
@@ -132,4 +134,5 @@ function updateNotice(ntcCode) {
             console.error('수정 요청 중 오류가 발생하였습니다.');
         }
     });
+
 }

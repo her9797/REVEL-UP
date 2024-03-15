@@ -1,6 +1,7 @@
 package com.revelup.auth.model.service;
 
 import com.revelup.auth.model.AuthDetails;
+import com.revelup.common.UserRole;
 import com.revelup.user.model.dto.LoginUserDTO;
 import com.revelup.user.model.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,7 +23,11 @@ public class AuthService implements UserDetailsService {
 
         LoginUserDTO login = userService.findByUserId(userId);
 
+        System.out.println("@@@@@@@@@"+login);
+
         if(Objects.isNull(login)) {
+            throw new UsernameNotFoundException("해당하는 회원 정보가 존재하지 않습니다.");
+        } else if (login.getUserRole().getRole().equals("회원탈퇴")) {  // 회원 탈퇴 한 인원 : 로그인 방지
             throw new UsernameNotFoundException("해당하는 회원 정보가 존재하지 않습니다.");
         }
 

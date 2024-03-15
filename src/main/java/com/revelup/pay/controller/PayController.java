@@ -54,10 +54,9 @@ public class PayController {
     //결제 준비
     @ResponseBody
     @PostMapping("/ready")
-    public String kakaoPayReady(
-            @AuthenticationPrincipal UserDetails userDetails,
-            HttpServletRequest request,
-            @RequestBody KakaoPayReadyDTO kakaoPayReadyDTO) {
+    public String kakaoPayReady(@AuthenticationPrincipal UserDetails userDetails,
+                                HttpServletRequest request,
+                                @RequestBody KakaoPayReadyDTO kakaoPayReadyDTO) {
         kakaoPayReadyDTO.setUserIdAndOrderId(userDetails.getUsername(), "testOrderId");
         kakaoPayReadyDTO.setUrlsAndCid(kakaoPayConfig);
         log.info("kakaoPayReadyDTO: {}", kakaoPayReadyDTO);
@@ -76,7 +75,7 @@ public class PayController {
         KaKaoPayApproveResponseDTO approveResponse = payService.kakaoPayApprove(userDetails.getUsername(), pgToken);
 
         PayCompletionDTO payCompletionDTO = PayCompletionDTO.builder()
-                .giftName(approveResponse.getGiftName())
+                .itemName(approveResponse.getGiftName())
                 .totalPrice(approveResponse.getAmount().getTotal())
                 .createdAt(approveResponse.getApprovedAt())
                 .quantity(approveResponse.getQuantity())

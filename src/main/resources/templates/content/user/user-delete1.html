@@ -22,7 +22,7 @@
 
 <body>
 <div th:insert="~{/fragments/header.html}"></div>
-
+<div th:insert="~{content/user/modal.html}"></div>
 
 <!-- 배너 부분 -->
 <section class="banner2-area">
@@ -56,7 +56,7 @@
             <div class="col-lg-1.5 col-md-1.5 col-sm-1.5" style="margin-top: 20px; text-align: center;">
                 <form class="delete2">
                     <h6>탈퇴 사유는 무엇인가요?</h6>
-                    <select id="reason" onchange="toggleOtherReason()">
+                    <select id="reason" onchange="toggleOtherReason()" required>
                         <option value="none">탈퇴 사유를 선택해주세요</option>
                         <option value="rejoin">재가입을 위해</option>
                         <option value="content_quality">콘텐츠 품질과 서비스 정보 부족</option>
@@ -88,26 +88,28 @@
 
 (4) 회사는 제7조 (2)항의 규정에 의해 이용 계약이 해지(회원 탈퇴)된 이용자의 경우 해당 이용자의 서비스 이용(회원 가입)을 최대 2년까지 제한할 수 있습니다.</textarea>
                 <div class="agreement" style="margin-left: 330px;">
-                <input type="checkbox" id="withdrawal-agreement" name="withdrawal-agreement">
+                <input type="checkbox" id="withdrawal-agreement" name="withdrawal-agreement" required>
                 <label for="delete-agreement" style="font-size: 14px;">탈퇴 약관에 동의합니다.</label>
             </div>
 
-            <div class="email" style="margin-top: 50px;">
-                <div class="input-container" style="margin-top: 10px;">
-                    <input type="text" id="email" name="email" class="email-input" placeholder="@를 포함한 이메일을 입력하세요">
-                    <!-- 인증번호 전송 버튼 -->
-                    <button class="btn-email" id="sendEmail" onclick="sendVerificationCode()">인증번호 전송</button>
+                <div class="email">
+                    <div class="input-container" style="margin-top: 10px;">
+                        <div class="label" style="margin-right: 450px; margin-bottom: -2px">이메일</div>
+                        <input type="text" id="userEmail2" name="userEmail" class="email-input" placeholder="@를 포함한 이메일을 입력하세요" required>
+                        <!-- 인증번호 전송 버튼 -->
+                        <button type="button" id="sendEmail2" class="btn-email" style="font-size:14px">인증번호 전송</button>
+
+                    </div>
+                    <div class="input-container">
+                        <!-- 인증번호 입력 창 -->
+                        <input type="text" id="authCode2" name="authCode2" class="authCode-input" placeholder="발송된 인증번호를 입력하세요" required>
+                        <!-- 인증번호 확인 버튼 -->
+                        <button type="button" id="checkEmailBtn2" class="btn-email" style="font-size:14px">인증번호 확인</button>
+                    </div>
                 </div>
-                <div class="input-container">
-                    <!-- 인증번호 입력 창 -->
-                    <input type="text" id="authCode" name="authCode" class="authCode-input" placeholder="발송된 인증번호를 입력하세요">
-                    <!-- 인증번호 확인 버튼 -->
-                    <button class="btn-email" id="confirmEmail">인증번호 확인</button>
-                </div>
-            </div>
             <div class="button-group" style="margin-top: 50px; margin-bottom: 50px;">
-                <button type="submit" class="btn-cancel">돌아가기</button>
-                <button type="submit" id="submitBtn" class="btn-delete" onclick="location.href='/content/user/user-delete2'">탈퇴하기</button>
+                <button type="button" class="btn-cancel">돌아가기</button>
+                <button type="button" id="deleteBtn1" class="btn-delete" onclick="location.href='/content/user/user-delete2'">탈퇴하기</button>
             </div>
         </div>
     </div>

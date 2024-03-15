@@ -1,115 +1,427 @@
-/* 버튼 그룹 스타일 */
-.button-group {
-    margin-top: 100px;
-    display: flex;
-    justify-content: flex-end; /* 이전 버튼을 오른쪽으로 정렬 */
+/* contract 0번에 대한 css */
+.contract0 {
+    margin-bottom: 20px;
 }
 
-/* 이전 버튼 스타일 */
-.back-button {
-    padding: 10px 20px;
-    border: none;
-    border-radius: 5px;
-    background-color: #f95252;
-    color: #fff;
-    cursor: pointer;
-    transition: background-color 0.3s;
-    margin-right: 5px;
-}
-
-/* 다음 버튼 스타일 */
-.next-button {
-    padding: 10px 20px;
-    border: none;
-    border-radius: 5px;
-    background-color: #0cc291;
-    color: #fff;
-    cursor: pointer;
-    transition: background-color 0.3s;
-}
-
-/* 다음 버튼 마우스 호버 스타일 */
-.next-button:hover {
-    background-color: #52cdac;
-}
-
-/* 이전 버튼 마우스 호버 스타일 */
-.back-button:hover {
-    background-color: #f87878;
-}
-
-/* 이용약관 및 개인정보 이용 동의 약관 스타일*/
-.contract {
-    width: 80%; margin: 5px auto 80px;
-    border-radius: 15px; background-color: white;
-}
-
-/* "반갑습니다!" 문구 스타일 */
-.contract h3 {
-    text-align: left; font-size: 24px;
-}
-
-/* 약관 내용 텍스트 스타일 */
-.contract .text {
-    height: 230px; border: 0.5px solid black; margin-left: 22.7%;
-    white-space: pre-line; overflow-y: scroll; margin: 0 auto 20px;
-}
-
-/* 체크박스 스타일 */
-.checkbox {
-    text-align: right;
-    margin-left: 50px;
-}
-
-.input-group {
-    margin-top: 20px;
-    margin-bottom: 1px; /* 라벨끼리 위아래 간격 조절 */
-    display: flex;
-    align-items: center;
-}
-
-.input-group label {
-    width: 250px; /* 라벨 너비 조정 */
+.title0 {
+    font-size: 14px;
     font-weight: bold;
-    margin-right: 10px;
+    margin-top: 30px;
 }
 
-.input-group input[type="number"],
-.input-group input[type="text"],
-.input-group textarea {
-    flex: 1; /* 입력 요소가 가능한 최대 너비를 차지하도록 설정 */
+.title0 {
+    font-size: 12px;
+    color: #C1C1C1;
+    margin-top: 20px;
+}
+
+.agreeText0 {
+    width: 100%;
+    height: 200px; /* 조절 가능 */
+    resize: none;
+    border: 1px solid #ccc;
+    padding: 10px;
+    margin-bottom: 10px;
+}
+
+.checkbox0 {
+    margin-bottom: 20px;
+}
+
+.checkbox0 p {
+    margin: 0;
+}
+
+.button-group0 {
+    text-align: center;
+}
+
+.next-button0 {
+    padding: 10px 20px;
+    margin-right: 10px;
+    border: none;
+    border-radius: 5px;
+    background-color: #007bff; /* 원하는 색상으로 조정하세요 */
+    color: #fff;
+    cursor: pointer;
+}
+
+.next-button0:hover {
+    background-color: #0056b3;
+}
+
+
+/* contract 1번에 대한 css */
+.title1 {
+    font-size: 14px;
+    font-weight: bold;
+    margin-top: 30px;
+}
+
+.contents1 {
+    margin-top: 20px;
+}
+
+.input-group1 {
+    display: flex;
+    flex-direction: column;
+}
+
+.input-group1 label {
+    margin-bottom: 5px;
+}
+
+.input-group1 input[type="text"],
+.input-group1 input[type="number"] {
     padding: 8px;
+    margin-bottom: 10px;
     border: 1px solid #ccc;
     border-radius: 5px;
+    width: 100%;
 }
 
-/* 단위 텍스트 스타일 */
-.input-group span {
-    margin-left: 10px;
+.input-group1 input[type="text"]:focus,
+.input-group1 input[type="number"]:focus {
+    outline: none;
+    border-color: #007bff;
 }
 
-.error-message {
-    padding-left: 263px;
-    color: #FF0B0B;
-    font-size: 12px;
-}
-
-.input-group {
-    margin-top: 20px;
-    margin-bottom: 1px; /* 라벨끼리 위아래 간격 조절 */
-    display: flex;
-    align-items: center;
-}
-
-.input-group label {
-    width: 250px; /* 라벨 너비 조정 */
-    font-weight: bold;
-    margin-right: 10px;
-}
-
-.hidden {
+.input-group1 .hidden1 {
     display: none;
 }
 
+.error-message1 {
+    color: red;
+    margin-top: 5px;
+}
+
+.button-group1 {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.back-button1,
+.next-button1 {
+    padding: 10px 20px;
+    margin-right: 10px;
+    border: none;
+    border-radius: 5px;
+    background-color: #007bff; /* 원하는 색상으로 조정하세요 */
+    color: #fff;
+    cursor: pointer;
+}
+
+.back-button1:hover,
+.next-button1:hover {
+    background-color: #0056b3;
+}
 
 
+/* contract 2번에 대한 css */
+.title2 {
+    font-size: 24px; /* 원하는 크기로 조정하세요 */
+    font-weight: bold;
+    margin-top: 30px;
+}
+
+.contents2 {
+    margin-top: 20px;
+}
+
+.contents2 h3 {
+    font-size: 18px; /* 원하는 크기로 조정하세요 */
+    margin-bottom: 10px;
+}
+
+.input-group2 {
+    margin-bottom: 20px;
+}
+
+.input-group2 label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.image2 {
+    margin-bottom: 20px;
+}
+
+.image_container2 {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+.image_container2 ul li {
+    display: inline-block;
+    margin-right: 10px;
+}
+
+.error-message2 {
+    color: red; /* 원하는 색상으로 조정하세요 */
+    font-size: 14px; /* 원하는 크기로 조정하세요 */
+}
+
+.button-group2 {
+    text-align: center;
+}
+
+.back-button2,
+.next-button2 {
+    padding: 10px 20px;
+    margin-right: 10px;
+    border: none;
+    border-radius: 5px;
+    background-color: #007bff; /* 원하는 색상으로 조정하세요 */
+    color: #fff;
+    cursor: pointer;
+}
+
+.back-button2 {
+    margin-right: 5px;
+}
+
+.next-button2 {
+    margin-left: 5px;
+}
+
+.back-button2:hover,
+.next-button2:hover {
+    background-color: #0056b3; /* 원하는 색상으로 조정하세요 */
+}
+
+
+/* contract 3번에 대한 css */
+.title3 {
+    font-size: 14px;
+    font-weight: bold;
+    margin-top: 30px;
+}
+
+.contents3 {
+    margin-top: 20px;
+}
+
+.input-group3 {
+    display: flex;
+    flex-direction: column;
+}
+
+.input-group3 label {
+    margin-bottom: 5px;
+}
+
+.input-group3 input[type="text"],
+.input-group3 input[type="number"] {
+    padding: 8px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    width: 100%;
+}
+
+.input-group3 input[type="text"]:focus,
+.input-group3 input[type="number"]:focus {
+    outline: none;
+    border-color: #007bff;
+}
+
+.input-group3 textarea {
+    padding: 8px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    width: 100%;
+}
+
+.input-group3 textarea:focus {
+    outline: none;
+    border-color: #007bff;
+}
+
+.thumbnail-tip3 ul {
+    list-style: none;
+    padding-left: 0;
+}
+
+.image3 input[type="file"] {
+    display: none;
+}
+
+.image_container3 ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+.image_container3 ul li {
+    display: inline-block;
+    margin-right: 10px;
+}
+
+.image_container3 ul li a {
+    display: block;
+    width: 100px;
+    height: 100px;
+}
+
+.image_container3 ul li a img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 5px;
+}
+
+.button-group3 {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.back-button3,
+.next-button3 {
+    padding: 10px 20px;
+    margin-right: 10px;
+    border: none;
+    border-radius: 5px;
+    background-color: #007bff; /* 원하는 색상으로 조정하세요 */
+    color: #fff;
+    cursor: pointer;
+}
+
+.back-button3:hover,
+.next-button3:hover {
+    background-color: #0056b3;
+}
+
+
+/* contract 4번에 대한 css */
+.title4 {
+    font-size: 14px;
+    font-weight: bold;
+    margin-top: 30px;
+}
+
+.contents4 {
+    margin-top: 20px;
+}
+
+.input-group4 {
+    display: flex;
+    flex-direction: column;
+}
+
+.input-group4 label {
+    margin-bottom: 5px;
+}
+
+.input-group4 input[type="text"],
+.input-group4 input[type="number"] {
+    padding: 8px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    width: 100%;
+}
+
+.input-group4 input[type="text"]:focus,
+.input-group4 input[type="number"]:focus {
+    outline: none;
+    border-color: #007bff;
+}
+
+.input-group4 textarea {
+    padding: 8px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    width: 100%;
+}
+
+.input-group4 textarea:focus {
+    outline: none;
+    border-color: #007bff;
+}
+
+.input-with-unit4 {
+    display: flex;
+    align-items: center;
+}
+
+#currency-unit4 {
+    margin-left: 5px;
+}
+
+#error-message4 {
+    color: red;
+    margin-top: 5px;
+}
+
+.button-group4 {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.back-button4,
+.next-button4 {
+    padding: 10px 20px;
+    margin-right: 10px;
+    border: none;
+    border-radius: 5px;
+    background-color: #007bff; /* 원하는 색상으로 조정하세요 */
+    color: #fff;
+    cursor: pointer;
+}
+
+.back-button4:hover,
+.next-button4:hover {
+    background-color: #0056b3;
+}
+
+
+/* contract 5번에 대한 css */
+.title5 {
+    font-size: 14px;
+    font-weight: bold;
+    margin-top: 30px;
+}
+
+.contents5 {
+    margin-top: 20px;
+}
+
+.input-group5 {
+    display: flex;
+    flex-direction: column;
+}
+
+.notice5 {
+    font-size: 12px;
+    color: #666;
+    margin-bottom: 10px;
+}
+
+.button-group5 {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.back-button5,
+.submit-button5 {
+    padding: 10px 20px;
+    margin-right: 10px;
+    border: none;
+    border-radius: 5px;
+    background-color: #007bff; /* 원하는 색상으로 조정하세요 */
+    color: #fff;
+    cursor: pointer;
+}
+
+.back-button5:hover,
+.submit-button5:hover {
+    background-color: #0056b3;
+}

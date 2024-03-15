@@ -99,8 +99,8 @@ tr:first-child {
 }
 
 /* 모달 스타일 */
-.modal {
-    display: none;
+.modal1 {
+    display: none;  /* 초기 상태는 숨김 처리 */
     position: fixed;
     z-index: 9999;
     left: 50%;
@@ -116,6 +116,7 @@ tr:first-child {
     height: 180px; /* 높이 조정 */
     overflow-y: auto; /* 내용이 모달을 넘어갈 경우 스크롤 표시 */
 }
+
 /* 모달 내용 스타일 */
 .modal-content {
     text-align: center;
@@ -123,15 +124,8 @@ tr:first-child {
     border: none;
 }
 
-.modal-button {
-    /* style: justify-content: center; */
-    display: flex;
-    margin-top: 30px;
-    margin-top: 10px;
-}
 
 #submit-btn {
-
     border-radius: 15px;
 }
 

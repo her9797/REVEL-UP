@@ -8,7 +8,7 @@ html, body {
 /* 내용 본문 스타일 */
 .container1 {
     max-width: 1200px;
-    margin: 0 auto;
+    margin: 40px auto;
     padding: 15px;
     display: flex;
     align-items: stretch;
@@ -22,26 +22,30 @@ html, body {
     display: flex;
 }
 
+
 /* 좌우 컬럼 스타일 */
 .left-column1 {
-    width: 60%;
+    display: flex;
+    align-items: stretch;
+}
+
+.left-column1 .section {
+    text-align: center;
 }
 
 /* 좌측 컬럼 스타일 */
 /* 왜 인지 해당 css 안먹힘 왜??? */
-.left-column1 .section .slidewrap .slidelist > img {
-    width: 10%;
+.container1 .left-column1 .section .slidewrap .slidelist > img {
+    width: 100%;
     position: absolute;
     left: 0;
     top: 0;
     opacity: 0;
     transition: all 0.3s ease;
     border-radius: 52px;
+    text-align: center;
 }
 
-.right-column1 {
-    width: 40%;
-}
 
 .right-column1 h4 {
     display: flex;
@@ -66,7 +70,6 @@ html, body {
 
 /* 펀딩 정보 스타일 */
 .funding-description {
-    border-bottom: 1px solid #E1E8EE;
     margin-bottom: 20px;
 }
 
@@ -80,21 +83,45 @@ html, body {
 .order-details {
     width: 100%;
     display: flex;
-    margin-bottom: 10px;
+    margin-bottom: 20px;
 }
 
-/* 수량 버튼 수직 정렬 */
-.quantity {
-    width: 160px;
-}
-
-.quantity input, .quantity button {
-    width: 50px;
-    font-size: 1.2rem;
+.order-details {
+    display: flex; /* 수평 정렬을 위해 flexbox 사용 */
+    justify-content: space-between; /* 내부 요소들을 좌우로 분산 정렬 */
+    align-items: center; /* 수직 가운데 정렬 */
     text-align: center;
-    background: white;
-    border: 1px solid #aaa;
-    margin: 0 auto;
+}
+
+.quantity {
+    display: flex; /* 내부 요소들을 가로로 배열하기 위해 flexbox 사용 */
+    align-items: center; /* 수직 가운데 정렬 */
+}
+
+.quantity h6 {
+    margin-right: 10px; /* 텍스트와 버튼 사이에 간격을 주기 위해 오른쪽 마진 추가 */
+}
+
+.quantity input {
+    width: 40px;
+    border: none;
+    text-align: center;
+    color: #0CC291;
+    font-weight: 600;
+    font-size: 18px;
+}
+
+.plus,
+.minus {
+    margin: 0 5px; /* 버튼 사이에 간격을 주기 위해 좌우 마진 추가 */
+    cursor: pointer;
+}
+
+.total-price input {
+    width: 130px;
+    float: right;
+    border: none;
+    text-align: right;
 }
 
 /* 수량에 따른 총 합계 금액 스타일 */
@@ -103,16 +130,6 @@ html, body {
     display: flex;
     justify-content: flex-end;
     margin-bottom: 10px;
-}
-
-.total-price p,
-.total-price span {
-    font-size: 26px;
-    padding: 10px;
-}
-
-.product-details input {
-    width: 45px;
 }
 
 /* 찜하기 후원하기 버튼 스타일 */
@@ -223,9 +240,31 @@ input, button, .wishlist-btn, .pay-btn {
     display: block;
 }
 
+.total-price input {
+    margin-right: 0;
+    font-size: 20px;
+}
+
+.total-price h4 {
+    margin-right: 10px;
+    align-items: center;
+}
+
+
+/* 통계 테이블 */
+.statics {
+    margin-top: 30px;
+}
+
+.rpt-group {
+    margin-top: 30px;
+    display: inline-block;
+    padding: 0 27px;
+}
 
 /*  신고하기 버튼  */
 .rpt-btn {
+    width: 30%;
     border: none;
     border-radius: 5px;
     background-color: #f95252;

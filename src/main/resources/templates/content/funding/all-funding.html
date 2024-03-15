@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:text-decoration="http://www.w3.org/1999/xhtml">
 
 <head>
     <meta charset="UTF-8">
@@ -24,7 +24,6 @@
 </head>
 
 
-
 <body>
 <div th:insert="~{/fragments/header.html}"></div>
 
@@ -39,239 +38,50 @@
                     <p style="color:white; margin-left: 100px;">지구를 위한 바른 아이디어</p>
                 </div>
             </div>
-
         </div>
     </div>
 </section>
 
 <div class="container">
-    <!-- 첫번째 제품 리스트 -->
-    <section id="content-box">
-        <div class="row">
-
-            <div class="col-lg-3 col-md-6">
-                <ul class="items">
-                    <li><img src="/img/product/p1.png" alt="p1"></li>
-                    <li class="funding-name">다양한 청바지 업사이클 숄더백: 지속가능한 패션의 새로운 스타일!</li>
-                    <li class="funding-success-rate"><strong>96% 달성</strong><span
-                            class="funding-price">48,000원</span></li>
-                    <li class="button-group">
-                        <button class="pay-button" onclick="location.href='/content/funding/detail-funding'">후원하기
-                        </button>
-                        <span>
-                            <button class="heart-button" th:style="${isRedHeart != null and isRedHeart} ? 'color: red;' : 'color: gray;'" onclick="toggleHeart(this)">❤️</button>
-                        </span>
-                    </li>
-                </ul>
-
-                <table>
-                    <tr>
-                        <th>펀딩명</th>
-                        <th>달성률</th>
-                        <th>선물금액</th>
-                    </tr>
-                    <tr th:each="funding: ${fundingList}" style="border: #0AA37F solid 1px">
-                        <td th:text="${funding.fndName}"></td>
-                        <td th:text="${funding.successAmt}"></td>
-                        <td th:text="${funding.giftPrice}"></td>
-                    </tr>
-                </table>
+    <div class="item_list">
+        <div class="card" th:each="funding: ${fundingList}" style="border: black solid 1px; cursor: pointer; text-decoration: none">
+            <div class="img">
+                <img th:src="@{|/upload/${funding.fndSaveFile}|}" alt="">
+            </div>
+            <div class="fndName" th:rows="1">
+                <p th:text="${funding.fndName}"></p>
+            </div>
+            <div class="details">
+            <!-- 가로그래프 삽입 필요 -->
+                <p th:text="${funding.giftPrice} + '원'"></p>
 
             </div>
+            <div class="text">
 
-            <!--🤍 ❤️ -->
+                <p></p>
 
 
-            <div class="col-lg-3 col-md-6">
-                <ul class="items">
-                    <li><img src="/img/product/p2.jpg" alt="p2"></li>
-                    <li class="funding-name">청바지 3개를 업사이클링한 슬리퍼</li>
-                    <li class="funding-success-rate"><strong>96% 달성</strong><span
-                            class="funding-price">50,000원</span></li>
-                    <li class="button-group">
-                        <button class="pay-button" onclick="location.href='/content/funding/detail-funding'">후원하기
-                        </button>
-                        <span>
-                            <button class="heart-button" th:style="${isRedHeart != null and isRedHeart} ? 'color: red;' : 'color: gray;'" onclick="toggleHeart(this)">❤️</button>
-                        </span>
-                    </li>
-                </ul>
             </div>
-
-            <div class="col-lg-3 col-md-6">
-                <ul class="items">
-                    <li><img src="/img/product/p3.jpg" alt="p3"></li>
-                    <li class="funding-name">청바지 3개를 업사이클링한 슬리퍼</li>
-                    <li class="funding-success-rate"><strong>96% 달성</strong><span
-                            class="funding-price">50,000원</span></li>
-                    <li class="button-group">
-                        <button class="pay-button" onclick="location.href='/content/funding/detail-funding'">후원하기
-                        </button>
-                        <span>
-                            <button class="heart-button" th:style="${isRedHeart != null and isRedHeart} ? 'color: red;' : 'color: gray;'" onclick="toggleHeart(this)">❤️</button>
-                        </span>
-                    </li>
-                </ul>
-            </div>
-
-            <div class="col-lg-3 col-md-6">
-                <ul class="items">
-                    <li><img src="/img/product/p4.jpg" alt="p4"></li>
-                    <li class="funding-name">청바지 3개를 업사이클링한 슬리퍼</li>
-                    <li class="funding-success-rate"><strong>96% 달성</strong><span
-                            class="funding-price">50,000원</span></li>
-                    <li class="button-group">
-                        <button class="pay-button" onclick="location.href='/content/funding/detail-funding'">후원하기
-                        </button>
-                        <span>
-                            <button class="heart-button" th:style="${isRedHeart != null and isRedHeart} ? 'color: red;' : 'color: gray;'" onclick="toggleHeart(this)">❤️</button>
-                        </span>
-                    </li>
-                </ul>
+            <div class="button-group">
+                <button th:onclick="'javascript:window.location.href=\'' + @{/content/funding/all-funding/__${funding.fndCode}__} + '\''">상세보기</button>
             </div>
         </div>
-    </section>
+    </div>
 
-    <!-- 두번째 제품 리스트 -->
-    <section id="content-box">
-        <div class="row">
 
-            <div class="col-lg-3 col-md-6">
-                <ul class="items">
-                    <li><img src="/img/product/p5.png" alt="p5"></li>
-                    <li class="funding-name">청바지 3개를 업사이클링한 슬리퍼</li>
-                    <li class="funding-success-rate"><strong>96% 달성</strong><span
-                            class="funding-price">50,000원</span></li>
-                    <li class="button-group">
-                        <button class="pay-button" onclick="location.href='/content/funding/detail-funding'">후원하기
-                        </button>
-                        <span>
-                            <button class="heart-button" th:style="${isRedHeart != null and isRedHeart} ? 'color: red;' : 'color: gray;'" onclick="toggleHeart(this)">❤️</button>
-                        </span>
-                    </li>
-                </ul>
-            </div>
 
-            <div class="col-lg-3 col-md-6">
-                <ul class="items">
-                    <li><img src="/img/product/p6.png" alt="p6"></li>
-                    <li class="funding-name">청바지 3개를 업사이클링한 슬리퍼</li>
-                    <li class="funding-success-rate"><strong>96% 달성</strong><span
-                            class="funding-price">50,000원</span></li>
-                    <li class="button-group">
-                        <button class="pay-button" onclick="location.href='/content/funding/detail-funding'">후원하기
-                        </button>
-                        <span>
-                            <button class="heart-button" th:style="${isRedHeart != null and isRedHeart} ? 'color: red;' : 'color: gray;'" onclick="toggleHeart(this)">❤️</button>
-                        </span>
-                    </li>
-                </ul>
-            </div>
+<!--    <table>-->
+<!--        <tr th:each="funding: ${fundingList}" style="border: #0AA37F solid 1px">-->
+<!--            <td>-->
+<!--                <a th:text="${funding.fndName}" th:href="@{|/content/funding/all-funding/${funding.fndCode}|}" style="cursor: pointer"></a>-->
+<!--            </td>-->
+<!--            <td th:text="${funding.successAmt}"></td>-->
+<!--            <td th:text="${funding.giftPrice}"></td>-->
+<!--        </tr>-->
+<!--    </table>-->
 
-            <div class="col-lg-3 col-md-6">
-                <ul class="items">
-                    <li><img src="/img/product/p7.png" alt="p7"></li>
-                    <li class="funding-name">청바지 3개를 업사이클링한 슬리퍼</li>
-                    <li class="funding-success-rate"><strong>96% 달성</strong><span
-                            class="funding-price">50,000원</span></li>
-                    <li class="button-group">
-                        <button class="pay-button" onclick="location.href='/content/funding/detail-funding'">후원하기
-                        </button>
-                        <span>
-                            <button class="heart-button" th:style="${isRedHeart != null and isRedHeart} ? 'color: red;' : 'color: gray;'" onclick="toggleHeart(this)">❤️</button>
-                        </span>
-                    </li>
-                </ul>
-            </div>
 
-            <div class="col-lg-3 col-md-6">
-                <ul class="items">
-                    <li><img src="/img/product/p8.jpg" alt="p8"></li>
-                    <li class="funding-name">청바지 3개를 업사이클링한 슬리퍼</li>
-                    <li class="funding-success-rate"><strong>96% 달성</strong><span
-                            class="funding-price">50,000원</span></li>
-                    <li class="button-group">
-                        <button class="pay-button" onclick="location.href='/content/funding/detail-funding'">후원하기
-                        </button>
-                        <span>
-                            <button class="heart-button" th:style="${isRedHeart != null and isRedHeart} ? 'color: red;' : 'color: gray;'" onclick="toggleHeart(this)">❤️</button>
-                        </span>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </section>
 
-    <!-- 세번째 제품 리스트 -->
-    <section id="content-box">
-        <div class="row">
-
-            <div class="col-lg-3 col-md-6">
-                <ul class="items">
-                    <li><img src="/img/product/p9.png" alt="p9"></li>
-                    <li class="funding-name">청바지 3개를 업사이클링한 슬리퍼</li>
-                    <li class="funding-success-rate"><strong>96% 달성</strong><span
-                            class="funding-price">50,000원</span></li>
-                    <li class="button-group">
-                        <button class="pay-button" onclick="location.href='/content/funding/detail-funding'">후원하기
-                        </button>
-                        <span>
-                            <button class="heart-button" th:style="${isRedHeart != null and isRedHeart} ? 'color: red;' : 'color: gray;'" onclick="toggleHeart(this)">❤️</button>
-                        </span>
-                    </li>
-                </ul>
-            </div>
-
-            <div class="col-lg-3 col-md-6">
-                <ul class="items">
-                    <li><img src="/img/product/p10.png" alt="p10"></li>
-                    <li class="funding-name">청바지 3개를 업사이클링한 슬리퍼</li>
-                    <li class="funding-success-rate"><strong>96% 달성</strong><span
-                            class="funding-price">50,000원</span></li>
-                    <li class="button-group">
-                        <button class="pay-button" onclick="location.href='/content/funding/detail-funding'">후원하기
-                        </button>
-                        <span>
-                            <button class="heart-button" th:style="${isRedHeart != null and isRedHeart} ? 'color: red;' : 'color: gray;'" onclick="toggleHeart(this)">❤️</button>
-                        </span>
-                    </li>
-                </ul>
-            </div>
-
-            <div class="col-lg-3 col-md-6">
-                <ul class="items">
-                    <li><img src="/img/product/p11.png" alt="p11"></li>
-                    <li class="funding-name">청바지 3개를 업사이클링한 슬리퍼</li>
-                    <li class="funding-success-rate"><strong>96% 달성</strong><span
-                            class="funding-price">50,000원</span></li>
-                    <!--  완성본  -->
-                    <li class="button-group">
-                        <button class="pay-button" onclick="location.href='/content/funding/detail-funding'">후원하기
-                        </button>
-                        <span>
-                            <button class="heart-button" th:style="${isRedHeart != null and isRedHeart} ? 'color: red;' : 'color: gray;'" onclick="toggleHeart(this)">❤️</button>
-                        </span>
-                    </li>
-                </ul>
-            </div>
-
-            <div class="col-lg-3 col-md-6">
-                <ul class="items">
-                    <li><img src="/img/product/p12.jpg" alt="p12"></li>
-                    <li class="funding-name">커피 자루와 비건 한지가죽이 만난 콤팩트한 데일리 백, 비니 미니 토트 백</li>
-                    <li class="funding-success-rate"><strong>107% 달성</strong><span
-                            class="funding-price">119,000원</span></li>
-                    <li class="button-group">
-                        <button class="pay-button" onclick="location.href='/content/funding/detail-funding'">후원하기
-                        </button>
-                        <span>
-                            <button class="heart-button" th:style="${isRedHeart != null and isRedHeart} ? 'color: red;' : 'color: gray;'" onclick="toggleHeart(this)">❤️</button>
-                        </span>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </section>
 </div>
 
 <div th:insert="~{/fragments/footer.html}"></div>

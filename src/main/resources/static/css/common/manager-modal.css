@@ -81,6 +81,17 @@
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.3); /* 그림자 효과 */
 }
 
+.modal-content3 {
+    background-color: #fefefe; /* 모달 내부 배경색 */
+    margin: 10% auto; /* 모달을 화면 중앙에 배치 */
+    padding: 30px;
+    border: 2px solid #0CC291;
+    width: 500px; /* 모달의 너비 */
+    height: 600px; /* 모달의 높이 */
+    border-radius: 10px; /* 모달 테두리의 둥글기 */
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.3); /* 그림자 효과 */
+}
+
 /* 모달 닫기 버튼 스타일 */
 #close-btn2 {
     color: #aaa;
@@ -168,3 +179,36 @@
 .delete-btn:hover {
     background-color: #f87878;
 }
+
+.update-btn3 {
+    margin-right: 10px;
+    padding: 12px 24px;
+    border: none;
+    border-radius: 5px;
+    background-color: #f95252;
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.3s;
+
+}
+
+.update-btn3:hover {
+    background-color: #f87878;
+}
+
+.update-btn2 {
+    margin-right: 10px;
+    padding: 12px 24px;
+    border: none;
+    border-radius: 5px;
+    background-color: #0CC291;
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.3s;
+
+}
+
+.update-btn2:hover {
+    background-color: #0AA37F;
+}
+

@@ -1,17 +1,16 @@
 package com.revelup.funding.controller;
 
+import com.revelup.audit.model.dto.AuditDTO;
 import com.revelup.funding.model.dto.*;
 import com.revelup.funding.model.service.FundingService;
-import com.revelup.user.controller.UserController;
 import com.revelup.user.model.dto.LoginUserDTO;
+import com.revelup.user.model.dto.UserDTO;
 import com.revelup.user.model.service.UserService;
-import org.springframework.security.core.annotation.AuthenticationPrincipal;
-import org.springframework.security.core.userdetails.User;
-import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import java.io.IOException;
 import java.security.Principal;
 import java.util.List;
 
@@ -40,46 +39,62 @@ public class FundingController {
     @PostMapping("/insertFunding")
     public String insertFunding(@ModelAttribute FundingInfoDTO fundingInfoDTO,
                                 @ModelAttribute GiftDTO giftDTO,
-                                @ModelAttribute SetterInfoDTO setterInfoDTO) {
+                                @ModelAttribute SetterInfoDTO setterInfoDTO,
+                                @ModelAttribute AuditDTO auditDTO) throws IOException {
         System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
-//        System.out.println("fundingFileDTO = " + fundingFileDTO);
         System.out.println("fundingInfoDTO = " + fundingInfoDTO);
-        System.out.println("");
+        System.out.println(" ");
         System.out.println("giftDTO = " + giftDTO);
-        System.out.println("");
+        System.out.println(" ");
 //        System.out.println("setterFileDTO = " + setterFileDTO);
         System.out.println("setterInfoDTO = " + setterInfoDTO);
-//        fundingService.insertFunding(fundingFileDTO, fundingInfoDTO, giftDTO, setterFileDTO, setterInfoDTO);
-        fundingService.insertFunding(fundingInfoDTO, giftDTO, setterInfoDTO);
-//        return "content/funding/insertFunding";
+
+        // 회원 아이디 조회 후 펀딩 등록과 함께 세터 권한 활성화
+        String userId = setterInfoDTO.getUserId();
+        updateUserRole(userId);
+
+        fundingService.insertFunding(fundingInfoDTO, giftDTO, setterInfoDTO, auditDTO);
+
         return "content/funding/insertFunding/new-funding-complete";
+    }
+
+    /** 유저 아이디만 가져가서, 세터로 변경 */
+    private void updateUserRole(String userId){
+
+        userService.updateUserRole(userId);
+
     }
 
     @GetMapping("/all-funding")
     public String selectAllFunding(Model model) {
         List<FundingInfoDTO> fundingInfoDTOList = fundingService.selectAllFunding();
         model.addAttribute("fundingList", fundingInfoDTOList);
-        System.out.println("??????????????????????????????????????????????????????????????????????");
-        System.out.println("fundingInfoDTOList 컨트롤러 = " + fundingInfoDTOList);
+        System.out.println("fundingInfoDTOList 컨트롤러 selectAllFunding = " + fundingInfoDTOList);
+
         return "content/funding/all-funding";
     }
 
-    @GetMapping("/{id}")
-    public String findById(@PathVariable("id") Long id, Model model) {
-
+    @GetMapping("/all-funding/{fndCode}")
+    public String findByCode(@PathVariable("fndCode") int fndCode, Model model) {
         // 조회수 처리
+        // fundingService.updateViews(fndCode);
 
         // 상세내용 가져옴
+        FundingInfoDTO fundingInfoDTO = fundingService.findByCode(fndCode);
+        model.addAttribute("funding", fundingInfoDTO);
+        System.out.println("fundingInfoDTO 컨트롤러 findByCode = " + fundingInfoDTO);
 
-        return null;
+        // 첨부파일 가져옴
+        List<FundingFileDTO> fundingFileDTOList = fundingService.findFile(fndCode);
+        model.addAttribute("fundingFileList", fundingFileDTOList);
+
+        return "content/funding/detail-funding";
     }
 
     @GetMapping("/detail-funding")
     public String selectDetailFunding() {
         return "content/funding/detail-funding";
     }
-
-
 
 
 

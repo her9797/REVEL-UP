@@ -26,6 +26,9 @@
         <result property="successAmt" column="SUCCESS_AMT" />
         <result property="fndDelYn" column="FND_DEL_YN" />
         <result property="fndPrgStat" column="FND_PRG_STAT" />
+        <result property="auditStat" column="AUDIT_STAT" />
+        <result property="auditApprDt" column="AUDIT_APPR_DT" />
+        <result property="giftName" column="GIFT_NAME" />
     </resultMap>
 
     <!--    fnd_file ResultMap 펀딩 파일 -->
@@ -36,6 +39,14 @@
         <result property="fndOrgFile" column="FND_ORG_FILE" />
         <result property="fndSaveFile" column="FND_SAVE_FILE" />
         <result property="fileDiv" column="FILE_DIV" />
+    </resultMap>
+
+    <!--    aud ResultMa 심사 -->
+    <resultMap id="audResultMap" type="com.revelup.audit.model.dto.AuditDTO">
+        <id property="fndCode" column="FND_CODE" />
+        <result property="auditStat" column="AUDIT_STAT" />
+        <result property="fndInsertDttm" column="FND_INSERT_DTTM" />
+        <result property="auditApprDt" column="AUDIT_APPR_DT" />
     </resultMap>
 
     <!--    gift ResultMap 선물 -->
@@ -54,7 +65,7 @@
     </resultMap>
 
     <!--    PLG ResultMap 후원 -->
-    <resultMap id="payResultMap" type="com.revelup.pay.model.dto.PayCompletionDTO">
+    <resultMap id="payResultMap" type="com.revelup.pay.model.dto.PayDTO">
         <id property="plgCode" column="PLG_CODE" />
         <result property="userId" column="USER_ID" />
         <result property="fndCode" column="FND_CODE" />
@@ -62,29 +73,15 @@
         <result property="plgDttm" column="PLG_DTTM" />
         <result property="plgPrice" column="PLG_PRICE" />
         <result property="plgCanDt" column="PLG_CAN_DT" />
+        <collection property="delivery" resultMap="delivResultMap" />
         <collection property="login" resultMap="login"/>
         <collection property="gift" resultMap="giftResultMap" />
         <collection property="fundingInfo" resultMap="fndInfoResultMap" />
     </resultMap>
 
 <!--        PLG ResultMap 후원 -->
-<!--    <resultMap id="plgResultMap" type="com.revelup.pay.model.dto.PayCompletionDTO">-->
-<!--        <id property="plgCode" column="PLG_CODE" />-->
-<!--        <result property="userId" column="USER_ID" />-->
-<!--        <result property="fndCode" column="FND_CODE" />-->
-<!--        <result property="giftQty" column="GIFT_QTY" />-->
-<!--        <result property="plgDttm" column="PLG_DTTM" />-->
-<!--        <result property="plgPrice" column="PLG_PRICE" />-->
-<!--        <result property="plgCanDt" column="PLG_CAN_DT" />-->
-<!--        <association property="fndName" resultMap="fndInfoResultMap" />-->
-<!--        <association property="deliv" resultMap="delivResultMap" />-->
-<!--        <association property="loginUser" resultMap="login"/>-->
-<!--        <association property="giftName" resultMap="giftResultMap" />-->
-<!--    </resultMap>-->
-
-<!--        PLG ResultMap 후원 -->
-    <resultMap id="twoPlgResultMap" type="com.revelup.pay.model.dto.PayCompletionDTO">
-        <id property="plgC56ode" column="PLG_CODE" />
+    <resultMap id="twoPlgResultMap" type="com.revelup.pay.model.dto.PayDTO">
+        <id property="plgCode" column="PLG_CODE" />
         <result property="userId" column="USER_ID" />
         <result property="fndCode" column="FND_CODE" />
         <result property="giftQty" column="GIFT_QTY" />
@@ -94,11 +91,20 @@
         <result property="giftName" column="GIFT_NAME" />
         <result property="fndEndDt" column="FND_END_DT" />
         <result property="trackingNo" column="TRACKING_NO" />
+        <result property="delivStat" column="DELIV_STAT" />
         <result property="userAdd" column="USER_ADD" />
         <result property="userName" column="USER_NAME" />
         <result property="userPhone" column="USER_PHONE" />
     </resultMap>
 
+    <!-- 운송장번호 UPDATE -->
+    <update id="updateTrackingNo" parameterType="com.revelup.funding.model.dto.DeliveryDTO">
+        UPDATE DELIV
+           SET TRACKING_NO = #{ trackingNo }
+               ,DELIV_STAT = 'S'
+         WHERE PLG_CODE = #{ plgCode }
+        <!--         WHERE FND_CODE = #{ fndCode }-->
+    </update>
 
     <!-- 후원내역조회 후원내역 -->
     <select id="selectAllPlgList" resultMap="payResultMap">
@@ -111,7 +117,9 @@
                 ,p.GIFT_QTY
                 ,G.GIFT_PRICE
                 ,P.PLG_PRICE
+                ,D.DELIV_STAT
           FROM PLG P
+          JOIN DELIV D ON P.PLG_CODE = D.PLG_CODE
           JOIN FND_INFO F ON P.FND_CODE = F.FND_CODE
           JOIN GIFT G ON G.FND_CODE = F.FND_CODE
          WHERE F.FND_PRG_STAT = 'L'
@@ -153,7 +161,7 @@
         <!--        AND USER_ID = #{ userId }-->
     </select>
 
-    <!--     후원내역조회 상세조회 -->
+    <!-- 후원내역조회 상세조회 -->
     <select id="selectOne" resultMap="twoPlgResultMap">
         SELECT
                 P.PLG_DTTM
@@ -174,10 +182,163 @@
          WHERE P.PLG_CODE = #{plgCode}
     </select>
 
-    <!--     후원내역조회 상세조회 -->
+    <!-- 후원내역조회 상세조회 -->
+    <select id="selectByOne" resultMap="twoPlgResultMap">
+        SELECT
+        P.PLG_DTTM
+        , F.FND_NAME
+        , G.GIFT_NAME
+        , P.GIFT_QTY
+        , P.PLG_PRICE
+        , F.FND_END_DT
+        , D.DELIV_STAT
+        , D.TRACKING_NO
+        , U.USER_ADD
+        , U.USER_NAME
+        , U.USER_PHONE
+        FROM PLG P
+        JOIN USER U ON P.USER_ID = U.USER_ID
+        JOIN DELIV D ON P.PLG_CODE = D.PLG_CODE
+        JOIN FND_INFO F ON P.FND_CODE = F.FND_CODE
+        JOIN GIFT G ON G.FND_CODE = F.FND_CODE
+        WHERE P.PLG_CODE = #{plgCode}
+    </select>
+
+<!-- 달성액 가져오는 방법 -->
+    <select id="getSuccessAmtByFndCode" resultMap="fndInfoResultMap">
+        SELECT SUCCESS_AMT
+          FROM FND_INFO
+         WHERE FND_CODE = #{fndCode}
+    </select>
+
+    <!-- 세터 진행중인 펀딩 -->
     <select id="allFndList" resultMap="fndInfoResultMap">
         SELECT
-                FND_NAME
+                FND_CODE
+                ,FND_NAME
+                ,GOAL_AMT
+                ,SUCCESS_AMT
+                ,FND_END_DT
+          FROM FND_INFO
+         WHERE FND_PRG_STAT = 'L'
+    </select>
+
+
+    <!-- 세터 펀딩내역 상세조회(펀딩) -->
+    <select id="sttrSelectOneFnd" resultMap="fndInfoResultMap">
+        SELECT
+                A.AUDIT_APPR_DT
+                ,F.FND_CODE
+                ,F.FND_NAME
+                ,G.GIFT_NAME
+                ,F.GOAL_AMT
+                ,F.SUCCESS_AMT
+                ,F.FND_END_DT
+          FROM FND_INFO F
+          JOIN AUD A ON A.FND_CODE = F.FND_CODE
+          JOIN GIFT G ON G.FND_CODE = F.FND_CODE
+         WHERE F.FND_CODE = #{fndCode}
+    </select>
+
+    <!-- 세터 펀딩내역 상세조회(후원자) -->
+    <select id="plgList" resultMap="payResultMap">
+        SELECT
+                P.PLG_CODE
+                , U.USER_NAME
+                , P.PLG_PRICE
+                , P.PLG_DTTM
+                , F.FND_END_DT
+                , U.USER_ADD
+                , D.DELIV_STAT
+                , D.TRACKING_NO
+          FROM PLG P
+          JOIN USER U ON P.USER_ID = U.USER_ID
+          JOIN DELIV D ON P.PLG_CODE = D.PLG_CODE
+          JOIN FND_INFO F ON P.FND_CODE = F.FND_CODE
+         WHERE F.FND_CODE = #{fndCode}
+    </select>
+
+<!--     <delete id="deleteFnd" parameterType="Long">
+   -->
+    <delete id="deleteFnd" parameterType="com.revelup.funding.model.dto.FundingInfoDTO">
+        DELETE
+          FROM FND_INFO
+         WHERE FND_CODE = #{ fndCode }
+    </delete>
+
+    <delete id="deleteAud" parameterType="com.revelup.audit.model.dto.AuditDTO">
+        DELETE
+        FROM AUD
+        WHERE FND_CODE = #{ fndCode }
+    </delete>
+
+
+<!--    해당 값 없음-->
+<!--    <delete id="deleteRpt" parameterType="com.revelup.report.model.dto.ReportDTO">-->
+<!--        DELETE-->
+<!--        FROM RPT-->
+<!--        WHERE FND_CODE = #{ fndCode }-->
+<!--    </delete>-->
+
+<!--    해당 값 없음-->
+<!--    <delete id="deleteFndFile" parameterType="com.revelup.funding.model.dto.FundingFileDTO">-->
+<!--        DELETE-->
+<!--        FROM FND_FILE-->
+<!--        WHERE FND_CODE = #{ fndCode }-->
+<!--    </delete>-->
+
+<!--    정산 dto 없음,,, -->
+<!--    <delete id="deleteStlmt" parameterType="com.revelup.pay.model.dto.">-->
+<!--        DELETE-->
+<!--        FROM STLMT_LIST-->
+<!--        WHERE FND_CODE = #{ fndCode }-->
+<!--    </delete>-->
+
+    <delete id="deleteGift" parameterType="com.revelup.funding.model.dto.GiftDTO">
+        DELETE
+        FROM GIFT
+        WHERE FND_CODE = #{ fndCode }
+    </delete>
+
+    <delete id="deletePlg" parameterType="com.revelup.pay.model.dto.PayDTO">
+        DELETE
+        FROM PLG
+        WHERE FND_CODE = #{ fndCode }
+    </delete>
+
+
+
+
+    <!-- 세터 심사 대기중인 펀딩 -->
+    <select id="audReadyList" resultMap="fndInfoResultMap">
+        SELECT
+                F.FND_CODE
+                ,F.FND_NAME
+                ,F.GOAL_AMT
+                ,F.FND_END_DT
+          FROM FND_INFO F
+          JOIN AUD A ON A.FND_CODE = F.FND_CODE
+         WHERE A.AUDIT_STAT = 'P'
+    </select>
+
+
+    <!-- 세터 반려된 펀딩 -->
+    <select id="refuseList" resultMap="fndInfoResultMap">
+        SELECT
+               F.FND_CODE
+               ,F.FND_NAME
+               ,F.GOAL_AMT
+               ,F.FND_END_DT
+          FROM FND_INFO F
+          JOIN AUD A ON A.FND_CODE = F.FND_CODE
+         WHERE A.AUDIT_STAT = 'D'
+    </select>
+
+    <!-- 세터 종료된 펀딩 -->
+    <select id="finishList" resultMap="fndInfoResultMap">
+        SELECT
+                FND_CODE
+                ,FND_NAME
                 ,GOAL_AMT
                 ,SUCCESS_AMT
                 ,FND_END_DT
@@ -185,22 +346,23 @@
          WHERE FND_PRG_STAT = 'E'
     </select>
 
-    <!--    <select id="sttrFndPro" resultMap="com.revelup.funding.model.dao.FundingMapper">-->
-<!--        SELECT P.PLG_DTTM-->
-<!--        ,F.FND_NAME-->
-<!--        ,G.GIFT_NAME-->
-<!--        ,F.SUCCESS_AMT-->
-<!--        ,F.FND_END_DT-->
-<!--        ,FND_CODE-->
-<!--        ,U.USER_NAME-->
-<!--        ,P.PLG_PRICE-->
-<!--        ,P.PLG_DTTM-->
-<!--        ,U.USER_ADD-->
-<!--        ,D.DELIV_STAT-->
-<!--        ,D.TRACKING_NO-->
-<!--        FROM-->
-<!--        WHERE FND_CODE = @{ fndCode }-->
-<!--    </select>-->
-
-
 </mapper>
+
+
+
+
+
+        <!--        PLG ResultMap 후원 -->
+        <!--    <resultMap id="plgResultMap" type="com.revelup.pay.model.dto.PayCompletionDTO">-->
+        <!--        <id property="plgCode" column="PLG_CODE" />-->
+        <!--        <result property="userId" column="USER_ID" />-->
+        <!--        <result property="fndCode" column="FND_CODE" />-->
+        <!--        <result property="giftQty" column="GIFT_QTY" />-->
+        <!--        <result property="plgDttm" column="PLG_DTTM" />-->
+        <!--        <result property="plgPrice" column="PLG_PRICE" />-->
+        <!--        <result property="plgCanDt" column="PLG_CAN_DT" />-->
+        <!--        <association property="fndName" resultMap="fndInfoResultMap" />-->
+        <!--        <association property="deliv" resultMap="delivResultMap" />-->
+        <!--        <association property="loginUser" resultMap="login"/>-->
+        <!--        <association property="giftName" resultMap="giftResultMap" />-->
+        <!--    </resultMap>-->

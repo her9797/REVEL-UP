@@ -1,52 +1,64 @@
-// Get the modal
-var modal = document.getElementById("deliv-modal");
+function updateTrackingNo() {
+    var trackingNo = $('#trackingValue').val();
+    console.log('trackingNo : ' + trackingNo);
+    var selectedRadio = document.querySelector('input[name="check"]:checked');
+    if (!selectedRadio) {
+        alert('라디오 버튼을 선택해주세요.');
+        return;
+    }
+    var plgCode = selectedRadio.closest('tr').querySelector('td:nth-child(2)').textContent;
+    console.log('plgCode : ' + plgCode);
 
-// Get radio buttons
-var radios = document.getElementsByName("check");
+    // jQuery의 $.ajax 메소드를 사용하여 비동기 통신을 구현합니다.
+    $.ajax({
+        type: 'POST',
+        // url: '/updateTrackingNo',
+        url: '/content/mypage/updateTrackingNo',
+        data: { 'plgCode': plgCode,
+            'trackingNo': trackingNo
+        },
+        dataType: 'json',
+        success: function(data) {
+            location.reload();
+        },
+        error: function(xhr, status, error) {
+            location.reload();
+            console.error('Error:', error);
+        }
+    });
+}
 
-var trackingNumberCells = document.querySelectorAll('td:last-child');
-
-// When the user clicks on '운송장입력' button, open the modal if a radio button is selected
+// openModal 함수 수정
 function openModal() {
+    var radios = document.getElementsByName('check');
+    const modal = document.getElementById('deliv-modal');
+    let isSelected = false;
+
     for (var i = 0; i < radios.length; i++) {
         if (radios[i].checked) {
-            modal.style.display = "block";
-            break;
+            isSelected = true;
+            var selectedRow = radios[i].closest('tr');
+            console.log(selectedRow);
+
+            var trackingNoElement = selectedRow.querySelector('.trackingNoCell');
+            var trackingNo = trackingNoElement ? trackingNoElement.textContent.trim() : "";
+            console.log(trackingNo);
+
+            if (!trackingNo) {
+                modal.style.display = 'block';
+                return;
+            }
         }
     }
-}
 
-// When the user clicks on '등록' button, submit the tracking number
-function submitTrackingNumber() {
-    // var trackingNumber = document.getElementById("trackingNumber").value;
-    // var trackingNumberCell = document.getElementById("trackingNumberCell");
-    // trackingNumberCell.textContent = trackingNumber;
-    var trackingNumber = document.getElementById("trackingNumber").value;
-    var selectedRow;
-    for (var i = 0; i < radios.length; i++) {
-        if (radios[i].checked) {
-            selectedRow = radios[i].parentNode.parentNode;  // 라디오 버튼의 부모의 부모는 tr 요소입니다.
-            break;
-        }
+    if (!isSelected) {
+        alert("라디오 버튼을 선택해주세요.");
     }
-    if (selectedRow) {
-        var trackingNumberCell = selectedRow.querySelector(".trackingNumberCell");
-        trackingNumberCell.textContent = trackingNumber;
-    }
-    closeModal();
 }
-
-// Get the '등록' button
-var submitBtn = document.getElementById("submit-btn");
-
-submitBtn.addEventListener("click", submitTrackingNumber);
-
-// Get the <span> element that closes the modal
-var span = document.getElementsByClassName("close")[0];
 
 function closeModal() {
-    var modal = document.getElementById("deliv-modal");
-    modal.style.display = "none";
+    document.getElementById('deliv-modal').style.display = 'none';
 }
 
-document.getElementById("cancel-btn").addEventListener("click", closeModal);
+
+

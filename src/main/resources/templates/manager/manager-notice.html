@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -36,7 +36,7 @@
 <div class="container" style="border-top: 1px solid lightgray; margin-top: 15px;">
     <div class="title-box">
         <button onclick="location.href='/manager/manager-find-select'">펀딩조회</button>
-        <button onclick="location.href=''">펀딩심사</button>
+        <button onclick="location.href='/manager/manager-audit'">펀딩심사</button>
         <button onclick="location.href='/manager/manager-report'">신고처리</button>
         <button onclick="location.href='/manager/manager-notice'" style="background-color: #0CC291;">공지사항</button>
         <button onclick="location.href='/manager/manager-inquiry'">문의사항</button>
@@ -60,8 +60,9 @@
         </table>
     </div>
 
-
+        <span sec:authorize="hasAnyAuthority('매니저')">
         <button type="button" id="insert-btn" data-toggle="modal" data-target="insert-modal" style="font-weight: bold">신규등록</button>
+        </span>
 
         <div id="insert-modal" class="insert-modal">
             <div class="insert-modal-content" style="border: none;">
@@ -130,11 +131,13 @@
                                 <textarea th:text="${notice.ntcCont}" type="text" id="ntcCont" class="text-box3" name="ntcCont"></textarea>
                             </div>
                         </div>
+                        <span sec:authorize="hasAnyAuthority('매니저')">
                         <div class="modal-button2" style="margin-left: 150px; margin-top: 20px;">
                             <button class="update-btn" id="update-btn">수정하기</button>
 
                             <button class="delete-btn" id="delete-btn">삭제하기</button>
                         </div>
+                        </span>
                     </div>
                 </div>
             </div>

@@ -1,6 +1,7 @@
 package com.revelup.user.model.dto;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Date;
 import java.util.List;
 import com.revelup.common.UserRole;
 import org.apache.catalina.User;
@@ -16,11 +17,12 @@ public class LoginUserDTO implements java.io.Serializable{
     private String userAdd;
     private String userEmail;
     private UserRole userRole;
+    private Date userWddt;
 
     public LoginUserDTO() {
     }
 
-    public LoginUserDTO(String userId, String userName, String userPw, String userPhone, String userAdd, String userEmail, UserRole userRole) {
+    public LoginUserDTO(String userId, String userName, String userPw, String userPhone, String userAdd, String userEmail, UserRole userRole, Date userWddt) {
         this.userId = userId;
         this.userName = userName;
         this.userPw = userPw;
@@ -28,6 +30,7 @@ public class LoginUserDTO implements java.io.Serializable{
         this.userAdd = userAdd;
         this.userEmail = userEmail;
         this.userRole = userRole;
+        this.userWddt = userWddt;
     }
 
     public List<String> getRole(){

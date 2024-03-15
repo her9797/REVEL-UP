@@ -40,4 +40,11 @@ public interface UserMapper {
 
     /* PW 재설정 */
     void updatePw(UserDTO userDTO);
+
+    void updateUserRole(String userId);
+
+    LoginUserDTO userDelete(String userId);
+
+    void userDelete2(LoginUserDTO loginUserDTO);
+
 }

@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>공지사항</title>
+
+    <th:block th:include="fragments/common"></th:block>
+    <link th:href="@{/css/manager-audit.css}" rel="stylesheet">
+    <link th:href="@{/css/common/manager-modal.css}" rel="stylesheet">
+    <script th:src="@{/js/manager-audit.js}"></script>
+    <link th:href="@{/css/mypage.css}" rel="stylesheet">
+
+</head>
+<body>
+
+<!-- 헤더 부분 -->
+<div th:insert="~{/fragments/header.html}"></div>
+
+<!-- 배너 부분 -->
+<section class="banner2-area">
+    <div class="container">
+        <div class="row fullscreen align-items-center">
+            <div class="col-lg-10">
+                <div class="banner2-content">
+                    <h1 style="font-weight: bold; margin-left: 94px;">Manager</h1>
+                    <br>
+                    <p style="color:white; margin-left: 100px;">레벨업의 매니저 공간입니다.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<div class="container" style="border-top: 1px solid lightgray; margin-top: 15px;">
+    <div class="title-box">
+        <button onclick="location.href='/manager/manager-find-select'">펀딩조회</button>
+        <button onclick="location.href='/manager/manager-audit'" style="background-color: #0CC291;">펀딩심사</button>
+        <button onclick="location.href='/manager/manager-report'">신고처리</button>
+        <button onclick="location.href='/manager/manager-notice'">공지사항</button>
+        <button onclick="location.href='/manager/manager-inquiry'">문의사항</button>
+        <button onclick="location.href='/manager/manager-calculate'">정산</button>
+    </div>
+    <div class="row">
+        <table class="manager_table" border="0">
+            <tr align="center" bgcolor="#0CC291" style="font-weight: bold">
+                <td>펀딩 코드</td>
+                <td>펀딩 등록일자</td>
+                <td>심사 상태</td>
+                <td>심사 처리일자</td>
+            </tr>
+            <tr th:each="audit : ${audit}" align="center">
+                <td>
+<!--                    &lt;!&ndash; 공지 코드를 클릭할 때 해당 공지에 대한 모달 창 열기 &ndash;&gt;-->
+                    <a style="color:black; cursor:pointer;" th:text="${audit.fndCode}" onclick="openModal1(this)">${audit.fndCode}</a>
+                </td>
+                <!--/*@thymesVar id="fndCode" type=""*/-->
+<!--                <td style="color:black; cursor:pointer;" th:text="${audit.fndCode}"> </td>-->
+                <td th:text="${audit.fndInsertDttm}"></td>
+                <td th:text="${audit.auditStat}"></td>
+                <td th:text="${audit.auditApprDt}"></td>
+            </tr>
+        </table>
+    </div>
+
+
+    <div class="paging">
+        <!-- Icon은 fontawesome에서 가져왔습니다. -->
+        <i class="fa-solid fa-angles-left" id="first_page"></i>
+        <i class="fa-solid fa-angle-left" id="prev_page"></i>
+        <div class="pages">
+            <span class="active">1</span>
+            <span>2</span>
+            <span>3</span>
+            <span>4</span>
+            <span>5</span>
+            <span>6</span>
+            <span>7</span>
+            <span>8</span>
+            <span>9</span>
+            <span>10</span>
+        </div>
+        <i class="fa-solid fa-angle-right" id="next_page"></i>
+        <i class="fa-solid fa-angles-right" id="last_page"></i>
+    </div>
+
+    <!-- 공지사항 내용을 보여줄 모달창-->
+
+
+    <div id="audit-modal" class="modal" th:each="audit : ${audit}">
+        <div class="open-modal">
+            <div class="modal-content3">
+                <span id="close-btn2">&times;</span>
+                <h4 style="margin-left: 170px">펀딩 승인</h4>
+                <div class="notice-content">
+
+                    <div class="notice-header2">
+                        <label for="fndCode" style="margin-top: 15px; margin-bottom: -50px">펀딩코드</label>
+                        <textarea th:text="${audit.fndCode}" type="text" id="fndCode" class="text-box2" name="fndCode" readonly></textarea><br>
+                        <label for="fndInsertDttm" style="margin-top: 20px; margin-bottom: -50px">펀딩 등록 날짜</label>
+                        <textarea th:text="${audit.fndInsertDttm}" type="text" id="fndInsertDttm" class="text-box2" name="fndInsertDttm" readonly/><br>
+                        <label for="auditStat" id="content" style="margin-top: 20px; margin-bottom: -50px">심사 상태</label>
+                        <textarea th:text="${audit.auditStat}" type="text" id="auditStat" class="text-box2" name="auditStat"></textarea>
+                    </div>
+                    <div class="modal-button2" style="margin-left: 100px; margin-top: 40px;">
+                        <button class="update-btn2" id="update-btn2">처리하기</button>
+                        <button class="update-btn3" id="update-btn3">이메일발송</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+</div>
+
+<!-- Features Area -->
+<section class="features-area">
+    <div class="container">
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+    </div>
+</section>
+</div>
+
+<div th:insert="~{/fragments/footer.html}"></div>
+
+</body>
+</html>
+
+
+
+

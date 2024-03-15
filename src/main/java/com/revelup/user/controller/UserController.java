@@ -1,6 +1,7 @@
 package com.revelup.user.controller;
 
 
+import com.revelup.auth.model.AuthDetails;
 import com.revelup.user.model.dto.LoginUserDTO;
 import com.revelup.user.model.dto.UserDTO;
 import com.revelup.user.model.service.EmailService;
@@ -16,6 +17,7 @@ import org.springframework.security.authentication.UsernamePasswordAuthenticatio
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.parameters.P;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -178,19 +180,38 @@ public class UserController {
         return "content/user/user-delete1";
     }
 
+    /** 회원 탈퇴 */
     @GetMapping("/user-delete2")
-    public String delete2Page(){
+    public String userDelete(Principal principal, Model model){
+
+        String userId = principal.getName();
+        LoginUserDTO loginUser = userService.userDelete(userId);
+
+        model.addAttribute("loginUser", loginUser);
+
         return "content/user/user-delete2";
     }
 
-    @PostMapping("/deleteUser")
-    public boolean deleteUser() {
-        return true;
-        /* 커밋용.. */
+    @PostMapping("/user-delete2")
+    public String userDelete2(Principal principal, LoginUserDTO loginUserDTO){
+
+        String userId = principal.getName();
+
+        loginUserDTO.setUserId(userId);
+
+        userService.userDelete2(loginUserDTO);
+
+
+
+        SecurityContextHolder.getContext().setAuthentication(null); // 인가 삭제
+
+        return "redirect:/main";
     }
 
-
-
+//    @GetMapping("/user-delete2")
+//    public String delete2Page(){
+//        return "content/user/user-delete2";
+//    }
 
 
 

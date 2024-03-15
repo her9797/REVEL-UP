@@ -4,6 +4,8 @@ import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
 
+import java.util.Date;
+
 @Getter
 @Setter
 @ToString
@@ -16,6 +18,7 @@ public class UserDTO implements java.io.Serializable{
     private String userAdd;
     private String userEmail;
     private String userRole;
+    private Date userWddt;
 
     public UserDTO() {
     }
