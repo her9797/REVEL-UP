@@ -26,6 +26,7 @@
         <result property="successAmt" column="SUCCESS_AMT" />
         <result property="fndDelYn" column="FND_DEL_YN" />
         <result property="fndPrgStat" column="FND_PRG_STAT" />
+        <result property="auditStat" column="AUDIT_STAT" />
         <result property="auditApprDt" column="AUDIT_APPR_DT" />
         <result property="giftName" column="GIFT_NAME" />
     </resultMap>
@@ -100,6 +101,7 @@
     <update id="updateTrackingNo" parameterType="com.revelup.funding.model.dto.DeliveryDTO">
         UPDATE DELIV
            SET TRACKING_NO = #{ trackingNo }
+               ,DELIV_STAT = 'S'
          WHERE PLG_CODE = #{ plgCode }
         <!--         WHERE FND_CODE = #{ fndCode }-->
     </update>
@@ -115,7 +117,9 @@
                 ,p.GIFT_QTY
                 ,G.GIFT_PRICE
                 ,P.PLG_PRICE
+                ,D.DELIV_STAT
           FROM PLG P
+          JOIN DELIV D ON P.PLG_CODE = D.PLG_CODE
           JOIN FND_INFO F ON P.FND_CODE = F.FND_CODE
           JOIN GIFT G ON G.FND_CODE = F.FND_CODE
          WHERE F.FND_PRG_STAT = 'L'
@@ -178,7 +182,36 @@
          WHERE P.PLG_CODE = #{plgCode}
     </select>
 
-    <!-- 세터 펀딩내역 전체조회 -->
+    <!-- 후원내역조회 상세조회 -->
+    <select id="selectByOne" resultMap="twoPlgResultMap">
+        SELECT
+        P.PLG_DTTM
+        , F.FND_NAME
+        , G.GIFT_NAME
+        , P.GIFT_QTY
+        , P.PLG_PRICE
+        , F.FND_END_DT
+        , D.DELIV_STAT
+        , D.TRACKING_NO
+        , U.USER_ADD
+        , U.USER_NAME
+        , U.USER_PHONE
+        FROM PLG P
+        JOIN USER U ON P.USER_ID = U.USER_ID
+        JOIN DELIV D ON P.PLG_CODE = D.PLG_CODE
+        JOIN FND_INFO F ON P.FND_CODE = F.FND_CODE
+        JOIN GIFT G ON G.FND_CODE = F.FND_CODE
+        WHERE P.PLG_CODE = #{plgCode}
+    </select>
+
+<!-- 달성액 가져오는 방법 -->
+    <select id="getSuccessAmtByFndCode" resultMap="fndInfoResultMap">
+        SELECT SUCCESS_AMT
+          FROM FND_INFO
+         WHERE FND_CODE = #{fndCode}
+    </select>
+
+    <!-- 세터 진행중인 펀딩 -->
     <select id="allFndList" resultMap="fndInfoResultMap">
         SELECT
                 FND_CODE
@@ -189,6 +222,7 @@
           FROM FND_INFO
          WHERE FND_PRG_STAT = 'L'
     </select>
+
 
     <!-- 세터 펀딩내역 상세조회(펀딩) -->
     <select id="sttrSelectOneFnd" resultMap="fndInfoResultMap">
@@ -224,9 +258,93 @@
          WHERE F.FND_CODE = #{fndCode}
     </select>
 
+<!--     <delete id="deleteFnd" parameterType="Long">
+   -->
+    <delete id="deleteFnd" parameterType="com.revelup.funding.model.dto.FundingInfoDTO">
+        DELETE
+          FROM FND_INFO
+         WHERE FND_CODE = #{ fndCode }
+    </delete>
+
+    <delete id="deleteAud" parameterType="com.revelup.audit.model.dto.AuditDTO">
+        DELETE
+        FROM AUD
+        WHERE FND_CODE = #{ fndCode }
+    </delete>
+
+
+<!--    해당 값 없음-->
+<!--    <delete id="deleteRpt" parameterType="com.revelup.report.model.dto.ReportDTO">-->
+<!--        DELETE-->
+<!--        FROM RPT-->
+<!--        WHERE FND_CODE = #{ fndCode }-->
+<!--    </delete>-->
+
+<!--    해당 값 없음-->
+<!--    <delete id="deleteFndFile" parameterType="com.revelup.funding.model.dto.FundingFileDTO">-->
+<!--        DELETE-->
+<!--        FROM FND_FILE-->
+<!--        WHERE FND_CODE = #{ fndCode }-->
+<!--    </delete>-->
+
+<!--    정산 dto 없음,,, -->
+<!--    <delete id="deleteStlmt" parameterType="com.revelup.pay.model.dto.">-->
+<!--        DELETE-->
+<!--        FROM STLMT_LIST-->
+<!--        WHERE FND_CODE = #{ fndCode }-->
+<!--    </delete>-->
+
+    <delete id="deleteGift" parameterType="com.revelup.funding.model.dto.GiftDTO">
+        DELETE
+        FROM GIFT
+        WHERE FND_CODE = #{ fndCode }
+    </delete>
+
+    <delete id="deletePlg" parameterType="com.revelup.pay.model.dto.PayDTO">
+        DELETE
+        FROM PLG
+        WHERE FND_CODE = #{ fndCode }
+    </delete>
 
 
 
+
+    <!-- 세터 심사 대기중인 펀딩 -->
+    <select id="audReadyList" resultMap="fndInfoResultMap">
+        SELECT
+                F.FND_CODE
+                ,F.FND_NAME
+                ,F.GOAL_AMT
+                ,F.FND_END_DT
+          FROM FND_INFO F
+          JOIN AUD A ON A.FND_CODE = F.FND_CODE
+         WHERE A.AUDIT_STAT = 'P'
+    </select>
+
+
+    <!-- 세터 반려된 펀딩 -->
+    <select id="refuseList" resultMap="fndInfoResultMap">
+        SELECT
+               F.FND_CODE
+               ,F.FND_NAME
+               ,F.GOAL_AMT
+               ,F.FND_END_DT
+          FROM FND_INFO F
+          JOIN AUD A ON A.FND_CODE = F.FND_CODE
+         WHERE A.AUDIT_STAT = 'D'
+    </select>
+
+    <!-- 세터 종료된 펀딩 -->
+    <select id="finishList" resultMap="fndInfoResultMap">
+        SELECT
+                FND_CODE
+                ,FND_NAME
+                ,GOAL_AMT
+                ,SUCCESS_AMT
+                ,FND_END_DT
+          FROM FND_INFO
+         WHERE FND_PRG_STAT = 'E'
+    </select>
 
 </mapper>
 
