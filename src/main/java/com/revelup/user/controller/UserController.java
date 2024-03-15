@@ -1,6 +1,7 @@
 package com.revelup.user.controller;
 
 
+import com.revelup.auth.model.AuthDetails;
 import com.revelup.user.model.dto.LoginUserDTO;
 import com.revelup.user.model.dto.UserDTO;
 import com.revelup.user.model.service.EmailService;
@@ -199,6 +200,8 @@ public class UserController {
         loginUserDTO.setUserId(userId);
 
         userService.userDelete2(loginUserDTO);
+
+
 
         SecurityContextHolder.getContext().setAuthentication(null); // 인가 삭제
 

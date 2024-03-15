@@ -1,5 +1,6 @@
 package com.revelup.user.model.service;
 
+import com.revelup.common.UserRole;
 import com.revelup.user.model.dao.UserMapper;
 import com.revelup.user.model.dto.LoginUserDTO;
 import com.revelup.user.model.dto.UserDTO;
@@ -63,6 +64,9 @@ public class UserService {
     }
 
 
+
+
+
     /** 회원가입 */
     public int signup(UserDTO userDTO) {
 
@@ -124,6 +128,9 @@ public class UserService {
 
     public void userDelete2(LoginUserDTO loginUserDTO) {
 
+
+
         userMapper.userDelete2(loginUserDTO);
     }
+
 }

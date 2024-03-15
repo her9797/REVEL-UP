@@ -39,3 +39,20 @@
     transform: scale(1.05);
     text-decoration: none;
 }
+
+.header-btn4 {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    width: 45px; /* 버튼의 너비 */
+    height: 45px; /* 버튼의 높이 */
+    border-radius: 50%; /* 동그라미 모양으로 만들기 위해 50%로 설정 */
+    background-color: #0CC291;
+    color: #fff;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.header-btn4:hover {
+    background-color: #54d3b0;
+}

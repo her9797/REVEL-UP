@@ -1,6 +1,7 @@
 package com.revelup.auth.model;
 
 import com.revelup.user.model.dto.LoginUserDTO;
+import com.revelup.user.model.dto.UserDTO;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;

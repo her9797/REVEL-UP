@@ -1,115 +1,124 @@
-/* 버튼 그룹 스타일 */
-.button-group {
-    margin-top: 100px;
-    display: flex;
-    justify-content: flex-end; /* 이전 버튼을 오른쪽으로 정렬 */
+/* General styling */
+body {
+    font-family: 'Inter', sans-serif;
+    line-height: 1.6;
+    margin: 0;
+    padding: 0;
 }
 
-/* 이전 버튼 스타일 */
-.back-button {
-    padding: 10px 20px;
-    border: none;
-    border-radius: 5px;
-    background-color: #f95252;
-    color: #fff;
-    cursor: pointer;
-    transition: background-color 0.3s;
-    margin-right: 5px;
+.container {
+    width: 100%;
+    margin: 0 auto;
+    padding: 0 15px;
 }
 
-/* 다음 버튼 스타일 */
-.next-button {
-    padding: 10px 20px;
-    border: none;
-    border-radius: 5px;
-    background-color: #0cc291;
-    color: #fff;
-    cursor: pointer;
-    transition: background-color 0.3s;
+/* Banner styling */
+.banner2-area {
+    background-color: #f8f9fa;
+    padding: 100px 0;
+    text-align: center;
 }
 
-/* 다음 버튼 마우스 호버 스타일 */
-.next-button:hover {
-    background-color: #52cdac;
-}
-
-/* 이전 버튼 마우스 호버 스타일 */
-.back-button:hover {
-    background-color: #f87878;
-}
-
-/* 이용약관 및 개인정보 이용 동의 약관 스타일*/
-.contract {
-    width: 80%; margin: 5px auto 80px;
-    border-radius: 15px; background-color: white;
-}
-
-/* "반갑습니다!" 문구 스타일 */
-.contract h3 {
-    text-align: left; font-size: 24px;
-}
-
-/* 약관 내용 텍스트 스타일 */
-.contract .text {
-    height: 230px; border: 0.5px solid black; margin-left: 22.7%;
-    white-space: pre-line; overflow-y: scroll; margin: 0 auto 20px;
-}
-
-/* 체크박스 스타일 */
-.checkbox {
-    text-align: right;
-    margin-left: 50px;
-}
-
-.input-group {
-    margin-top: 20px;
-    margin-bottom: 1px; /* 라벨끼리 위아래 간격 조절 */
-    display: flex;
-    align-items: center;
-}
-
-.input-group label {
-    width: 250px; /* 라벨 너비 조정 */
+.banner2-content h1 {
     font-weight: bold;
-    margin-right: 10px;
+    margin-left: 94px;
 }
 
-.input-group input[type="number"],
-.input-group input[type="text"],
-.input-group textarea {
-    flex: 1; /* 입력 요소가 가능한 최대 너비를 차지하도록 설정 */
-    padding: 8px;
+.banner2-content p {
+    color: white;
+    margin-left: 100px;
+}
+
+/* Sidebar styling */
+.sidebar {
+    background-color: #f8f9fa;
+    padding: 20px;
+}
+
+/* Form styling */
+.form-container {
+    background-color: #fff;
+    padding: 20px;
+    margin-bottom: 20px;
+}
+
+.form-container h3 {
+    margin-top: 0;
+}
+
+.form-container label {
+    font-weight: bold;
+}
+
+.form-container input,
+.form-container textarea {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
     border: 1px solid #ccc;
     border-radius: 5px;
 }
 
-/* 단위 텍스트 스타일 */
-.input-group span {
-    margin-left: 10px;
-}
-
-.error-message {
-    padding-left: 263px;
-    color: #FF0B0B;
-    font-size: 12px;
-}
-
-.input-group {
-    margin-top: 20px;
-    margin-bottom: 1px; /* 라벨끼리 위아래 간격 조절 */
+.form-container .input-with-unit {
     display: flex;
     align-items: center;
 }
 
-.input-group label {
-    width: 250px; /* 라벨 너비 조정 */
-    font-weight: bold;
+.form-container .input-with-unit input {
+    flex: 1;
+}
+
+.form-container .button-group {
+    margin-top: 20px;
+    display: flex;
+    justify-content: space-between;
+}
+
+/* Checkbox styling */
+.checkbox {
+    margin-top: 20px;
+}
+
+.checkbox input[type="checkbox"] {
     margin-right: 10px;
 }
 
-.hidden {
-    display: none;
+/* Error message styling */
+.error-message {
+    color: red;
+    margin-top: 5px;
 }
 
+/* Thumbnail styling */
+.thumbnail-tip {
+    background-color: #f8f9fa;
+    padding: 10px;
+    border-radius: 5px;
+    margin-top: 10px;
+}
 
+.thumbnail-tip ul {
+    list-style-type: disc;
+    margin-left: 20px;
+}
 
+.thumbnail-tip ul li {
+    margin-bottom: 5px;
+}
+
+/* Button styling */
+.next-button,
+.back-button {
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.next-button:hover,
+.back-button:hover {
+    background-color: #0056b3;
+}

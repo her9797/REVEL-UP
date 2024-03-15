@@ -13,6 +13,7 @@
         <result property="userAdd" column="USER_ADD"/>
         <result property="userEmail" column="USER_EMAIL"/>
         <result property="userRole" column="USER_ROLE"/>
+        <result property="userWddt" column="USER_WDDT"/>
     </resultMap>
 
     <resultMap id="UserDTO" type="com.revelup.user.model.dto.UserDTO">
@@ -23,6 +24,7 @@
         <result property="userAdd" column="USER_ADD"/>
         <result property="userEmail" column="USER_EMAIL"/>
         <result property="userRole" column="USER_ROLE"/>
+        <result property="userWddt" column="USER_WDDT"/>
     </resultMap>
 
     <!-- ID 찾기 -->
@@ -156,7 +158,8 @@
                USER_PHONE = '회원탈퇴',
                USER_ADD = '회원탈퇴',
                USER_EMAIL = '회원탈퇴',
-               USER_ROLE = '회원탈퇴'
+               USER_ROLE = '회원탈퇴',
+               USER_WDDT = NOW()
          WHERE USER_ID = #{ userId }
 
     </update>

@@ -37,6 +37,7 @@
                                 <span th:if="${#authorization.expression('isAuthenticated()')}">
                                     <a sec:authorize="hasAnyAuthority('매니저')" class="header-btn3" th:href="@{/content/user/user-show}">관리자페이지</a>
                                     <a sec:authorize="hasAnyAuthority('게터')" class="header-btn3" th:href="@{/content/user/user-show}">마이페이지</a>
+                                    <a sec:authorize="hasAnyAuthority('세터')" class="header-btn3" th:href="@{/content/user/user-show}">마이페이지</a>
                                 </span>
                                 <span th:if="${#authorization.expression('isAnonymous()')}">
                                     <a class="header-btn2" th:href="@{/content/user/sign-up}">회원가입</a>
@@ -52,6 +53,17 @@
                                 <span th:if="${#authorization.expression('isAnonymous()')}">
                                     <a class="header-btn2" th:href="@{/content/user/login}">로그인</a>
                                 </span>
+                            </li>
+                        </ul>
+
+                        <ul class="nav navbar-nav menu_nav ml-auto">
+                            <li class="nav-item" style="font-size: 12px; font-weight: bold; margin-left: -210px">
+                                <span th:if="${#authorization.expression('isAuthenticated()')}">
+                                    <span sec:authorize="hasAnyAuthority('매니저')" class="header-btn4" >관리자</span>
+                                    <span sec:authorize="hasAnyAuthority('게터')" class="header-btn4" >게터</span>
+                                    <span sec:authorize="hasAnyAuthority('세터')" class="header-btn4" >세터</span>
+                                </span>
+
                             </li>
                         </ul>
 

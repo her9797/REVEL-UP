@@ -46,4 +46,5 @@ public interface UserMapper {
     LoginUserDTO userDelete(String userId);
 
     void userDelete2(LoginUserDTO loginUserDTO);
+
 }
