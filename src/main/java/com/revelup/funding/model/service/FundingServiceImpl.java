@@ -88,10 +88,4 @@ public class FundingServiceImpl implements FundingService {
         return mapper.insertAudit(fndCode);
     }
 
-    @Override
-    public List<FundingFileDTO> findThumbnail() {
-        return mapper.findThumbnail();
-    }
-
-
 }

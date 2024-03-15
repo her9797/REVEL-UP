@@ -13,27 +13,26 @@ body {  /* 전체 설정 */
     justify-content: space-between;
 }
 
+.container .item_list .card {
+    border: 1px solid #eee;
+    border-radius: 5px;
+    height: 350px;
+    width: 250px;
+    padding: 5px;
+    margin-bottom: 10px;
+}
 
+.container .item_list .card img {
+    height: 200px;
+    width: 240px;
+}
 
-
+.container .item_list .card .fndName {
+    overflow: hidden;
+}
 
 .funding-name {
     margin-bottom: 5px;
-}
-
-.row {
-    width: 100%;
-    padding-top:50px;
-    display: flex;
-    justify-content: space-between; /* 자식 요소 사이의 간격을 최대화하여 오른쪽 정렬 */
-    align-items: center; /* 수직 가운데 정렬 */
-}
-
-.items {
-    width: 260px;
-    margin: 0 auto;
-    float: left;
-    list-style: none;
 }
 
 .col-lg-3 {
@@ -41,31 +40,10 @@ body {  /* 전체 설정 */
     /* 자식 요소가 부모 요소의 사용 가능한 공간을 모두 차지하도록 설정 */
 }
 
-.items img {
-    display: flex;
-    justify-content: center;
-    height: 145px;
-}
-
-.items .funding-name {
-    font-weight: bold;
-    margin-top: 20px;
-}
-
-.items .funding-success-rate {
-    display: flex;
-    justify-content: space-between;
-}
-
-.items .funding-price {
-    margin-bottom: 5px;
-}
-
 /* 버튼 그룹 스타일 */
-.button-group {
+.container .item_list .card .text .button-group {
     margin-top: 4px;
     display: flex;
-    justify-content: space-between;
 }
 
 /* 후원하기 버튼 스타일 */
@@ -98,15 +76,10 @@ body {  /* 전체 설정 */
     cursor: pointer; /* 마우스 커서를 손가락 모양으로 변경 */
 }
 
-
 /* 찜하기 버튼 마우스 호버 스타일 */
 .items .save-button:hover {
     color: rgb(255, 74, 74);
     transform: scale(1.05); /* 마우스 호버 시 약간 확대하여 강조 */
-}
-
-.test input{
-    display: none;
 }
 
 /* 찜하기 버튼 */
