@@ -47,8 +47,8 @@ public class FundingInfoDTO implements java.io.Serializable {
     private String sttrAccNo;   // 계좌번호
     private String sttrAccHolder;   // 예금주
 
-    private Date auditApprDt;       // 심사승인일자
-
+    private Date auditApprDt;       // 심사 승인 일자
+    private String auditStat;       // 심사 상태
 
 
 }

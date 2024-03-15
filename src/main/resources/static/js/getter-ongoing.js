@@ -59,6 +59,43 @@
     });
 
 
+    // document.addEventListener('DOMContentLoaded', function() {
+    //     // 모든 '상세조회' 버튼에 대한 클릭 이벤트 리스너를 추가합니다.
+    //     document.querySelectorAll('.button-detail').forEach(function(button) {
+    //         button.addEventListener('click', function() {
+    //             const plgCode = this.getAttribute('data-plgcode');
+    //             const delivStat = this.getAttribute('data-delivstat');
+    //
+    //             // delivStat의 값에 따라 이동할 URL을 결정합니다.
+    //             let url = '';
+    //             if (delivStat === 'R') {
+    //                 url = `/content/mypage/getter-spons-details1/${plgCode}`;
+    //             } else if (delivStat === 'S') {
+    //                 url = `/content/mypage/getter-spons-details2/${plgCode}`;
+    //             }
+    //
+    //             // 해당 URL로 페이지를 이동합니다.
+    //             if (url) {
+    //                 window.location.href = url;
+    //             }
+    //         });
+    //     });
+    // });
+
+    // function gotoDetails() {
+    //     var detailsDiv = document.getElementById('plgDetails');
+    //     var plgCode = detailsDiv.getAttribute('data-plgcode');
+    //     var delivStat = detailsDiv.getAttribute('data-delivstat');
+    //
+    //     if (delivStat === 'R') {
+    //         window.location.href = `/content/mypage/getter-spons-details1/${plgCode}`;
+    //     } else if (delivStat === 'S') {
+    //         window.location.href = `/content/mypage/getter-spons-details2/${plgCode}`;
+    //     } else {
+    //         alert('배송 상태가 유효하지 않습니다.');
+    //     }
+    // }
+
 
     // 지우지 말것!!!!!
  //  1번 상세조회만 페이지 확인할 수 있음

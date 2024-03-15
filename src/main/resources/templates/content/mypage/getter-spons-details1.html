@@ -62,7 +62,12 @@
 
             <p class="title" style="font-size: 14px; font-weight: bold; margin-top: 50px;">배송조회</p>
             <div class="deliv-info-container">
-                <div id="deliv-status">선물준비중</div>
+<!--                <div id="deliv-status">선물준비중</div>-->
+                <div id="deliv-status">
+                    <span th:if="${plgDetails.trackingNo == null}">선물 준비중</span>
+                    <span th:if="${plgDetails.trackingNo != null}">배송중</span>
+                </div>
+
 
                 <div class="deliv-info">
                     <span style="font-weight: bold;">우체국</span> : <span style="font-weight: normal;" th:text="${ plgDetails.trackingNo }"></span>

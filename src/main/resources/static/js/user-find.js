@@ -191,3 +191,27 @@ function closeModal() {
     $('.modal-layer').addClass('hidden');
     $('body').css('overflow', ''); // 스크롤 허용
 }
+
+
+
+
+// // 삭제 버튼 클릭 이벤트
+// $('.delete-btn').click(function() {
+//     var fndCode = $(this).data('fnd-code'); // 펀딩 식별자 가져오기
+//
+//     $.ajax({
+//         url: "/setter-fndList/" + fndCode, // 요청 URL
+//         type: "POST",
+//         data: { fndCode: fndCode }, // 데이터 전송
+//         success: function(response) {
+//             if(response.successAmt === 0) {
+//                 openModal(fndCode); // 모달 창 열기
+//             } else {
+//                 alert('달성액이 있어 펀딩을 삭제하지 못합니다.');
+//             }
+//         },
+//         error: function(xhr, status, error) {
+//             console.error('오류 발생: ', error);
+//         }
+//     });
+// });
