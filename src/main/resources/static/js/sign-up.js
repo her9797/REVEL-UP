@@ -69,6 +69,9 @@ $(document).ready(function() {
             document.getElementById("signUpPasswordMatch").innerHTML = "";
             $('.btn-user').prop('disabled', false);
         }
+
+        // 회원가입 버튼 상태 업데이트
+        enableSignupButton();
     }
 
     // 아이디 중복 체크 및 유효성 검사
@@ -104,12 +107,6 @@ $(document).ready(function() {
         }
     }
 
-    // 아이디 중복 체크 이벤트 핸들러
-    $('#signUpIdCheck').on('click', signUpCheckIdAndEnableSignupButton);
-
-    // 이메일 유효성 검사를 위한 정규식
-    var emailPattern = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
-
     // 이메일 인증
     $('#signUpCheckEmailBtn').on('click', function() {
         var enteredCode = $('#signUpAuthCode').val(); // 입력된 인증번호
@@ -131,7 +128,10 @@ $(document).ready(function() {
         }
     });
 
-    // 이메일 입력란에서 포커스 아웃(탭 이동 등) 시 유효성 검사
+    // 이메일 유효성 검사를 위한 정규식
+    var emailPattern = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
+
+// 이메일 입력란에서 포커스 아웃(탭 이동 등) 시 유효성 검사
     $('#signUpUserEmail').on('blur', function() {
         var email = $(this).val();
         if (!emailPattern.test(email)) {
@@ -141,6 +141,8 @@ $(document).ready(function() {
             $('.modal-layer').removeClass('hidden');
             $('body').css('overflow', 'hidden');
             disableSignupButton();
+        } else {
+            enableSignupButton(); // 유효한 이메일 주소인 경우 회원가입 버튼 상태 업데이트
         }
     });
 
@@ -234,4 +236,11 @@ $(document).ready(function() {
         $('.modal-layer').addClass('hidden');
         $('body').css('overflow', '');
     }
+
+    // 아이디 중복 체크 이벤트 핸들러
+    $('#signUpIdCheck').on('click', signUpCheckIdAndEnableSignupButton);
+
+    // 비밀번호 입력란 값이 변경될 때마다 비밀번호 유효성 검사 수행
+    $('#signUpUserPw, #signUpUserPwCheck').on('keyup', signUpValidatePassword);
 });
+
