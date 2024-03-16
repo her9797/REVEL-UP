@@ -47,6 +47,16 @@
         <result property="auditApprDt" column="AUDIT_APPR_DT"/>
     </resultMap>
 
+    <resultMap id="getFundingByUserId" type="com.revelup.funding.model.dto.FundingInfoDTO">
+        <id property="userId" column="USER_ID"/>
+        <result property="sttrCompany" column="STTR_COMPANY"/>
+        <result property="sttrName" column="STTR_NAME"/>
+        <result property="sttrRegistNo" column="STTR_REGIST_NO"/>
+        <result property="sttrBank" column="STTR_BANK"/>
+        <result property="sttrAccNo" column="STTR_ACC_NO"/>
+        <result property="sttrAccHolder" column="STTR_ACC_HOLDER"/>
+    </resultMap>
+
     <!-- 세터 정보 삽입 -->
     <insert id="insertSetterInfo" parameterType="com.revelup.funding.model.dto.SetterInfoDTO" useGeneratedKeys="true" keyProperty="userId">
         INSERT INTO STTR_INFO (
@@ -67,6 +77,20 @@
                                 , #{sttrAccHolder}
                              )
     </insert>
+
+    <!-- 아이디로 세터 정보 조회 -->
+    <select id="getFundingByUserId" resultMap="getFundingByUserId">
+        SELECT
+                USER_ID
+                , STTR_REGIST_NO
+                , STTR_COMPANY
+                , STTR_NAME
+                , STTR_BANK
+                , STTR_ACC_NO
+                , STTR_ACC_HOLDER
+        FROM STTR_INFO
+        WHERE USER_ID = #{userId};
+    </select>
 
     <!-- 펀딩 정보 삽입 -->
     <insert id="insertFundingInfo" parameterType="com.revelup.funding.model.dto.FundingInfoDTO" useGeneratedKeys="true" keyProperty="fndCode">
@@ -91,6 +115,35 @@
                                 , 'L'
                                 , #{fileAttached}
                              )
+        <selectKey keyProperty="fndCode" order="AFTER" resultType="_int">
+            <!-- 여러 사용자가 동시에 작업했어도, 내 커넥션에서 발생한 키값을 불러옴 -->
+            SELECT LAST_INSERT_ID()
+        </selectKey>
+    </insert>
+
+    <!-- 펀딩 정보 삽입 -->
+    <insert id="addFundingToExisting" parameterType="com.revelup.funding.model.dto.FundingInfoDTO" useGeneratedKeys="true" keyProperty="fndCode">
+        INSERT INTO FND_INFO (
+        USER_ID
+        , FND_NAME
+        , FND_END_DT
+        , GOAL_AMT
+        , FND_DESCR
+        , SUCCESS_AMT
+        , FND_DEL_YN
+        , FND_PRG_STAT
+        , FILE_ATTACHED
+        ) VALUES (
+        #{userId}
+        , #{fndName}
+        , #{fndEndDt}
+        , #{goalAmt}
+        , #{fndDescr}
+        , #{successAmt}
+        , 'N'
+        , 'L'
+        , #{fileAttached}
+        )
         <selectKey keyProperty="fndCode" order="AFTER" resultType="_int">
             <!-- 여러 사용자가 동시에 작업했어도, 내 커넥션에서 발생한 키값을 불러옴 -->
             SELECT LAST_INSERT_ID()
@@ -174,12 +227,6 @@
         SELECT *
           FROM FND_INSERT_FILE
          WHERE FND_CODE = #{fndCode}
-    </select>
-
-    <!-- 전체 펀딩 목록에 대표 이미지 호출 -->
-    <select id="findThumbnail" resultMap="findFile">
-        SELECT *
-        FROM FND_INSERT_FILE
     </select>
 
     <!-- 펀딩 심사 리스트 등록 -->

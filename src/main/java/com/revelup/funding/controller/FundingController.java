@@ -31,32 +31,66 @@ public class FundingController {
     public String insertFunding(Principal principal, Model model) {
         String loginUserId = principal.getName();
         LoginUserDTO userDTO = userService.findByLoginId(loginUserId);
-        model.addAttribute("user", userDTO);
+        model.addAttribute("loginUserId", userDTO);
 
-        return "content/funding/insertFunding";
+        // 해당 회원이 이미 등록한 펀딩 정보 조회
+        FundingInfoDTO existingFundingInfoDTO = fundingService.getFundingByUserId(loginUserId);
+        System.out.println("existingFundingInfoDTO = " + existingFundingInfoDTO);
+        if (existingFundingInfoDTO != null) {
+            return "content/funding/addFundingToExisting";
+        } else {
+            return "content/funding/insertFunding";
+        }
     }
 
+    // 펀딩 등록을 한 번도 하지 않은 경우 신규 펀딩 등록
     @PostMapping("/insertFunding")
-    public String insertFunding(@ModelAttribute FundingInfoDTO fundingInfoDTO,
-                                @ModelAttribute GiftDTO giftDTO,
-                                @ModelAttribute SetterInfoDTO setterInfoDTO,
-                                @ModelAttribute AuditDTO auditDTO) throws IOException {
-        System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
+    public String insertFirstFunding(@ModelAttribute FundingInfoDTO fundingInfoDTO,
+                                     @ModelAttribute GiftDTO giftDTO,
+                                     @ModelAttribute SetterInfoDTO setterInfoDTO,
+                                     @ModelAttribute AuditDTO auditDTO,
+                                     @ModelAttribute UserDTO userDTO,
+                                     Model model) throws IOException {
         System.out.println("fundingInfoDTO = " + fundingInfoDTO);
         System.out.println(" ");
         System.out.println("giftDTO = " + giftDTO);
         System.out.println(" ");
+        System.out.println("auditDTO = " + auditDTO);
+        System.out.println(" ");
 //        System.out.println("setterFileDTO = " + setterFileDTO);
         System.out.println("setterInfoDTO = " + setterInfoDTO);
+
+        String id = userDTO.getUserId();
+        setterInfoDTO.setUserId(id);
 
         // 회원 아이디 조회 후 펀딩 등록과 함께 세터 권한 활성화
         String userId = setterInfoDTO.getUserId();
         updateUserRole(userId);
 
-        fundingService.insertFunding(fundingInfoDTO, giftDTO, setterInfoDTO, auditDTO);
+        fundingService.insertFirstFunding(fundingInfoDTO, giftDTO, setterInfoDTO, auditDTO);
 
         return "content/funding/insertFunding/new-funding-complete";
     }
+
+    // 이미 펀딩 등록을 한 번이라도 한 경우 세터 정보 등록 없이 펀딩 등록
+    @PostMapping("/addFundingToExisting")
+    public String addFundingToExisting(@ModelAttribute FundingInfoDTO fundingInfoDTO,
+                                @ModelAttribute GiftDTO giftDTO,
+                                @ModelAttribute AuditDTO auditDTO) throws IOException {
+        System.out.println("fundingInfoDTO = " + fundingInfoDTO);
+        System.out.println(" ");
+        System.out.println("giftDTO = " + giftDTO);
+        System.out.println(" ");
+        System.out.println("auditDTO = " + auditDTO);
+        System.out.println(" ");
+//        System.out.println("setterFileDTO = " + setterFileDTO);
+
+        fundingService.addFundingToExisting(fundingInfoDTO, giftDTO, auditDTO);
+
+        return "content/funding/insertFunding/new-funding-complete";
+    }
+
+
 
     /** 유저 아이디만 가져가서, 세터로 변경 */
     private void updateUserRole(String userId){
@@ -97,6 +131,8 @@ public class FundingController {
     }
 
 
+    }
 
 
-}
+
+

@@ -36,9 +36,12 @@ public class FundingInfoDTO implements java.io.Serializable {
     private String giftName; // 선물명
     private int giftProdQty; // 선물 생산 가능 수량
 
-    private String siFileLoc;
-    private String siOrgFile;
-    private String siSaveFile;
+    private int siFileCode; // 세터 파일 코드
+    private String siFileLoc; // 세터 파일 저장 경로
+    private String siOrgFile; // 세터 파일 기존 파일명
+    private String siSaveFile; // 세터 파일 저장 파일명
+    private String siFileDiv; // 세터 파일 구분
+    private int siFileAttached; // 세터 파일 존재 유무
 
     private String sttrCompany; // 상호
     private String sttrName;    // 대표자명
