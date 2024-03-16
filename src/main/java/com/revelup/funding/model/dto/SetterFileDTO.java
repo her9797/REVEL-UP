@@ -1,63 +1,20 @@
 package com.revelup.funding.model.dto;
 
+import lombok.*;
+
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
+@ToString
 public class SetterFileDTO implements java.io.Serializable {
 
     private String userId;
-    private String siFileLoc;
-    private String siOrgFile;
-    private String siSaveFile;
-
-    public SetterFileDTO() {
-    }
-
-    public SetterFileDTO(String userId, String siFileLoc, String siOrgFile, String siSaveFile) {
-        this.userId = userId;
-        this.siFileLoc = siFileLoc;
-        this.siOrgFile = siOrgFile;
-        this.siSaveFile = siSaveFile;
-    }
-
-    public String getUserId() {
-        return userId;
-    }
-
-    public void setUserId(String userId) {
-        this.userId = userId;
-    }
-
-    public String getSiFileLoc() {
-        return siFileLoc;
-    }
-
-    public void setSiFileLoc(String siFileLoc) {
-        this.siFileLoc = siFileLoc;
-    }
-
-    public String getSiOrgFile() {
-        return siOrgFile;
-    }
-
-    public void setSiOrgFile(String siOrgFile) {
-        this.siOrgFile = siOrgFile;
-    }
-
-    public String getSiSaveFile() {
-        return siSaveFile;
-    }
-
-    public void setSiSaveFile(String siSaveFile) {
-        this.siSaveFile = siSaveFile;
-    }
-
-    @Override
-    public String toString() {
-        return "SetterFileDTO{" +
-                "userId='" + userId + '\'' +
-                ", siFileLoc='" + siFileLoc + '\'' +
-                ", siOrgFile='" + siOrgFile + '\'' +
-                ", siSaveFile='" + siSaveFile + '\'' +
-                '}';
-    }
-
+    private int siFileCode; // 세터 파일 코드
+    private String siFileLoc; // 세터 파일 저장 경로
+    private String siOrgFile; // 세터 파일 기존 파일명
+    private String siSaveFile; // 세터 파일 저장 파일명
+    private String siFileDiv; // 세터 파일 구분
+    private int siFileAttached; // 세터 파일 존재 유무
 
 }
