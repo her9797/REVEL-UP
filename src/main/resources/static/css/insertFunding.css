@@ -86,8 +86,8 @@
     border-color: #007bff;
 }
 
-.input-group1 .hidden1 {
-    /*display: none;*/
+.input-group2 .hidden {
+    display: none;
 }
 
 .error-message1 {

@@ -92,7 +92,7 @@
         WHERE USER_ID = #{userId};
     </select>
 
-    <!-- 펀딩 정보 삽입 -->
+    <!-- 최초 펀딩 등록 -->
     <insert id="insertFundingInfo" parameterType="com.revelup.funding.model.dto.FundingInfoDTO" useGeneratedKeys="true" keyProperty="fndCode">
         INSERT INTO FND_INFO (
                                 USER_ID
@@ -121,7 +121,7 @@
         </selectKey>
     </insert>
 
-    <!-- 펀딩 정보 삽입 -->
+    <!-- 이미 펀딩 등록한 적이 있는 세터의 펀딩 등록 -->
     <insert id="addFundingToExisting" parameterType="com.revelup.funding.model.dto.FundingInfoDTO" useGeneratedKeys="true" keyProperty="fndCode">
         INSERT INTO FND_INFO (
         USER_ID
@@ -219,7 +219,7 @@
                                     , #{fndFileLoc}
                                     , #{fndOrgFile}
                                     , #{fndSaveFile}
-                                    , 'R'
+                                    , #{fileDiv}
                                     )
     </insert>
 
