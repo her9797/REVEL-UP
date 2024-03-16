@@ -126,11 +126,11 @@ public class MypageController {
 //        }
 //    }
 //
-//    // 나의 후원내역3 상세보기 페이지 이동
-//    @GetMapping("/getter-spons-details3")
-//    public String getterSponsDetailsThreePage() {
-//        return "content/mypage/getter-spons-details3";
-//    }
+    // 나의 후원내역3 상세보기 페이지 이동( 후원확정용 기능구현 어려움-추우 논의 필요)
+    @GetMapping("/getter-spons-details3")
+    public String getterSponsDetailsThreePage() {
+        return "content/mypage/getter-spons-details3";
+    }
 
 // 배송여부에 따라 url이동 페이지 작성중 (에러 발생)
 //    @GetMapping("/getter-spons-details")
@@ -229,16 +229,16 @@ public class MypageController {
 //
 //    }
 
-    @PostMapping("/setter-fndList/{fndCode}")
-    public String setterFndListDeletePage(@PathVariable("fndCode") int fndCode) {
-
-            int successAmt = mypageService.getSuccessAmtByFndCode(fndCode);
-            FundingInfoDTO fndInfo = new FundingInfoDTO();
-            fndInfo.setSuccessAmt(successAmt);
-            return "redirect:/content/mypage/setter-fndList"; // 달성액을 포함한 펀딩 정보 반환
-
-
-    }
+//    @PostMapping("/setter-fndList/{fndCode}")
+//    public String setterFndListDeletePage(@RequestParam("fndCode") int fndCode) {
+//        System.out.println(fndCode);
+//
+//        int successAmt = mypageService.getSuccessAmtByFndCode(fndCode);
+//        System.out.println(successAmt);
+//        return "redirect:/content/mypage/setter-fndList"; // 달성액을 포함한 펀딩 정보 반환
+//
+//
+//    }
 
 
 
@@ -282,7 +282,7 @@ public class MypageController {
 //    }
 
 
-    @PostMapping("/delete/{fndCode}")
+    @PostMapping("/delete")
     @ResponseBody
     public String deleteFnd(@RequestParam("fndCode") int fndCode) {
 

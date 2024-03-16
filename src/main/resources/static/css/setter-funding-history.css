@@ -113,8 +113,7 @@ tr:first-child {
     padding: 20px;
     width: 400px; /* 너비 조정 */
     max-width: 80%; /* 최대 너비 설정 */
-    height: 180px; /* 높이 조정 */
-    overflow-y: auto; /* 내용이 모달을 넘어갈 경우 스크롤 표시 */
+    height: 200px; /* 높이 조정 */
 }
 
 /* 모달 내용 스타일 */
@@ -124,13 +123,44 @@ tr:first-child {
     border: none;
 }
 
+.modal-button2 {
+    margin-top: 5px;
+    display: flex; /* 요소를 가로로 배치 */
+    justify-content: center; /* 요소를 가운데에 배치 */
+    width: 100%; /* 버튼 그룹의 너비를 최대로 설정 */
+}
 
 #submit-btn {
-    border-radius: 15px;
+    align-items: center; /* 세로 중앙 정렬 */
+    padding: 10px 16px; /* 버튼의 길이 조정 */
+    background-color: #0CC291;
+    border: none;
+    border-radius: 5px;
+    color: #fff;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin-top: 10px; /* 버튼 위쪽 간격 조정 */
+    margin-right: 10px; /* 오른쪽 버튼의 왼쪽 여백 조정 */
+}
+
+#submit-btn:hover {
+    background-color: #0dd6a0;
 }
 
 #cancel-btn {
-    margin-left: 10px;
-    background-color: #F95252; /* '취소' 버튼의 색을 #F95252로 변경 */
-    border-radius: 15px;
+    align-items: center; /* 세로 중앙 정렬 */
+    padding: 10px 16px; /* 버튼의 길이 조정 */
+    background-color: #f85555;
+    border: none;
+    border-radius: 5px;
+    color: #fff;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin-top: 10px; /* 버튼 위쪽 간격 조정 */
+}
+
+#cancel-btn:hover {
+    background-color: #f87c7c;
 }

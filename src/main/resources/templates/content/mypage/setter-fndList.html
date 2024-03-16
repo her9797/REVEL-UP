@@ -51,40 +51,38 @@
             </div>
 
             <div class="image-box-group">
-                <div class="image-box" th:each="allFnd : ${ allFndList }">
+                <div class="image-box" th:each="allFnd : ${allFndList}">
                     <img th:src="@{/img/product/p1.png}" alt="product1">
                     <p class="image-desc">
                     <div>
                         <a style="font-weight: bold;" th:text="${allFnd.fndName}">알뜰살뜰 모아모아 레인보우 협탁1</a><br>
                         <a id="goalAmt" th:text="'목표액 : ' + ${allFnd.goalAmt} + '원'">목표액 : 1,500,000원</a><br>
-                    <a id="successAmt"  data-success-amt="${allFnd.successAmt}" th:text="'달성액 : ' + ${allFnd.successAmt} + '원'"><span th:text="${getSuccessAmtByFndCode.successAmt}"></span>달성액 : 900,000원</a><br>
+                        <a id="successAmt" th:text="'달성액 : ' + ${allFnd.successAmt} + '원'">달성액 : 900,000원</a><br>
                         <a th:text="'달성률 : ' + ${#numbers.formatDecimal((allFnd.successAmt * 1.0) / allFnd.goalAmt * 100, 0, 0)} + '%'">달성률 : 64%</a><br>
                         <a th:text="'마감일 : ' + ${allFnd.fndEndDt}">마감일 : 2024-05-07</a><br>
+                        <!-- <p th:text="${allFnd.fndCode}" style="display : none"></p> -->
                     </div>
                     <div class="button-group">
                         <button class="notice-insert-btn"> 공지사항등록</button>
-                        <a style="color: #000000; text-decoration:none; text-align:center;" class="detail-btn" th:href="@{|/content/mypage/setter-funding-history/${allFnd.fndCode}|}">상세조회</a>
-                        <button type="button" class="fnd-delete-btn" data-fndcode="${}" onclick="openModal(this)"> 삭제</button>
-<!--                        <button type="button" id="fnd-delete-btn" class="fnd-delete-btn" onclick="openModal()"> 삭제</button>-->
+                        <a style="color: #000000; text-decoration:none; text-align:center;" class="detail-btn"
+                           th:href="@{|/content/mypage/setter-funding-history/${allFnd.fndCode}|}">상세조회</a>
+                        <button type="button" class="fnd-delete-btn" onclick="openModal(this)"> 삭제</button>
                     </div>
-                </div>
+                    </p>
                 </div>
             </div>
 
-            <form>
             <div id="deleteModal" class="modal2">
-                <div class="modal-content" style="border: none;">
+                <div class="modal-content1" style="border: none;">
                     <p style="font-weight: bold">펀딩 삭제</p>
                     <p>펀딩 삭제 시 복구가 불가능합니다.</p>
                     <p>펀딩 삭제를 진행하시겠습니까?</p>
                     <div class="modal-button2" style="justify-content: center;">
-                    <button type="submit" id="confirmDelete">확인</button>
-                    <button type="button" id="cancelDelete" onclick="closeModal()">취소</button>
+                        <button type="submit" id="confirmDelete">확인</button>
+                        <button type="button" id="cancelDelete" onclick="closeModal()">취소</button>
                     </div>
                 </div>
             </div>
-            </form>
-
         </div>
     </div>
 

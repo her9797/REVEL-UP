@@ -291,87 +291,221 @@
 // }
 
 
-// 6차
-$(document).ready(function() {
-    // 기존 삭제 버튼 클릭 이벤트
-    var deleteButtons = document.querySelectorAll('.fnd-delete-btn');
-    deleteButtons.forEach(function(button) {
-        button.addEventListener('click', function() {
-            var fndCode = this.closest('.image-box').querySelector('.detail-btn').getAttribute('href').split('/').pop();
-            var successAmt = $('#successAmt').val();
+// 6차 xxxxxxxxxx
+// 모달 창 열기
+// function openModal(fndCode) {
+//     console.log(fndCode);
+//
+//     $('#confirmDelete').data('fnd-code', fndCode);
+//
+//     $('#deleteModal').modal('show');
+//
+//     $('#cancelDelete').click(closeModal);
+// }
+//
+// // 모달 창 닫기
+// function closeModal() {
+//     $('#deleteModal').modal('hide');
+// }
+//
+//
+//
+// $(document).ready(function() {
+//     // 기존 삭제 버튼 클릭 이벤트
+//     var deleteButtons = document.querySelectorAll('.fnd-delete-btn');
+//     deleteButtons.forEach(function(button) {
+//         button.addEventListener('click', function() {
+//             var fndCode = this.closest('.image-box').querySelector('.detail-btn').getAttribute('href').split('/').pop();
+//             var successAmt = $('#successAmt');
+//
+//             $.post("/content/mypage/setter-fndList", {successAmt : successAmt}, function (successAmtData) {
+//                 if(successAmtData === 0) {
+//                     console.log(successAmtData)
+//                     openModal(fndCode);
+//                 } else {
+//                     console.log(successAmtData)
+//                     alert('달성액이 있어 펀딩을 삭제하지 못합니다.');
+//                     return;
+//                 }
+//             })
+//         });
+//     });
+//
+//     // 새로운 삭제 버튼 클릭 이벤트 추가
+//     $('.delete-btn').click(function() {
+//         var fndCode = $(this).data('fnd-code');
+//
+//         $.ajax({
+//             url: "/setter-fndList/" + fndCode,
+//             type: "POST",
+//             data: { fndCode: fndCode },
+//             success: function(response) {
+//                 if(response.successAmt === 0) {
+//                     openModal(fndCode);
+//                 } else {
+//                     alert('달성액이 있어 펀딩을 삭제하지 못합니다.');
+//                 }
+//             },
+//             error: function(xhr, status, error) {
+//                 console.error('오류 발생: ', error);
+//             }
+//         });
+//     });
+//
+//
+//     // '확인' 버튼 클릭 이벤트
+//     $('#confirmDelete').on('click', function() {
+//         var fndCode = $(this).data('fnd-code');
+//         deleteFnd(fndCode);
+//     });
+//
+//     // 펀딩 삭제 함수
+//     function deleteFnd(fndCode) {
+//         console.log('fndCode : ' + fndCode);
+//
+//         $.ajax({
+//             url: '/content/mypage/delete/' + fndCode,
+//             type: 'POST',
+//             data: { fndCode: fndCode },
+//             success: function(data) {
+//                 console.log(data);
+//                 console.log('삭제 요청이 성공적으로 처리되었습니다.');
+//                 location.reload();
+//             },
+//             error: function(xhr, status, error) {
+//                 console.error('삭제 요청 중 오류가 발생하였습니다.');
+//             }
+//         });
+//     }
+//
+//
+// });
 
-            $.post("/content/mypage/setter-fndList", {successAmt : successAmt}, function (successAmtData) {
-                if(successAmtData === 0) {
-                    console.log(successAmtData)
-                    openModal(fndCode);
-                } else {
-                    console.log(successAmtData)
-                    alert('달성액이 있어 펀딩을 삭제하지 못합니다.');
-                    return;
-                }
-            })
-        });
+
+// 7차
+// function openModal(button) {
+//     const imageBox = button.closest('.image-box');
+//     const successAmt = parseInt(imageBox.querySelector('#successAmt').textContent.replace('달성액 : ', '').replace('원', '').trim());
+//     const hrefAttribute = imageBox.querySelector('.detail-btn').getAttribute('th:href');
+//
+//     console.log("successAmt : "+ successAmt);
+//    if (successAmt > 0) {
+//         alert('달성액이 있는 펀딩은 삭제할 수 없습니다.');
+//    } else {
+//        const fndCode = hrefAttribute.split('/').pop();
+//        document.getElementById('deleteModal').style.display = 'block';
+//        document.getElementById('confirmDelete').setAttribute('data-fndCode', fndCode);
+//    }
+// }
+//
+// function closeModal() {
+//     document.getElementById('deleteModal').style.display = 'none';
+// }
+
+
+
+// 8차
+// function deleteFnd(fndCode) {
+//     $.ajax({
+//         url: `content/mypage/delete/${fndCode}`,
+//         method: 'POST',
+//         success: function(response) {
+//             console.log(response); // 서버로부터의 응답을 콘솔에 출력
+//             closeModal();
+//             // 페이지 새로고침 없이 해당 펀딩 삭제 후 목록 갱신
+//             // 여기에서 페이지 갱신이 필요한 경우 갱신 로직을 추가할 수 있습니다.
+//         },
+//         error: function(xhr, status, error) {
+//             console.error(error); // 에러 메시지 콘솔에 출력
+//             alert('삭제 중 오류가 발생했습니다.');
+//         }
+//     });
+// }
+//
+// function openModal(button) {
+//     const imageBox = $(button).closest('.image-box');
+//     const successAmt = parseInt(imageBox.find('#successAmt').text().replace('달성액 : ', '').replace('원', '').trim());
+//
+//     if (successAmt > 0) {
+//         alert('달성액이 있는 펀딩은 삭제할 수 없습니다.');
+//     } else {
+//         const fndCode = this.closest('.image-box').querySelector('.detail-btn').getAttribute('href').split('/').pop();
+//
+//         // const fndCode = hrefAttribute.split('/').pop();
+//         $('#deleteModal').show();
+//         $('#confirmDelete').attr('data-fndCode', fndCode);
+//     }
+// }
+//
+// function closeModal() {
+//     $('#deleteModal').hide();
+// }
+//
+// $(document).ready(function() {
+//     $('#confirmDelete').click(function() {
+//         const fndCode = $(this).attr('data-fndCode');
+//         deleteFnd(fndCode);
+//     });
+//
+//     $('#cancelDelete').click(function() {
+//         closeModal();
+//     });
+// });
+
+
+// 9차
+function deleteFnd(fndCode) {
+    console.log("fndCode4 : " + fndCode);
+
+    $.ajax({
+        url: `/content/mypage/delete`,
+        method: 'POST',
+        data: { fndCode : fndCode},
+        success: function(data) {
+            console.log(data); // 서버로부터의 응답을 콘솔에 출력
+            // closeModal();
+            // location.reload();
+            $('#' + fndCode).hide(); // 삭제된 펀딩 항목의 DOM 요소를 제거
+
+            // 페이지 새로고침 없이 해당 펀딩 삭제 후 목록 갱신
+            // 여기에서 페이지 갱신이 필요한 경우 갱신 로직을 추가할 수 있습니다.
+        },
+        error: function(xhr, status, error) {
+            console.error(error); // 에러 메시지 콘솔에 출력
+            alert('삭제 중 오류가 발생했습니다.');
+        }
     });
+}
 
-    // 새로운 삭제 버튼 클릭 이벤트 추가
-    $('.delete-btn').click(function() {
-        var fndCode = $(this).data('fnd-code');
+function openModal(button) {
+    const imageBox = $(button).closest('.image-box');
+    const successAmt = parseInt(imageBox.find('#successAmt').text().replace('달성액 : ', '').replace('원', '').trim());
 
-        $.ajax({
-            url: "/setter-fndList/" + fndCode,
-            type: "POST",
-            data: { fndCode: fndCode },
-            success: function(response) {
-                if(response.successAmt === 0) {
-                    openModal(fndCode);
-                } else {
-                    alert('달성액이 있어 펀딩을 삭제하지 못합니다.');
-                }
-            },
-            error: function(xhr, status, error) {
-                console.error('오류 발생: ', error);
-            }
-        });
-    });
+    console.log("successAmt : " + successAmt);
+    if (successAmt > 0) {
+        alert('달성액이 있는 펀딩은 삭제할 수 없습니다.');
+    } else {
+        const fndCode = $(button).siblings('.detail-btn').attr('href').split('/').pop();
+        console.log("fndCode1 : " + fndCode);
 
-    // 모달 창 열기
-    function openModal(fndCode) {
-        console.log(fndCode);
-
-        $('#confirmDelete').data('fnd-code', fndCode);
-
-        $('#deleteModal').modal('show');
-
-        $('#cancelDelete').click(closeModal);
+        $('#deleteModal').show();
+        $('#confirmDelete').attr('data-fndCode', fndCode);
+        console.log("fndCode2 : " + fndCode);
     }
+}
 
-    // '확인' 버튼 클릭 이벤트
-    $('#confirmDelete').on('click', function() {
-        var fndCode = $(this).data('fnd-code');
+function closeModal() {
+    $('#deleteModal').hide();
+}
+
+$(document).ready(function() {
+    $('#confirmDelete').click(function() {
+        const fndCode = $(this).attr('data-fndCode');
+        console.log("fndCode3 : " + fndCode);
         deleteFnd(fndCode);
     });
 
-    // 펀딩 삭제 함수
-    function deleteFnd(fndCode) {
-        console.log('fndCode : ' + fndCode);
-
-        $.ajax({
-            url: '/content/mypage/delete/' + fndCode,
-            type: 'POST',
-            data: { fndCode: fndCode },
-            success: function(data) {
-                console.log(data);
-                console.log('삭제 요청이 성공적으로 처리되었습니다.');
-                location.reload();
-            },
-            error: function(xhr, status, error) {
-                console.error('삭제 요청 중 오류가 발생하였습니다.');
-            }
-        });
-    }
-
-    // 모달 창 닫기
-    function closeModal() {
-        $('#deleteModal').modal('hide');
-    }
+    $('#cancelDelete').click(function() {
+        closeModal();
+    });
 });

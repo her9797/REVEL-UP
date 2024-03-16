@@ -58,7 +58,7 @@
                         <a style="font-weight: bold;" th:text="${finish.fndName}">알뜰살뜰 모아모아 레인보우 협탁1</a><br>
                         <a id="goalAmt" th:text="'목표액 : ' + ${finish.goalAmt} + '원'">목표액 : 1,500,000원</a><br>
                         <a th:text="'달성액 : ' + ${finish.successAmt} + '원'"></a><br>
-                        <a th:text="'달성률 : ' + ${#numbers.formatDecimal((allFnd.successAmt * 1.0) / allFnd.goalAmt * 100, 0, 0)} + '%'">마감일 : 2024-05-07</a><br>
+                        <a th:text="'달성률 : ' + ${#numbers.formatDecimal((finish.successAmt * 1.0) / finish.goalAmt * 100, 0, 0)} + '%'">마감일 : 2024-05-07</a><br>
                         <a th:text="'마감일 : ' + ${finish.fndEndDt}">마감일 : 2024-05-07</a><br>
                     </div>
                 </div>

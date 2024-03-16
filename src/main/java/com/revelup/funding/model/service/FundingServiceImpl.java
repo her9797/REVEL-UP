@@ -58,8 +58,8 @@ public class FundingServiceImpl implements FundingService {
         fundingFileDTO.setFndCode(fndCode);                     // 펀딩 코드 삽입
 
         // 파일 저장용 폴더에 파일 저장 처리
-        String fndFileLoc = "/Users/jaylee/Documents/SemiFinal/fndFileLoc/" + fndSaveFile; // 이진우 Mac용 저장경로
-//        String fndFileLoc = "C:/Users/thunder/Desktop/revelup/" + fndSaveFile; // Window용 저장경로
+//        String fndFileLoc = "/Users/jaylee/Documents/SemiFinal/fndFileLoc/" + fndSaveFile; // 이진우 Mac용 저장경로
+        String fndFileLoc = "C:/Users/thunder/Desktop/revelup/" + fndSaveFile; // Window용 저장경로
 //        String fndFileLoc = "C:/Users/hi/Desktop/revelupimg/" + fndSaveFile;
         fundingFileDTO.setFndFileLoc(fndFileLoc);
         fundingFile.transferTo(new File(fndFileLoc));

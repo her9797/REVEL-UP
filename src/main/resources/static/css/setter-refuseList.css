@@ -35,19 +35,19 @@
 .image-box-group {
     display: flex; /* 요소를 가로로 배치 */
     flex-wrap: wrap; /* 화면 크기에 따라 요소를 다음 줄로 넘김 */
-    justify-content: flex-start; /*  요소 사이에 여백 동일하게 배치 */
+    justify-content: space-between; /*  요소 사이에 여백 동일하게 배치 */
 }
 
 /* 이미지 박스 스타일 */
 .image-box {
-    height: 410px;
+    height: 350px;
     box-sizing: border-box; /* 테두리와 패딩이 요소의 크기에 포함 */
     width: calc(33% - 10px); /* 부모 요소의 가로 길이를 4로 나눈 값에서 10px(여백) 빼기 */
     border: 1px solid #bdbdbd;
     border-radius: 15px;  /* 모서리 둥글게 */
     padding: 10px;
     font-size: 14px; /* 원하는 폰트 크기로 설정 */
-    margin: 3% 10px 8px 0; /* top right bottom left*/
+    margin: 3% 1px 8px 0; /* top right bottom left*/
     background-color: rgb(240, 240, 240);
     display: flex; /* Flex layout 적용 */
     flex-direction: column; /* 요소를 세로로 배치 */
@@ -88,27 +88,6 @@
     flex-wrap: wrap; /* 화면 크기에 따라 요소를 다음 줄로 넘김 */
 }
 
-/* 버튼 스타일 */
-.notice-insert-btn, .detail-btn, .fnd-delete-btn {
-    display: flex;
-    align-items: center; /* 세로 중앙 정렬 */
-    justify-content: center;  /* 가로 중앙 정렬 */
-    padding: 3%; /* 버튼 내부 여백 */
-    background-color: rgb(240, 240, 240); /* 버튼 배경색 */
-    border: 1px solid #035E0C; /* 버튼 테두리 설정 */
-    cursor: pointer; /* 마우스 커서를 손가락 모양으로 변경 */
-    border-radius: 15px;  /* 모서리 둥글게 */
-    font-size: 12px;
-    width: 180px;
-    margin-left: 8px;
-    margin-top: 10px;
-    height: 45px;
-}
-
-.notice-insert-btn:hover, .detail-btn:hover, .fnd-delete-btn:hover {
-    background-color: #0CC291; /* 마우스 오버 시 버튼 배경색 변경 */
-}
-
 /* 버튼 그룹 스타일 */
 .button-group {
     margin-top: 3px;
@@ -117,18 +96,28 @@
     width: 100%; /* 버튼 그룹의 너비를 최대로 설정 */
 }
 
-.button-group > button:first-child {
-    margin-left: 0; /* 마지막 버튼의 오른쪽 여백을 제거 */
+/* 버튼 스타일 */
+.inquiry {
+    display: flex;
+    align-items: center; /* 세로 중앙 정렬 */
+    justify-content: center;  /* 가로 중앙 정렬 */
+    padding: 3%; /* 버튼 내부 여백 */
+    background-color: rgb(240, 240, 240); /* 버튼 배경색 */
+    border: 1px solid #035E0C; /* 버튼 테두리 설정 */
+    cursor: pointer; /* 마우스 커서를 손가락 모양으로 변경 */
+    border-radius: 15px;  /* 모서리 둥글게 */
+    font-size: 14px;
+    width: 180px;
+    margin-top: 10px;
+    height: 45px;
 }
 
-.button-group > button:last-child {
-    margin-right: 0; /* 마지막 버튼의 오른쪽 여백을 제거 */
+.inquiry:hover {
+    background-color: #0CC291; /* 마우스 오버 시 버튼 배경색 변경 */
 }
 
 
-/* 아랫 부분 수정 및 추가 필요 */
-/* 모달 스타일 */
-.modal2 {
+.inquiry-modal {
     display: none;
     position: fixed;
     z-index: 9999;
@@ -137,132 +126,116 @@
     transform: translate(-50%, -50%);
     background-color: #ffffff;
     border-radius: 10px;
-    box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.2);
-    border: 2px solid #e6e5e5; /* 모달의 테두리 색 및 두께를 설정 */
     padding: 20px;
-    width: 400px; /* 너비 조정 */
+    width: 600px; /* 너비 조정 */
     max-width: 80%; /* 최대 너비 설정 */
-    height: 260px; /* 높이 조정 */
+    height: auto; /* 높이 조정 */
     overflow-y: auto; /* 내용이 모달을 넘어갈 경우 스크롤 표시 */
-}
-
-.modal-content {
-    text-align: center;
-    margin-top: 10px;
-    border: none;
-}
-
-.modal-button2 {
-    margin-top: 10px;
-    display: flex; /* 요소를 가로로 배치 */
-    justify-content: center; /* 요소를 가운데에 배치 */
-    width: 100%; /* 버튼 그룹의 너비를 최대로 설정 */
-}
-
-#confirmDelete {
-    align-items: center; /* 세로 중앙 정렬 */
-    padding: 10px 16px; /* 버튼의 길이 조정 */
-    background-color: #0CC291;
-    border: none;
-    border-radius: 5px;
-    color: #fff;
-    font-size: 16px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-    margin-top: 10px; /* 버튼 위쪽 간격 조정 */
-    margin-right: 10px; /* 오른쪽 버튼의 왼쪽 여백 조정 */
-}
-
-#confirmDelete:hover {
-    background-color: #0dd6a0;
-}
-
-#cancelDelete {
-    align-items: center; /* 세로 중앙 정렬 */
-    padding: 10px 16px; /* 버튼의 길이 조정 */
-    background-color: #f85555;
-    border: none;
-    border-radius: 5px;
-    color: #fff;
-    font-size: 16px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-    margin-top: 10px; /* 버튼 위쪽 간격 조정 */
-}
-
-#cancelDelete:hover {
-    background-color: #f87c7c;
-}
-
-
-
-
-.modal-content1 {
-    background-color: #fff;
-    padding: 20px;
-    border-radius: 10px;
-}
-
-.close-btn {
-    position: absolute;
-    top: 10px;
-    right: 10px;
-    cursor: pointer;
-}
-
-.insert-modal {
-    display: none;
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    background-color: white;
-    border-radius: 10px;
-    padding: 20px;
-    z-index: 1000;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    width: 600px;
-    height: auto;
     border: none;
 }
 
-.insert-modal-content {
-    background-color: #fefefe;
-    padding: 20px;
-    border: 1px solid #888;
-    border-radius: 10px;
-    width: 90%;
-    margin: 0 auto;
-    text-align: center;
+/* 모달 내부 스타일 */
+.modal-content {
+    background-color: #fefefe; /* 모달 내부 배경색 */
+    margin: 10% auto; /* 모달을 화면 중앙에 배치 */
+    padding: 30px;
+    border: 2px solid #0CC291;
+    width: 600px; /* 모달의 너비 */
+    height: 700px; /* 모달의 높이 */
+    border-radius: 10px; /* 모달 테두리의 둥글기 */
 }
 
-.insert-modal-content input,
-.insert-modal-content textarea {
-    border-radius: 5px;
-    border: 1px solid #ccc;
-    padding: 10px;
-    width: calc(100% - 22px);
-    margin-bottom: 10px;
+
+/* 모달 닫기 버튼 스타일 */
+#close-inquiry-btn {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
 }
 
-.insert-modal-content textarea {
-    height: 200px;
-    resize: none; /* 텍스트 에어리어의 크기 조절 기능 비활성화 */
-}
-
-.insert-modal-content button {
-    background-color: #0CC291;
-    color: white;
-    border: none;
-    padding: 10px 20px;
-    border-radius: 5px;
+#close-inquiry-btn:hover,
+#close-inquiry-btn:focus {
+    color: black;
+    text-decoration: none;
     cursor: pointer;
-    width: 120px;
 }
 
-.insert-modal-content button:hover {
-    background-color: #0AA87E;
+/* 모달 내용 스타일 */
+.inquiry-header {
+    margin-top: 20px;
+}
+
+/*.text-box2 {*/
+/*    padding: 12px; !* 텍스트 입력란 내부 여백 *!*/
+/*    border: 1px solid #ccc;*/
+/*    border-radius: 5px;*/
+/*    margin-top: 15px;*/
+/*    width: calc(100% - 24px); !* 텍스트 박스의 너비 *!*/
+/*}*/
+.text-box1 {
+    padding: 12px; /* 텍스트 입력란 내부 여백 */
+    border: 1px solid #ccc;
+    height: 50px;
+    border-radius: 5px;
+    margin-top: 15px;
+    width: calc(100% - 24px); /* 텍스트 박스의 너비 */
+    resize: none; /* 텍스트 입력란 크기 조절 비활성화 */
+}
+.text-box2 {
+    padding: 12px; /* 텍스트 입력란 내부 여백 */
+    border: 1px solid #ccc;
+    height: 50px;
+    border-radius: 5px;
+    margin-top: 15px;
+    width: calc(100% - 24px); /* 텍스트 박스의 너비 */
+    resize: none; /* 텍스트 입력란 크기 조절 비활성화 */
+}
+.text-box3 {
+    padding: 12px; /* 텍스트 입력란 내부 여백 */
+    border: 1px solid #ccc;
+    height: 50px;
+    border-radius: 5px;
+    margin-top: 15px;
+    width: calc(100% - 24px); /* 텍스트 박스의 너비 */
+    resize: none; /* 텍스트 입력란 크기 조절 비활성화 */
+}
+.text-box4 {
+    padding: 12px; /* 텍스트 입력란 내부 여백 */
+    border: 1px solid #ccc;
+    height: 50px;
+    border-radius: 5px;
+    margin-top: 15px;
+    width: calc(100% - 24px); /* 텍스트 박스의 너비 */
+    resize: none; /* 텍스트 입력란 크기 조절 비활성화 */
+}
+.text-box5 {
+    padding: 12px; /* 텍스트 입력란 내부 여백 */
+    border: 1px solid #ccc;
+    height: 50px;
+    border-radius: 5px;
+    margin-top: 15px;
+    width: calc(100% - 24px); /* 텍스트 박스의 너비 */
+    resize: none; /* 텍스트 입력란 크기 조절 비활성화 */
 }
 
 
+/*.text-box3 {*/
+/*    padding: 12px; !* 텍스트 입력란 내부 여백 *!*/
+/*    border: 1px solid #ccc;*/
+/*    height: 200px;*/
+/*    border-radius: 5px;*/
+/*    margin-top: 15px;*/
+/*    width: calc(100% - 24px); !* 텍스트 박스의 너비 *!*/
+/*    resize: none; !* 텍스트 입력란 크기 조절 비활성화 *!*/
+/*}*/
+
+.contents {
+    margin-top: 20px;
+}
+
+.contract {
+    margin-top: 20px;
+}
 

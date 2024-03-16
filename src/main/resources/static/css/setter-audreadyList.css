@@ -89,7 +89,7 @@
 }
 
 /* 버튼 스타일 */
-.detail-btn, .inquiry  {
+.detail-btn {
     display: flex;
     align-items: center; /* 세로 중앙 정렬 */
     justify-content: center;  /* 가로 중앙 정렬 */

@@ -306,7 +306,11 @@
         WHERE FND_CODE = #{ fndCode }
     </delete>
 
-
+    <delete id="deleteDeliv" parameterType="com.revelup.funding.model.dto.DeliveryDTO">
+        DELETE
+        FROM DELIV
+        WHERE PLG_CODE = #{ plgCode }
+    </delete>
 
 
     <!-- 세터 심사 대기중인 펀딩 -->
