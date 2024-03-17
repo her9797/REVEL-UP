@@ -24,6 +24,15 @@ public class FundingFileDTO implements java.io.Serializable {
 
     private String fileDiv; // 파일 구분
 
+    private MultipartFile thumbnailImage;  // 전체 펀딩 목록에서 보여지는 1개의 썸네일
+
+    private List<MultipartFile> mainThumbnail;   // 상세 목록 조회에서 보여지는 5개의 썸네일
+
+    private MultipartFile detailImage;     // 상세 페이지 하단 1개의 이미지
+
+
+
+
 
 
 

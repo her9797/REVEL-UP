@@ -57,7 +57,6 @@ public class FundingController {
         System.out.println(" ");
         System.out.println("auditDTO = " + auditDTO);
         System.out.println(" ");
-//        System.out.println("setterFileDTO = " + setterFileDTO);
         System.out.println("setterInfoDTO = " + setterInfoDTO);
 
         String id = userDTO.getUserId();
@@ -83,7 +82,6 @@ public class FundingController {
         System.out.println(" ");
         System.out.println("auditDTO = " + auditDTO);
         System.out.println(" ");
-//        System.out.println("setterFileDTO = " + setterFileDTO);
 
         fundingService.addFundingToExisting(fundingInfoDTO, giftDTO, auditDTO);
 
