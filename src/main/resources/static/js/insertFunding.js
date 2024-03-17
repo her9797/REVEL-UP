@@ -1,28 +1,28 @@
-// 다음 섹션으로 이동하는 함수
-function moveToNextSection(currentSectionId) {
-    var currentSection = document.getElementById(currentSectionId);
-    var nextSectionId = parseInt(currentSectionId.split('-')[1]) + 1;
-    var nextSection = document.getElementById('contents-' + nextSectionId);
+document.addEventListener("DOMContentLoaded", function() {
+    document.getElementById("thumbnailImage").addEventListener("change", function(event) {
+        // Thumbnail image selected, set the fileDiv value to 'T'
+        document.getElementById("fileDiv").value = 'T';
+        console.log("Thumbnail image selected. fileDiv value set to 'T'");
+    });
 
-    if (nextSection) {
-        currentSection.style.display = 'none';
-        nextSection.style.display = 'block';
-    }
-}
+    document.getElementById("detailImage").addEventListener("change", function(event) {
+        // Detail image selected, set the fileDiv value to 'D'
+        document.getElementById("fileDiv").value = 'D';
+        console.log("Detail image selected. fileDiv value set to 'D'");
 
-// 이전 섹션으로 이동하는 함수
-function moveToPreviousSection(currentSectionId) {
-    var currentSection = document.getElementById(currentSectionId);
-    var previousSectionId = parseInt(currentSectionId.split('-')[1]) - 1;
-    var previousSection = document.getElementById('contents-' + previousSectionId);
+    });
 
-    if (previousSection) {
-        currentSection.style.display = 'none';
-        previousSection.style.display = 'block';
-    }
-}
+    document.getElementById("businessCertif").addEventListener("change", function(event) {
+        // Business certificate image selected, set the fileDiv value to 'B'
+        document.getElementById("fileDiv").value = 'B';
+        console.log("Business certificate image selected. fileDiv value set to 'B'");
 
-// 초기에 첫 번째 섹션을 보여주기
-document.addEventListener('DOMContentLoaded', function () {
-    document.getElementById('contents-1').style.display = 'block';
+    });
+
+    document.getElementById("sttrImg").addEventListener("change", function(event) {
+        // Business certificate image selected, set the fileDiv value to 'B'
+        document.getElementById("fileDiv").value = 'S';
+        console.log("sttrImg image selected. fileDiv value set to 'S'");
+
+    });
 });
