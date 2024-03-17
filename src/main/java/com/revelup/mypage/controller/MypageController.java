@@ -2,6 +2,8 @@ package com.revelup.mypage.controller;
 
 import com.revelup.funding.model.dto.DeliveryDTO;
 import com.revelup.funding.model.dto.FundingInfoDTO;
+import com.revelup.funding.model.dto.InquiryDTO;
+import com.revelup.funding.model.dto.InquiryFileDTO;
 import com.revelup.mypage.model.service.MypageService;
 import com.revelup.notice.model.dto.NoticeDTO;
 import com.revelup.pay.model.dto.PayCompletionDTO;
@@ -323,6 +325,36 @@ public class MypageController {
             throw new CustomException("페이지를 불러오는 중 오류가 발생했습니다.", e);
         }
     }
+
+
+//    @PostMapping("/insertInq")
+//    @ResponseBody
+//    public String insertInq(@RequestParam("fndCode") int fndCode
+//                            ,@ModelAttribute InquiryDTO inquiryDTO
+//                            ,@ModelAttribute InquiryFileDTO inquiryFileDTO) {
+//
+//        log.info("fndCode : " + fndCode);
+//        System.out.println("fndCode : " + fndCode);
+//
+//        mypageService.insertInq(fndCode, inquiryDTO, inquiryFileDTO);
+//
+//        return "redirect:/content/mypage/setter-refuseList";
+//    }
+
+    @PostMapping("/insertInq")
+    @ResponseBody
+    public String insertInq(@RequestParam("fndCode") int fndCode
+            ,@ModelAttribute InquiryDTO inquiryDTO
+            ,@ModelAttribute InquiryFileDTO inquiryFileDTO) {
+
+        log.info("fndCode : " + fndCode);
+        System.out.println("fndCode : " + fndCode);
+
+        mypageService.insertInq(fndCode, inquiryDTO, inquiryFileDTO);
+
+        return "redirect:/content/mypage/setter-refuseList";
+    }
+
 
     //  종료된 펀딩
     @GetMapping("/setter-finishList")

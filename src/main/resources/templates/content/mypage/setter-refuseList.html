@@ -8,7 +8,7 @@
     <th:block th:include="fragments/common"></th:block>
 
     <link th:href="@{/css/mypage.css}" rel="stylesheet">
-    <link th:href="@{/css/setter-audreadyList.css}" rel="stylesheet">
+    <link th:href="@{/css/setter-refuseList.css}" rel="stylesheet">
     <script th:src="@{/js/setter-refuseList.js}"></script>
 
 </head>
@@ -60,14 +60,53 @@
                         <a th:text="'마감일 : ' + ${refuse.fndEndDt}">마감일 : 2024-05-07</a><br>
                     </div>
                     <div class="button-group">
-                        <a style="color: #000000; text-decoration:none; text-align:center;" class="inquiry">심사관련문의하기</a>
+                        <a style="color: #000000; text-decoration:none; text-align:center;" id="inquiry-btn" class="inquiry">심사관련문의하기</a>
                     </div>
                 </div>
 
 
 
+            <!-- 모달창 -->
+            <div id="inquiry-modal" class="inquiry-modal">
+                <div class="modal-content">
+                    <h4>문의 등록</h4>
+                    <span id="close-inquiry-btn">&times;</span>  <!-- x를 나타내는 문자유니코드 U+00D7 -->
+                    <form th:action="@{/content/mypage/setter-fndList}" method="post">
+                        <div class="inquiry-content">
+                            <div class="contract">
+                                <p id="modal-fndCode">펀딩번호</p>
+                                <input type="text" id="insert-fndCode" class="text-box1"  name="fndCode">
+                            </div>
+                            <div class="contract">
+                                <p id="modal-userId" >작성자</p>
+                                <input type="text" id="insert-userId" class="text-box2"  name="userId">
+                            </div>
+                            <div class="contract">
+                                <p id="modal-title" >제목</p>
+                                <input type="text" id="insert-title" class="text-box3"  name="inqTitle">
+                            </div>
+                            <div class="contract">
+                                <p id="modal-dateTime" >작성날짜</p>
+                                <input type="text" id="insert-dateTime" class="text-box4"  name="inqInsertDttm">
+                            </div>
+                            <div class="contract">
+                                <p id="modal-file" >첨부파일</p>
+                                <input type="text" id="insert-file" class="text-box5"  name="inqFile" accept="image/*" multiple>
+                            </div>
+                            <div class="contract">
+                                <p id="insert-text">내용</p>
+                                <textarea id="insert-content" class="textCont" name="inqCont"></textarea>
+                            </div>
+                        </div>
+                    </form>
+                    <div class="insert-inquiry" style="justify-content: center;">
+                        <button type="submit" id="insert-confirm-btn" style="width: 120px">등록하기</button>
+                    </div>
                 </div>
             </div>
+            </div>
+
+        </div>
         </div>
     </div>
 

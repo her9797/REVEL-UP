@@ -2,11 +2,14 @@ package com.revelup.mypage.model.service;
 
 import com.revelup.funding.model.dto.DeliveryDTO;
 import com.revelup.funding.model.dto.FundingInfoDTO;
+import com.revelup.funding.model.dto.InquiryDTO;
+import com.revelup.funding.model.dto.InquiryFileDTO;
 import com.revelup.mypage.model.dao.MypageMapper;
 import com.revelup.pay.model.dto.PayDTO;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.stereotype.Service;
 
+import java.sql.Date;
 import java.util.List;
 
 @Service
@@ -143,6 +146,17 @@ public class MypageService {
 
     public int getSuccessAmtByFndCode(int fndCode) {
         return mypageMapper.getSuccessAmtByFndCode(fndCode);
+    }
+
+    public void insertInq(int fndCode, InquiryDTO inquiryDTO, InquiryFileDTO inquiryFileDTO) {
+
+//        inquiryDTO.setInqInsertDttm(new Date());
+        mypageMapper.insertInq(fndCode);
+
+        int inqCode = inquiryDTO.getInqCode();
+
+        mypageMapper.insertInqFile(inqCode);
+
     }
 
 

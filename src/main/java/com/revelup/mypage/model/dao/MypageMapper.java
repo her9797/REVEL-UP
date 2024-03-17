@@ -65,11 +65,14 @@ public interface MypageMapper {
 
     int getSuccessAmtByFndCode(int fndCode);
 
+    void insertInq(int fndCode);
+
+    void insertInqFile(int inqCode);
+
+//    void insertInq(int fndCode);
+
 
 //    int deleteFndList(int fndCode);
-
-
-
 
 //    void updateTrackingNum(DeliveryDTO deliveryDTO);
 }

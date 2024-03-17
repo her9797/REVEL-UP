@@ -97,7 +97,7 @@
 }
 
 /* 버튼 스타일 */
-#inq-insert-btn {
+#inquiry-btn {
     display: flex;
     align-items: center; /* 세로 중앙 정렬 */
     justify-content: center;  /* 가로 중앙 정렬 */
@@ -112,79 +112,114 @@
     height: 45px;
 }
 
-.inquiry:hover {
+
+#inquiry-btn:hover {
     background-color: #0CC291; /* 마우스 오버 시 버튼 배경색 변경 */
 }
 
-
+/* 문의 등록모달 */
 .inquiry-modal {
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
-    align-items: center;
+    display: none; /* 모달창은 기본적으로 숨겨져 있음 */
     position: fixed;
-    z-index: 9999;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%);
-    background-color: #ffffff;
-    border-radius: 10px;
-    padding: 20px;
-    width: 600px; /* 너비 조정 */
-    max-width: 80%; /* 최대 너비 설정 */
-    height: 1000px; /* 높이 조정 */
-    overflow-y: auto; /* 내용이 모달을 넘어갈 경우 스크롤 표시 */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    border: none;
+    position: fixed; /* 스크롤해도 항상 같은 위치에 있음 */
+    z-index: 1; /* 다른 요소 위에 나타남 */
+    left: 0;
+    top: 0;
+    width: 100%; /* 전체 너비 */
+    height: 100%; /* 전체 높이 */
+    overflow: auto; /* 내용이 많을 경우 스크롤 */
+    background-color: rgba(0,0,0,0.4); /* 반투명한 검은색 배경 */
+
 }
 
+#close-inquiry-btn {
+    margin-left: 85%;
+    color: #aaaaaa;
+    float: right;
+    font-size: 23px;
+    font-weight: bold;
+}
+
+#close-inquiry-btn:hover,
+#close-inquiry-btn:focus {
+    color: #000;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+/* 모달 내용 부분 */
 .modal-content {
+    position: fixed; /* 모달 내용을 화면 가운데 정렬하기 위함 */
+    top: 50%; /* 상단에서 50% 위치 */
+    left: 50%; /* 왼쪽에서 50% 위치 */
+    transform: translate(-50%, -50%); /* 정확히 중앙에 위치하도록 조정 */
     display: flex;
-    justify-content: center;
-    flex-direction: column;
-    align-items: center;
-    position: fixed;
-    background-color: #fff;
-    padding: 20px;
-    border-radius: 10px;
-}
-
-
-.contract {
-    display: flex;
-    flex-direction: column;
     align-items: center;
     justify-content: center;
-    /* width: 600px; */
-}
-
-.text-box1, .text-box2, .text-box3, .text-box4, .text-box5 {
-    padding: 12px;
-    border: 1px solid #ccc;
-    height: 40px; /* 텍스트 입력란의 높이를 조금 줄임 */
-    border-radius: 5px;
-    width: 80%; /* 텍스트 박스의 너비를 조정 */
-    resize: none;
+    background-color: #fefefe;
+    padding: 10px;
+    border: 1px solid #888;
+    /*width: 400px; !* 모달 가로 너비 *!*/
+    /*height: auto; !* 높이 자동 조정 *!*/
+    overflow-y: auto; /* 세로 스크롤바 설정 */
 }
 
 .inquiry-content {
-    background-color: #fefefe;
-    padding: 20px;
-    border: none;
-    border-radius: 10px;
-    width: 90%;
-    margin: 0 auto;
-    text-align: center;
+    justify-content: space-between;
+    width: 500px;
+
+}
+
+/* 모달창 내부의 버튼 및 입력 필드 스타일링 */
+.contract {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    width: 80%;
 }
 
 
-#insert-inquiry-btn {
+
+.text-box1, .text-box2, .text-box3, .text-box4, .text-box5 {
+    width: 70%;
+    padding: 10px;
+    margin: 10px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+    border-radius: 15px;  /* 모서리 둥글게 */
+
+}
+
+.textCont {
+    width: 70%;
+    height: inherit;
+    padding: 10px;
+    margin: 10px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+    border-radius: 15px;  /* 모서리 둥글게 */
+}
+.textCont textarea {
+    resize: none; /* 텍스트 에어리어의 크기 조절 기능 비활성화 */
+}
+
+.insert-inquiry button {
     background-color: #0CC291;
     color: white;
-    padding: 14px 20px;
-    margin: 15px 0;
-    border-radius: 5px;
+    padding:  10px;
+    margin: 8px 0;
     border: none;
     cursor: pointer;
-    width: 0%;
+    /* width: 100%; */
+    border-radius: 15px;  /* 모서리 둥글게 */
+
+}
+
+.insert-inquiry {
+    display: flex;
+    justify-content: center;
 }
