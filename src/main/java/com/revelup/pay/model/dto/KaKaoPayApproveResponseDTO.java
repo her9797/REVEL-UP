@@ -1,5 +1,6 @@
 package com.revelup.pay.model.dto;
 
+import java.sql.Date;
 import java.time.LocalDateTime;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
