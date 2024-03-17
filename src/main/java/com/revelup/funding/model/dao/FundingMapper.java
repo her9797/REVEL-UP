@@ -21,6 +21,7 @@ public interface FundingMapper {
 
     void insertFile(FundingFileDTO fundingFileDTO);
 
+    void insertSiFile(SetterFileDTO setterFileDTO);
 
     List<FundingInfoDTO> selectAllFunding();
 

@@ -18,6 +18,7 @@
         <result property="fndFileLoc" column="FND_FILE_LOC"/>
         <result property="fndSaveFile" column="FND_SAVE_FILE"/>
         <result property="auditStat" column="AUDIT_STAT"/>
+        <result property="auditApprDt" column="AUDIT_APPR_DT"/>
     </resultMap>
 
     <resultMap type="com.revelup.funding.model.dto.FundingInfoDTO" id="findByCode">
@@ -220,6 +221,22 @@
                                     , #{fndOrgFile}
                                     , #{fndSaveFile}
                                     , #{fileDiv}
+                                    )
+    </insert>
+
+    <insert id="insertSiFile" parameterType="com.revelup.funding.model.dto.SetterFileDTO">
+        INSERT INTO STTR_INFO_FILE (
+                                    USER_ID
+                                    , SI_FILE_LOC
+                                    , SI_ORG_FILE
+                                    , SI_SAVE_FILE
+                                    , SI_FILE_DIV
+                          ) VALUES (
+                                    #{userId}
+                                    , #{siFileLoc}
+                                    , #{siOrgFile}
+                                    , #{siSaveFile}
+                                    , #{siFileDiv}
                                     )
     </insert>
 

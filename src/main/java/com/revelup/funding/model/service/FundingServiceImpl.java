@@ -37,7 +37,7 @@ public class FundingServiceImpl implements FundingService {
         auditDTO.setFndCode(fndCode);
         mapper.insertAudit(auditDTO);
 
-        // 파일만 따로 가져오기
+        // 펀딩 파일만 따로 가져오기
         for (MultipartFile fundingFile: fundingInfoDTO.getFundingFile()) {
 
         // 기존 파일명 가져오기
@@ -62,6 +62,33 @@ public class FundingServiceImpl implements FundingService {
         fundingFileDTO.setFndFileLoc(fndFileLoc);
         fundingFile.transferTo(new File(fndFileLoc));
         mapper.insertFile(fundingFileDTO);
+        }
+
+        // 세터 파일만 따로 가져오기
+        for (MultipartFile sttrFile : fundingInfoDTO.getFundingFile()) {
+
+        // 기존 파일명 가져오기
+        String fndOrgFile = sttrFile.getOriginalFilename();  // getOriginalFilename 메소드를 활용하여 fundingFile의 이름을 String으로 가져옴.
+        System.out.println("세터의 fndOrgFile = " + fndOrgFile);
+
+        // 저장 파일명 만들기
+        System.out.println(System.currentTimeMillis());         // 기존 파일명에 특수한 값을 추가하여 중복되는 파일명을 가진 파일이 DB에 저장되지 않도록 함.
+        String fndSaveFile = System.currentTimeMillis() + "-" + fndOrgFile;
+
+        // SetterFileDTO 세팅
+        SetterFileDTO setterFileDTO = new SetterFileDTO();
+        setterFileDTO.setSiOrgFile(fndOrgFile);             // 기존 파일명 저장
+        setterFileDTO.setSiSaveFile(fndSaveFile);           // 기존 파일명 저장
+        setterFileDTO.setUserId(setterFileDTO.getUserId()); // 사용자 아이디 삽입
+
+        // 파일 저장용 폴더에 파일 저장 처리
+        String fndFileLoc = "/Users/jaylee/Documents/SemiFinal/fndFileLoc/" + fndSaveFile; // 이진우 Mac용 저장경로
+//      String fndFileLoc = "C:/Users/thunder/Desktop/revelup/" + fndSaveFile; // Window용 저장경로
+//      String fndFileLoc = "C:/Users/hi/Desktop/revelupimg/" + fndSaveFile;
+
+        setterFileDTO.setSiFileLoc(fndFileLoc);
+        sttrFile.transferTo(new File(fndFileLoc));
+        mapper.insertSiFile(setterFileDTO);
         }
     }
 
