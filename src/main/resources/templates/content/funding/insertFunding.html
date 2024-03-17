@@ -6,18 +6,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title></title>
 
-    <link th:href="@{/css/mypage.css}" rel="stylesheet">
-    <link th:href="@{/css/insertFunding.css}" rel="stylesheet">
-
     <!-- fragments 경로 -->
     <th:block th:include="~{fragments/common}"></th:block>
 
-    <!--  JS 경로  -->
-
-    <!-- 폰트 -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet">
+    <link th:href="@{/css/mypage.css}" rel="stylesheet">
+    <link th:href="@{/css/insertFunding.css}" rel="stylesheet">
 
 </head>
 
@@ -146,12 +139,12 @@
 
                         <div class="BusinessCertif_img">
                             <label for="businessCertif">사업자 등록증</label>
-                            <input type="file" id="businessCertif" name="fundingFile" accept="image/*">
+                            <input type="file" id="businessCertif" name="businessCertif" accept="image/*">
                         </div>
 
                         <div class="Sttr_img">
                             <label for="sttrImg">세터 프로필 사진</label>
-                            <input type="file" id="sttrImg" name="fundingFile" accept="image/*">
+                            <input type="file" id="sttrImg" name="sttrImg" accept="image/*">
                         </div>
 
                         <div class="registNo">
@@ -236,12 +229,12 @@
                                 </ul>
                             </div>
                             <div class="Thumbnail_img">
-                                <input type="file" id="thumbnailImage" name="fundingFile" accept="image/*">
+                                <input type="file" id="thumbnailImage" name="thumbnailImage" accept="image/*">
                             </div>
                         </div>
 
                         <div class="MainThumbnail_img">
-                            <label for="thumbnailImage">상세페이지 썸네일</label>
+                            <label for="mainThumbnail">상세페이지 썸네일</label>
                             <div class="mainThumbnail" rows="6">
                                 <ul>
                                     <li>상세 페이지에서 보여줄 대표 썸네일 이미지를 5개 업로드 해 주세요.</li>
@@ -251,8 +244,8 @@
                                     <li>잘못된 이미지 사용은 반려 사유가 될 수 있으니<br> 주의해주세요.</li>
                                 </ul>
                             </div>
-                            <div class="Thumbnail_img">
-                                <input type="file" id="thumbnailImage" name="fundingFile" accept="image/*" multiple>
+                            <div>
+                                <input type="file" id="mainThumbnail" name="mainThumbnail" accept="image/*" multiple>
                             </div>
                         </div>
 
@@ -292,7 +285,7 @@
                                 </ul>
                             </div>
                             <div class="DetailFunding_img">
-                                <input type="file" id="detailImage" name="fundingFile" accept="image/*">
+                                <input type="file" id="detailImage" name="detailImage" accept="image/*">
                             </div>
                         </div>
 
@@ -357,34 +350,6 @@
 </div>
 <!-- footer 부분 -->
 <div th:insert="~{/fragments/footer.html}"></div>
-<input type="hidden" id="fileDiv" name="fileDiv">
 
-<script>
-    document.addEventListener("DOMContentLoaded", function() {
-        document.getElementById("thumbnailImage").addEventListener("change", function(event) {
-            // Thumbnail image selected, set the fileDiv value to 'T' if it's not already set
-            if (document.getElementById("fileDiv").value !== 'T') {
-                document.getElementById("fileDiv").value = 'T';
-                console.log("Thumbnail image selected. fileDiv value set to 'T'");
-            }
-        });
-
-        document.getElementById("detailImage").addEventListener("change", function(event) {
-            // Detail image selected, set the fileDiv value to 'D' if it's not already set
-            if (document.getElementById("fileDiv").value !== 'D') {
-                document.getElementById("fileDiv").value = 'D';
-                console.log("Detail image selected. fileDiv value set to 'D'");
-            }
-        });
-
-        document.getElementById("businessImage").addEventListener("change", function(event) {
-            // Business certificate image selected, set the fileDiv value to 'B' if it's not already set
-            if (document.getElementById("fileDiv").value !== 'B') {
-                document.getElementById("fileDiv").value = 'B';
-                console.log("Business certificate image selected. fileDiv value set to 'B'");
-            }
-        });
-    });
-</script>
 </body>
 </html>
