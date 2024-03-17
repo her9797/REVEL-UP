@@ -232,10 +232,10 @@ public class MypageController {
     @PostMapping("/setter-fndList/{fndCode}")
     public String setterFndListDeletePage(@PathVariable("fndCode") int fndCode) {
 
-            int successAmt = mypageService.getSuccessAmtByFndCode(fndCode);
-            FundingInfoDTO fndInfo = new FundingInfoDTO();
-            fndInfo.setSuccessAmt(successAmt);
-            return "redirect:/content/mypage/setter-fndList"; // 달성액을 포함한 펀딩 정보 반환
+        int successAmt = mypageService.getSuccessAmtByFndCode(fndCode);
+        FundingInfoDTO fndInfo = new FundingInfoDTO();
+        fndInfo.setSuccessAmt(successAmt);
+        return "redirect:/content/mypage/setter-fndList"; // 달성액을 포함한 펀딩 정보 반환
 
 
     }

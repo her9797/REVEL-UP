@@ -56,8 +56,9 @@ public class FundingServiceImpl implements FundingService {
 
         // 파일 저장용 폴더에 파일 저장 처리
 //        String fndFileLoc = "/Users/jaylee/Documents/SemiFinal/fndFileLoc/" + fndSaveFile; // 이진우 Mac용 저장경로
-//        String fndFileLoc = "C:/Users/thunder/Desktop/revelup/" + fndSaveFile; // Window용 저장경로
-        String fndFileLoc = "C://Users//simko//OneDrive//바탕 화면//file/" + fndSaveFile;
+        String fndFileLoc = "C:/Users/thunder/Desktop/revelup/" + fndSaveFile; // Window용 저장경로
+
+//        String fndFileLoc = "C://Users//simko//OneDrive//바탕 화면//file/" + fndSaveFile;
         fundingFileDTO.setFndFileLoc(fndFileLoc);
         fundingFile.transferTo(new File(fndFileLoc));
         mapper.insertFile(fundingFileDTO);
@@ -96,9 +97,9 @@ public class FundingServiceImpl implements FundingService {
 
             // 파일 저장용 폴더에 파일 저장 처리
 //            String fndFileLoc = "/Users/jaylee/Documents/SemiFinal/fndFileLoc/" + fndSaveFile; // 이진우 Mac용 저장경로
-//        String fndFileLoc = "C:/Users/thunder/Desktop/revelup/" + fndSaveFile; // Window용 저장경로
+        String fndFileLoc = "C:/Users/thunder/Desktop/revelup/" + fndSaveFile; // Window용 저장경로
 //        String fndFileLoc = "C:/Users/hi/Desktop/revelupimg/" + fndSaveFile;
-        String fndFileLoc = "C://Users//simko//OneDrive//바탕 화면//file/" + fndSaveFile;
+//        String fndFileLoc = "C://Users//simko//OneDrive//바탕 화면//file/" + fndSaveFile;
             fundingFileDTO.setFndFileLoc(fndFileLoc);
             fundingFile.transferTo(new File(fndFileLoc));
             mapper.insertFile(fundingFileDTO);

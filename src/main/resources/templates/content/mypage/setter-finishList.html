@@ -58,31 +58,12 @@
                         <a style="font-weight: bold;" th:text="${finish.fndName}">알뜰살뜰 모아모아 레인보우 협탁1</a><br>
                         <a id="goalAmt" th:text="'목표액 : ' + ${finish.goalAmt} + '원'">목표액 : 1,500,000원</a><br>
                         <a th:text="'달성액 : ' + ${finish.successAmt} + '원'"></a><br>
-                        <a th:text="'달성률 : ' + ${#numbers.formatDecimal((allFnd.successAmt * 1.0) / allFnd.goalAmt * 100, 0, 0)} + '%'">마감일 : 2024-05-07</a><br>
+                        <a th:text="'달성률 : ' + ${#numbers.formatDecimal((finish.successAmt * 1.0) / finish.goalAmt * 100, 0, 0)} + '%'">마감일 : 2024-05-07</a><br>
                         <a th:text="'마감일 : ' + ${finish.fndEndDt}">마감일 : 2024-05-07</a><br>
                     </div>
                 </div>
 
 
-                <!--                        <button type="button" class="detail-btn" data-fnd-code="${allFnd.fndCode}">상세조회</button>-->
-
-                <!--                <div class="image-box" th:if="${allPlgList != null}" th:each="allPlg : ${allPlgList}">-->
-<!--                    <p class="support-date" th:text="${allPlg.plgDttm}">2024-04-25</p>-->
-<!--                    <p>후원번호 : <a th:text="${allPlg.plgCode}">12341235</a></p>-->
-<!--                    <img th:src="@{/img/product/p1.png}" alt="product1">-->
-<!--                    <p class="image-desc">-->
-<!--                    <div th:each="fundingInfo : ${ allPlg.fundingInfo }">-->
-<!--                        <a style="font-weight: bold;" th:text="${fundingInfo.fndName}">[개굴기업] 알뜰살뜰 모아모아 레인보우 협탁1</a><br>-->
-<!--                        <a  th:each="gift : ${allPlg.gift}"-->
-<!--                            th:text="'· ' + ${gift.giftName}">· 레인보우</a>-->
-<!--                        <a th:text="${allPlg.giftQty} + '개'">1개</a><br>-->
-<!--                        <a th:text="'· ' + ${allPlg.plgPrice} + '원'">· 70,000원</a><br>-->
-<!--                    </div>-->
-<!--                    <div class="button-group">-->
-<!--                        <button type="button"  th:attr="onclick=|location.href='/content/mypage/getter-spons-details1?plgCode=' + ${allPlg.plgCode}|" class="button-detail"> 상세조회</button>-->
-<!--&lt;!&ndash;                        <button type="button" onclick="location.href='/content/mypage/getter-spons-details1'" class="button-detail"> 상세조회</button>&ndash;&gt;-->
-<!--                        <button type="button" class="button-support-cancel" id="cancel-btn">후원철회</button>-->
-<!--                    </div>-->
                 </div>
             </div>
         </div>
