@@ -31,6 +31,8 @@ public class KaKaoPayApproveResponseDTO {
 	private String giftName;
 	@JsonProperty("gift_code")
 	private String giftCode;
+	@JsonProperty("fndCode")
+	private int fndCode;
 	private Integer quantity;
 	@JsonProperty("created_at")
 	private LocalDateTime createdAt;

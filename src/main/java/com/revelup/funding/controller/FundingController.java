@@ -1,15 +1,20 @@
 package com.revelup.funding.controller;
 
 import com.revelup.audit.model.dto.AuditDTO;
+import com.revelup.config.SessionData;
 import com.revelup.funding.model.dto.*;
 import com.revelup.funding.model.service.FundingService;
+import com.revelup.pay.model.dto.KakaoPayReadyDTO;
+import com.revelup.pay.model.dto.PayDTO;
 import com.revelup.pay.model.service.PayService;
 import com.revelup.user.model.dto.LoginUserDTO;
 import com.revelup.user.model.dto.UserDTO;
 import com.revelup.user.model.service.UserService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import org.thymeleaf.model.IModel;
 
 import java.io.IOException;
 import java.security.Principal;
@@ -25,10 +30,14 @@ public class FundingController {
 
     private final PayService payService;
 
-    public FundingController(FundingService fundingService, UserService userService, PayService payService) {
+    @Autowired
+    private final SessionData sessionData;
+
+    public FundingController(FundingService fundingService, UserService userService, PayService payService, SessionData sessionData) {
         this.fundingService = fundingService;
         this.userService = userService;
         this.payService = payService;
+        this.sessionData = sessionData;
     }
 
     @GetMapping("/insertFunding")
@@ -78,8 +87,8 @@ public class FundingController {
     // 이미 펀딩 등록을 한 번이라도 한 경우 세터 정보 등록 없이 펀딩 등록
     @PostMapping("/addFundingToExisting")
     public String addFundingToExisting(@ModelAttribute FundingInfoDTO fundingInfoDTO,
-                                @ModelAttribute GiftDTO giftDTO,
-                                @ModelAttribute AuditDTO auditDTO) throws IOException {
+                                       @ModelAttribute GiftDTO giftDTO,
+                                       @ModelAttribute AuditDTO auditDTO) throws IOException {
         System.out.println("fundingInfoDTO = " + fundingInfoDTO);
         System.out.println(" ");
         System.out.println("giftDTO = " + giftDTO);
@@ -93,9 +102,10 @@ public class FundingController {
     }
 
 
-
-    /** 유저 아이디만 가져가서, 세터로 변경 */
-    private void updateUserRole(String userId){
+    /**
+     * 유저 아이디만 가져가서, 세터로 변경
+     */
+    private void updateUserRole(String userId) {
 
         userService.updateUserRole(userId);
 
@@ -105,7 +115,7 @@ public class FundingController {
     public String selectAllFunding(Model model) {
         List<FundingInfoDTO> fundingInfoDTOList = fundingService.selectAllFunding();
         model.addAttribute("fundingList", fundingInfoDTOList);
-        System.out.println("fundingInfoDTOList 컨트롤러 selectAllFunding = " + fundingInfoDTOList);
+        System.out.println("fundingInfoDTOList 🔥🔥🔥🔥🔥🔥🔥🔥 selectAllFunding = " + fundingInfoDTOList);
 
 
         return "content/funding/all-funding";
@@ -139,45 +149,28 @@ public class FundingController {
         SetterFileDTO setterFile = fundingService.selectSttrImg(userId);
         model.addAttribute("sttrImg", setterFile);
 
+        System.out.println("🔥🔥🔥🔥🔥🔥🔥🔥" + fundingInfoDTO.getFndCode());
+
+
+        int fndCodeOfPay = fundingInfoDTO.getFndCode();
+        String fndName = fundingInfoDTO.getFndName();
+        int giftPrice = fundingInfoDTO.getGiftPrice();
+        String fndEndDt = fundingInfoDTO.getFndEndDt();
+
+        sessionData.setSessionAttribute("fndCodeOfPay", fndCodeOfPay);
+        sessionData.setSessionAttribute("fndName", fndName);
+        sessionData.setSessionAttribute("giftPrice", giftPrice);
+        sessionData.setSessionAttribute("fndEndDt", fndEndDt);
+
 
         return "content/funding/detail-funding";
-    }
-
-
-
-
-    @GetMapping("/pay-complete/{fndCode}")
-    public String PayfindByCode(@PathVariable("fndCode") int fndCode, Model model) {
-        // 조회수 처리
-        // fundingService.updateViews(fndCode);
-
-        // 상세내용 가져옴
-        FundingInfoDTO fundingInfoDTO = fundingService.findByCode(fndCode);
-        model.addAttribute("funding", fundingInfoDTO);
-
-
-        // 통계 데이터 중 선물 예상 발송일
-//        FundingInfoDTO estimatedDeliv = fundingService.estimatedDeliv(fndCode);
-//        model.addAttribute("estimatedDeliv", estimatedDeliv);
-
-        // MainThumbnail 첨부파일 가져옴
-        List<FundingFileDTO> fundingFileDTOList = fundingService.findFile(fndCode);
-        model.addAttribute("fundingFileList", fundingFileDTOList);
-
-        // DetailImg 첨부파일 가져옴
-        FundingFileDTO detailImage = fundingService.selectDetailImg(fndCode);
-        model.addAttribute("detailImage", detailImage);
-
-        // Stter Profile 첨부파일 가져옴
-        String userId = fundingInfoDTO.getUserId(); // 펀딩 정보에서 userId 추출
-        SetterFileDTO setterFile = fundingService.selectSttrImg(userId);
-        model.addAttribute("sttrImg", setterFile);
-
-        return "content/pay/pay";
-    }
-
 
     }
+
+
+
+}
+
 
 
 

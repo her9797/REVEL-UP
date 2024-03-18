@@ -26,7 +26,7 @@ public class PayDTO {
 
     private String fndName; // Funding name
     private String giftName; // Gift name
-    private Date fndEndDt; // Funding end date
+    private String fndEndDt; // Funding end date
     private String trackingNo; // Delivery tracking number
     private String delivStat; // Delivery status
     private String userAdd; // User address
@@ -39,7 +39,9 @@ public class PayDTO {
     private List<DeliveryDTO> delivery;
     private DeliveryDTO deliv;
     private List<GiftDTO> gift;
-    private GiftDTO giftPrice;
+    private GiftDTO giftPrice2;
+    private int giftPrice;
+
 
 
 }

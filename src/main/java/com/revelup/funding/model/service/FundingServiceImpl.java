@@ -77,9 +77,11 @@ public class FundingServiceImpl implements FundingService {
             String fndSaveFile = System.currentTimeMillis() + "-" + fndOrgFile;
 
             // 파일 저장용 폴더에 파일 저장 처리
-            String fndFileLoc = "/Users/jaylee/Documents/SemiFinal/fndFileLoc/" + fndSaveFile; // 이진우 Mac용 저장경로
+//            String fndFileLoc = "/Users/jaylee/Documents/SemiFinal/fndFileLoc/" + fndSaveFile; // 이진우 Mac용 저장경로
 //        String fndFileLoc = "C:/Users/thunder/Desktop/revelup/" + fndSaveFile; // Window용 저장경로
-//        String fndFileLoc = "C:/Users/hi/Desktop/revelupimg/" + fndSaveFile;
+            String fndFileLoc = "C:/Users/hi/Desktop/revelupimg/" + fndSaveFile;
+
+
             file.transferTo(new File(fndFileLoc));
 
             // FundingFileDTO 세팅 및 DB에 삽입
@@ -100,9 +102,9 @@ public class FundingServiceImpl implements FundingService {
             String siSaveFile = System.currentTimeMillis() + "-" + siOrgFile;
 
             // 파일 저장용 폴더에 파일 저장 처리
-            String siFileLoc = "/Users/jaylee/Documents/SemiFinal/fndFileLoc/" + siSaveFile; // 이진우 Mac용 저장경로
+//            String siFileLoc = "/Users/jaylee/Documents/SemiFinal/fndFileLoc/" + siSaveFile; // 이진우 Mac용 저장경로
 //        String siFileLoc = "C://Users/thunder/Desktop/revelup/" + siSaveFile; // Window용 저장경로
-//        String fndFileLoc = "C://Users/hi/Desktop/revelupimg/" + siSaveFile;
+        String siFileLoc = "C://Users/hi/Desktop/revelupimg/" + siSaveFile;
             file.transferTo(new File(siFileLoc));
 
             // SetterFileDTO 세팅 및 DB에 삽입

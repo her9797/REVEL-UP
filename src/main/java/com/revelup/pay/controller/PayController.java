@@ -1,8 +1,10 @@
 package com.revelup.pay.controller;
 
+import com.revelup.config.SessionData;
 import com.revelup.funding.controller.FundingController;
 import com.revelup.funding.model.dto.FundingInfoDTO;
 import com.revelup.pay.model.dto.PayDTO;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
@@ -22,6 +24,7 @@ import com.revelup.pay.model.service.PayService;
 import jakarta.servlet.http.HttpServletRequest;
 import lombok.extern.slf4j.Slf4j;
 
+import javax.print.DocFlavor;
 import java.security.Principal;
 
 /**
@@ -41,10 +44,15 @@ public class PayController {
     /*의존성 주입 및 생성자 : 페이 서비스와 카카오페이 config를 객체를 주입받는 생성자를 성의*/
     private final PayService payService;
     private final KakaoPayConfig kakaoPayConfig;
+    private FundingController fundingController;
 
     private FundingInfoDTO fundingInfoDTO;
 
     private PayCompletionDTO payCompletionDTO;
+
+    @Autowired
+    private SessionData sessionData;
+
 
 
     public PayController(PayService payService, KakaoPayConfig kakaoPayConfig) {
@@ -52,10 +60,10 @@ public class PayController {
         this.kakaoPayConfig = kakaoPayConfig;
     }
 
-    @GetMapping("/pay")
-    public String payPage() {
-        return "content/pay/pay";
-    }
+//    @GetMapping("/pay")
+//    public String payPage() {
+//        return "content/pay/pay";
+//    }
 
 
     //결제 준비
@@ -105,6 +113,33 @@ public class PayController {
     public String kakaoPayFail() {
 
         return PAY_FAIL_PAGE;
+    }
+
+    @GetMapping("/pay")
+    public String payPage(Model model, Principal principal) {
+
+        String userId = principal.getName();
+
+        int fndCodeOfPay = (int) sessionData.getSessionAttribute("fndCodeOfPay");
+        String fndName = (String) sessionData.getSessionAttribute("fndName");
+        int giftPrice = (int) sessionData.getSessionAttribute("giftPrice");
+        String fndEndDt = (String) sessionData.getSessionAttribute("fndEndDt");
+
+        PayDTO payDTO = new PayDTO();
+        payDTO.setFndCode(fndCodeOfPay);
+        payDTO.setUserId(userId);
+        payDTO.setFndName(fndName);
+        payDTO.setGiftPrice(giftPrice);
+        payDTO.setFndEndDt(fndEndDt);
+
+//        payDTO.setGiftQty();
+//        payDTO.setPlgPrice();
+//        payDTO.setPlgDttm();
+
+        model.addAttribute("pay", payDTO);
+        System.out.println("⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐" + payDTO);
+
+        return "content/pay/pay";
     }
 
 }

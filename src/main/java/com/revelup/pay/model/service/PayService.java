@@ -10,6 +10,7 @@ import java.util.concurrent.ConcurrentLinkedDeque;
 
 import com.revelup.config.KakaoPayConfig;
 
+import com.revelup.config.SessionData;
 import com.revelup.funding.model.dto.FundingInfoDTO;
 import com.revelup.pay.model.dao.PlgMapper;
 import com.revelup.pay.model.dto.*;
@@ -35,6 +36,9 @@ public class PayService {
 
 	private FundingInfoDTO fundingInfoDTO;
 	private final PlgMapper plgMapper;
+
+	@Autowired
+	private SessionData sessionData;
 
 	@Autowired
 //	private final PayMapper paymapper;
@@ -115,27 +119,30 @@ public class PayService {
 		log.info(response.toString());
 		//TODO: 결제정보 DB에 저장.
 
+		int fndCodeOfPay = (int) sessionData.getSessionAttribute("fndCodeOfPay");
 
 		String userId = principal.getName();
 		payCompletionDTO.setUserId(userId);
-		payCompletionDTO.setFndCode(1);
+		payCompletionDTO.setFndCode(response.getFndCode());
 		payCompletionDTO.setGiftQty(response.getQuantity());
 		payCompletionDTO.setPlgDttm(response.getApprovedAt()); // 로컬데이트타임 확인 필요
 		payCompletionDTO.setPlgPrice(response.getAmount().getTotal());
+		payCompletionDTO.setFndCode(fndCodeOfPay);
 
 		plgMapper.insertPlg(payCompletionDTO);
 
 		System.out.println("❌카카오톡 어프로프 DOT❌" + kakaoPayApproveDTO);
 		System.out.println("❌레스폰스❌" + response);
-		System.out.println("❌페이 DTO❌" + payCompletionDTO);
+		System.out.println("❌페이컴플리트 DTO❌" + payCompletionDTO);
 
 
 		return response;
 	}
 
 
-	public void insert(PayCompletionDTO payCompletionDTO) {
+
+	public int getFndCode(int fndCodeOfPay) {
+
+		return plgMapper.getFndCodePay(fndCodeOfPay);
 	}
-
-
 }
