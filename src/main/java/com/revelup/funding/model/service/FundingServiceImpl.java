@@ -139,9 +139,24 @@ public class FundingServiceImpl implements FundingService {
     }
 
     @Override
+    public SetterFileDTO selectSttrImg(String userId) {
+        return mapper.selectSttrImg(userId);
+    }
+
+    @Override
+    public FundingFileDTO selectDetailImg(int fndCode) {
+        return mapper.selectDetailImg(fndCode);
+    }
+
+    @Override
     public FundingInfoDTO getFundingByUserId(String userId) {
         return mapper.getFundingByUserId(userId);
     }
+
+//    @Override
+//    public FundingInfoDTO estimatedDeliv(int fndCode) {
+//        return mapper.estimatedDeliv(fndCode);
+//    }
 
 
 }

@@ -19,10 +19,12 @@
         <result property="fndSaveFile" column="FND_SAVE_FILE"/>
         <result property="auditStat" column="AUDIT_STAT"/>
         <result property="auditApprDt" column="AUDIT_APPR_DT"/>
+        <result property="fileDiv" column="FILE_DIV"/>
     </resultMap>
 
     <resultMap type="com.revelup.funding.model.dto.FundingInfoDTO" id="findByCode">
         <id property="fndCode" column="FND_CODE"/>
+        <result property="userId" column="USER_ID"/>
         <result property="fndDescr" column="FND_DESCR"/>
         <result property="fndName" column="FND_NAME"/>
         <result property="giftPrice" column="GIFT_PRICE"/>
@@ -30,6 +32,9 @@
         <result property="goalAmt" column="GOAL_AMT"/>
         <result property="successAmt" column="SUCCESS_AMT"/>
         <result property="auditStat" column="AUDIT_STAT"/>
+        <result property="fileAttached" column="FILE_ATTACHED"/>
+        <result property="siSaveFile" column="SI_SAVE_FILE"/>
+        <result property="siFileDiv" column="SI_FILE_DIV"/>
     </resultMap>
 
     <resultMap type="com.revelup.funding.model.dto.FundingFileDTO" id="findFile">
@@ -39,6 +44,25 @@
         <result property="fndOrgFile" column="FND_ORG_FILE"/>
         <result property="fndSaveFile" column="FND_SAVE_FILE"/>
         <result property="fileDiv" column="FILE_DIV"/>
+    </resultMap>
+
+    <resultMap type="com.revelup.funding.model.dto.FundingFileDTO" id="selectDetailImg">
+        <id property="fileCode" column="FILE_CODE"/>
+        <result property="fndCode" column="FND_CODE"/>
+        <result property="fndFileLoc" column="FND_FILE_LOC"/>
+        <result property="fndOrgFile" column="FND_ORG_FILE"/>
+        <result property="fndSaveFile" column="FND_SAVE_FILE"/>
+        <result property="fileDiv" column="FILE_DIV"/>
+    </resultMap>
+
+    <resultMap type="com.revelup.funding.model.dto.SetterFileDTO" id="selectSttrImg">
+        <id property="siFileCode" column="SI_FILE_CODE"/>
+        <result property="userId" column="USER_ID"/>
+        <result property="siFileLoc" column="SI_FILE_LOC"/>
+        <result property="siOrgFile" column="SI_ORG_FILE"/>
+        <result property="siSaveFile" column="SI_SAVE_FILE"/>
+        <result property="siFileDiv" column="SI_FILE_DIV"/>
+        <result property="fileAttached" column="FILE_ATTACHED"/>
     </resultMap>
 
     <resultMap id="audit" type="com.revelup.audit.model.dto.AuditDTO">
@@ -59,63 +83,65 @@
     </resultMap>
 
     <!-- 세터 정보 삽입 -->
-    <insert id="insertSetterInfo" parameterType="com.revelup.funding.model.dto.SetterInfoDTO" useGeneratedKeys="true" keyProperty="userId">
+    <insert id="insertSetterInfo" parameterType="com.revelup.funding.model.dto.SetterInfoDTO" useGeneratedKeys="true"
+            keyProperty="userId">
         INSERT INTO STTR_INFO (
-                                USER_ID
-                                , STTR_COMPANY
-                                , STTR_NAME
-                                , STTR_REGIST_NO
-                                , STTR_BANK
-                                , STTR_ACC_NO
-                                , STTR_ACC_HOLDER
-                    ) VALUES (
-                                #{userId}
-                                , #{sttrCompany}
-                                , #{sttrName}
-                                , #{sttrRegistNo}
-                                , #{sttrBank}
-                                , #{sttrAccNo}
-                                , #{sttrAccHolder}
-                             )
+        USER_ID
+        , STTR_COMPANY
+        , STTR_NAME
+        , STTR_REGIST_NO
+        , STTR_BANK
+        , STTR_ACC_NO
+        , STTR_ACC_HOLDER
+        ) VALUES (
+        #{userId}
+        , #{sttrCompany}
+        , #{sttrName}
+        , #{sttrRegistNo}
+        , #{sttrBank}
+        , #{sttrAccNo}
+        , #{sttrAccHolder}
+        )
     </insert>
 
     <!-- 아이디로 세터 정보 조회 -->
     <select id="getFundingByUserId" resultMap="getFundingByUserId">
         SELECT
-                USER_ID
-                , STTR_REGIST_NO
-                , STTR_COMPANY
-                , STTR_NAME
-                , STTR_BANK
-                , STTR_ACC_NO
-                , STTR_ACC_HOLDER
+        USER_ID
+        , STTR_REGIST_NO
+        , STTR_COMPANY
+        , STTR_NAME
+        , STTR_BANK
+        , STTR_ACC_NO
+        , STTR_ACC_HOLDER
         FROM STTR_INFO
         WHERE USER_ID = #{userId};
     </select>
 
     <!-- 최초 펀딩 등록 -->
-    <insert id="insertFundingInfo" parameterType="com.revelup.funding.model.dto.FundingInfoDTO" useGeneratedKeys="true" keyProperty="fndCode">
+    <insert id="insertFundingInfo" parameterType="com.revelup.funding.model.dto.FundingInfoDTO" useGeneratedKeys="true"
+            keyProperty="fndCode">
         INSERT INTO FND_INFO (
-                                USER_ID
-                                , FND_NAME
-                                , FND_END_DT
-                                , GOAL_AMT
-                                , FND_DESCR
-                                , SUCCESS_AMT
-                                , FND_DEL_YN
-                                , FND_PRG_STAT
-                                , FILE_ATTACHED
-                  ) VALUES (
-                                #{userId}
-                                , #{fndName}
-                                , #{fndEndDt}
-                                , #{goalAmt}
-                                , #{fndDescr}
-                                , #{successAmt}
-                                , 'N'
-                                , 'L'
-                                , #{fileAttached}
-                             )
+        USER_ID
+        , FND_NAME
+        , FND_END_DT
+        , GOAL_AMT
+        , FND_DESCR
+        , SUCCESS_AMT
+        , FND_DEL_YN
+        , FND_PRG_STAT
+        , FILE_ATTACHED
+        ) VALUES (
+        #{userId}
+        , #{fndName}
+        , #{fndEndDt}
+        , #{goalAmt}
+        , #{fndDescr}
+        , #{successAmt}
+        , 'N'
+        , 'L'
+        , #{fileAttached}
+        )
         <selectKey keyProperty="fndCode" order="AFTER" resultType="_int">
             <!-- 여러 사용자가 동시에 작업했어도, 내 커넥션에서 발생한 키값을 불러옴 -->
             SELECT LAST_INSERT_ID()
@@ -123,7 +149,8 @@
     </insert>
 
     <!-- 이미 펀딩 등록한 적이 있는 세터의 펀딩 등록 -->
-    <insert id="addFundingToExisting" parameterType="com.revelup.funding.model.dto.FundingInfoDTO" useGeneratedKeys="true" keyProperty="fndCode">
+    <insert id="addFundingToExisting" parameterType="com.revelup.funding.model.dto.FundingInfoDTO"
+            useGeneratedKeys="true" keyProperty="fndCode">
         INSERT INTO FND_INFO (
         USER_ID
         , FND_NAME
@@ -154,115 +181,164 @@
     <!-- Gift 정보 삽입 -->
     <insert id="insertGift" parameterType="com.revelup.funding.model.dto.GiftDTO">
         INSERT INTO GIFT (
-                            FND_CODE
-                            , GIFT_PRICE
-                            , GIFT_NAME
-                            , GIFT_PROD_QTY
-                ) VALUES (
-                            #{fndCode}
-                            , #{giftPrice}
-                            , #{giftName}
-                            , #{giftProdQty}
-                            )
+        FND_CODE
+        , GIFT_PRICE
+        , GIFT_NAME
+        , GIFT_PROD_QTY
+        ) VALUES (
+        #{fndCode}
+        , #{giftPrice}
+        , #{giftName}
+        , #{giftProdQty}
+        )
     </insert>
 
     <!-- 전체 펀딩 리스트 조회 -->
     <select id="selectAllFunding" resultMap="selectAllFunding">
         SELECT
-                fi.FND_CODE
-                , fi.FND_NAME
-                , fi.GOAL_AMT
-                , fi.SUCCESS_AMT
-                , fif.FILE_CODE
-                , fif.FND_FILE_LOC
-                , fif.FND_SAVE_FILE
-                , a.AUDIT_STAT
+        fi.FND_CODE
+        , fi.FND_NAME
+        , fi.GOAL_AMT
+        , fi.SUCCESS_AMT
+        , fif.FILE_CODE
+        , fif.FND_FILE_LOC
+        , fif.FND_SAVE_FILE
+        , a.AUDIT_STAT
         FROM FND_INFO fi
         JOIN FND_INSERT_FILE fif ON fi.FND_CODE = fif.FND_CODE
         JOIN AUD a ON fi.FND_CODE = a.FND_CODE
-       WHERE a.AUDIT_STAT = 'A'
+        WHERE a.AUDIT_STAT = 'A'
+        AND fif.FILE_DIV = 'T'
         ORDER BY FND_CODE DESC;
     </select>
 
-<!--    &lt;!&ndash; 조회수 업데이트 쿼리   &ndash;&gt;-->
-<!--    <update id="updateViews" parameterType="int">-->
-<!--        UPDATE FND_INFO-->
-<!--        SET FND_VIEWS=FND_VIEWS+1-->
-<!--        WHERE FND_CODE=#{FND_CODE}-->
-<!--    </update>-->
+    <!--    &lt;!&ndash; 조회수 업데이트 쿼리   &ndash;&gt;-->
+    <!--    <update id="updateViews" parameterType="int">-->
+    <!--        UPDATE FND_INFO-->
+    <!--        SET FND_VIEWS=FND_VIEWS+1-->
+    <!--        WHERE FND_CODE=#{FND_CODE}-->
+    <!--    </update>-->
 
     <!--    펀딩 코드로 검색하는 쿼리-->
     <select id="findByCode" resultMap="findByCode">
-        SELECT fi.FND_CODE
-               , fi.FND_DESCR
-               , fi.FND_NAME
-               , gi.GIFT_PRICE
-               , fi.FND_END_DT
-               , fi.GOAL_AMT
-               , fi.SUCCESS_AMT
-               , a.AUDIT_STAT
-          FROM FND_INFO fi
-          JOIN GIFT gi ON fi.FND_CODE = gi.FND_CODE
-          JOIN AUD a ON fi.FND_CODE = a.FND_CODE
-         WHERE fi.FND_CODE = #{fndCode}
-           AND a.AUDIT_STAT = 'A';
+        SELECT fi.USER_ID
+        , fi.FND_CODE
+        , fi.FND_DESCR
+        , fi.FND_NAME
+        , gi.GIFT_PRICE
+        , fi.FND_END_DT
+        , fi.GOAL_AMT
+        , fi.SUCCESS_AMT
+        , a.AUDIT_STAT
+        , fi.FILE_ATTACHED
+        , sf.SI_SAVE_FILE
+        , sf.SI_FILE_DIV
+        FROM FND_INFO fi
+        JOIN GIFT gi ON fi.FND_CODE = gi.FND_CODE
+        JOIN AUD a ON fi.FND_CODE = a.FND_CODE
+        JOIN STTR_INFO_FILE sf ON fi.USER_ID = sf.USER_ID
+        WHERE fi.FND_CODE = #{fndCode}
+        AND a.AUDIT_STAT = 'A'
+        AND SI_FILE_DIV = 'S';
     </select>
+
+    <!-- 펀딩 달성 시 선물 예상 발송일 -->
+<!--    <select id="estimatedDeliv" resultMap="selectAllFunding">-->
+<!--        SELECT  DATE_ADD(fnd_end_dt, INTERVAL 1 DAY) AS 예상 발송 첫째날-->
+<!--                , DATE_ADD(fnd_end_dt, INTERVAL 7 DAY) AS 예상 발송 마지막날-->
+<!--          FROM  FND_INFO-->
+<!--         WHERE  FND_CODE = #{ fndCode };-->
+<!--    </select>-->
 
     <insert id="insertFile" parameterType="com.revelup.funding.model.dto.FundingFileDTO">
         INSERT INTO FND_INSERT_FILE (
-                                    FND_CODE
-                                    , FND_FILE_LOC
-                                    , FND_ORG_FILE
-                                    , FND_SAVE_FILE
-                                    , FILE_DIV
-                           ) VALUES (
-                                    #{fndCode}
-                                    , #{fndFileLoc}
-                                    , #{fndOrgFile}
-                                    , #{fndSaveFile}
-                                    , #{fileDiv}
-                                    )
+        FND_CODE
+        , FND_FILE_LOC
+        , FND_ORG_FILE
+        , FND_SAVE_FILE
+        , FILE_DIV
+        , FILE_ATTACHED
+        ) VALUES (
+        #{fndCode}
+        , #{fndFileLoc}
+        , #{fndOrgFile}
+        , #{fndSaveFile}
+        , #{fileDiv}
+        , #{fileAttached}
+        )
     </insert>
 
     <insert id="insertSiFile" parameterType="com.revelup.funding.model.dto.SetterFileDTO">
         INSERT INTO STTR_INFO_FILE (
-                                    USER_ID
-                                    , SI_FILE_LOC
-                                    , SI_ORG_FILE
-                                    , SI_SAVE_FILE
-                                    , SI_FILE_DIV
-                          ) VALUES (
-                                    #{userId}
-                                    , #{siFileLoc}
-                                    , #{siOrgFile}
-                                    , #{siSaveFile}
-                                    , #{siFileDiv}
-                                    )
+        USER_ID
+        , SI_FILE_LOC
+        , SI_ORG_FILE
+        , SI_SAVE_FILE
+        , SI_FILE_DIV
+        , FILE_ATTACHED
+        ) VALUES (
+        #{userId}
+        , #{siFileLoc}
+        , #{siOrgFile}
+        , #{siSaveFile}
+        , #{siFileDiv}
+        , #{fileAttached}
+        )
     </insert>
 
+
     <select id="findFile" resultMap="findFile">
-        SELECT *
-          FROM FND_INSERT_FILE
-         WHERE FND_CODE = #{fndCode}
+        SELECT FILE_CODE
+        , FND_CODE
+        , FND_FILE_LOC
+        , FND_ORG_FILE
+        , FND_SAVE_FILE
+        , FILE_DIV
+        FROM FND_INSERT_FILE
+        WHERE FND_CODE = #{fndCode}
+        AND FILE_DIV = 'M'
+    </select>
+
+    <select id="selectDetailImg" resultMap="selectDetailImg">
+        SELECT FILE_CODE
+        , FND_CODE
+        , FND_FILE_LOC
+        , FND_ORG_FILE
+        , FND_SAVE_FILE
+        , FILE_DIV
+        FROM FND_INSERT_FILE
+        WHERE FND_CODE = #{fndCode}
+        AND FILE_DIV = 'D'
+    </select>
+
+    <select id="selectSttrImg" resultMap="selectSttrImg">
+        SELECT SI_FILE_CODE
+                , USER_ID
+                , SI_FILE_LOC
+                , SI_ORG_FILE
+                , SI_SAVE_FILE
+                , SI_FILE_DIV
+                , FILE_ATTACHED
+        FROM STTR_INFO_FILE
+        WHERE USER_ID = #{userId}
+        AND SI_FILE_DIV = 'S'
     </select>
 
     <!-- 펀딩 심사 리스트 등록 -->
     <insert id="insertAudit" parameterType="com.revelup.audit.model.dto.AuditDTO">
 
-    INSERT INTO AUD ( FND_CODE
-                    , FND_INSERT_DTTM
-                    )
-        VALUES (
-                 #{ fndCode }
-                ,NOW()
-                )
+        INSERT INTO AUD ( FND_CODE
+                        , FND_INSERT_DTTM
+                        )
+                VALUES (
+                        #{ fndCode }
+                        ,NOW()
+                        )
         <selectKey keyProperty="fndCode" order="AFTER" resultType="_int">
             <!-- 여러 사용자가 동시에 작업했어도, 내 커넥션에서 발생한 키값을 불러옴 -->
             SELECT LAST_INSERT_ID()
         </selectKey>
     </insert>
-
-
 
 
 </mapper>

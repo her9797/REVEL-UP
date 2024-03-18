@@ -16,6 +16,7 @@ public class SetterFileDTO implements java.io.Serializable {
     private String siOrgFile; // 세터 파일 기존 파일명
     private String siSaveFile; // 세터 파일 저장 파일명
     private String siFileDiv; // 세터 파일 구분
+    private int fileAttached; // 파일 존재 유무
     private MultipartFile businessCertif; // 사업자 등록증 1개 파일
     private MultipartFile sttrImg; // 세터 프로필 1개 이미지
 

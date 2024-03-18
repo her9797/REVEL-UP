@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<div class="col-lg-8">
+    <form action="/content/funding/insertFunding" method="post" enctype="multipart/form-data">
+        <p class="title1" style="font-size: 14px; font-weight: bold; margin-top: 30px;">새로운 펀딩을 등록하기 위해 아래 정보를
+            입력해 주세요.</p>
+        <div class="contents1">
+            <h3><b>세터 정보</b></h3>
+            <div class="input-group1">
+                <div class="hidden1">
+                    <label for="USER_ID1">아이디</label>
+                    <input type="text" name="userId" id="USER_ID1" th:value="${loginUserId.userId}">
+                </div>
+
+                <div class="BusinessCertif_img">
+                    <label for="businessCertif">사업자 등록증</label>
+                    <input type="file" id="businessCertif" name="businessCertif" accept="image/*">
+                </div>
+
+                <div class="Sttr_img">
+                    <label for="sttrImg">세터 프로필 사진</label>
+                    <input type="file" id="sttrImg" name="sttrImg" accept="image/*">
+                </div>
+
+                <div class="registNo">
+                    <label for="regist-no1">사업자 등록 번호(10자리)</label>
+                    <div class="input-with-unit1">
+                        <input type="number" name="sttrRegistNo" id="regist-no1"
+                               placeholder="사업자 등록 번호">
+                    </div>
+                </div>
+
+                <div>
+                    <label for="company-name1">상호(법인명)</label>
+                    <div>
+                        <input type="text" name="sttrCompany" id="company-name1"
+                               placeholder="상호(법인명)">
+                    </div>
+                </div>
+
+                <div>
+                    <label for="ceo-name1">대표자명</label>
+                    <div>
+                        <input type="text" name="sttrName" id="ceo-name1"
+                               placeholder="대표자명">
+                    </div>
+                </div>
+
+                <div>
+                    <label for="setter-bank1">은행</label>
+                    <div>
+                        <input type="text" name="sttrBank" id="setter-bank1"
+                               placeholder="은행 이름">
+                    </div>
+                </div>
+
+                <div>
+                    <label for="setter-account-number1">계좌번호</label>
+                    <div>
+                        <input type="number" name="sttrAccNo" id="setter-account-number1" placeholder="계좌번호">
+                    </div>
+                </div>
+
+                <div>
+                    <label for="setter-account-holder1">예금주</label>
+                    <div>
+                        <input type="text" name="sttrAccHolder" id="setter-account-holder1" placeholder="예금주">
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <div class="button-group1">
+            <button class="back-button1" onclick="location.href=''">이전</button>
+            <button class="next-button1" onclick="location.href=''">다음</button>
+        </div>
+
+
+        <p class="title2" style="font-size: 14px; font-weight: bold; margin-top: 30px;">새로운 펀딩을 등록하기 위해 아래 정보를
+            입력 및 필요한 파일을 업로드해주세요.
+        </p>
+        <div class="contents2">
+            <h3>기본정보</h3>
+            <div class="input-group2">
+
+                <div class="fndName">
+                    <label for="fndName">펀딩명</label>
+                    <div class="input-with-unit2">
+                        <input type="text" id="fndName" name="fndName"
+                               placeholder="펀딩명을 입력해 주세요.">
+                    </div>
+                </div>
+
+                <div class="Thumbnail_img">
+                    <label for="thumbnailImage">대표 이미지</label>
+                    <div class="thumbnail-tip2" rows="6">
+                        <ul>
+                            <li>한 장의 대표 이미지를 업로드 해 주세요.</li>
+                            <li>파일 크기는 300px X 300px에 맞춰 업로드해 주세요.</li>
+                            <li>이미지에는 텍스트나 테두리를 넣을 수 없어요.</li>
+                            <li>선물이 중앙에 위치한 사진으로 골라보세요.</li>
+                            <li>미리 보기 화면에서 이미지의 비율이나 화질이 깨지지 않는지<br>꼭 확인하세요.</li>
+                            <li>잘못된 이미지 사용은 반려 사유가 될 수 있으니<br> 주의해주세요.</li>
+                        </ul>
+                    </div>
+                    <div class="Thumbnail_img">
+                        <input type="file" id="thumbnailImage" name="thumbnailImage" accept="image/*">
+                    </div>
+                </div>
+
+                <div class="MainThumbnail_img">
+                    <label for="mainThumbnail">상세페이지 썸네일</label>
+                    <div class="mainThumbnail" rows="6">
+                        <ul>
+                            <li>상세 페이지에서 보여줄 대표 썸네일 이미지를 5개 업로드 해 주세요.</li>
+                            <li>파일 크기는 300px X 300px에 맞춰 업로드해 주세요.</li>
+                            <li>이미지에는 텍스트나 테두리를 넣을 수 없어요.</li>
+                            <li>미리 보기 화면에서 이미지의 비율이나 화질이 깨지지 않는지<br>꼭 확인하세요.</li>
+                            <li>잘못된 이미지 사용은 반려 사유가 될 수 있으니<br> 주의해주세요.</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <input type="file" id="mainThumbnail" name="mainThumbnail" accept="image/*" multiple>
+                    </div>
+                </div>
+
+                <div>
+                    <label for="funding-end-date">펀딩 종료일</label>
+                    <input type="date" name="fndEndDt" id="funding-end-date"
+                           placeholder="예시)2024-12-15">
+                </div>
+
+                <div>
+                    <label for="funding-goal-amount">목표 금액</label>
+                    <div class="input-with-unit2">
+                        <input type="number" name="goalAmt" id="funding-goal-amount" placeholder="0">
+                        <span id="currency-unit2">원</span><br><span id="funding-goal-amount-limit2">최소 50만원 ~ 최대 1억원 사이에서 설정해 주세요.</span>
+                    </div>
+                </div>
+
+                <div class="button-group2">
+                    <button class="back-button2" onclick="location.href=''">이전</button>
+                    <button class="next-button2" onclick="location.href=''">다음</button>
+                </div>
+            </div>
+        </div>
+
+        <p class="title3" style="font-size: 14px; font-weight: bold; margin-top: 30px;">세터님의 펀딩을 간략하게 설명해
+            주세요.</p>
+        <div class="contents3">
+            <h3><b>스토리 정보 작성</b></h3>
+            <div class="input-group3">
+                <div>
+                    <label for="detailImage">상세 페이지</label>
+                    <div class="DetailFunding_img" rows="6">
+                        <ul>
+                            <li>한 장의 이미지로 제작하여 업로드 해주세요.</li>
+                            <li>파일의 가로 사이즈는 1110px에 맞춰주세요.</li>
+                            <li>잘못된 이미지 사용은 반려 사유가 될 수 있으니<br> 주의해주세요.</li>
+                        </ul>
+                    </div>
+                    <div class="DetailFunding_img">
+                        <input type="file" id="detailImage" name="detailImage" accept="image/*">
+                    </div>
+                </div>
+
+                <div>
+                    <label for="funding-story3">펀딩 스토리</label>
+                    <textarea name="fndDescr" id="funding-story3" cols="30"
+                              rows="10" placeholder="펀딩의 상세 스토리를 입력해 주세요."></textarea>
+                </div>
+                <div class="button-group3">
+                    <button class="back-button3" onclick="location.href=''">이전</button>
+                    <button class="next-button3" onclick="location.href=''">다음</button>
+                </div>
+            </div>
+        </div>
+
+        <p class="title4" style="font-size: 14px; font-weight: bold; margin-top: 30px;">후원자에게 어떤 선물을 제공하고
+            싶으신가요?</p>
+        <div class="contents4">
+            <h3><b>선물 정보</b></h3>
+            <div class="input-group4">
+                <div>
+                    <label for="reward-title4">선물명</label>
+                    <div>
+                        <input type="text" id="reward-title4" name="giftName" placeholder="선물 제목을 입력해 주세요.">
+                    </div>
+
+                    <div>
+                        <label for="reward-amount4">선물 금액</label>
+                        <div class="input-with-unit4">
+                            <input type="number" name="giftPrice" id="reward-amount4" placeholder="0">
+                            <span id="currency-unit4">원</span>
+                            <br>
+                            <span id="reward-amount-limit4">최소 1만원 ~ 최대 100만원 사이에서 설정해 주세요.</span>
+                        </div>
+                    </div>
+
+                    <div class="button-group4">
+                        <button class="back-button4" onclick="location.href=''">이전</button>
+                        <button class="next-button4" onclick="location.href=''">다음</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <p class="title5" style="font-size: 14px; font-weight: bold; margin-top: 30px;">펀딩 등록을 완료하시겠습니까?</p>
+        <div class="contents5">
+            <h3><b>펀딩 등록</b></h3>
+            <div class="input-group5">
+                <p class="notice5">아래 펀딩 등록을 누르시면 관리자가 심사를 하게됩니다. 영업일 기준 최대 7일이 소요되며, 심사 승인시 즉시 펀딩이 활성화 됩니다.
+                    펀딩이 활성화 되더라도 펀딩을 삭제하실 수 있지만, 달성액이 발생한다면 펀딩을 삭제하실 수 없습니다.<br>
+                    펀딩 등록을 완료하시려면 아래 버튼을 눌러주세요.</p>
+
+                <div class="button-group5">
+                    <button class="back-button5" onclick="location.href=''">이전</button>
+                    <button type="submit" class="submit-button5">펀딩 등록</button>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+
+</body>
+</html>

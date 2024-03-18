@@ -18,8 +18,6 @@ public class AuditController {
     @Autowired
     private AuditService auditService;
 
-
-
     /** 펀딩 심사 목록 전체 리스트 */
     @GetMapping("/manager-audit")
     public String auditList(Model model, AuditDTO auditDTO){
