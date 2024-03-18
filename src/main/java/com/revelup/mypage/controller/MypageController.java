@@ -202,10 +202,13 @@ public class MypageController {
 
     // 세터의 펀딩 목록
     @GetMapping("/setter-fndList")
-    public String setterFndListPage(Model model) {
+    public String setterFndListPage(Model model, Principal principal) {
+
+        String userId = principal.getName();
+        System.out.println("userId : " + userId);
 
         try {
-            List<FundingInfoDTO> allFndList = mypageService.allFndList();
+            List<FundingInfoDTO> allFndList = mypageService.allFndList(userId);
             model.addAttribute("allFndList", allFndList);
             log.info("allFndList: {}", allFndList);
             return "content/mypage/setter-fndList";
@@ -268,12 +271,13 @@ public class MypageController {
         return "redirect:/content/mypage/setter-fndList";
     }
 
-
     // 심사대기중인 펀딩
     @GetMapping("/setter-audreadyList")
-    public String audReadyList(Model model) {
+    public String audReadyList(Model model, Principal principal) {
         try {
-            List<FundingInfoDTO> audReadyList = mypageService.audReadyList();
+            String userId = principal.getName();
+
+            List<FundingInfoDTO> audReadyList = mypageService.audReadyList(userId);
             model.addAttribute("audReadyList", audReadyList);
             log.info("audReadyList: {}", audReadyList);
             return "content/mypage/setter-audreadyList";
@@ -283,12 +287,13 @@ public class MypageController {
         }
     }
 
-
     // 반려된 펀딩
     @GetMapping("/setter-refuseList")
-    public String refuseList(Model model) {
+    public String refuseList(Model model,  Principal principal) {
         try {
-            List<FundingInfoDTO> refuseList = mypageService.refuseList();
+            String userId = principal.getName();
+
+            List<FundingInfoDTO> refuseList = mypageService.refuseList(userId);
             model.addAttribute("refuseList", refuseList);
             log.info("refuseList: {}", refuseList);
             return "content/mypage/setter-refuseList";
@@ -319,9 +324,10 @@ public class MypageController {
 
     //  종료된 펀딩
     @GetMapping("/setter-finishList")
-    public String finishList(Model model) {
+    public String finishList(Model model, Principal principal) {
         try {
-            List<FundingInfoDTO> finishList = mypageService.finishList();
+            String userId = principal.getName();
+            List<FundingInfoDTO> finishList = mypageService.finishList(userId);
             model.addAttribute("finishList", finishList);
             log.info("finishList: {}", finishList);
             return "content/mypage/setter-finishList";
@@ -330,26 +336,6 @@ public class MypageController {
             throw new CustomException("페이지를 불러오는 중 오류가 발생했습니다.", e);
         }
     }
-
-
-//    @ResponseBody
-//    @PostMapping("/updateShipment")
-//    public String updateShipment(@RequestParam("proCode") int proCode, @RequestParam("estDate") String estDate) {
-//        ProjectDTO estDateDto = new ProjectDTO();
-//        estDateDto.setProCode(proCode);
-//        estDateDto.setEstDate(Date.valueOf(estDate));
-//
-//        int result = projectService.updateShipment(estDateDto);
-//
-//        if(result > 0) {
-//            System.out.println(":)");
-//        }else {
-//            System.out.println(":(");
-//        }
-//
-//        return "redirect:creatorendpj";
-//    }
-
 
 
     // 찜한 목록 조회 페이지 이동

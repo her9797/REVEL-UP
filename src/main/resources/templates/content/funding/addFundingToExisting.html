@@ -9,6 +9,7 @@
     <link th:href="@{/css/mypage.css}" rel="stylesheet">
     <link th:href="@{/css/insertFunding.css}" rel="stylesheet">
 
+
     <!-- fragments 경로 -->
     <th:block th:include="~{fragments/common}"></th:block>
 
@@ -57,11 +58,11 @@
                 <form action="/content/funding/addFundingToExisting" method="post" enctype="multipart/form-data">
 
 
-
+                    <section id="insert1" class="group">
                     <div class="contents2">
-                        <h3>기본정보</h3>
-                        <div class="input-group2">
+                        <h3 style="font-weight: bold;">기본정보</h3>
 
+                        <div class="input-group2">
                             <div>
                                 <label class="hidden" for="USER_ID">아이디</label>
                                 <input class="hidden" type="text" name="userId" id="USER_ID" th:value="${loginUserId.userId}">
@@ -70,11 +71,11 @@
                             <div class="fndName">
                                 <label for="fndName">펀딩명</label>
                                 <div class="input-with-unit2">
-                                    <input type="text" id="fndName" name="fndName"
-                                           placeholder="펀딩명을 입력해 주세요.">
+                                    <input type="text" id="fndName" name="fndName" placeholder="펀딩명을 입력해 주세요." oninput="validateTitle()">
+                                    <div id="titleError" style="color: rgba(252,74,74,0.87); font-size: 14px;"></div>
                                 </div>
                             </div>
-
+                            <br>
                             <div class="Thumbnail_img">
                                 <label for="thumbnailImage">대표 이미지</label>
                                 <div class="thumbnail-tip2" rows="6">
@@ -92,6 +93,7 @@
                                 </div>
                             </div>
 
+                            <br>
                             <div class="MainThumbnail_img">
                                 <label for="mainThumbnail">상세페이지 썸네일</label>
                                 <div class="mainThumbnail" rows="6">
@@ -109,27 +111,36 @@
                                 </div>
                             </div>
 
+                            <br>
                             <div>
                                 <label for="funding-end-date">펀딩 종료일</label>
                                 <input type="date" name="fndEndDt" id="funding-end-date"
                                        placeholder="예시)2024-12-15">
                             </div>
 
+                            <br>
                             <div>
                                 <label for="funding-goal-amount">목표 금액</label>
                                 <div class="input-with-unit2">
-                                    <input type="number" name="goalAmt" id="funding-goal-amount" placeholder="0">
-                                    <span id="currency-unit2">원</span><br><span id="funding-goal-amount-limit2">최소 50만원 ~ 최대 1억원 사이에서 설정해 주세요.</span>
+                                    <input type="number" name="goalAmt" id="funding-goal-amount" placeholder="0" oninput="validateGoalAmount()">
+                                    <span id="currency-unit2">원</span>
+                                    <br>
+                                    <div id="amountError" style="color: rgba(252,74,74,0.87); font-size: 14px;"></div>
                                 </div>
                             </div>
 
+                            <br>
+                            <p style="color: grey">세터 정보변경이 필요하시면 revelup24@gmail.com으로 변경신청부탁드립니다.</p>
+                            <br>
                             <div class="button-group2">
-                                <button class="back-button2" onclick="location.href=''">이전</button>
-                                <button class="next-button2" onclick="location.href=''">다음</button>
+<!--                                <button class="back-button2" onclick="location.href=''">이전</button>-->
+                                <button type="button" class="next-button2" onclick="if (checkInputs1()) insert2()">다음</button>
                             </div>
                         </div>
                     </div>
+                    </section>
 
+                    <section id="insert2" class="group" style="display: none;">
                     <p class="title3" style="font-size: 14px; font-weight: bold; margin-top: 30px;">세터님의 펀딩을 간략하게 설명해
                         주세요.</p>
                     <div class="contents3">
@@ -145,22 +156,26 @@
                                     </ul>
                                 </div>
                                 <div class="DetailFunding_img">
-                                    <input type="file" id="detailImage" name="detailImage" accept="image/*">
+                                    <input type="file" id="detailImage" name="detailImage" accept="image/*" required>
                                 </div>
                             </div>
 
+                            <br>
                             <div>
                                 <label for="funding-story3">펀딩 스토리</label>
                                 <textarea name="fndDescr" id="funding-story3" cols="30"
-                                          rows="10" placeholder="펀딩의 상세 스토리를 입력해 주세요."></textarea>
+                                          rows="10" placeholder="펀딩의 상세 스토리를 입력해 주세요." oninput="validateStory()"></textarea>
+                                <div id="storyError" style="color: rgba(252,74,74,0.87); font-size: 14px;"></div>
                             </div>
                             <div class="button-group3">
-                                <button class="back-button3" onclick="location.href=''">이전</button>
-                                <button class="next-button3" onclick="location.href=''">다음</button>
+                                <button type="button"  class="back-button3" onclick="insert1()">이전</button>
+                                <button type="button"  class="next-button3" onclick="if (checkInputs2()) insert3()">다음</button>
                             </div>
                         </div>
                     </div>
+                    </section>
 
+                    <section id="insert3" class="group" style="display: none;">
                     <p class="title4" style="font-size: 14px; font-weight: bold; margin-top: 30px;">후원자에게 어떤 선물을 제공하고
                         싶으신가요?</p>
                     <div class="contents4">
@@ -169,27 +184,31 @@
                             <div>
                                 <label for="reward-title4">선물명</label>
                                 <div>
-                                    <input type="text" id="reward-title4" name="giftName" placeholder="선물 제목을 입력해 주세요.">
+                                    <input type="text" id="reward-title4" name="giftName" placeholder="선물 제목을 입력해 주세요." oninput="validateGiftTitle()">
+                                    <div id="giftTitleError" style="color: rgba(252,74,74,0.87); font-size: 14px;"></div>
                                 </div>
 
                                 <div>
                                     <label for="reward-amount4">선물 금액</label>
                                     <div class="input-with-unit4">
-                                        <input type="number" name="giftPrice" id="reward-amount4" placeholder="0">
+                                        <input type="number" name="giftPrice" id="reward-amount4" placeholder="0"  oninput="validateGiftAmount()">
                                         <span id="currency-unit4">원</span>
                                         <br>
-                                        <span id="reward-amount-limit4">최소 1만원 ~ 최대 100만원 사이에서 설정해 주세요.</span>
+                                        <span id="reward-amount-limit4" style="color: rgba(252,74,74,0.87); font-size: 14px;"></span>
                                     </div>
                                 </div>
 
                                 <div class="button-group4">
-                                    <button class="back-button4" onclick="location.href=''">이전</button>
-                                    <button class="next-button4" onclick="location.href=''">다음</button>
+                                    <button type="button"  class="back-button4" onclick="insert2()">이전</button>
+                                    <button type="button"  class="next-button4" onclick="if (checkInputs3()) insert4()">다음</button>
                                 </div>
                             </div>
                         </div>
                     </div>
+                    </section>
 
+
+                    <section id="insert4" class="group" style="display: none;">
                     <p class="title5" style="font-size: 14px; font-weight: bold; margin-top: 30px;">펀딩 등록을 완료하시겠습니까?</p>
                     <div class="contents5">
                         <h3><b>펀딩 등록</b></h3>
@@ -199,17 +218,34 @@
                                 펀딩 등록을 완료하시려면 아래 버튼을 눌러주세요.</p>
 
                             <div class="button-group5">
-                                <button class="back-button5" onclick="location.href=''">이전</button>
+                                <button type="button"  class="back-button5" onclick="insert3()">이전</button>
                                 <button type="submit" class="submit-button5">펀딩 등록</button>
                             </div>
                         </div>
                     </div>
+                    </section>
                 </form>
+
+                <div class="group">
+                    <p class="aaaa"></p>
+                    <div class="contents6">
+                        <br>
+                        <br>
+                        <br>
+                        <br>
+                        <br>
+                        <br>
+                        <br>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
 </div>
 <!-- footer 부분 -->
 <div th:insert="~{/fragments/footer.html}"></div>
+
+<script th:src="@{/js/addFundingToExisting.js}"></script>
+
 </body>
 </html>

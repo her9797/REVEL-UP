@@ -8,13 +8,8 @@ import com.revelup.mypage.model.dao.MypageMapper;
 import com.revelup.pay.model.dto.PayDTO;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.stereotype.Service;
-import org.springframework.web.multipart.MultipartFile;
 
-import java.io.File;
-import java.io.IOException;
-import java.sql.Date;
 import java.util.List;
-import java.util.UUID;
 
 @Service
 @Log4j2
@@ -84,8 +79,8 @@ public class MypageService {
 
 
     // 펀딩내역 조회
-    public List<FundingInfoDTO> allFndList() {
-        List<FundingInfoDTO> fndList = mypageMapper.allFndList();
+    public List<FundingInfoDTO> allFndList(String userId) {
+        List<FundingInfoDTO> fndList = mypageMapper.allFndList(userId);
         System.out.println("fndList : " + fndList);
         return fndList;
 
@@ -112,22 +107,23 @@ public class MypageService {
     }
 
     // 심사대기중 펀딩
-    public List<FundingInfoDTO> audReadyList() {
-        List<FundingInfoDTO> audReadyList = mypageMapper.audReadyList();
+    public List<FundingInfoDTO> audReadyList(String userId) {
+
+        List<FundingInfoDTO> audReadyList = mypageMapper.audReadyList(userId);
         System.out.println("audReadyList : " + audReadyList);
         return audReadyList;
     }
 
     // 반려된 펀딩
-    public List<FundingInfoDTO> refuseList() {
-        List<FundingInfoDTO> refuseList = mypageMapper.refuseList();
+    public List<FundingInfoDTO> refuseList(String userId) {
+        List<FundingInfoDTO> refuseList = mypageMapper.refuseList(userId);
         System.out.println("refuseList : " + refuseList);
         return refuseList;
     }
 
     // 종료된 펀딩
-    public List<FundingInfoDTO> finishList() {
-        List<FundingInfoDTO> finishList = mypageMapper.finishList();
+    public List<FundingInfoDTO> finishList(String userId) {
+        List<FundingInfoDTO> finishList = mypageMapper.finishList(userId);
         System.out.println("finishList : " + finishList);
         return finishList;
     }
@@ -139,7 +135,7 @@ public class MypageService {
 
         mypageMapper.deletePlg(fndCode);
         mypageMapper.deleteGift(fndCode);
-//        mypageMapper.deleteFndFile(fndCode);
+        mypageMapper.deleteFndFile(fndCode);
 //        mypageMapper.deleteRpt(fndCode);
         mypageMapper.deleteAud(fndCode);
         mypageMapper.deleteFnd(fndCode);
