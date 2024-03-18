@@ -141,8 +141,4 @@ public class PayService {
 
 
 
-	public int getFndCode(int fndCodeOfPay) {
-
-		return plgMapper.getFndCodePay(fndCodeOfPay);
-	}
 }
