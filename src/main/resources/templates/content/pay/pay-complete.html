@@ -53,9 +53,10 @@
 <section class="note">
     <p class="image-desc">
         <span th:text="${item.itemName}" style="font-weight: bold;"></span><br>
+
         <span><strong>선물가격 : </strong> <span th:text="${item.totalPrice} + '원'"></span></span><br>
         <span><strong>후원날짜 : </strong> <span th:text="${item.createdAt}"></span></span><br>
-        <span><strong>색상 :</strong> 블루 </span><br>
+<!--        <span><strong>후원코드 : </strong> <span th:text="${item.fndCode}"></span></span><br>-->
         <span><strong>수량 :</strong><span th:text="${item.quantity} + '개'"></span></span><br>
         <span><strong>마감일 :</strong>2024-04-25</span><br>
     </p>

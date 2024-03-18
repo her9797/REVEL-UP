@@ -42,5 +42,8 @@ public interface FundingMapper {
 
     FundingInfoDTO getFundingByUserId(String userId);
 
+    FundingInfoDTO selectAllPayFunding();
+
+
 //    FundingInfoDTO estimatedDeliv(int fndCode);
 }

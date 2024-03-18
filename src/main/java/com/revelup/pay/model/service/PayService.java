@@ -10,6 +10,7 @@ import java.util.concurrent.ConcurrentLinkedDeque;
 
 import com.revelup.config.KakaoPayConfig;
 
+import com.revelup.funding.model.dto.FundingInfoDTO;
 import com.revelup.pay.model.dao.PlgMapper;
 import com.revelup.pay.model.dto.*;
 import jakarta.servlet.http.HttpServletRequest;
@@ -32,6 +33,7 @@ public class PayService {
 	private static final ConcurrentHashMap<String, String> tidCacheMap = new ConcurrentHashMap();
 	private final KakaoPayConfig kakaoPayConfig;
 
+	private FundingInfoDTO fundingInfoDTO;
 	private final PlgMapper plgMapper;
 
 	@Autowired
@@ -113,11 +115,9 @@ public class PayService {
 		log.info(response.toString());
 		//TODO: 결제정보 DB에 저장.
 
-//		payDTO.setPlgCode(); 오토 인크레먼트라서 셋 값 안줘도 됨
 
 		String userId = principal.getName();
 		payCompletionDTO.setUserId(userId);
-//		payCompletionDTO.setUserId(response.getPartnerUserId()); // 이게 맞는지?
 		payCompletionDTO.setFndCode(1);
 		payCompletionDTO.setGiftQty(response.getQuantity());
 		payCompletionDTO.setPlgDttm(response.getApprovedAt()); // 로컬데이트타임 확인 필요
@@ -136,4 +136,6 @@ public class PayService {
 
 	public void insert(PayCompletionDTO payCompletionDTO) {
 	}
+
+
 }

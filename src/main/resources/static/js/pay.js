@@ -25,6 +25,7 @@ function payForKakao() {
         item_name: $('#itemName').text(), //상품명
         quantity: parseInt($('#quantity').text(), 10), //상품 수량
         total_amount: parseInt($('#quantity').text(), 10) * parseInt($('#itemPrice').text(), 10), //상품 총액
+
     }
     sendDataToUrl("POST", "/content/pay/ready", requestData)
 }

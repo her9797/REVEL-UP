@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -103,10 +103,12 @@
                         <label for="auditStat" id="content" style="margin-top: 20px; margin-bottom: -50px">심사 상태</label>
                         <textarea th:text="${audit.auditStat}" type="text" id="auditStat" class="text-box2" name="auditStat"></textarea>
                     </div>
+                    <span sec:authorize="hasAnyAuthority('매니저')">
                     <div class="modal-button2" style="margin-left: 100px; margin-top: 40px;">
                         <button class="update-btn2" id="update-btn2">처리하기</button>
                         <button class="update-btn3" id="update-btn3">이메일발송</button>
                     </div>
+                    </span>
                 </div>
             </div>
         </div>

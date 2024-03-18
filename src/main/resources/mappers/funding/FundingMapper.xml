@@ -212,6 +212,7 @@
         ORDER BY FND_CODE DESC;
     </select>
 
+
     <!--    &lt;!&ndash; 조회수 업데이트 쿼리   &ndash;&gt;-->
     <!--    <update id="updateViews" parameterType="int">-->
     <!--        UPDATE FND_INFO-->
@@ -339,6 +340,11 @@
             SELECT LAST_INSERT_ID()
         </selectKey>
     </insert>
+
+    <!-- 결제화면 fndCode 가져오기 -->
+    <select id="">
+
+    </select>
 
 
 </mapper>

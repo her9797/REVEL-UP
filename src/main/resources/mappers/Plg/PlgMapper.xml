@@ -3,7 +3,22 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.revelup.pay.model.dao.PlgMapper">
-    
+
+    <resultMap type="com.revelup.funding.model.dto.FundingInfoDTO" id="findByCode">
+        <id property="fndCode" column="FND_CODE"/>
+        <result property="userId" column="USER_ID"/>
+        <result property="fndDescr" column="FND_DESCR"/>
+        <result property="fndName" column="FND_NAME"/>
+        <result property="giftPrice" column="GIFT_PRICE"/>
+        <result property="fndEndDt" column="FND_END_DT"/>
+        <result property="goalAmt" column="GOAL_AMT"/>
+        <result property="successAmt" column="SUCCESS_AMT"/>
+        <result property="auditStat" column="AUDIT_STAT"/>
+        <result property="fileAttached" column="FILE_ATTACHED"/>
+        <result property="siSaveFile" column="SI_SAVE_FILE"/>
+        <result property="siFileDiv" column="SI_FILE_DIV"/>
+    </resultMap>
+
     <insert id="insertPlg" parameterType="com.revelup.pay.model.dto.PayCompletionDTO">
         INSERT INTO PLG(
                         USER_ID
@@ -22,5 +37,12 @@
                     ,#{ plgCanDt }
                     )
     </insert>
+
+    <select id="getFndCodePay" resultMap="findByCode">
+        SELECT FND_CODE
+        FROM FND_INFO
+        WHERE FND_CODE = #{fndCode}
+
+    </select>
     
 </mapper>

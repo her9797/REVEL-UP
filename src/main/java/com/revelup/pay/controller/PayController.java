@@ -1,5 +1,7 @@
 package com.revelup.pay.controller;
 
+import com.revelup.funding.controller.FundingController;
+import com.revelup.funding.model.dto.FundingInfoDTO;
 import com.revelup.pay.model.dto.PayDTO;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -40,6 +42,10 @@ public class PayController {
     private final PayService payService;
     private final KakaoPayConfig kakaoPayConfig;
 
+    private FundingInfoDTO fundingInfoDTO;
+
+    private PayCompletionDTO payCompletionDTO;
+
 
     public PayController(PayService payService, KakaoPayConfig kakaoPayConfig) {
         this.payService = payService;
@@ -60,6 +66,7 @@ public class PayController {
                                 @RequestBody KakaoPayReadyDTO kakaoPayReadyDTO) {
         kakaoPayReadyDTO.setUserIdAndOrderId(userDetails.getUsername(), "testOrderId");
         kakaoPayReadyDTO.setUrlsAndCid(kakaoPayConfig);
+
         log.info("kakaoPayReadyDTO: {}", kakaoPayReadyDTO);
 
         String redirectUrl = payService.kakaoPayReady(request, kakaoPayReadyDTO);

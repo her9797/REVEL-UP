@@ -2,16 +2,14 @@ package com.revelup.pay.model.dto;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.revelup.config.KakaoPayConfig;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.ToString;
+import lombok.*;
 
 
 @Getter
 @AllArgsConstructor
 @NoArgsConstructor
 @ToString
+@Setter
 public class KakaoPayReadyDTO {
 	private String cid; //가맹점 코드, 10자 (TC0ONETIME 테스트용)
 
@@ -34,6 +32,8 @@ public class KakaoPayReadyDTO {
 	private String cancelUrl; //결제 취소 시 redirect url,최대 25자
 	@JsonProperty("fail_url")
 	private String failUrl;  //결제 실패 시 redirect url,최대 25자
+	@JsonProperty("fndCode")
+	private int fndCode;  //펀딩 코드
 
 
 	public void setUserIdAndOrderId(String userId, String orderId) {

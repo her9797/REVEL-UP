@@ -9,7 +9,7 @@ public class FileConfig implements WebMvcConfigurer {
 
     private String resourcePath = "/upload/**"; //  view에서 사용할 경로
 //    private String fndFileLoc = "file:///Users/jaylee/Documents/SemiFinal/fndFileLoc/"; // Mac용 저장경로
-    private String fndFileLoc = "file:///C://Users//simko//OneDrive//바탕 화면//file/fndFileLoc/"; // Window용 저장경로
+    private String fndFileLoc = "file:///C:/Users/hi/Desktop/revelupimg/fndFileLoc/"; // Window용 저장경로
 
     @Override
     public void addResourceHandlers(ResourceHandlerRegistry registry) {

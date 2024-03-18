@@ -3,6 +3,7 @@ package com.revelup.funding.controller;
 import com.revelup.audit.model.dto.AuditDTO;
 import com.revelup.funding.model.dto.*;
 import com.revelup.funding.model.service.FundingService;
+import com.revelup.pay.model.service.PayService;
 import com.revelup.user.model.dto.LoginUserDTO;
 import com.revelup.user.model.dto.UserDTO;
 import com.revelup.user.model.service.UserService;
@@ -22,9 +23,12 @@ public class FundingController {
 
     private final UserService userService;
 
-    public FundingController(FundingService fundingService, UserService userService) {
+    private final PayService payService;
+
+    public FundingController(FundingService fundingService, UserService userService, PayService payService) {
         this.fundingService = fundingService;
         this.userService = userService;
+        this.payService = payService;
     }
 
     @GetMapping("/insertFunding")
@@ -103,6 +107,7 @@ public class FundingController {
         model.addAttribute("fundingList", fundingInfoDTOList);
         System.out.println("fundingInfoDTOList 컨트롤러 selectAllFunding = " + fundingInfoDTOList);
 
+
         return "content/funding/all-funding";
     }
 
@@ -114,6 +119,7 @@ public class FundingController {
         // 상세내용 가져옴
         FundingInfoDTO fundingInfoDTO = fundingService.findByCode(fndCode);
         model.addAttribute("funding", fundingInfoDTO);
+
 
         // 통계 데이터 중 선물 예상 발송일
 //        FundingInfoDTO estimatedDeliv = fundingService.estimatedDeliv(fndCode);
@@ -132,7 +138,41 @@ public class FundingController {
         SetterFileDTO setterFile = fundingService.selectSttrImg(userId);
         model.addAttribute("sttrImg", setterFile);
 
+
         return "content/funding/detail-funding";
+    }
+
+
+
+
+    @GetMapping("/pay-complete/{fndCode}")
+    public String PayfindByCode(@PathVariable("fndCode") int fndCode, Model model) {
+        // 조회수 처리
+        // fundingService.updateViews(fndCode);
+
+        // 상세내용 가져옴
+        FundingInfoDTO fundingInfoDTO = fundingService.findByCode(fndCode);
+        model.addAttribute("funding", fundingInfoDTO);
+
+
+        // 통계 데이터 중 선물 예상 발송일
+//        FundingInfoDTO estimatedDeliv = fundingService.estimatedDeliv(fndCode);
+//        model.addAttribute("estimatedDeliv", estimatedDeliv);
+
+        // MainThumbnail 첨부파일 가져옴
+        List<FundingFileDTO> fundingFileDTOList = fundingService.findFile(fndCode);
+        model.addAttribute("fundingFileList", fundingFileDTOList);
+
+        // DetailImg 첨부파일 가져옴
+        FundingFileDTO detailImage = fundingService.selectDetailImg(fndCode);
+        model.addAttribute("detailImage", detailImage);
+
+        // Stter Profile 첨부파일 가져옴
+        String userId = fundingInfoDTO.getUserId(); // 펀딩 정보에서 userId 추출
+        SetterFileDTO setterFile = fundingService.selectSttrImg(userId);
+        model.addAttribute("sttrImg", setterFile);
+
+        return "content/pay/pay";
     }
 
 
