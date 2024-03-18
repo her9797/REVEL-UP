@@ -23,6 +23,7 @@ import com.revelup.pay.model.dto.PayCompletionDTO;
 import com.revelup.pay.model.service.PayService;
 import jakarta.servlet.http.HttpServletRequest;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.web.multipart.MultipartFile;
 
 import javax.print.DocFlavor;
 import java.security.Principal;

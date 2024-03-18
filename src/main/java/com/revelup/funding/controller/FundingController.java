@@ -14,8 +14,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 import org.thymeleaf.model.IModel;
 
+import java.io.File;
 import java.io.IOException;
 import java.security.Principal;
 import java.util.List;
@@ -156,11 +158,13 @@ public class FundingController {
         String fndName = fundingInfoDTO.getFndName();
         int giftPrice = fundingInfoDTO.getGiftPrice();
         String fndEndDt = fundingInfoDTO.getFndEndDt();
+        MultipartFile saveFile =  fundingInfoDTO.getThumbnailImage();
 
         sessionData.setSessionAttribute("fndCodeOfPay", fndCodeOfPay);
         sessionData.setSessionAttribute("fndName", fndName);
         sessionData.setSessionAttribute("giftPrice", giftPrice);
         sessionData.setSessionAttribute("fndEndDt", fndEndDt);
+        sessionData.setSessionAttribute("saveFile", saveFile);
 
 
         return "content/funding/detail-funding";

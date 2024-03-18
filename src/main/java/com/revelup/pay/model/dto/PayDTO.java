@@ -5,6 +5,7 @@ import com.revelup.funding.model.dto.FundingInfoDTO;
 import com.revelup.funding.model.dto.GiftDTO;
 import com.revelup.user.model.dto.LoginUserDTO;
 import lombok.*;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.sql.Date;
 import java.util.List;
@@ -41,7 +42,7 @@ public class PayDTO {
     private List<GiftDTO> gift;
     private GiftDTO giftPrice2;
     private int giftPrice;
-
+    private MultipartFile saveFile;
 
 
 }
