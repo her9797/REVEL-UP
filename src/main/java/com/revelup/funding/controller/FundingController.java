@@ -113,6 +113,7 @@ public class FundingController {
 
         // 상세내용 가져옴
         FundingInfoDTO fundingInfoDTO = fundingService.findByCode(fndCode);
+        System.out.println("!!!!!!!!!!!!" + fundingInfoDTO);
         model.addAttribute("funding", fundingInfoDTO);
 
         // 통계 데이터 중 선물 예상 발송일
