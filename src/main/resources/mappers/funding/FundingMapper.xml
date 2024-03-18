@@ -214,6 +214,7 @@
     </select>
 
 
+
     <!--    &lt;!&ndash; 조회수 업데이트 쿼리   &ndash;&gt;-->
     <!--    <update id="updateViews" parameterType="int">-->
     <!--        UPDATE FND_INFO-->

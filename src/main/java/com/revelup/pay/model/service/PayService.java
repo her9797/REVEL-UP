@@ -26,6 +26,7 @@ import org.springframework.http.MediaType;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.client.RestTemplate;
+import org.springframework.web.multipart.MultipartFile;
 
 @Slf4j
 @Service
@@ -140,5 +141,9 @@ public class PayService {
 	}
 
 
+    public PayDTO getFile(FundingInfoDTO fundingInfoDTO) {
 
+		System.out.println("❤❤❤❤❤❤❤"+fundingInfoDTO);
+		return plgMapper.getFile(fundingInfoDTO);
+    }
 }

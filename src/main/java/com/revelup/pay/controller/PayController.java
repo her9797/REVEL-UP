@@ -4,6 +4,7 @@ import com.revelup.config.SessionData;
 import com.revelup.funding.controller.FundingController;
 import com.revelup.funding.model.dto.FundingInfoDTO;
 import com.revelup.pay.model.dto.PayDTO;
+import jakarta.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -53,6 +54,9 @@ public class PayController {
 
     @Autowired
     private SessionData sessionData;
+
+    @Autowired
+    private HttpSession session;
 
 
 
@@ -125,6 +129,7 @@ public class PayController {
         String fndName = (String) sessionData.getSessionAttribute("fndName");
         int giftPrice = (int) sessionData.getSessionAttribute("giftPrice");
         String fndEndDt = (String) sessionData.getSessionAttribute("fndEndDt");
+        String file = (String) sessionData.getSessionAttribute("file");
 
         PayDTO payDTO = new PayDTO();
         payDTO.setFndCode(fndCodeOfPay);
@@ -132,10 +137,8 @@ public class PayController {
         payDTO.setFndName(fndName);
         payDTO.setGiftPrice(giftPrice);
         payDTO.setFndEndDt(fndEndDt);
+        payDTO.setSaveFile(file);
 
-//        payDTO.setGiftQty();
-//        payDTO.setPlgPrice();
-//        payDTO.setPlgDttm();
 
         model.addAttribute("pay", payDTO);
         System.out.println("⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐" + payDTO);
