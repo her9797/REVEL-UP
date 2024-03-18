@@ -1,0 +1,225 @@
+/* 타이틀 박스 */
+.title-box {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    font-size: 15px; /* 원하는 폰트 크기로 설정 */
+}
+
+.title-box button {
+    background-color: #ccc;
+    border: none;
+    padding: 10px;
+    color: #ffffff;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    transition: background-color 0.3s;
+    cursor: pointer;
+    border-radius: 15px;  /* 모서리 둥글게 */
+    margin-right: 20px; /* 버튼 사이의 간격 설정 */
+    width: 300px;
+    height: 50px;
+}
+
+.title-box button:not(:last-child) {
+    margin-right: 30px; /* 마지막 버튼을 제외한 버튼에 오른쪽 마진 설정 */
+}
+
+.title-box button:hover {
+    background-color: #0CC291;
+}
+
+
+/* 이미지 박스 그룹 스타일 */
+.image-box-group {
+    display: flex; /* 요소를 가로로 배치 */
+    flex-wrap: wrap; /* 화면 크기에 따라 요소를 다음 줄로 넘김 */
+    justify-content: space-between; /*  요소 사이에 여백 동일하게 배치 */
+}
+
+/* 이미지 박스 스타일 */
+.image-box {
+    height: 350px;
+    box-sizing: border-box; /* 테두리와 패딩이 요소의 크기에 포함 */
+    width: calc(33% - 10px); /* 부모 요소의 가로 길이를 4로 나눈 값에서 10px(여백) 빼기 */
+    border: 1px solid #bdbdbd;
+    border-radius: 15px;  /* 모서리 둥글게 */
+    padding: 10px;
+    font-size: 14px; /* 원하는 폰트 크기로 설정 */
+    margin: 3% 1px 8px 0; /* top right bottom left*/
+    background-color: rgb(240, 240, 240);
+    display: flex; /* Flex layout 적용 */
+    flex-direction: column; /* 요소를 세로로 배치 */
+    align-items: center; /* 세로 중앙 정렬 */
+    justify-content: center;  /* 가로 중앙 정렬 */
+}
+
+.image-box:last-child {
+    margin-right: 0; /* 마지막 이미지 박스의 오른쪽 여백 제거 */
+}
+
+/* 이미지 스타일 */
+.image-box img {
+    width: 95%; /* 이미지 크기 조정 */
+    margin-top: 5%;
+    margin-bottom: 5px;
+}
+
+/* 이미지 설명 스타일 */
+.image-desc {
+    display: flex;
+    flex-wrap: wrap; /* 넘칠 경우 자동으로 다음 줄로 이동 */
+    align-items: center; /* 수직 가운데 정렬 */
+    justify-content: center; /* 수평 가운데 정렬 */
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+/* 각 항목 스타일 */
+.image-desc div {
+    max-width: 0px;
+    margin-right: 5px; /* 각 항목 오른쪽 여백 추가 */
+    margin-bottom: 3px; /* 각 항목 아래 여백 추가 */
+    display: flex; /* 요소를 가로로 배열 */
+    align-items: center; /* 수직 가운데 정렬 */
+    flex-direction: row; /* 요소를 가로로 배치 */
+    justify-content: space-between; /* 요소 사이에 여백 동일하게 배치 */
+    flex-wrap: wrap; /* 화면 크기에 따라 요소를 다음 줄로 넘김 */
+}
+
+/* 버튼 그룹 스타일 */
+.button-group {
+    margin-top: 3px;
+    display: flex; /* 요소를 가로로 배치 */
+    justify-content: center; /* 요소를 가운데에 배치 */
+    width: 100%; /* 버튼 그룹의 너비를 최대로 설정 */
+}
+
+/* 버튼 스타일 */
+#inquiry-btn {
+    display: flex;
+    align-items: center; /* 세로 중앙 정렬 */
+    justify-content: center;  /* 가로 중앙 정렬 */
+    padding: 3%; /* 버튼 내부 여백 */
+    background-color: rgb(240, 240, 240); /* 버튼 배경색 */
+    border: 1px solid #035E0C; /* 버튼 테두리 설정 */
+    cursor: pointer; /* 마우스 커서를 손가락 모양으로 변경 */
+    border-radius: 15px;  /* 모서리 둥글게 */
+    font-size: 14px;
+    width: 180px;
+    margin-top: 10px;
+    height: 45px;
+}
+
+
+#inquiry-btn:hover {
+    background-color: #0CC291; /* 마우스 오버 시 버튼 배경색 변경 */
+}
+
+/* 문의 등록모달 */
+.inquiry-modal {
+    display: none; /* 모달창은 기본적으로 숨겨져 있음 */
+    position: fixed;
+    position: fixed; /* 스크롤해도 항상 같은 위치에 있음 */
+    z-index: 1; /* 다른 요소 위에 나타남 */
+    left: 0;
+    top: 0;
+    width: 100%; /* 전체 너비 */
+    height: 100%; /* 전체 높이 */
+    overflow: auto; /* 내용이 많을 경우 스크롤 */
+    background-color: rgba(0,0,0,0.4); /* 반투명한 검은색 배경 */
+
+}
+
+#close-inquiry-btn {
+    margin-left: 85%;
+    color: #aaaaaa;
+    float: right;
+    font-size: 23px;
+    font-weight: bold;
+}
+
+#close-inquiry-btn:hover,
+#close-inquiry-btn:focus {
+    color: #000;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+/* 모달 내용 부분 */
+.modal-content {
+    position: fixed; /* 모달 내용을 화면 가운데 정렬하기 위함 */
+    top: 50%; /* 상단에서 50% 위치 */
+    left: 50%; /* 왼쪽에서 50% 위치 */
+    transform: translate(-50%, -50%); /* 정확히 중앙에 위치하도록 조정 */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #fefefe;
+    padding: 10px;
+    border: 1px solid #888;
+    /*width: 400px; !* 모달 가로 너비 *!*/
+    /*height: auto; !* 높이 자동 조정 *!*/
+    overflow-y: auto; /* 세로 스크롤바 설정 */
+}
+
+.inquiry-content {
+    justify-content: space-between;
+    width: 500px;
+
+}
+
+/* 모달창 내부의 버튼 및 입력 필드 스타일링 */
+.contract {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    width: 80%;
+}
+
+
+
+.text-box1, .text-box2, .text-box3, .text-box4, .text-box5 {
+    width: 70%;
+    padding: 10px;
+    margin: 10px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+    border-radius: 15px;  /* 모서리 둥글게 */
+
+}
+
+.textCont {
+    width: 70%;
+    height: inherit;
+    padding: 10px;
+    margin: 10px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+    border-radius: 15px;  /* 모서리 둥글게 */
+}
+.textCont textarea {
+    resize: none; /* 텍스트 에어리어의 크기 조절 기능 비활성화 */
+}
+
+.insert-inquiry button {
+    background-color: #0CC291;
+    color: white;
+    padding:  10px;
+    margin: 8px 0;
+    border: none;
+    cursor: pointer;
+    /* width: 100%; */
+    border-radius: 15px;  /* 모서리 둥글게 */
+
+}
+
+.insert-inquiry {
+    display: flex;
+    justify-content: center;
+}

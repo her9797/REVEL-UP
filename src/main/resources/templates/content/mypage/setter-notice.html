@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+
+
+    <th:block th:include="fragments/common"></th:block>
+
+    <link th:href="@{/css/mypage.css}" rel="stylesheet">
+    <link th:href="@{/css/setter-notice.css}" rel="stylesheet">
+
+<!--    <script th:src="@{/js/setter-funding-history.js}"></script>-->
+
+</head>
+<body>
+
+<!-- 헤더 부분 -->
+
+<div th:insert="~{/fragments/header.html}"></div>
+
+<!-- 배너 부분 -->
+<section class="banner2-area">
+    <div class="container">
+        <div class="row fullscreen align-items-center">
+            <div class="col-lg-10">
+                <div class="banner2-content">
+                    <h1 style="font-weight: bold; margin-left: 94px;">마이페이지</h1>
+                    <br>
+                    <p style="color:white; margin-left: 100px;">마이페이지</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<div class="container" style="border-top: 1px solid lightgray; margin-top: 15px;">
+    <br>
+    <div class="row">
+        <!-- Left Sidebar -->
+
+        <div class="col-lg-3">
+
+        <div th:insert="~{/fragments/sidebar.html}"></div>
+
+        </div>
+
+
+        <div class="col-lg-8 col-md-8 col-sm-8">
+            <a style="margin-bottom: 20px; font-size: 18px;">나의 펀딩 내역 &gt; 펀딩 내역 조회 &gt; <b> 공지사항 등록</b></a>
+
+            <p class="title" style="font-size: 14px; font-weight: bold; margin-top: 10px;" th:text="'등록일 ' + ${selectOneFnd.auditApprDt}">등록일 2024-02-21</p>
+
+            <div class="image-box">
+                <img th:src="@{/img/product/p1.png}" alt="product1">
+                <p class="image-desc">
+                <div>
+                <strong class="info-item1">펀딩명 </strong><a th:text="': ' + ${selectOneFnd.fndName}">: [개굴기업] 알뜰살뜰 모아모아 레인보우 협탁 </a><br>
+                    <strong class="info-item1">선물명 </strong><a th:text="': ' + ${selectOneFnd.giftName}">: 레인보우 협탁</a><br>
+                    <strong class="info-item1">달성률 </strong><a th:text="': ' + ${#numbers.formatDecimal((selectOneFnd.successAmt * 1.0) / selectOneFnd.goalAmt * 100, 0, 0)} + '%'">: 71%</a><br>
+                    <strong class="info-item1">달성금액 </strong><a th:text="': ' + ${selectOneFnd.successAmt}">: 28,000,000</a><br>
+                    <strong class="info-item1">펀딩 종료일 </strong><a th:text="': ' + ${selectOneFnd.fndEndDt}">: 2024-04-24</a>
+                </div>
+            </div>
+
+            <div class="table-container" style="margin-top: 80px;">
+                <p class="title" style="font-size: 18px; font-weight: bold; margin-top: 10px;">공지사항 목록</p>
+                <div class="ntc-content" style="border: none">
+                    <h4>공지사항</h4>
+                    <input type="text" id="ntcValue" name="ntcCont" placeholder="공지할 내용을 입력하세요" style="border: 0.5px solid #808080; margin-top: 10px " >
+                </div>
+            </div>
+
+            <!-- Features Area -->
+            <section class="ntc-insert-content">
+                <div class="container">
+                    <div class="sttr-insert-ntc">
+                        <button type="submit" id="submit-btn" th:onclick="insertNtc()">등록</button>
+                        <button type="button" id="cancel-btn" th:onclick="cancelNtc()">삭제</button>
+                    </div>
+                </div>
+            </section>
+
+        </div>
+    </div>
+</div>
+
+<!-- Features Area -->
+<section class="features-area">
+    <div class="container">
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+    </div>
+</section>
+
+<div th:insert="~{/fragments/footer.html}"></div>
+
+</body>
+</html>

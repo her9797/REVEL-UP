@@ -153,25 +153,116 @@
 }
 
 .modal-button2 {
-    margin-top: 5px;
+    margin-top: 10px;
     display: flex; /* 요소를 가로로 배치 */
     justify-content: center; /* 요소를 가운데에 배치 */
     width: 100%; /* 버튼 그룹의 너비를 최대로 설정 */
 }
 
-#confirmDelete, #cancelDelete {
-    display: flex;
+#confirmDelete {
     align-items: center; /* 세로 중앙 정렬 */
-    justify-content: space-between; /* 가로 중앙 정렬 */
-    padding: 3%; /* 버튼 내부 여백 */
-    background-color: rgb(240, 240, 240); /* 버튼 배경색 */
-    border: 1px solid #035E0C; /* 버튼 테두리 설정 */
-    cursor: pointer; /* 마우스 커서를 손가락 모양으로 변경 */
-    border-radius: 15px;  /* 모서리 둥글게 */
+    padding: 10px 16px; /* 버튼의 길이 조정 */
+    background-color: #0CC291;
+    border: none;
+    border-radius: 5px;
+    color: #fff;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin-top: 10px; /* 버튼 위쪽 간격 조정 */
+    margin-right: 10px; /* 오른쪽 버튼의 왼쪽 여백 조정 */
+}
+
+#confirmDelete:hover {
+    background-color: #0dd6a0;
 }
 
 #cancelDelete {
-    margin-left: 10px;
-    background-color: #F95252; /* '취소' 버튼의 색을 #F95252로 변경 */
-    border-radius: 15px;
+    align-items: center; /* 세로 중앙 정렬 */
+    padding: 10px 16px; /* 버튼의 길이 조정 */
+    background-color: #f85555;
+    border: none;
+    border-radius: 5px;
+    color: #fff;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin-top: 10px; /* 버튼 위쪽 간격 조정 */
 }
+
+#cancelDelete:hover {
+    background-color: #f87c7c;
+}
+
+
+
+
+.modal-content1 {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+}
+
+.close-btn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    cursor: pointer;
+}
+
+.insert-modal {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: white;
+    border-radius: 10px;
+    padding: 20px;
+    z-index: 1000;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 600px;
+    height: auto;
+    border: none;
+}
+
+.insert-modal-content {
+    background-color: #fefefe;
+    padding: 20px;
+    border: 1px solid #888;
+    border-radius: 10px;
+    width: 90%;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.insert-modal-content input,
+.insert-modal-content textarea {
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    padding: 10px;
+    width: calc(100% - 22px);
+    margin-bottom: 10px;
+}
+
+.insert-modal-content textarea {
+    height: 200px;
+    resize: none; /* 텍스트 에어리어의 크기 조절 기능 비활성화 */
+}
+
+.insert-modal-content button {
+    background-color: #0CC291;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    width: 120px;
+}
+
+.insert-modal-content button:hover {
+    background-color: #0AA87E;
+}
+
+
+

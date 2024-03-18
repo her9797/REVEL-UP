@@ -2,7 +2,8 @@ package com.revelup.mypage.model.dao;
 
 import com.revelup.funding.model.dto.DeliveryDTO;
 import com.revelup.funding.model.dto.FundingInfoDTO;
-import com.revelup.pay.model.dto.PayCompletionDTO;
+import com.revelup.funding.model.dto.InquiryDTO;
+import com.revelup.funding.model.dto.InquiryFileDTO;
 import com.revelup.pay.model.dto.PayDTO;
 import org.apache.ibatis.annotations.Mapper;
 
@@ -65,11 +66,16 @@ public interface MypageMapper {
 
     int getSuccessAmtByFndCode(int fndCode);
 
+    void insertInq(InquiryDTO inquiryDTO);
+
+    void insertInqFile(InquiryFileDTO inquiryFileDTO);
+
+    FundingInfoDTO inqFnd(int fndCode);
+
+    FundingInfoDTO sttrOneFnd(int fndCode);
+
 
 //    int deleteFndList(int fndCode);
-
-
-
 
 //    void updateTrackingNum(DeliveryDTO deliveryDTO);
 }

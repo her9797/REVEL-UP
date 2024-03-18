@@ -58,10 +58,30 @@
         <association property="fndNo" resultMap="fndInfoResultMap" />
     </resultMap>
 
+    <!-- 배송 ResultMap -->
     <resultMap id="delivResultMap" type="com.revelup.funding.model.dto.DeliveryDTO">
         <id property="plgCode" column="PLG_CODE" />
         <result property="delivStat" column="DELIV_STAT" />
         <result property="trackingNo" column="TRACKING_NO" />
+    </resultMap>
+
+    <!-- 문의 ResultMap -->
+    <resultMap id="inquiryResultMap" type="com.revelup.funding.model.dto.InquiryDTO">
+        <id property="inqCode" column="INQ_CODE" />
+        <result property="fndCode" column="FND_CODE" />
+        <result property="inqTitle" column="INQ_TITLE" />
+        <result property="inqCont" column="INQ_CONT" />
+        <result property="inqInsertDttm" column="INQ_INSERT_DTTM" />
+        <result property="inqEmail" column="INQ_EMAIL" />
+        <result property="inqAns" column="INQ_ANS" />
+    </resultMap>
+    <!-- 문의파일 ResultMap -->
+    <resultMap id="inquiryFileResultMap" type="com.revelup.funding.model.dto.InquiryFileDTO">
+        <id property="fileCode" column="FILE_CODE" />
+        <result property="inqCode" column="INQ_CODE" />
+        <result property="inqFileLoc" column="INQ_FILE_LOC" />
+        <result property="inqOrgFile" column="INQ_ORG_FILE" />
+        <result property="inqSaveFile" column="INQ_SAVE_FILE" />
     </resultMap>
 
     <!--    PLG ResultMap 후원 -->
@@ -97,6 +117,36 @@
         <result property="userPhone" column="USER_PHONE" />
     </resultMap>
 
+    <insert id="insertInq" parameterType="com.revelup.funding.model.dto.InquiryDTO">
+        INSER INTO INQ (
+                        FND_CODE
+                        , INQ_TITLE
+                        , INQ_CONT
+                        , INQ_INSERT_DTTM
+                        )
+        VALUES(
+                #{fndCode}
+                ,#{inqTitle}
+                ,#{inqCont}
+                , now()
+        )
+    </insert>
+
+    <insert id="insertInqFile" parameterType="com.revelup.funding.model.dto.InquiryFileDTO">
+        INSERT INTO INQ_FILE (
+                                INQ_CODE
+                                ,INQ_FILE_LOC
+                                ,INQ_ORG_FILE
+                                ,INQ_SAVE_FILE
+                              )
+        VALUES(
+                #{inqCode}
+                ,#{inqFileLoc}
+                ,#{inqOrgFile}
+                ,#{inqSaveFile}
+        )
+    </insert>
+
     <!-- 운송장번호 UPDATE -->
     <update id="updateTrackingNo" parameterType="com.revelup.funding.model.dto.DeliveryDTO">
         UPDATE DELIV
@@ -105,6 +155,7 @@
          WHERE PLG_CODE = #{ plgCode }
         <!--         WHERE FND_CODE = #{ fndCode }-->
     </update>
+
 
     <!-- 후원내역조회 후원내역 -->
     <select id="selectAllPlgList" resultMap="payResultMap">
@@ -223,6 +274,21 @@
          WHERE FND_PRG_STAT = 'L'
     </select>
 
+    <!-- 세터 펀딩내역 공지사항 -->
+    <select id="sttrOneFnd" resultMap="fndInfoResultMap">
+        SELECT
+                A.AUDIT_APPR_DT
+                ,F.FND_CODE
+                ,F.FND_NAME
+                ,G.GIFT_NAME
+                ,F.GOAL_AMT
+                ,F.SUCCESS_AMT
+                ,F.FND_END_DT
+          FROM FND_INFO F
+          JOIN AUD A ON A.FND_CODE = F.FND_CODE
+          JOIN GIFT G ON G.FND_CODE = F.FND_CODE
+         WHERE F.FND_CODE = #{fndCode}
+    </select>
 
     <!-- 세터 펀딩내역 상세조회(펀딩) -->
     <select id="sttrSelectOneFnd" resultMap="fndInfoResultMap">
@@ -306,9 +372,6 @@
         WHERE FND_CODE = #{ fndCode }
     </delete>
 
-
-
-
     <!-- 세터 심사 대기중인 펀딩 -->
     <select id="audReadyList" resultMap="fndInfoResultMap">
         SELECT
@@ -321,7 +384,6 @@
          WHERE A.AUDIT_STAT = 'P'
     </select>
 
-
     <!-- 세터 반려된 펀딩 -->
     <select id="refuseList" resultMap="fndInfoResultMap">
         SELECT
@@ -329,10 +391,17 @@
                ,F.FND_NAME
                ,F.GOAL_AMT
                ,F.FND_END_DT
+               ,F.USER_ID
           FROM FND_INFO F
           JOIN AUD A ON A.FND_CODE = F.FND_CODE
          WHERE A.AUDIT_STAT = 'D'
     </select>
+
+    <select id="inqFnd" resultMap="fndInfoResultMap">
+        SELECT FND_CODE ,USER_ID
+        FROM FND_INFO
+    </select>
+
 
     <!-- 세터 종료된 펀딩 -->
     <select id="finishList" resultMap="fndInfoResultMap">
