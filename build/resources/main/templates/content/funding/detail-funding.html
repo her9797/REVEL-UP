@@ -5,21 +5,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title></title>
-
-    <!--  CSS 경로  -->
-    <link th:href="@{/css/mypage.css}" rel="stylesheet">
-    <link th:href="@{/css/detail-funding.css}" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
     <!--  fragments 경로  -->
     <th:block th:include="~{fragments/common}"></th:block>
 
+    <!--  CSS 경로  -->
+    <link th:href="@{/css/mypage.css}" rel="stylesheet">
+    <link th:href="@{/css/detail-funding.css}" rel="stylesheet">
     <!--  JS 경로  -->
-    <script th:src="@{/js/detail-funding.js}"></script>
-
-    <!-- 폰트 -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet">
+    <!--    <script th:src="@{/js/detail-funding.js}"></script>-->
 
 </head>
 
@@ -34,14 +29,18 @@
             <input type="radio" name="slide" id="slide01" checked>
             <input type="radio" name="slide" id="slide02">
             <input type="radio" name="slide" id="slide03">
+            <input type="radio" name="slide" id="slide04">
+            <input type="radio" name="slide" id="slide05">
+
             <div class="slidewrap">
-                <div class="slidelist">
-                    <li class="p" th:each="fundingFile: ${fundingFileList}">
+                <ul class="slidelist">
+                    <li th:each="fundingFile: ${fundingFileList}">
                         <a>
                             <img class="img" th:src="@{|/upload/${fundingFile.fndSaveFile}|}" alt="">
                         </a>
                     </li>
-                </div>
+                </ul>
+
                 <div class="slide-control">
                     <div class="control01">
                         <label for="slide03" class="left"></label>
@@ -53,6 +52,14 @@
                     </div>
                     <div class="control03">
                         <label for="slide02" class="left"></label>
+                        <label for="slide04" class="right"></label>
+                    </div>
+                    <div class="control04">
+                        <label for="slide03" class="left"></label>
+                        <label for="slide05" class="right"></label>
+                    </div>
+                    <div class="control05">
+                        <label for="slide04" class="left"></label>
                         <label for="slide01" class="right"></label>
                     </div>
                 </div>
@@ -84,16 +91,10 @@
         <div class="order-details">
             <div class="quantity">
                 <h6>선물 수량</h6> <span>
-                <span class="plus">+</span>
-                <input type="text" readonly th:value="1">
                 <span class="minus">-</span>
+                <input id="qty-input" name="giftQty" type="text" readonly th:value="1">
+                <span class="plus">+</span>
             </span>
-
-
-                <!--                <button id="decrease" onclick="decreaseQuantity()">-</button>-->
-                <!--                <input id="quantity" class="quantity" min="1" name="form-0-quantity" value="1" type="number"-->
-                <!--                       oninput="updateTotalPrice()" readonly>-->
-                <!--                <button id="increase" onclick="increaseQuantity()">+</button>-->
             </div>
             <div class="wishlist-btn">
                     <span class="wishlist-btn" onclick="addToWishlist()"
@@ -119,19 +120,19 @@
                     <td class="left-margin">모금 목표액</td>
                     <td></td>
                     <td></td>
-                    <td align="right">3,000,000원</td>
+                    <td align="right" th:text="${funding.goalAmt} + '원'"></td>
                 </tr>
                 <tr>
                     <td class="left-margin">모금 달성액</td>
                     <td></td>
                     <td></td>
-                    <td align="right">1,500,000원</td>
+                    <td align="right" th:text="${funding.successAmt} + '원'"></td>
                 </tr>
                 <tr>
                     <td class="left-margin">펀딩 마감일</td>
                     <td></td>
                     <td></td>
-                    <td align="right">2024년 4월 20일</td>
+                    <td align="right" th:text="${funding.fndEndDt}"></td>
                 </tr>
                 <tr>
                     <td>남은 펀딩 기간</td>
@@ -153,8 +154,6 @@
             <h6>펀딩에 문제가 있나요?</h6>
             <button class="rpt-btn">신고하기</button>
         </div>
-
-<!--        <button onclick="listReq()">돌아가기</button>-->
     </div>
 </main>
 <main class="container2">
@@ -166,7 +165,7 @@
     </div>
 
     <div class="right-column2">
-        <img th:src="@{/img/setterProfile/setter1.png}" alt="">
+        <img th:src="@{|/upload/${sttrImg.siSaveFile}|}" alt="">
     </div>
 </main>
 
@@ -205,16 +204,45 @@
 <main class="container3">
     <!--  상세페이지  -->
     <div class="image-box">
-        <img class="funding-image" src="/img/detail/funding-image1.jpeg" alt="">
+        <img class="funding-image" th:src="@{|/upload/${detailImage.fndSaveFile}|}" alt="">
     </div>
 </main>
 
 <div th:insert="~{fragments/footer.html}"></div>
+<script>
+    $(document).ready(function () {
+// 수량 증가 버튼 클릭 시
+        $('.plus').click(function () {
+            let quantityInput = $('#quantity-input');
+            let quantity = parseInt(quantityInput.val());
+            quantity++;
+            quantityInput.val(quantity);
+            calculateTotalPrice();
+        });
+
+// 수량 감소 버튼 클릭 시
+        $('.minus').click(function () {
+            let quantityInput = $('#quantity-input');
+            let quantity = parseInt(quantityInput.val());
+            if (quantity > 1) {
+                quantity--;
+                quantityInput.val(quantity);
+                calculateTotalPrice();
+            }
+        });
+
+// 총 후원금액 계산 함수
+        function calculateTotalPrice() {
+            let unitPrice = parseInt($('#unit-price').text().replace('원', ''));
+            let quantity = parseInt($('#quantity-input').val());
+            let totalPrice = unitPrice * quantity;
+            $('.total-price input[type="text"]').val(totalPrice + '원');
+        }
+    });
+</script>
+
 
 </body>
-<script th:inline="javascript">
-    const listReq = () => {
-        location.href = "/content/funding/all-funding";
-    }
-</script>
+
+
 </html>

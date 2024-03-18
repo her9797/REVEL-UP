@@ -31,6 +31,9 @@ public class FundingInfoDTO implements java.io.Serializable {
     private String fileDiv; // 파일 구분
     private int fileAttached; // 파일 존재 유무
     private List<MultipartFile> fundingFile; // 파일 저장
+    private MultipartFile thumbnailImage;  // 전체 펀딩 목록에서 보여지는 1개의 썸네일
+    private List<MultipartFile> mainThumbnail;   // 상세 목록 조회에서 보여지는 5개의 썸네일
+    private MultipartFile detailImage;     // 상세 페이지 하단 1개의 이미지
 
     private int giftPrice; // 선물 금액
     private String giftName; // 선물명
@@ -42,6 +45,9 @@ public class FundingInfoDTO implements java.io.Serializable {
     private String siSaveFile; // 세터 파일 저장 파일명
     private String siFileDiv; // 세터 파일 구분
     private int siFileAttached; // 세터 파일 존재 유무
+    private List<MultipartFile> sttrFile; // 파일 저장
+    private MultipartFile businessCertif; // 사업자 등록증 1개 파일
+    private MultipartFile sttrImg; // 세터 프로필 1개 이미지
 
     private String sttrCompany; // 상호
     private String sttrName;    // 대표자명
@@ -52,6 +58,4 @@ public class FundingInfoDTO implements java.io.Serializable {
 
     private Date auditApprDt;       // 심사 승인 일자
     private String auditStat;       // 심사 상태
-
-
 }

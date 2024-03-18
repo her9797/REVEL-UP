@@ -21,6 +21,7 @@ public interface FundingMapper {
 
     void insertFile(FundingFileDTO fundingFileDTO);
 
+    void insertSiFile(SetterFileDTO setterFileDTO);
 
     List<FundingInfoDTO> selectAllFunding();
 
@@ -30,6 +31,10 @@ public interface FundingMapper {
 
     List<FundingFileDTO> findFile(int fndCode);
 
+    FundingFileDTO selectDetailImg(int fndCode);
+
+    SetterFileDTO selectSttrImg(String userId);
+
     /* 심사 등록 절대 삭제X */
     void insertAudit(AuditDTO auditDTO);
 
@@ -37,4 +42,5 @@ public interface FundingMapper {
 
     FundingInfoDTO getFundingByUserId(String userId);
 
+//    FundingInfoDTO estimatedDeliv(int fndCode);
 }

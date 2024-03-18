@@ -20,6 +20,11 @@ public interface FundingService {
 
     List<FundingFileDTO> findFile(int fndCode);
 
+    FundingFileDTO selectDetailImg(int fndCode);
+
+    SetterFileDTO selectSttrImg(String userId);
+
     FundingInfoDTO getFundingByUserId(String userId);
 
+//    FundingInfoDTO estimatedDeliv(int fndCode);
 }

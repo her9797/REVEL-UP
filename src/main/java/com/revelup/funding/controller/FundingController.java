@@ -57,7 +57,6 @@ public class FundingController {
         System.out.println(" ");
         System.out.println("auditDTO = " + auditDTO);
         System.out.println(" ");
-//        System.out.println("setterFileDTO = " + setterFileDTO);
         System.out.println("setterInfoDTO = " + setterInfoDTO);
 
         String id = userDTO.getUserId();
@@ -83,7 +82,6 @@ public class FundingController {
         System.out.println(" ");
         System.out.println("auditDTO = " + auditDTO);
         System.out.println(" ");
-//        System.out.println("setterFileDTO = " + setterFileDTO);
 
         fundingService.addFundingToExisting(fundingInfoDTO, giftDTO, auditDTO);
 
@@ -116,17 +114,24 @@ public class FundingController {
         // 상세내용 가져옴
         FundingInfoDTO fundingInfoDTO = fundingService.findByCode(fndCode);
         model.addAttribute("funding", fundingInfoDTO);
-        System.out.println("fundingInfoDTO 컨트롤러 findByCode = " + fundingInfoDTO);
 
-        // 첨부파일 가져옴
+        // 통계 데이터 중 선물 예상 발송일
+//        FundingInfoDTO estimatedDeliv = fundingService.estimatedDeliv(fndCode);
+//        model.addAttribute("estimatedDeliv", estimatedDeliv);
+
+        // MainThumbnail 첨부파일 가져옴
         List<FundingFileDTO> fundingFileDTOList = fundingService.findFile(fndCode);
         model.addAttribute("fundingFileList", fundingFileDTOList);
 
-        return "content/funding/detail-funding";
-    }
+        // DetailImg 첨부파일 가져옴
+        FundingFileDTO detailImage = fundingService.selectDetailImg(fndCode);
+        model.addAttribute("detailImage", detailImage);
 
-    @GetMapping("/detail-funding")
-    public String selectDetailFunding() {
+        // Stter Profile 첨부파일 가져옴
+        String userId = fundingInfoDTO.getUserId(); // 펀딩 정보에서 userId 추출
+        SetterFileDTO setterFile = fundingService.selectSttrImg(userId);
+        model.addAttribute("sttrImg", setterFile);
+
         return "content/funding/detail-funding";
     }
 
