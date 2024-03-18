@@ -1,5 +1,6 @@
 package com.revelup.pay.controller;
 
+import com.revelup.pay.model.dto.PayDTO;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
@@ -67,12 +68,12 @@ public class PayController {
 
     //결제 승인
     @GetMapping("/success")
-    public String kakaoPaySuccess( Principal principal,
-            @AuthenticationPrincipal UserDetails userDetails,
-            @RequestParam("pg_token") String pgToken,
-            Model model) {
+    public String kakaoPaySuccess(Principal principal,
+                                  @AuthenticationPrincipal UserDetails userDetails,
+                                  @RequestParam("pg_token") String pgToken,
+                                  Model model, PayCompletionDTO payDTO) {
         log.info("pgToken: {}", pgToken);
-        KaKaoPayApproveResponseDTO approveResponse = payService.kakaoPayApprove(userDetails.getUsername(), pgToken);
+        KaKaoPayApproveResponseDTO approveResponse = payService.kakaoPayApprove(userDetails.getUsername(), pgToken, payDTO, principal);
 
         PayCompletionDTO payCompletionDTO = PayCompletionDTO.builder()
                 .itemName(approveResponse.getGiftName())

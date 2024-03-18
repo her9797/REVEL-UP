@@ -28,12 +28,12 @@ $(document).ready(function() {
                 $('body').css('overflow', 'hidden');
                 $('.btn-user').prop('disabled', true); // 가입하기 버튼 비활성화
             } else {
-                    $('#emailModal .modal-text h5').text("✔사용가능 아이디✔");
-                    $('#emailModal .modal-text p').text("사용가능한 아이디 입니다.");
-                    $('#emailModal').removeClass('hidden');
-                    $('.modal-layer').removeClass('hidden');
-                    $('body').css('overflow', 'hidden');
-                    $('.btn-user').prop('disabled', false); // 가입하기 버튼 활성화
+                $('#emailModal .modal-text h5').text("✔사용가능 아이디✔");
+                $('#emailModal .modal-text p').text("사용가능한 아이디 입니다.");
+                $('#emailModal').removeClass('hidden');
+                $('.modal-layer').removeClass('hidden');
+                $('body').css('overflow', 'hidden');
+                $('.btn-user').prop('disabled', false); // 가입하기 버튼 활성화
             }
         });
     });

@@ -132,73 +132,15 @@
             </div>
 
 
-            <form action="/content/funding/insertFunding" method="post" enctype="multipart/form-data">
+            <form action="/content/funding/addFundingToExisting" method="post" enctype="multipart/form-data">
 
-                <p class="title1" style="font-size: 14px; font-weight: bold; margin-top: 30px;">새로운 펀딩을 등록하기 위해 아래 정보를
-                    입력해 주세요.</p>
-                <div class="contents1">
-
-                    <h3><b>세터 정보</b></h3>
-                    <div class="input-group1">
-                        <div class="hidden1">
-                            <label for="USER_ID1">아이디</label>
-                            <input type="text" name="userId" id="USER_ID1" th:value="${loginUserId.userId}">
-                        </div>
-                        <div class="regist-doc">
-                            <label for="businessCertif">사업자 등록증</label>
-                            <input type="file" id="businessCertif" name="fundingFile" accept="image/*">
-                        </div>
-
-                        <label for="regist-no1">사업자 등록 번호(10자리)</label>
-                        <div class="input-with-unit1">
-                            <input type="number" name="sttrRegistNo" id="regist-no1"
-                                   placeholder="사업자 등록 번호">
-                        </div>
-                        <div class="error-message1"></div>
-
-                        <label for="company-name1">상호(법인명)</label>
-                        <div>
-                            <input type="text" name="sttrCompany" id="company-name1"
-                                   placeholder="상호(법인명)">
-                        </div>
-
-                        <label for="ceo-name1">대표자명</label>
-                        <div>
-                            <input type="text" name="sttrName" id="ceo-name1"
-                                   placeholder="대표자명">
-                        </div>
-
-                        <label for="setter-bank1">은행</label>
-                        <div>
-                            <input type="text" name="sttrBank" id="setter-bank1"
-                                   placeholder="은행 이름">
-                        </div>
-
-                        <label for="setter-account-number1">계좌번호</label>
-                        <div>
-                            <input type="number" name="sttrAccNo" id="setter-account-number1" placeholder="계좌번호">
-                        </div>
-
-                        <label for="setter-account-holder1">예금주</label>
-                        <div>
-                            <input type="text" name="sttrAccHolder" id="setter-account-holder1" placeholder="예금주">
-                        </div>
-
-                    </div>
-                </div>
-                <div class="button-group1">
-                    <button class="back-button1" onclick="location.href=''">이전</button>
-                    <button class="next-button1" onclick="location.href=''">다음</button>
-                </div>
-
-
-                <p class="title2" style="font-size: 14px; font-weight: bold; margin-top: 30px;">새로운 펀딩을 등록하기
-                    위해
-                    아래 정보를 입력 및 필요한 파일을 업로드해주세요.
-                </p>
+                <p class="title2" style="font-size: 14px; font-weight: bold; margin-top: 30px;">새로운 펀딩을 등록하기 위해 아래 정보를 입력 및 필요한 파일을 업로드해주세요.</p>
                 <div class="contents2">
+
                     <h3>기본정보</h3>
                     <div class="input-group2">
+                        <label class="hidden" for="USER_ID">아이디</label>
+                        <input class="hidden" type="text" name="userId" id="USER_ID" th:value="${loginUserId.userId}">
                         <label for="funding-title">펀딩명</label>
                         <div class="input-with-unit2">
                             <input type="text" id="funding-title" name="fndName"
@@ -216,12 +158,7 @@
                             </ul>
                         </div>
                         <div class="image2">
-                            <input type="file" id="image" name="fundingFile" value="T" accept="image/*"
-                                   onchange="setThumbnail(event);"
-                                   multiple>
-                            <div class="image_container2">
-
-                            </div>
+                            <input type="file" id="image" name="fundingFile" value="T" accept="image/*">
                         </div>
                         <label for="funding-end-date">펀딩 종료일</label>
                         <input type="date" name="fndEndDt" id="funding-end-date"
@@ -260,14 +197,7 @@
                             </ul>
                         </div>
                         <div class="image3">
-                            <input type="file" id="image3" name="fundingFile" value="D" accept="image/*"
-                                   onchange="setThumbnail(event);"
-                                   multiple>
-                            <div class="image_container3">
-                                <ul>
-                                    <li><a href=""><img src="" alt=""></a></li>
-                                </ul>
-                            </div>
+                            <input type="file" id="image3" name="fundingFile" value="D" accept="image/*">
                         </div>
                         <label for="funding-story3">펀딩 스토리</label>
                         <textarea name="fndDescr" id="funding-story3" cols="30"

@@ -10,8 +10,6 @@ import java.util.List;
 @Mapper
 public interface FundingMapper {
 
-    void insertFunding(FundingFileDTO fundingFileDTO, FundingInfoDTO fundingInfoDTO, GiftDTO giftDTO, SetterFileDTO setterFileDTO, SetterInfoDTO setterInfoDTO);
-
     void insertSetterInfo(SetterInfoDTO setterInfoDTO);
 
     void insertFundingInfo(FundingInfoDTO fundingInfoDTO);
@@ -32,10 +30,11 @@ public interface FundingMapper {
 
     List<FundingFileDTO> findFile(int fndCode);
 
-
     /* 심사 등록 절대 삭제X */
     void insertAudit(AuditDTO auditDTO);
 
     void userUpdateRole(UserDTO userDTO);
+
+    FundingInfoDTO getFundingByUserId(String userId);
 
 }

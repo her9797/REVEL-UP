@@ -28,7 +28,7 @@ spring:
 #starttls 설정 = true --> SSL/TLS 기반의 SMTPS 기능 즉 보안기능 활성화
   servlet:
     multipart:
-      max-file-size: 10MB
+      max-file-size: 20MB
 
 
 mybatis:

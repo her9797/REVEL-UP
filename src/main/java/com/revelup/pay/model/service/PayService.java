@@ -1,5 +1,6 @@
 package com.revelup.pay.model.service;
 
+import java.security.Principal;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.LinkedList;
@@ -9,6 +10,7 @@ import java.util.concurrent.ConcurrentLinkedDeque;
 
 import com.revelup.config.KakaoPayConfig;
 
+import com.revelup.pay.model.dao.PlgMapper;
 import com.revelup.pay.model.dto.*;
 import jakarta.servlet.http.HttpServletRequest;
 import lombok.AllArgsConstructor;
@@ -25,14 +27,18 @@ import org.springframework.web.client.RestTemplate;
 
 @Slf4j
 @Service
+
 public class PayService {
 	private static final ConcurrentHashMap<String, String> tidCacheMap = new ConcurrentHashMap();
 	private final KakaoPayConfig kakaoPayConfig;
 
+	private final PlgMapper plgMapper;
+
 	@Autowired
 //	private final PayMapper paymapper;
-	public PayService(KakaoPayConfig kakaoPayConfig) {
+	public PayService(KakaoPayConfig kakaoPayConfig, PlgMapper plgMapper) {
 		this.kakaoPayConfig = kakaoPayConfig;
+		this.plgMapper = plgMapper;
 	}
 
 	@Transactional
@@ -86,7 +92,7 @@ public class PayService {
 	}
 
 	@Transactional
-	public KaKaoPayApproveResponseDTO kakaoPayApprove(String userName, String pgToken) {
+	public KaKaoPayApproveResponseDTO kakaoPayApprove(String userName, String pgToken, PayCompletionDTO payCompletionDTO, Principal principal) {
 		String url = kakaoPayConfig.getHost() + "/online/v1/payment/approve";
 		HttpHeaders headers = new HttpHeaders();
 		headers.set("Authorization", "SECRET_KEY " + kakaoPayConfig.getTestSecretKey());
@@ -106,6 +112,22 @@ public class PayService {
 		KaKaoPayApproveResponseDTO response = restTemplate.exchange(url, HttpMethod.POST, entity, KaKaoPayApproveResponseDTO.class).getBody();
 		log.info(response.toString());
 		//TODO: 결제정보 DB에 저장.
+
+//		payDTO.setPlgCode(); 오토 인크레먼트라서 셋 값 안줘도 됨
+
+		String userId = principal.getName();
+		payCompletionDTO.setUserId(userId);
+//		payCompletionDTO.setUserId(response.getPartnerUserId()); // 이게 맞는지?
+		payCompletionDTO.setFndCode(1);
+		payCompletionDTO.setGiftQty(response.getQuantity());
+		payCompletionDTO.setPlgDttm(response.getApprovedAt()); // 로컬데이트타임 확인 필요
+		payCompletionDTO.setPlgPrice(response.getAmount().getTotal());
+
+		plgMapper.insertPlg(payCompletionDTO);
+
+		System.out.println("❌카카오톡 어프로프 DOT❌" + kakaoPayApproveDTO);
+		System.out.println("❌레스폰스❌" + response);
+		System.out.println("❌페이 DTO❌" + payCompletionDTO);
 
 
 		return response;
