@@ -213,23 +213,8 @@ public class MypageController {
             log.error("페이지를 불러오는 중 오류가 발생했습니다.", e);
             throw new CustomException("페이지를 불러오는 중 오류가 발생했습니다.", e);
         }
-
     }
 
-//    @PostMapping("/setter-fndList/{successAmt}")
-//    public String setterFndListDeletePage(@RequestParam("successAmt") int successAmt) {
-//
-//        try {
-//            FundingInfoDTO fndInfo = mypageService.successAmt(successAmt);
-////            model.addAttribute("fndInfo", fndInfo);
-//            log.info("fndInfo: {}", fndInfo);
-//            return "content/mypage/setter-fndList";
-//        } catch (Exception e) {
-//            log.error("페이지를 불러오는 중 오류가 발생했습니다.", e);
-//            throw new CustomException("페이지를 불러오는 중 오류가 발생했습니다.", e);
-//        }
-//
-//    }
 
     @PostMapping("/setter-fndList/{fndCode}")
     public String setterFndListDeletePage(@PathVariable("fndCode") int fndCode) {
@@ -238,11 +223,19 @@ public class MypageController {
         FundingInfoDTO fndInfo = new FundingInfoDTO();
         fndInfo.setSuccessAmt(successAmt);
         return "redirect:/content/mypage/setter-fndList"; // 달성액을 포함한 펀딩 정보 반환
-
-
     }
 
+    @GetMapping("/setter-notice/{fndCode}")
+    public String sttrNotice(@PathVariable("fndCode")int fndCode, Model model) {
+        System.out.println("fndCode : " + fndCode);
+        FundingInfoDTO sttrOneFnd = mypageService.sttrOneFnd(fndCode);
+        log.info("selectOne");
 
+        model.addAttribute("sttrOneFnd", sttrOneFnd);
+        System.out.println("sttrOneFnd" + sttrOneFnd);
+
+        return "content/mypage/setter-notice";
+    }
 
     // 세터의 펀딩목록 상세조회
     @GetMapping("/setter-funding-history/{fndCode}")
@@ -260,29 +253,8 @@ public class MypageController {
 
         model.addAttribute("plgList", plgList);
         System.out.println("plgList" + plgList);
-        return "/content/mypage/setter-funding-history";
+        return "content/mypage/setter-funding-history";
     }
-
-
-    // 세터의 펀딩목록 삭제(달성률이 0% 일 경우만 가능)
-//    @PostMapping("/deleteFnd")
-//    public ResponseEntity<List<FundingInfoDTO>> deleteFnd(@RequestBody FundingInfoDTO deleteFnd, Model model){
-//
-//        log.info("[FundingInfoDTO] deleteFnd Request : " + deleteFnd);
-//
-//        System.out.println("deleteFnd : " + deleteFnd);
-//        model.addAttribute("deleteFnd", deleteFnd);
-//
-//        List<FundingInfoDTO> deleteFndList = mypageService.deleteFndList(deleteFnd);
-//
-//        log.info("deleteFndList : " + deleteFndList);
-//
-//        System.out.println("삭제 성공!!!!!");
-//
-//        return ResponseEntity.ok(deleteFndList);
-//
-//    }
-
 
     @PostMapping("/delete/{fndCode}")
     @ResponseBody
@@ -326,29 +298,18 @@ public class MypageController {
         }
     }
 
-
-//    @PostMapping("/insertInq")
-//    @ResponseBody
-//    public String insertInq(@RequestParam("fndCode") int fndCode
-//                            ,@ModelAttribute InquiryDTO inquiryDTO
-//                            ,@ModelAttribute InquiryFileDTO inquiryFileDTO) {
-//
-//        log.info("fndCode : " + fndCode);
-//        System.out.println("fndCode : " + fndCode);
-//
-//        mypageService.insertInq(fndCode, inquiryDTO, inquiryFileDTO);
-//
-//        return "redirect:/content/mypage/setter-refuseList";
-//    }
-
     @PostMapping("/insertInq")
     @ResponseBody
     public String insertInq(@RequestParam("fndCode") int fndCode
             ,@ModelAttribute InquiryDTO inquiryDTO
-            ,@ModelAttribute InquiryFileDTO inquiryFileDTO) {
+            ,@ModelAttribute InquiryFileDTO inquiryFileDTO, Model model) {
 
         log.info("fndCode : " + fndCode);
         System.out.println("fndCode : " + fndCode);
+
+        FundingInfoDTO refuse = mypageService.inqFnd(fndCode); // 펀딩번호로 정보 가져오기
+        model.addAttribute("refuse", refuse);
+
 
         mypageService.insertInq(fndCode, inquiryDTO, inquiryFileDTO);
 

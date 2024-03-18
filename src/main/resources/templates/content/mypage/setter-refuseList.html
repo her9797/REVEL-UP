@@ -60,7 +60,7 @@
                         <a th:text="'마감일 : ' + ${refuse.fndEndDt}">마감일 : 2024-05-07</a><br>
                     </div>
                     <div class="button-group">
-                        <a style="color: #000000; text-decoration:none; text-align:center;" id="inquiry-btn" class="inquiry">심사관련문의하기</a>
+                        <a style="color: #000000; text-decoration:none; text-align:center;" id="inquiry-btn" class="inquiry" data-fnd-code="fndCode" data-user-id="userId">심사관련문의하기</a>
                     </div>
                 </div>
 
@@ -72,14 +72,14 @@
                     <h4>문의 등록</h4>
                     <span id="close-inquiry-btn">&times;</span>  <!-- x를 나타내는 문자유니코드 U+00D7 -->
                     <form th:action="@{/content/mypage/setter-fndList}" method="post">
-                        <div class="inquiry-content">
+                        <div class="inquiry-content" >
                             <div class="contract">
                                 <p id="modal-fndCode">펀딩번호</p>
-                                <input type="text" id="insert-fndCode" class="text-box1"  name="fndCode">
+                                <input type="text" id="insert-fndCode" class="text-box1" name="fndCode" disabled>
                             </div>
                             <div class="contract">
                                 <p id="modal-userId" >작성자</p>
-                                <input type="text" id="insert-userId" class="text-box2"  name="userId">
+                                <input type="text" id="insert-userId"  class="text-box2" name="userId" disabled>
                             </div>
                             <div class="contract">
                                 <p id="modal-title" >제목</p>
@@ -87,11 +87,11 @@
                             </div>
                             <div class="contract">
                                 <p id="modal-dateTime" >작성날짜</p>
-                                <input type="text" id="insert-dateTime" class="text-box4"  name="inqInsertDttm">
+                                <input type="text" id="insert-dateTime" class="text-box4"  name="inqInsertDttm" disabled>
                             </div>
                             <div class="contract">
                                 <p id="modal-file" >첨부파일</p>
-                                <input type="text" id="insert-file" class="text-box5"  name="inqFile" accept="image/*" multiple>
+                                <input type="file" id="insert-file" class="text-box5"  name="inqFile" accept="image/*" multiple>
                             </div>
                             <div class="contract">
                                 <p id="insert-text">내용</p>

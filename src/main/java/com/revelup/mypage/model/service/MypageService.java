@@ -8,15 +8,22 @@ import com.revelup.mypage.model.dao.MypageMapper;
 import com.revelup.pay.model.dto.PayDTO;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 
+import java.io.File;
+import java.io.IOException;
 import java.sql.Date;
 import java.util.List;
+import java.util.UUID;
 
 @Service
 @Log4j2
 public class MypageService {
 
     private final MypageMapper mypageMapper;
+
+    private List<InquiryFileDTO> inquiryFiles;
+    private InquiryDTO  inquiryDTO;
 
     public MypageService(MypageMapper mypageMapper) {
         this.mypageMapper = mypageMapper;
@@ -104,24 +111,28 @@ public class MypageService {
         return plgList;
     }
 
+    // 심사대기중 펀딩
     public List<FundingInfoDTO> audReadyList() {
         List<FundingInfoDTO> audReadyList = mypageMapper.audReadyList();
         System.out.println("audReadyList : " + audReadyList);
         return audReadyList;
     }
 
+    // 반려된 펀딩
     public List<FundingInfoDTO> refuseList() {
         List<FundingInfoDTO> refuseList = mypageMapper.refuseList();
         System.out.println("refuseList : " + refuseList);
         return refuseList;
     }
 
+    // 종료된 펀딩
     public List<FundingInfoDTO> finishList() {
         List<FundingInfoDTO> finishList = mypageMapper.finishList();
         System.out.println("finishList : " + finishList);
         return finishList;
     }
 
+    // 펀딩삭제
     public void deleteFnd(int fndCode) {
         System.out.println("fndCode : " + fndCode);
         log.info("fndCode : " + fndCode);
@@ -134,6 +145,7 @@ public class MypageService {
         mypageMapper.deleteFnd(fndCode);
     }
 
+    // 운송장 등록1
     public FundingInfoDTO successAmt(int successAmt) {
 
         System.out.println("successAmt : " + successAmt);
@@ -144,53 +156,41 @@ public class MypageService {
         return fndInfo;
     }
 
+    // 운송장 등록2
     public int getSuccessAmtByFndCode(int fndCode) {
         return mypageMapper.getSuccessAmtByFndCode(fndCode);
     }
 
+
+    // 반려된 펀딩 문의 등록
     public void insertInq(int fndCode, InquiryDTO inquiryDTO, InquiryFileDTO inquiryFileDTO) {
 
-//        inquiryDTO.setInqInsertDttm(new Date());
-        mypageMapper.insertInq(fndCode);
+        inquiryDTO.setInqCode(fndCode);
+        mypageMapper.insertInq(inquiryDTO);
 
         int inqCode = inquiryDTO.getInqCode();
 
-        mypageMapper.insertInqFile(inqCode);
+        inquiryFileDTO.setInqCode(inqCode);
+
+        mypageMapper.insertInqFile(inquiryFileDTO);
+
+//        handleInqFileUpload("detailImage", "D", inquiryFileDTO.getDetailImage(), fndCode);
+    }
+
+    public FundingInfoDTO inqFnd(int fndCode) {
+
+        FundingInfoDTO inqFnd = mypageMapper.inqFnd(fndCode);
+
+        return inqFnd;
 
     }
 
-
-//    public void deleteFndList(FundingInfoDTO fundingInfoDTO) {
-//
-//       mypageMapper.deleteFndList(fundingInfoDTO);
-//
-//    }
-
-//    @Transactional
-//    public List<FundingInfoDTO> deleteFndList(FundingInfoDTO deleteFnd) {
-//        List<FundingInfoDTO> deleteFndList = null;
-//
-//        int result = mypageMapper.deleteFndList(deleteFnd.getFndCode());
-//
-//        if(result > 0) {
-//            deleteFndList = mypageMapper.allFndList(deleteFnd.getFndCode());
-//        } else {
-//            System.out.println("댓글 삭제에 실패하셨습니다.");
-//        }
-//
-//        return deleteFndList;
-//    }
-
-
-
-//    public void updateTrackingNum(DeliveryDTO deliveryDTO) {
-//        mypageMapper.updateTrackingNum(deliveryDTO);
-//    }
-
-
-//    public List<FundingInfoDTO> sttrFndPro(int fndCode) {
-////        return mypageMapper.sttrFndPro(fndCode);
-//        return new ArrayList<>();
-//    }
-
+    public FundingInfoDTO sttrOneFnd(int fndCode) {
+        System.out.println("fndCode : " + fndCode);
+        log.info(fndCode);
+        FundingInfoDTO sttrOneFnd = mypageMapper.sttrOneFnd(fndCode);
+        System.out.println("sttrOneFnd : " + sttrOneFnd);
+        log.info(sttrOneFnd);
+        return sttrOneFnd;
+    }
 }

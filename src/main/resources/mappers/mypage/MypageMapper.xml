@@ -118,15 +118,17 @@
     </resultMap>
 
     <insert id="insertInq" parameterType="com.revelup.funding.model.dto.InquiryDTO">
-        INSER INTO INQ ( FND_CODE
+        INSER INTO INQ (
+                        FND_CODE
                         , INQ_TITLE
                         , INQ_CONT
                         , INQ_INSERT_DTTM
                         )
-        VALUE(#{fndCode}
-            ,#{inqTitle}
-            ,#{inqCont}
-            ,#{inqinsertDttm}
+        VALUES(
+                #{fndCode}
+                ,#{inqTitle}
+                ,#{inqCont}
+                , now()
         )
     </insert>
 
@@ -137,7 +139,7 @@
                                 ,INQ_ORG_FILE
                                 ,INQ_SAVE_FILE
                               )
-        VALUE(
+        VALUES(
                 #{inqCode}
                 ,#{inqFileLoc}
                 ,#{inqOrgFile}
@@ -153,6 +155,7 @@
          WHERE PLG_CODE = #{ plgCode }
         <!--         WHERE FND_CODE = #{ fndCode }-->
     </update>
+
 
     <!-- 후원내역조회 후원내역 -->
     <select id="selectAllPlgList" resultMap="payResultMap">
@@ -271,6 +274,21 @@
          WHERE FND_PRG_STAT = 'L'
     </select>
 
+    <!-- 세터 펀딩내역 공지사항 -->
+    <select id="sttrOneFnd" resultMap="fndInfoResultMap">
+        SELECT
+                A.AUDIT_APPR_DT
+                ,F.FND_CODE
+                ,F.FND_NAME
+                ,G.GIFT_NAME
+                ,F.GOAL_AMT
+                ,F.SUCCESS_AMT
+                ,F.FND_END_DT
+          FROM FND_INFO F
+          JOIN AUD A ON A.FND_CODE = F.FND_CODE
+          JOIN GIFT G ON G.FND_CODE = F.FND_CODE
+         WHERE F.FND_CODE = #{fndCode}
+    </select>
 
     <!-- 세터 펀딩내역 상세조회(펀딩) -->
     <select id="sttrSelectOneFnd" resultMap="fndInfoResultMap">
@@ -354,9 +372,6 @@
         WHERE FND_CODE = #{ fndCode }
     </delete>
 
-
-
-
     <!-- 세터 심사 대기중인 펀딩 -->
     <select id="audReadyList" resultMap="fndInfoResultMap">
         SELECT
@@ -369,7 +384,6 @@
          WHERE A.AUDIT_STAT = 'P'
     </select>
 
-
     <!-- 세터 반려된 펀딩 -->
     <select id="refuseList" resultMap="fndInfoResultMap">
         SELECT
@@ -377,10 +391,17 @@
                ,F.FND_NAME
                ,F.GOAL_AMT
                ,F.FND_END_DT
+               ,F.USER_ID
           FROM FND_INFO F
           JOIN AUD A ON A.FND_CODE = F.FND_CODE
          WHERE A.AUDIT_STAT = 'D'
     </select>
+
+    <select id="inqFnd" resultMap="fndInfoResultMap">
+        SELECT FND_CODE ,USER_ID
+        FROM FND_INFO
+    </select>
+
 
     <!-- 세터 종료된 펀딩 -->
     <select id="finishList" resultMap="fndInfoResultMap">

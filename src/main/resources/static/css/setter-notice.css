@@ -1,0 +1,89 @@
+/* 이미지 박스 스타일 */
+.image-box {
+    display: flex;
+    align-items: center;
+    border: 1px solid #bdbdbd;
+    border-radius: 15px;  /* 모서리 둥글게 */
+    padding: 10px;
+    font-size: 14px; /* 원하는 폰트 크기로 설정 */
+}
+
+/* 이미지 스타일 */
+.image-box img {
+    width: 150px; /* 이미지 크기 조정 */
+    margin-right: 20px; /* 이미지와 항목들 사이 간격 조정 */
+}
+
+/* 이미지 설명 스타일 */
+.image-desc {
+    display: flex;
+    flex-wrap: wrap; /* 넘칠 경우 자동으로 다음 줄로 이동 */
+    align-items: center; /* 수직 가운데 정렬 */
+}
+
+/* 각 항목 스타일 */
+.image-desc div {
+    margin-right: 20px; /* 각 항목 오른쪽 여백 추가 */
+    margin-bottom: 10px; /* 각 항목 아래 여백 추가 */
+    display: flex; /* 요소를 가로로 배열 */
+    align-items: center; /* 수직 가운데 정렬 */
+}
+
+/* 각 항목의 strong 태그 스타일 */
+.image-desc div strong {
+    margin-right: 5px; /* strong 태그 오른쪽 여백 추가 */
+    min-width: 100px; /* strong 태그 최소 너비 지정 */
+    display: inline-block; /* inline 요소를 block 요소로 변경하여 width, height 속성 적용 가능 */
+    text-align: right; /* 텍스트를 오른쪽으로 정렬 */
+}
+
+.info-item1 {
+    display: inline-block;
+    width: 80px; /* 각 항목의 너비 조정 */
+}
+
+/* 테이블을 감싸는 컨테이너 스타일 */
+.table-container {
+    border: 1px solid #a7a7a7;
+    border-radius: 15px;
+    position: relative;
+    padding: 10px;
+    margin-top: 50px;
+}
+
+
+
+#submit-btn {
+    align-items: center; /* 세로 중앙 정렬 */
+    padding: 10px 16px; /* 버튼의 길이 조정 */
+    background-color: #0CC291;
+    border: none;
+    border-radius: 5px;
+    color: #fff;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin-top: 10px; /* 버튼 위쪽 간격 조정 */
+    margin-right: 10px; /* 오른쪽 버튼의 왼쪽 여백 조정 */
+}
+
+#submit-btn:hover {
+    background-color: #0dd6a0;
+}
+
+#cancel-btn {
+    align-items: center; /* 세로 중앙 정렬 */
+    padding: 10px 16px; /* 버튼의 길이 조정 */
+    background-color: #f85555;
+    border: none;
+    border-radius: 5px;
+    color: #fff;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin-top: 10px; /* 버튼 위쪽 간격 조정 */
+}
+
+#cancel-btn:hover {
+    background-color: #f87c7c;
+}
