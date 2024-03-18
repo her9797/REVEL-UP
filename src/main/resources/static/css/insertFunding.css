@@ -24,11 +24,28 @@
     margin-bottom: 10px;
 }
 
+.agreeText1 {
+    width: 100%;
+    height: 200px; /* 조절 가능 */
+    resize: none;
+    border: 1px solid #ccc;
+    padding: 10px;
+    margin-bottom: 10px;
+}
+
 .checkbox0 {
     margin-bottom: 20px;
 }
 
 .checkbox0 p {
+    margin: 0;
+}
+
+.checkbox1 {
+    margin-bottom: 20px;
+}
+
+.checkbox1 p {
     margin: 0;
 }
 
@@ -396,4 +413,9 @@
 .back-button5:hover,
 .submit-button5:hover {
     background-color: #0056b3;
+}
+
+.group {
+    display: flex;
+    flex-direction: column; /* 수직으로 배치 */
 }

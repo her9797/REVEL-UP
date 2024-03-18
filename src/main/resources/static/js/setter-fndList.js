@@ -3,14 +3,13 @@ function deleteFnd(fndCode) {
     console.log("fndCode4 : " + fndCode);
 
     $.ajax({
-        url: `/content/mypage/delete`,
+        url: `/content/mypage/delete/` + fndCode,
         method: 'POST',
         data: { fndCode : fndCode},
         success: function(data) {
             console.log(data); // 서버로부터의 응답을 콘솔에 출력
-            // closeModal();
-            // location.reload();
-            $('#' + fndCode).hide(); // 삭제된 펀딩 항목의 DOM 요소를 제거
+            location.reload();
+            closeModal();
 
             // 페이지 새로고침 없이 해당 펀딩 삭제 후 목록 갱신
             // 여기에서 페이지 갱신이 필요한 경우 갱신 로직을 추가할 수 있습니다.

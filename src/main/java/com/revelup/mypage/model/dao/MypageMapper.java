@@ -31,7 +31,7 @@ public interface MypageMapper {
     PayDTO selectOne(int plgCode);
 
     // 세터 진행중인 펀딩
-    List<FundingInfoDTO> allFndList();
+    List<FundingInfoDTO> allFndList(String userId);
 
     // 세터 진행중인 펀딩 상세조회(펀딩)
     FundingInfoDTO sttrSelectOneFnd(int fndCode);
@@ -40,13 +40,13 @@ public interface MypageMapper {
     List<PayDTO> plgList(int fndCode);
 
     // 세터 심사대기중인 펀딩
-    List<FundingInfoDTO> audReadyList();
+    List<FundingInfoDTO> audReadyList(String userId);
 
     // 세터 반려된 펀딩
-    List<FundingInfoDTO> refuseList();
+    List<FundingInfoDTO> refuseList(String userId);
 
     // 세터 종료된 펀딩
-    List<FundingInfoDTO> finishList();
+    List<FundingInfoDTO> finishList(String userId);
 
     PayDTO selectByOne(int plgCode);
 
@@ -56,7 +56,7 @@ public interface MypageMapper {
 
     void deleteGift(int fndCode);
 
-//    void deleteFndFile(int fndCode);
+    void deleteFndFile(int fndCode);
 
 //    void deleteRpt(int fndCode);
 

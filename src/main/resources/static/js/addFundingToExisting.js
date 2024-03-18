@@ -5,8 +5,6 @@ function insert1() {
     document.getElementById("insert2").style.display = "none";
     document.getElementById("insert3").style.display = "none";
     document.getElementById("insert4").style.display = "none";
-    document.getElementById("insert5").style.display = "none";
-    document.getElementById("insert6").style.display = "none";
 };
 
 function insert2() {
@@ -15,8 +13,6 @@ function insert2() {
     document.getElementById("insert2").style.display = "flex";
     document.getElementById("insert3").style.display = "none";
     document.getElementById("insert4").style.display = "none";
-    document.getElementById("insert5").style.display = "none";
-    document.getElementById("insert6").style.display = "none";
 };
 
 function insert3() {
@@ -25,8 +21,6 @@ function insert3() {
     document.getElementById("insert2").style.display = "none";
     document.getElementById("insert3").style.display = "flex";
     document.getElementById("insert4").style.display = "none";
-    document.getElementById("insert5").style.display = "none";
-    document.getElementById("insert6").style.display = "none";
 };
 
 function insert4() {
@@ -35,187 +29,7 @@ function insert4() {
     document.getElementById("insert2").style.display = "none";
     document.getElementById("insert3").style.display = "none";
     document.getElementById("insert4").style.display = "flex";
-    document.getElementById("insert5").style.display = "none";
-    document.getElementById("insert6").style.display = "none";
 };
-
-function insert5() {
-
-    document.getElementById("insert1").style.display = "none";
-    document.getElementById("insert2").style.display = "none";
-    document.getElementById("insert3").style.display = "none";
-    document.getElementById("insert4").style.display = "none";
-    document.getElementById("insert5").style.display = "flex";
-    document.getElementById("insert6").style.display = "none";
-};
-
-function insert6() {
-
-    document.getElementById("insert1").style.display = "none";
-    document.getElementById("insert2").style.display = "none";
-    document.getElementById("insert3").style.display = "none";
-    document.getElementById("insert4").style.display = "none";
-    document.getElementById("insert5").style.display = "none";
-    document.getElementById("insert6").style.display = "flex";
-};
-
-function validateAndProceed() {
-    // 폼 유효성을 검사합니다.
-    if (validateForm()) {
-        // 유효성 검사를 통과하면 다음 단계로 이동합니다.
-        insert2(); // 다음 단계로 이동하는 함수 호출
-    }
-}
-
-function validateForm() {
-    var agreementCheckbox = document.getElementById("agreementCheckbox");
-    var privacyCheckbox = document.getElementById("privacyCheckbox");
-
-    if (!agreementCheckbox.checked) {
-        alert("이용약관에 동의해야 합니다.");
-        return false; // 폼 제출을 중지합니다.
-    }
-
-    if (!privacyCheckbox.checked) {
-        alert("개인정보 수집 및 이용에 동의해야 합니다.");
-        return false; // 폼 제출을 중지합니다.
-    }
-
-    // 이상이 없으면 폼 제출을 진행합니다.
-    return true;
-}
-
-
-// 사업자번호 유효성 검사 함수
-function validateSttrRegistNo() {
-    var registNo = document.getElementById('regist-no1').value;
-    var errorElement = document.getElementById('sttrRegistNoError');
-
-    if (registNo.length < 1 ||registNo.length > 10) {
-        errorElement.textContent = "10자의 올바른 사업자번호를 작성해 주세요.";
-        document.getElementById('regist-no1').value = registNo.slice(0, 30);
-        return false; // 유효성 검사 실패
-    } else {
-        errorElement.textContent = "";
-        return true; // 유효성 검사 통과
-    }
-}
-
-function validateSttrCompany() {
-    var sttrCompany = document.getElementById('company-name1').value;
-    var sttrCompanyError = document.getElementById('sttrCompanyError');
-
-    if (sttrCompany.trim() === "") {
-        sttrCompanyError.textContent = "상호(법인명)를 입력해 주세요.";
-        return false;
-    } else {
-        sttrCompanyError.textContent = "";
-        return true; // 유효성 검사 통과
-    }
-}
-
-function validateSttrName() {
-    var sttrName = document.getElementById('ceo-name1').value;
-    var sttrNameError = document.getElementById('sttrNameError');
-
-    if (sttrName.trim() === "") {
-        sttrNameError.textContent = "대표자명을 입력해 주세요.";
-        return false;
-    } else {
-        sttrNameError.textContent = "";
-        return true; // 유효성 검사 통과
-    }
-}
-
-function validateSttrBank() {
-    var sttrBank = document.getElementById('setter-bank1').value;
-    var sttrBankError = document.getElementById('sttrBankError');
-
-    if (sttrBank.trim() === "") {
-        sttrBankError.textContent = "은행을 입력해 주세요.";
-        return false;
-    } else {
-        sttrBankError.textContent = "";
-        return true; // 유효성 검사 통과
-    }
-}
-
-function validateSttrAccNo() {
-    var sttrAccNo = document.getElementById('setter-account-number1').value;
-    var sttrAccNoError = document.getElementById('sttrAccNoError');
-
-    if (sttrAccNo.trim() === "") {
-        sttrAccNoError.textContent = "계좌번호를 입력해 주세요.";
-        return false;
-    } else {
-        sttrAccNoError.textContent = "";
-        return true; // 유효성 검사 통과
-    }
-}
-
-function validateSttrAccHolder() {
-    var sttrAccHolder = document.getElementById('setter-account-holder1').value;
-    var sttrAccHolderError = document.getElementById('sttrAccHolderError');
-
-    if (sttrAccHolder.trim() === "") {
-        sttrAccHolderError.textContent = "예금주를 입력해 주세요.";
-        return false;
-    } else {
-        sttrAccHolderError.textContent = "";
-        return true; // 유효성 검사 통과
-    }
-}
-
-function checkInputs0() {
-    var businessCertif = document.getElementById('businessCertif').files.length;
-    var sttrImg = document.getElementById('sttrImg').files.length;
-    var errorMessage = "";
-
-    if (!validateSttrRegistNo()) {
-        return false;
-    }
-
-    if (businessCertif === 0) {
-        errorMessage += "사업자등록증을 업로드 해주세요.\n";
-        console.log(errorMessage);
-
-    }
-
-    if (sttrImg === 0) {
-        errorMessage += "세터 프로필 사진을 입력 해주세요.\n";
-        console.log(errorMessage);
-
-    }
-
-    if (!validateSttrCompany ) {
-        return false;
-    }
-
-    if (!validateSttrName()) {
-        return false;
-    }
-
-    if (!validateSttrBank()) {
-        return false;
-    }
-
-    if (!validateSttrAccNo()) {
-        return false;
-    }
-
-    if (!validateSttrAccHolder()) {
-        return false;
-    }
-
-    // 다른 입력 필드들도 유사하게 확인
-
-    if (errorMessage !== "") {
-        alert(errorMessage);
-        return false;
-    }
-
-    return true;
-}
 
 
 // 펀딩명 유효성 검사 함수
@@ -252,7 +66,7 @@ function validateGoalAmount() {
 
 // 모든 입력 값 확인 함수
 function checkInputs1() {
-    // var titleValid = validateTitle(); // 펀딩명 유효성 검사 결과
+    var titleValid = validateTitle(); // 펀딩명 유효성 검사 결과
 
     var thumbnailImage = document.getElementById('thumbnailImage').files.length;
     var mainThumbnail = document.getElementById('mainThumbnail').files.length;
@@ -260,7 +74,7 @@ function checkInputs1() {
     // var errorElement = document.getElementById('titleError');
     var errorMessage = "";
 
-    if (!validateTitle()) {
+    if (!titleValid) {
         return false; // 펀딩명 유효성 검사 실패 시 종료
     }
 
