@@ -39,6 +39,7 @@
         <result property="fndOrgFile" column="FND_ORG_FILE" />
         <result property="fndSaveFile" column="FND_SAVE_FILE" />
         <result property="fileDiv" column="FILE_DIV" />
+        <result property="fileAttached" column="FILE_ATTACHED" />
     </resultMap>
 
     <!--    aud ResultMa 심사 -->
@@ -75,6 +76,7 @@
         <result property="inqEmail" column="INQ_EMAIL" />
         <result property="inqAns" column="INQ_ANS" />
     </resultMap>
+
     <!-- 문의파일 ResultMap -->
     <resultMap id="inquiryFileResultMap" type="com.revelup.funding.model.dto.InquiryFileDTO">
         <id property="fileCode" column="FILE_CODE" />
@@ -89,6 +91,7 @@
         <id property="plgCode" column="PLG_CODE" />
         <result property="userId" column="USER_ID" />
         <result property="fndCode" column="FND_CODE" />
+        <result property="fndSaveFile" column="FND_SAVE_FILE" />
         <result property="giftQty" column="GIFT_QTY" />
         <result property="plgDttm" column="PLG_DTTM" />
         <result property="plgPrice" column="PLG_PRICE" />
@@ -103,6 +106,7 @@
     <resultMap id="twoPlgResultMap" type="com.revelup.pay.model.dto.PayDTO">
         <id property="plgCode" column="PLG_CODE" />
         <result property="userId" column="USER_ID" />
+        <result property="fndSaveFile" column="FND_SAVE_FILE" />
         <result property="fndCode" column="FND_CODE" />
         <result property="giftQty" column="GIFT_QTY" />
         <result property="plgDttm" column="PLG_DTTM" />
@@ -236,6 +240,7 @@
     <select id="selectOne" resultMap="twoPlgResultMap">
         SELECT
                 P.PLG_DTTM
+                , FIF_FND_SAVE_FILE
                 , F.FND_NAME
                 , G.GIFT_NAME
                 , P.GIFT_QTY
@@ -249,6 +254,7 @@
           JOIN USER U ON P.USER_ID = U.USER_ID
           JOIN DELIV D ON P.PLG_CODE = D.PLG_CODE
           JOIN FND_INFO F ON P.FND_CODE = F.FND_CODE
+          JOIN FND_INSERT_FILE FIF ON F.FND_CODE = FIF.FND_CODE
           JOIN GIFT G ON G.FND_CODE = F.FND_CODE
          WHERE P.PLG_CODE = #{plgCode}
     </select>
