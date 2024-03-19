@@ -38,9 +38,8 @@
                 var imageBox = this.closest('.image-box');
                 // .image-box 내부에 있는 후원번호를 가진 a 태그의 텍스트를 plgCode로 사용합니다.
                 var plgCode = imageBox.querySelector('p > a').textContent;
-                alert(plgCode);
                 window.location.href = "/content/mypage/getter-spons-details1?plgCode=" + plgCode;
-                console.log("@@@@"+plgCode);
+
             });
         });
     });

@@ -46,9 +46,8 @@ public class MypageController {
         deliveryDTO.setDelivStat("S");
         deliveryDTO.setTrackingNo(trackingNo);
         model.addAttribute("deliveryDTO", deliveryDTO);
-        System.out.println(deliveryDTO);
+
         fundingInfoDTO.getFndCode();
-        System.out.println("fundingInfoDTO : " + fundingInfoDTO.getFndCode());
 
         int result = mypageService.updateTrackingNo(deliveryDTO);
 
@@ -87,7 +86,7 @@ public class MypageController {
         log.info("plgCode : {}", plgCode);
         try {
             PayDTO plgDetails = mypageService.selectOne(plgCode);
-            System.out.println("plgDetails :" + plgDetails);
+
             if (plgDetails == null) { // 조회 결과가 없는 경우
                 log.info("해당 plgCode에 대한 데이터가 존재하지 않습니다: {}", plgCode);
                 model.addAttribute("message", "해당 정보를 찾을 수 없습니다."); // 모델에 메시지 추가
@@ -148,7 +147,6 @@ public class MypageController {
     public String setterFndListPage(Model model, Principal principal) {
 
         String userId = principal.getName();
-        System.out.println("userId : " + userId);
 
         try {
             List<FundingInfoDTO> allFndList = mypageService.allFndList(userId);
@@ -178,12 +176,10 @@ public class MypageController {
 
     @GetMapping("/setter-notice/{fndCode}")
     public String sttrNotice(@PathVariable("fndCode")int fndCode, Model model) {
-        System.out.println("fndCode : " + fndCode);
         FundingInfoDTO sttrOneFnd = mypageService.sttrOneFnd(fndCode);
         log.info("selectOne");
 
         model.addAttribute("sttrOneFnd", sttrOneFnd);
-        System.out.println("sttrOneFnd" + sttrOneFnd);
 
         return "content/mypage/setter-notice";
     }
@@ -200,10 +196,8 @@ public class MypageController {
         List<PayDTO> plgList = mypageService.plgList(fndCode);
 
         model.addAttribute("selectOneFnd", selectOneFnd);
-        System.out.println("selectOneFnd" + selectOneFnd);
-
         model.addAttribute("plgList", plgList);
-        System.out.println("plgList" + plgList);
+
         return "content/mypage/setter-funding-history";
     }
 
@@ -212,8 +206,6 @@ public class MypageController {
     public String deleteFnd(@RequestParam("fndCode") int fndCode) {
 
         log.info("fndCode : " + fndCode);
-        System.out.println("fndCode : " + fndCode);
-
         mypageService.deleteFnd(fndCode);
 
         return "redirect:/content/mypage/setter-fndList";
@@ -258,11 +250,9 @@ public class MypageController {
                             , @ModelAttribute InquiryFileDTO inquiryFileDTO, Model model) {
 
         log.info("fndCode : " + fndCode);
-        System.out.println("fndCode : " + fndCode);
 
         FundingInfoDTO refuse = mypageService.inqFnd(fndCode); // 펀딩번호로 정보 가져오기
         model.addAttribute("refuse", refuse);
-
 
         mypageService.insertInq(fndCode, inquiryDTO, inquiryFileDTO);
 

@@ -16,8 +16,6 @@ import java.util.List;
 public class MypageService {
 
     private final MypageMapper mypageMapper;
-    private List<InquiryFileDTO> inquiryFiles;
-    private InquiryDTO  inquiryDTO;
 
     public MypageService(MypageMapper mypageMapper) {
         this.mypageMapper = mypageMapper;
@@ -31,54 +29,43 @@ public class MypageService {
 
     // 후원한 펀딩
     public List<PayDTO> selectAllPlgList(String userId) {
-        System.out.println("userID : " + userId);
         List<PayDTO> payList = mypageMapper.selectAllPlgList(userId);
-        System.out.println("payList : " + payList);
         return payList;
     }
 
     // 후원내역 상세조회1
     public PayDTO selectOne(int plgCode) {
-        System.out.println("plgCode : " + plgCode);
         return mypageMapper.selectOne(plgCode);
     }
 
     // 후원철회 펀딩
     public List<PayDTO> selectRefundList(String userId) {
-        System.out.println("userID : " + userId);
         List<PayDTO> payList = mypageMapper.selectRefundList(userId);
-        System.out.println("payList : " + payList);
         return payList;
     }
 
     // 미달성 펀딩
     public List<PayDTO> selectFailFndList(String userId) {
-        System.out.println("userID : " + userId);
         List<PayDTO> payList = mypageMapper.selectFailFndList(userId);
-        System.out.println("payList : " + payList);
         return payList;
     }
 
     // 펀딩내역 조회
     public List<FundingInfoDTO> allFndList(String userId) {
         List<FundingInfoDTO> fndList = mypageMapper.allFndList(userId);
-        System.out.println("fndList : " + fndList);
         return fndList;
     }
 
     // 펀딩내역 상세조회(펀딩)
     public FundingInfoDTO sttrSelectOneFnd(int fndCode) {
-        System.out.println("fndCode : " + fndCode);
         log.info(fndCode);
         FundingInfoDTO fndByOne = mypageMapper.sttrSelectOneFnd(fndCode);
-        System.out.println("fndByOne : " + fndByOne);
         log.info(fndByOne);
         return fndByOne;
     }
 
     // 펀딩내역 상세조회(후원자)
     public List<PayDTO> plgList(int fndCode) {
-        System.out.println("fndCode : " + fndCode);
         log.info(fndCode);
         List<PayDTO> plgList = mypageMapper.plgList(fndCode);
         log.info(plgList);
@@ -87,29 +74,24 @@ public class MypageService {
 
     // 심사대기중 펀딩
     public List<FundingInfoDTO> audReadyList(String userId) {
-
         List<FundingInfoDTO> audReadyList = mypageMapper.audReadyList(userId);
-        System.out.println("audReadyList : " + audReadyList);
         return audReadyList;
     }
 
     // 반려된 펀딩
     public List<FundingInfoDTO> refuseList(String userId) {
         List<FundingInfoDTO> refuseList = mypageMapper.refuseList(userId);
-        System.out.println("refuseList : " + refuseList);
         return refuseList;
     }
 
     // 종료된 펀딩
     public List<FundingInfoDTO> finishList(String userId) {
         List<FundingInfoDTO> finishList = mypageMapper.finishList(userId);
-        System.out.println("finishList : " + finishList);
         return finishList;
     }
 
     // 펀딩삭제
     public void deleteFnd(int fndCode) {
-        System.out.println("fndCode : " + fndCode);
         log.info("fndCode : " + fndCode);
 
         mypageMapper.deletePlg(fndCode);
@@ -122,11 +104,8 @@ public class MypageService {
 
     // 운송장 등록1
     public FundingInfoDTO successAmt(int successAmt) {
-
-        System.out.println("successAmt : " + successAmt);
         log.info(successAmt);
         FundingInfoDTO fndInfo = mypageMapper.successAmt(successAmt);
-        System.out.println("fndInfo : " + fndInfo);
         log.info(fndInfo);
         return fndInfo;
     }
@@ -141,7 +120,6 @@ public class MypageService {
 
         inquiryDTO.setInqCode(fndCode);
         mypageMapper.insertInq(inquiryDTO);
-
         int inqCode = inquiryDTO.getInqCode();
         inquiryFileDTO.setInqCode(inqCode);
         mypageMapper.insertInqFile(inquiryFileDTO);
@@ -152,19 +130,17 @@ public class MypageService {
     }
 
     public FundingInfoDTO sttrOneFnd(int fndCode) {
-        System.out.println("fndCode : " + fndCode);
         log.info(fndCode);
         FundingInfoDTO sttrOneFnd = mypageMapper.sttrOneFnd(fndCode);
-        System.out.println("sttrOneFnd : " + sttrOneFnd);
         log.info(sttrOneFnd);
         return sttrOneFnd;
     }
 
-    public FundingInfoDTO finishUpdateStat(int fndCode) {
-        return mypageMapper.finishUpdateStat(fndCode);
-    }
-
-    public void updateFundingStatus(int fndCode) {
-        mypageMapper.updateFundingStatus(fndCode);
-    }
+//    public FundingInfoDTO finishUpdateStat(int fndCode) {
+//        return mypageMapper.finishUpdateStat(fndCode);
+//    }
+//
+//    public void updateFundingStatus(int fndCode) {
+//        mypageMapper.updateFundingStatus(fndCode);
+//    }
 }
