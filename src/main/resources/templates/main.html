@@ -94,86 +94,17 @@
         <br>
         <div class="row">
             <div class="col-lg-3 col-md-6">
-                <div class="single-product">
-                    <img class="img-fluid" th:src="@{/img/product/p1.png}" alt="" style="width: 100%; height: 200px;">
+                <div class="single-product" th:each="funding: ${fundingList}">
+                    <img class="img-fluid" th:src="@{|/upload/${funding.fndSaveFile}|}" alt="" style="width: 100%; height: 200px;">
                     <div class="product-details">
                         <br>
-                        <h6>청바지를 재활용한 슬리퍼</h6>
+                        <h6 th:text="${funding.fndName}"></h6>
                         <div class="price">
-                            <h6>8,000원</h6>
-                        </div>
-                        <div id="sales-achievement" style="margin: 5px; padding: 0;">
-                            <p style="margin: 0; padding: 0;">Sales: <span id="sales-amount" style="margin: 0; padding: 0;">0</span></p>
-                            <p style="margin: 0; padding: 0;">Achievement: <span id="achievement" style="margin: 0; padding: 0;">0%</span></p>
+                            <h6 th:text="${funding.giftPrice}"></h6>
                         </div>
                         <div class="prd-bottom">
-                            <a href="#" class="btn-product">Add to Bag</a>
-                            <a th:href="@{/content/funding/detail-funding.html}" class="btn-product">펀딩 상세 조회</a>
-                            <a href="/content/pay/pay" class="btn-product">Pay</a>
-                        </div>
-                        <!-- <canvas id="salesChart" width="200" height="100"></canvas> -->
-                    </div>
-                </div>
-            </div>
-            <!-- 새로운 상품 2 -->
-            <div class="col-lg-3 col-md-6">
-                <div class="single-product">
-                    <img class="img-fluid" th:src="@{/img/product/p2.jpg}" alt="" style="width: 100%; height: 200px;">
-                    <div class="product-details">
-                        <br>
-                        <h6>청바지를 재활용한 가방</h6>
-                        <div class="price">
-                            <h6>20,000원</h6>
-                        </div>
-                        <div id="sales-achievement" style="margin: 5px; padding: 0;">
-                            <p style="margin: 0; padding: 0;">Sales: <span id="sales-amount" style="margin: 0; padding: 0;">0</span></p>
-                            <p style="margin: 0; padding: 0;">Achievement: <span id="achievement" style="margin: 0; padding: 0;">0%</span></p>
-                        </div>
-                        <div class="prd-bottom">
-                            <a href="#" class="btn-product">Add to Bag</a>
-                            <a href="#" class="btn-product">Project</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!-- 새로운 상품 3 -->
-            <div class="col-lg-3 col-md-6">
-                <div class="single-product">
-                    <img class="img-fluid" th:src="@{/img/product/p3.jpg}" alt="" style="width: 100%; height: 200px;">
-                    <div class="product-details">
-                        <br>
-                        <h6>테니스공을 활용한 모자</h6>
-                        <div class="price">
-                            <h6>50,000원</h6>
-                        </div>
-                        <div id="sales-achievement" style="margin: 5px; padding: 0;">
-                            <p style="margin: 0; padding: 0;">Sales: <span id="sales-amount" style="margin: 0; padding: 0;">0</span></p>
-                            <p style="margin: 0; padding: 0;">Achievement: <span id="achievement" style="margin: 0; padding: 0;">0%</span></p>
-                        </div>
-                        <div class="prd-bottom">
-                            <a href="#" class="btn-product">Add to Bag</a>
-                            <a href="#" class="btn-product">Project</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!-- 새로운 상품 4 -->
-            <div class="col-lg-3 col-md-6">
-                <div class="single-product">
-                    <img class="img-fluid" th:src="@{/img/product/p4.jpg}" alt="" style="width: 100%; height: 200px;">
-                    <div class="product-details">
-                        <br>
-                        <h6>테니스공을 활용한 장갑</h6>
-                        <div class="price">
-                            <h6>100,000원</h6>
-                        </div>
-                        <div id="sales-achievement" style="margin: 5px; padding: 0;">
-                            <p style="margin: 0; padding: 0;">Sales: <span id="sales-amount" style="margin: 0; padding: 0;">0</span></p>
-                            <p style="margin: 0; padding: 0;">Achievement: <span id="achievement" style="margin: 0; padding: 0;">0%</span></p>
-                        </div>
-                        <div class="prd-bottom">
-                            <a href="#" class="btn-product">Add to Bag</a>
-                            <a href="#" class="btn-product">Project</a>
+                            <a href="#" class="btn-product">찜하기</a>
+                            <a th:href="@{/content/funding/detail-funding.html}" class="btn-product">상세 조회</a>
                         </div>
                     </div>
                 </div>

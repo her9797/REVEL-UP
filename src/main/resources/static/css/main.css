@@ -57,7 +57,7 @@ body {
 /* Product Area */
 .single-product-slider {
     background-color: #f8f9fa;
-    padding: 80px 0; /* Reduced padding */
+    padding: 80px 0;
 }
 
 .single-product {
@@ -65,16 +65,17 @@ body {
 }
 
 .single-product img {
-    border-radius: 8px; /* Increased border radius for product images */
+    border-radius: 8px;
 }
 
 .product-details h6 {
-    font-size: 16px; /* Reduced heading font size */
+    font-size: 16px;
     margin-bottom: 8px;
 }
 
 .price h6 {
     margin-right: 8px; /* Reduced margin */
+    display: inline-block;
 }
 
 /* 사용자 정의 버튼 스타일 */

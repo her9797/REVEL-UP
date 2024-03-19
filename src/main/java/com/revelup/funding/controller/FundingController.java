@@ -125,7 +125,6 @@ public class FundingController {
         model.addAttribute("fundingList", fundingInfoDTOList);
         System.out.println("fundingInfoDTOList 🔥🔥🔥🔥🔥🔥🔥🔥 selectAllFunding = " + fundingInfoDTOList);
 
-
         return "content/funding/all-funding";
     }
 
