@@ -10,16 +10,16 @@ body {  /* 전체 설정 */
 .container .item_list {
     display: flex;
     flex-wrap: wrap; /* 상위 요소의 너비보다 하위 요소의 너비가 더 클 경우 줄 바꿈 */
-    justify-content: space-between;
+    justify-content: flex-start;
 }
 
 .container .item_list .card {
-    border: 1px solid #eee;
+    border: 0.5px solid #848484;
     border-radius: 5px;
-    height: 350px;
+    height: 400px;
     width: 250px;
     padding: 5px;
-    margin-bottom: 10px;
+    margin: 3% 16px 10px 0; /* top right bottom left*/
 }
 
 .container .item_list .card img {
@@ -45,6 +45,29 @@ body {  /* 전체 설정 */
     margin-top: 4px;
     display: flex;
 }
+
+.button-group {
+    margin-top: 30px;
+}
+
+#details-btn {
+    display: flex;
+    width: 183px;
+    padding: 5px 10px;
+    border: none;
+    border-radius: 15px;
+    background-color: #0cc291;
+    color: #fff;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    /*margin-right: 2px;*/
+}
+
+#details-btn:hover {
+    background-color: #52cdac;
+    transform: scale(1.05); /* 마우스 호버 시 약간 확대하여 강조 */
+}
+
 
 /* 후원하기 버튼 스타일 */
 .items .pay-button {

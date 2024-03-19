@@ -39,11 +39,11 @@ public class SecurityConfig  {
     public SecurityFilterChain configure(HttpSecurity http) throws Exception {
         http.authorizeHttpRequests(auth -> {
             /* 인가를 받지 않아도 (비회원이어도 접속할 수 있는 페이지 or 파일들) */
-            auth.requestMatchers("/content/user/login", "/content/user/sign-up", "/content/user/fail", "/content/user/modal","/upload/**",
+            auth.requestMatchers("/content/user/login", "/content/user/sign-up", "/content/user/fail", "/content/user/modal",
                     "/content/user/user-find", "/content/user/user-find-id","/content/user/user-find-password",
                     ("/content/user/findId"),("/content/user/findPw"),("/content/user/updatePw"),("/content/user/emailCheck"),
                     "/", "/main",("/content/user/sendMail"),("/content/user/idCheck"),("/content/user/nameCheck"),"/content/funding/insertFunding",
-                    ("/css/**"),("/fragments/**"),("/img/**"),("/js/**"),("/content/funding/all-funding"),"/content/funding/all-funding/{fndCode}").permitAll();
+                    ("/css/**"),("/fragments/**"),("/img/**"),("/js/**"),("/content/funding/all-funding"), ("/upload/**")).permitAll();
             auth.requestMatchers(UserRole.게터.getRole()).permitAll(); /* role의 상태가 게터면 접속할 수 있는 페이지 */
             auth.requestMatchers(UserRole.세터.getRole()).permitAll(); /* role의 상태가 세터면 접속할 수 있는 페이지 */
             auth.requestMatchers(UserRole.매니저.getRole()).permitAll(); /* role의 상태가 매니저면 접속할 수 있는 페이지 */

@@ -92,24 +92,24 @@
             </div>
         </div>
         <br>
-        <div class="row">
-            <div class="col-lg-3 col-md-6">
-                <div class="single-product" th:each="funding: ${fundingList}">
-                    <img class="img-fluid" th:src="@{|/upload/${funding.fndSaveFile}|}" alt="" style="width: 100%; height: 200px;">
+        <div class="row justify-content-center">
+            <div class="col-lg-3 col-md-6" th:each="funding, iterStat : ${fundingList}">
+                <div class="single-product" th:if="${iterStat.index < 4}">
+                    <img class="img-fluid" th:src="@{|/upload/${funding.fndSaveFile}|}" alt=""
+                         style="width: 255px; height: 200px;">
                     <div class="product-details">
                         <br>
                         <h6 th:text="${funding.fndName}"></h6>
-                        <div class="price">
-                            <h6 th:text="${funding.giftPrice}"></h6>
-                        </div>
-                        <div class="prd-bottom">
-                            <a href="#" class="btn-product">찜하기</a>
-                            <a th:href="@{/content/funding/detail-funding.html}" class="btn-product">상세 조회</a>
-                        </div>
+                        <h6 th:text="${funding.giftPrice}"></h6>
+                    </div>
+                    <div class="prd-bottom">
+                        <a href="#" class="btn-product">찜하기</a>
+                        <a th:href="@{/content/funding/detail-funding.html}" class="btn-product">상세 조회</a>
                     </div>
                 </div>
             </div>
         </div>
+    </div>
     </div>
 </section>
 

@@ -47,7 +47,7 @@
 
 /* 이미지 박스 스타일 */
 .image-box {
-    height: 330px;
+    height: 350px;
     box-sizing: border-box; /* 테두리와 패딩이 요소의 크기에 포함 */
     width: calc(25% - 16px); /* 부모 요소의 가로 길이를 4로 나눈 값에서 16px(여백) 빼기 */
     border: 1px solid #bdbdbd;
