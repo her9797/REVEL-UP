@@ -43,31 +43,23 @@
 </section>
 
 <div class="container">
-    <div class="item_list">
+    <div class="item_list" style="border: none">
         <div class="card" th:each="funding: ${fundingList}" style="border: black solid 1px; cursor: pointer; text-decoration: none">
             <div class="img">
                 <img th:src="@{|/upload/${funding.fndSaveFile}|}" alt="">
             </div>
             <div class="fndName" th:rows="1">
-                <p th:text="${funding.fndName}"></p>
+                <p style="margin-top: 8px" th:text="${funding.fndName}"></p>
             </div>
-            <div class="details">
-            <!-- 가로그래프 삽입 필요 -->
-                <span th:text="${#numbers.formatDecimal((funding.successAmt * 1.0) / funding.goalAmt * 100, 0, 0)} + '% 달성'"></span><span style="margin-right: 30px" th:text="${funding.giftPrice} + '원'"></span>
+            <div class="details" style="display: flex; justify-content: space-between; margin-bottom: 8px;">
+                <span th:text="${#numbers.formatDecimal((funding.successAmt * 1.0) / funding.goalAmt * 100, 0, 0)} + '% 달성'"></span>
+                <span th:text="${funding.giftPrice} + '원'"></span>
             </div>
 
-            <!-- 달성률을 나타내는 바의 컨테이너 -->
             <div class="progress-container">
-                <!-- 달성률에 따라 너비가 변하는 바 -->
                 <div class="progress-bar" th:style="'width:' + ${#numbers.formatDecimal((funding.successAmt * 1.0) / funding.goalAmt * 100, 0, 0)} + '%'"></div>
             </div>
 
-<!--            <div class="text">-->
-
-<!--                <p></p>-->
-
-
-<!--            </div>-->
             <div class="button-group">
                 <button id="details-btn" th:onclick="'javascript:window.location.href=\'' + @{/content/funding/all-funding/__${funding.fndCode}__} + '\''">상세보기</button>
             </div>

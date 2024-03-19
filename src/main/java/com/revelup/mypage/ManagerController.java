@@ -29,6 +29,4 @@ public class ManagerController {
         return "/manager/manager-report";
     }
 
-
-
 }

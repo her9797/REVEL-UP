@@ -16,7 +16,6 @@ import java.util.List;
 public class MypageService {
 
     private final MypageMapper mypageMapper;
-
     private List<InquiryFileDTO> inquiryFiles;
     private InquiryDTO  inquiryDTO;
 
@@ -26,12 +25,9 @@ public class MypageService {
 
     // 운송장번호 UPDATE
     public int updateTrackingNo(DeliveryDTO deliveryDTO) {
-
         int result = mypageMapper.updateTrackingNo(deliveryDTO);
-
         return result;
     }
-
 
     // 후원한 펀딩
     public List<PayDTO> selectAllPlgList(String userId) {
@@ -44,21 +40,8 @@ public class MypageService {
     // 후원내역 상세조회1
     public PayDTO selectOne(int plgCode) {
         System.out.println("plgCode : " + plgCode);
-//        PayCompletionDTO plgByOne = mypageMapper.selectOne(plgCode);
-//        System.out.println("plgByOne : " + plgByOne);
-//        return plgByOne;
         return mypageMapper.selectOne(plgCode);
     }
-
-    // 후원내역 상세조회2
-    public PayDTO selectByOne(int plgCode) {
-        System.out.println("plgCode : " + plgCode);
-//        PayCompletionDTO plgByOne = mypageMapper.selectOne(plgCode);
-//        System.out.println("plgByOne : " + plgByOne);
-//        return plgByOne;
-        return mypageMapper.selectByOne(plgCode);
-    }
-
 
     // 후원철회 펀딩
     public List<PayDTO> selectRefundList(String userId) {
@@ -76,8 +59,6 @@ public class MypageService {
         return payList;
     }
 
-
-
     // 펀딩내역 조회
     public List<FundingInfoDTO> allFndList(String userId) {
         List<FundingInfoDTO> fndList = mypageMapper.allFndList(userId);
@@ -93,7 +74,6 @@ public class MypageService {
         System.out.println("fndByOne : " + fndByOne);
         log.info(fndByOne);
         return fndByOne;
-
     }
 
     // 펀딩내역 상세조회(후원자)
@@ -156,7 +136,6 @@ public class MypageService {
         return mypageMapper.getSuccessAmtByFndCode(fndCode);
     }
 
-
     // 반려된 펀딩 문의 등록
     public void insertInq(int fndCode, InquiryDTO inquiryDTO, InquiryFileDTO inquiryFileDTO) {
 
@@ -164,18 +143,12 @@ public class MypageService {
         mypageMapper.insertInq(inquiryDTO);
 
         int inqCode = inquiryDTO.getInqCode();
-
         inquiryFileDTO.setInqCode(inqCode);
-
         mypageMapper.insertInqFile(inquiryFileDTO);
-
-//        handleInqFileUpload("detailImage", "D", inquiryFileDTO.getDetailImage(), fndCode);
     }
 
     public FundingInfoDTO inqFnd(int fndCode) {
-
         return mypageMapper.inqFnd(fndCode);
-
     }
 
     public FundingInfoDTO sttrOneFnd(int fndCode) {
@@ -189,10 +162,9 @@ public class MypageService {
 
     public FundingInfoDTO finishUpdateStat(int fndCode) {
         return mypageMapper.finishUpdateStat(fndCode);
-
     }
 
-    public void accumulateSuccessAmt(int fndCode, int successAmt) {
-        mypageMapper.accumulateSuccessAmt(fndCode, successAmt);
+    public void updateFundingStatus(int fndCode) {
+        mypageMapper.updateFundingStatus(fndCode);
     }
 }

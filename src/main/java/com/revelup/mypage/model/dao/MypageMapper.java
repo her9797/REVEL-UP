@@ -24,10 +24,6 @@ public interface MypageMapper {
     // 미달성 펀딩
     List<PayDTO> selectFailFndList(String userId);
 
-
-//    List<FundingInfoDTO> sttrFndPro(int fndCode);
-
-
     // 나의 후원내역 상세조회
     PayDTO selectOne(int plgCode);
 
@@ -77,10 +73,5 @@ public interface MypageMapper {
 
     FundingInfoDTO finishUpdateStat(int fndCode);
 
-    void accumulateSuccessAmt(@Param("fndCode") int fndCode, @Param("successAmt") int successAmt);
-
-
-//    int deleteFndList(int fndCode);
-
-//    void updateTrackingNum(DeliveryDTO deliveryDTO);
+    void updateFundingStatus(int fndCode);
 }

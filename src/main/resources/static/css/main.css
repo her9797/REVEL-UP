@@ -95,7 +95,6 @@ body {
 
 .btn-product:hover {
     background-color: #54d3b0; /* 새로운 버튼 호버 시 배경색 */
-    transform: scale(1.05); /* 마우스를 갖다 대면 살짝 커지는 애니메이션을 적용합니다. */
     text-decoration: none; /* 호버 시 텍스트 밑줄 제거 */
     color: black; /* 호버 시 텍스트 색상을 검정색으로 변경 */
 }

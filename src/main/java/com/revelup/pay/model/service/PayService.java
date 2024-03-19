@@ -142,7 +142,6 @@ public class PayService {
 		deliveryDTO.setPlgCode(plgCode);
 		plgMapper.insertDeliv(deliveryDTO);
 
-//		int plgPrice = payCompletionDTO.getPlgPrice();
 		fundingInfoDTO.setFndCode(payCompletionDTO.getFndCode());
 		fundingInfoDTO.setSuccessAmt(payCompletionDTO.getPlgPrice());
 		plgMapper.updateSuccessAmt(fundingInfoDTO);
@@ -153,7 +152,6 @@ public class PayService {
 		System.out.println("❌페이컴플리트 DTO❌" + payCompletionDTO);
 		System.out.println("❌delivery DTO❌" + deliveryDTO);
 		System.out.println("❌fundingInfo DTO❌" + fundingInfoDTO);
-
 
 		return response;
 	}
