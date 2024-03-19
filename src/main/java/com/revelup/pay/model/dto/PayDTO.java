@@ -33,6 +33,7 @@ public class PayDTO {
     private String userAdd; // User address
     private String userName; // User name
     private String userPhone; // User phone number
+    private String fndSaveFile;
 
     private List<LoginUserDTO> login;
     private LoginUserDTO loginUser;

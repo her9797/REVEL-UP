@@ -59,7 +59,7 @@
 <!--                <td style="color:black; cursor:pointer;" th:text="${audit.fndCode}"> </td>-->
                 <td th:text="${audit.fndInsertDttm}"></td>
                 <td th:text="${audit.auditStat}"></td>
-                <td th:text="${audit.auditApprDt}"></td>
+                <td th:text="${audit.auditApprDt != null ? audit.auditApprDt : '-'}"></td>
             </tr>
         </table>
     </div>

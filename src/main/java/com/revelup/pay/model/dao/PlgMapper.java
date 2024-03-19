@@ -5,13 +5,16 @@ import com.revelup.pay.model.dto.KakaoPayReadyDTO;
 import com.revelup.pay.model.dto.PayCompletionDTO;
 import com.revelup.pay.model.dto.PayDTO;
 import org.apache.ibatis.annotations.Mapper;
-import org.springframework.web.multipart.MultipartFile;
 
 @Mapper
 public interface PlgMapper {
     void insertPlg(PayCompletionDTO payCompletionDTO);
 
     int getFndCodePay(int fndCodeOfPay);
+
+    void insertDeliv(DeliveryDTO deliveryDTO);
+
+    void updateSuccessAmt(FundingInfoDTO fundingInfoDTO);
 
     PayDTO getFile(FundingInfoDTO fundingInfoDTO);
 }

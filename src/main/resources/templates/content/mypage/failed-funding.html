@@ -51,7 +51,7 @@
                 <div class="image-box" th:each="allPlg : ${allPlgList}">
                     <p class="support-date" th:text="${allPlg.plgDttm}">2024-04-25</p>
                     <p>후원번호 : <a th:text="${allPlg.plgCode}">12341235</a></p>
-                    <img th:src="@{/img/product/p1.png}" alt="product1">
+                    <img th:src="@{|/upload/${allPlg.fndSaveFile}|}" alt="product1">
                     <p class="image-desc">
                     <div th:each="fundingInfo : ${ allPlg.fundingInfo }">
                         <a style="font-weight: bold;" th:text="${fundingInfo.fndName}">[개굴기업] 알뜰살뜰 모아모아 레인보우 협탁1</a><br>

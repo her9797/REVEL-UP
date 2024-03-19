@@ -48,7 +48,7 @@
             <tr align="center" bgcolor="#0CC291">
                 <td>펀딩 코드</td>
                 <td>펀딩명</td>
-                <td>달성률</td>
+                <td>달성액</td>
                 <td>상태</td>
                 <td>시작일</td>
                 <td>종료일</td>
@@ -68,13 +68,14 @@
                     <a th:switch="${funding.fndPrgStat}"
                        th:href="@{|/manager/manager-find-select/${funding.fndCode}|}">
                         <span th:case="L">진행 중</span>
-                        <span th:case="U">종료</span>
+                        <span th:case="U">미달성</span>
+                        <span th:case="E">종료</span>
                         <span th:case="C">등록 취소</span>
                     </a>
                 </td>
                 <td>
-                    <a th:text="${funding.fndEndDt}" th:href="@{|/manager/manager-find-select/${funding.fndCode}|}"></a>
-                </td>
+                    <a th:if="${funding.auditApprDt != null}" th:text="${funding.auditApprDt}" th:href="@{|/manager/manager-find-select/${funding.fndCode}|}"></a>
+                    <span th:unless="${funding.auditApprDt != null}">-</span>                </td>
                 <td>
                     <a th:text="${funding.fndEndDt}" th:href="@{|/manager/manager-find-select/${funding.fndCode}|}"></a>
                 </td>

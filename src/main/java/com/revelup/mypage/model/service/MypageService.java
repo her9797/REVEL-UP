@@ -175,9 +175,7 @@ public class MypageService {
 
     public FundingInfoDTO inqFnd(int fndCode) {
 
-        FundingInfoDTO inqFnd = mypageMapper.inqFnd(fndCode);
-
-        return inqFnd;
+        return mypageMapper.inqFnd(fndCode);
 
     }
 
