@@ -41,7 +41,6 @@ public class MypageController {
     @PostMapping("/updateTrackingNo")
     public String updateTrackingNo(@RequestParam("plgCode") int plgCode, @RequestParam("trackingNo") String trackingNo, Model model, FundingInfoDTO fundingInfoDTO){
 
-
         DeliveryDTO deliveryDTO = new DeliveryDTO();
         deliveryDTO.setPlgCode(plgCode);
         deliveryDTO.setDelivStat("S");
@@ -219,6 +218,11 @@ public class MypageController {
         }
     }
 
+    @PostMapping("/accumulateSuccessAmt/{fndCode}")
+    public String accumulateSuccessAmt(@PathVariable("fndCode") int fndCode, @RequestParam("successAmt") int successAmt) {
+        mypageService.accumulateSuccessAmt(fndCode, successAmt);
+        return "redirect:/content/mypage/setter-fndList";
+    }
 
     @PostMapping("/setter-fndList/{fndCode}")
     public String setterFndListDeletePage(@PathVariable("fndCode") int fndCode) {
@@ -336,6 +340,17 @@ public class MypageController {
             log.error("페이지를 불러오는 중 오류가 발생했습니다.", e);
             throw new CustomException("페이지를 불러오는 중 오류가 발생했습니다.", e);
         }
+    }
+
+    @PostMapping("/update-funding-status")
+    public String finishUpdateStat(@RequestParam("fndCode") int fndCode, FundingInfoDTO fundingInfoDTO) {
+
+        System.out.println(fndCode);
+        log.info(fndCode);
+        fundingInfoDTO = mypageService.finishUpdateStat(fndCode);
+        System.out.println(fundingInfoDTO);
+        log.info(fundingInfoDTO);
+        return "redirect:/content/mypage/setter-fndList";
     }
 
 

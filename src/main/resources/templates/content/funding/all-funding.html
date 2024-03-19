@@ -55,12 +55,19 @@
             <!-- 가로그래프 삽입 필요 -->
                 <p th:text="${funding.giftPrice} + '원'"></p>
             </div>
-            <div class="text">
 
-                <p></p>
-
-
+            <!-- 달성률을 나타내는 바의 컨테이너 -->
+            <div class="progress-container">
+                <!-- 달성률에 따라 너비가 변하는 바 -->
+                <div class="progress-bar" th:style="'width:' + ${#numbers.formatDecimal((funding.successAmt * 1.0) / funding.goalAmt * 100, 0, 0)} + '%'"></div>
             </div>
+
+<!--            <div class="text">-->
+
+<!--                <p></p>-->
+
+
+<!--            </div>-->
             <div class="button-group">
                 <button th:onclick="'javascript:window.location.href=\'' + @{/content/funding/all-funding/__${funding.fndCode}__} + '\''">상세보기</button>
             </div>

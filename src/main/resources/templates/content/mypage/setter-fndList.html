@@ -59,7 +59,7 @@
                         <a id="goalAmt" th:text="'목표액 : ' + ${allFnd.goalAmt} + '원'">목표액 : 1,500,000원</a><br>
                     <a id="successAmt"  data-success-amt="${allFnd.successAmt}" th:text="'달성액 : ' + ${allFnd.successAmt} + '원'"><span th:text="${getSuccessAmtByFndCode.successAmt}"></span>달성액 : 900,000원</a><br>
                         <a th:text="'달성률 : ' + ${#numbers.formatDecimal((allFnd.successAmt * 1.0) / allFnd.goalAmt * 100, 0, 0)} + '%'">달성률 : 64%</a><br>
-                        <a th:text="'마감일 : ' + ${allFnd.fndEndDt}">마감일 : 2024-05-07</a><br>
+                        <a id="end-date" th:text="'마감일 : ' + ${allFnd.fndEndDt}">마감일 : 2024-05-07</a><br>
                     </div>
                     <div class="button-group">
                         <button class="notice-insert-btn" onclick="location.href='/content/mypage/setter-notice'"> 공지사항등록</button>

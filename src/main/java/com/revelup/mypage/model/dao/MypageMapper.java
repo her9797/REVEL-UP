@@ -6,6 +6,7 @@ import com.revelup.funding.model.dto.InquiryDTO;
 import com.revelup.funding.model.dto.InquiryFileDTO;
 import com.revelup.pay.model.dto.PayDTO;
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
 
@@ -73,6 +74,10 @@ public interface MypageMapper {
     FundingInfoDTO inqFnd(int fndCode);
 
     FundingInfoDTO sttrOneFnd(int fndCode);
+
+    FundingInfoDTO finishUpdateStat(int fndCode);
+
+    void accumulateSuccessAmt(@Param("fndCode") int fndCode, @Param("successAmt") int successAmt);
 
 
 //    int deleteFndList(int fndCode);

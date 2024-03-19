@@ -200,7 +200,7 @@
           JOIN FND_INFO F ON P.FND_CODE = F.FND_CODE
           JOIN FND_INSERT_FILE FIF ON F.FND_CODE = FIF.FND_CODE
           JOIN GIFT G ON G.FND_CODE = F.FND_CODE
-         WHERE F.FND_PRG_STAT = 'C' AND F.USER_ID = #{userId} AND FIF.FILE_DIV = 'T'
+         WHERE F.FND_PRG_STAT = 'C' AND P.USER_ID = #{userId} AND FIF.FILE_DIV = 'T'
     </select>
 
     <!-- 후원내역조회 미달성 -->
@@ -218,7 +218,7 @@
           JOIN FND_INFO F ON P.FND_CODE = F.FND_CODE
           JOIN FND_INSERT_FILE FIF ON F.FND_CODE = FIF.FND_CODE
           JOIN GIFT G ON G.FND_CODE = F.FND_CODE
-         WHERE F.FND_PRG_STAT = 'U' AND F.USER_ID = #{userId} AND FIF.FILE_DIV = 'T';
+         WHERE F.FND_PRG_STAT = 'U' AND P.USER_ID = #{userId} AND FIF.FILE_DIV = 'T';
     </select>
 
     <!-- 후원내역조회 상세조회 -->
@@ -290,6 +290,12 @@
           JOIN AUD A ON F.FND_CODE = A.FND_CODE
          WHERE A.AUDIT_STAT = 'A' AND F.USER_ID = #{userId} AND FIF.FILE_DIV = 'T'
     </select>
+
+    <update id="accumulateSuccessAmt" parameterType="com.revelup.funding.model.dto.FundingInfoDTO">
+        UPDATE FND_INFO
+        SET SUCCESS_AMT = SUCCESS_AMT + #{successAmt}
+        WHERE FND_CODE = #{fndCode}
+    </update>
 
     <!-- 세터 펀딩내역 공지사항 -->
     <select id="sttrOneFnd" resultMap="fndInfoResultMap">
@@ -450,23 +456,26 @@
          WHERE FND_PRG_STAT = 'E' AND USER_ID = #{userId} AND FIF.FILE_DIV = 'T'
     </select>
 
+
+<!--    <update id="finishUpdateStat" parameterType="com.revelup.funding.model.dto.FundingInfoDTO">-->
+<!--        UPDATE FND_INFO-->
+<!--        SET FND_PRG_STAT = 'E'-->
+<!--        WHERE FND_CODE = #{ fndCode }-->
+<!--        AND FND_END_DT lt now()-->
+<!--    </update>-->
+
+    <update id="updateFundingStatusToE">
+        UPDATE FND_INFO
+        SET FND_PRG_STAT = 'E'
+        WHERE FND_CODE = #{fndCode}
+    </update>
+
+    <select id="getFinishList" resultMap="fndInfoResultMap">
+        SELECT
+        FND_CODE,
+        FND_END_DT
+        FROM FND_INFO
+        WHERE FND_END_DT lt NOW()
+    </select>
+
 </mapper>
-
-
-
-
-
-        <!--        PLG ResultMap 후원 -->
-        <!--    <resultMap id="plgResultMap" type="com.revelup.pay.model.dto.PayCompletionDTO">-->
-        <!--        <id property="plgCode" column="PLG_CODE" />-->
-        <!--        <result property="userId" column="USER_ID" />-->
-        <!--        <result property="fndCode" column="FND_CODE" />-->
-        <!--        <result property="giftQty" column="GIFT_QTY" />-->
-        <!--        <result property="plgDttm" column="PLG_DTTM" />-->
-        <!--        <result property="plgPrice" column="PLG_PRICE" />-->
-        <!--        <result property="plgCanDt" column="PLG_CAN_DT" />-->
-        <!--        <association property="fndName" resultMap="fndInfoResultMap" />-->
-        <!--        <association property="deliv" resultMap="delivResultMap" />-->
-        <!--        <association property="loginUser" resultMap="login"/>-->
-        <!--        <association property="giftName" resultMap="giftResultMap" />-->
-        <!--    </resultMap>-->

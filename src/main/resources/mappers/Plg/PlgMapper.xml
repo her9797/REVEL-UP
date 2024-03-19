@@ -25,9 +25,6 @@
         <result property="trackingNo" column="TRACKING_NO" />
     </resultMap>
 
-<!-- useGeneratedKeys: 데이터베이스에서 생성된 키(ex/ 자동 증가된 ID)를 사용할지 여부를 지정, true로 설정되어 있어 자동 생성된 키를 사용.-->
-<!-- keyProperty: 자동 생성된 키를 매핑할 Java 객체의 속성을 지정(PayCompletionDTO 클래스의 plgCode 속성에 해당하는 데이터베이스에서 생성된 키를 매핑) -->
-    <insert id="insertPlg" parameterType="com.revelup.pay.model.dto.PayCompletionDTO" useGeneratedKeys="true" keyProperty="plgCode">
     <resultMap type="com.revelup.funding.model.dto.FundingFileDTO" id="findFile">
         <id property="fileCode" column="FILE_CODE"/>
         <result property="fndCode" column="FND_CODE"/>
@@ -43,7 +40,9 @@
         <result property="userId" column="USER_ID"/>
     </resultMap>
 
-    <insert id="insertPlg" parameterType="com.revelup.pay.model.dto.PayCompletionDTO">
+    <!-- useGeneratedKeys: 데이터베이스에서 생성된 키(ex/ 자동 증가된 ID)를 사용할지 여부를 지정, true로 설정되어 있어 자동 생성된 키를 사용.-->
+    <!-- keyProperty: 자동 생성된 키를 매핑할 Java 객체의 속성을 지정(PayCompletionDTO 클래스의 plgCode 속성에 해당하는 데이터베이스에서 생성된 키를 매핑) -->
+    <insert id="insertPlg" parameterType="com.revelup.pay.model.dto.PayCompletionDTO" useGeneratedKeys="true" keyProperty="plgCode">
         INSERT INTO PLG(
                         USER_ID
                         ,FND_CODE
@@ -52,20 +51,20 @@
                         ,PLG_PRICE
                         ,PLG_CAN_DT
                         )
-             VALUES (
-                    #{ userId }
-                    ,#{ fndCode }
-                    ,#{ giftQty }
-                    ,#{ plgDttm }
-                    ,#{ plgPrice }
-                    ,#{ plgCanDt }
-                    )
+        VALUES (
+                #{ userId }
+                ,#{ fndCode }
+                ,#{ giftQty }
+                ,#{ plgDttm }
+                ,#{ plgPrice }
+                ,#{ plgCanDt }
+                )
     </insert>
 
     <select id="getFndCodePay" resultMap="findByCode">
         SELECT FND_CODE
-        FROM FND_INFO
-        WHERE FND_CODE = #{fndCode}
+          FROM FND_INFO
+         WHERE FND_CODE = #{fndCode}
 
     </select>
 
@@ -104,9 +103,14 @@
 
     <update id="updateSuccessAmt" parameterType="com.revelup.funding.model.dto.FundingInfoDTO">
         UPDATE FND_INFO
-           SET SUCCESS_AMT = #{successAmt}
+           SET SUCCESS_AMT = SUCCESS_AMT + #{successAmt}
          WHERE FND_CODE = #{fndCode}
     </update>
 
+<!--    <update id="accumulateSuccessAmt" parameterType="com.revelup.funding.model.dto.FundingInfoDTO">-->
+<!--        UPDATE FND_INFO-->
+<!--        SET SUCCESS_AMT = SUCCESS_AMT + #{successAmt}-->
+<!--        WHERE FND_CODE = #{fndCode}-->
+<!--    </update>-->
 
 </mapper>
