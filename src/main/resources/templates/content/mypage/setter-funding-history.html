@@ -53,7 +53,7 @@
             <p class="title" style="font-size: 14px; font-weight: bold; margin-top: 10px;" th:text="'등록일 ' + ${selectOneFnd.auditApprDt}">등록일 2024-02-21</p>
 
             <div class="image-box">
-                <img th:src="@{/img/product/p1.png}" alt="product1">
+                <img th:src="@{|/upload/${selectOneFnd.fndSaveFile}|}" alt="product1">
                 <p class="image-desc">
                 <div>
                 <strong class="info-item">펀딩명 </strong><a th:text="': ' + ${selectOneFnd.fndName}">: [개굴기업] 알뜰살뜰 모아모아 레인보우 협탁 </a><br>

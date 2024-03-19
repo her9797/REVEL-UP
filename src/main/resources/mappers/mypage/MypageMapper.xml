@@ -453,7 +453,7 @@
                 ,F.FND_END_DT
           FROM FND_INFO F
           JOIN FND_INSERT_FILE FIF ON F.FND_CODE = FIF.FND_CODE
-         WHERE FND_PRG_STAT = 'E' AND USER_ID = #{userId} AND FIF.FILE_DIV = 'T'
+         WHERE F.FND_PRG_STAT = 'E' AND F.USER_ID = #{userId} AND FIF.FILE_DIV = 'T'
     </select>
 
 
