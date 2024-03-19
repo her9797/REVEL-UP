@@ -74,10 +74,13 @@
         <div class="funding-description">
             <h2 th:text="${funding.fndName}"></h2>
             <!-- 달성율 그래프 -->
-            <div class="progress" role="progressbar" aria-label="Success example" aria-valuenow="75"
-                 aria-valuemin="0"
-                 aria-valuemax="100" style="height: 30px;">
-                <div class="progress-bar bg-success" style="width: 75%">75% 달성</div>
+<!--            <div class="progress" role="progressbar" aria-label="Success example" aria-valuenow="75"-->
+<!--                 aria-valuemin="0"-->
+<!--                 aria-valuemax="100" style="height: 30px;">-->
+<!--                <div class="progress-bar bg-success" style="width: 75%">75% 달성</div>-->
+<!--            </div>-->
+            <div class="progress-container">
+                <div class="progress-bar" th:style="'width:' + ${#numbers.formatDecimal((funding.successAmt * 1.0) / funding.goalAmt * 100, 0, 0)} + '%; background-color: #52cdac;'" th:text="${#numbers.formatDecimal((funding.successAmt * 1.0) / funding.goalAmt * 100, 0, 0)} + '%'"></div>
             </div>
         </div>
 
@@ -87,7 +90,6 @@
         </div>
 
         <!-- 선물 수량 입력 및 찜하기, 후원하기 버튼 -->
-        <!--        <form action="" method="post">-->
         <div class="order-details">
             <div class="quantity">
                 <h6>선물 수량</h6> <span>
@@ -103,7 +105,6 @@
                 <span onclick="location.href='/content/pay/pay'">후원하기</span>
             </div>
         </div>
-        <!--        </form>-->
 
         <!-- 총 후원금액 정보 -->
         <div class="total-price row justify-content-betwwen">

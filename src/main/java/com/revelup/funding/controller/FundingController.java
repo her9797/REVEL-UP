@@ -72,13 +72,6 @@ public class FundingController {
                                      @ModelAttribute AuditDTO auditDTO,
                                      @ModelAttribute UserDTO userDTO,
                                      Model model) throws IOException {
-        System.out.println("fundingInfoDTO = " + fundingInfoDTO);
-        System.out.println(" ");
-        System.out.println("giftDTO = " + giftDTO);
-        System.out.println(" ");
-        System.out.println("auditDTO = " + auditDTO);
-        System.out.println(" ");
-        System.out.println("setterInfoDTO = " + setterInfoDTO);
 
         String id = userDTO.getUserId();
         setterInfoDTO.setUserId(id);
@@ -167,6 +160,11 @@ public class FundingController {
         int giftPrice = fundingInfoDTO.getGiftPrice();
         String fndEndDt = fundingInfoDTO.getFndEndDt();
 
+        System.out.println("fndCodeOfPay 펀딩컨트롤러에서 담아줄때 = " + fndCodeOfPay);
+        System.out.println("fndName 펀딩컨트롤러에서 담아줄때 = " + fndName);
+        System.out.println("giftPrice 펀딩컨트롤러에서 담아줄때 = " + giftPrice);
+        System.out.println("fndEndDt 펀딩컨트롤러에서 담아줄때 = " + fndEndDt);
+        
         sessionData.setSessionAttribute("fndCodeOfPay", fndCodeOfPay);
         sessionData.setSessionAttribute("fndName", fndName);
         sessionData.setSessionAttribute("giftPrice", giftPrice);
