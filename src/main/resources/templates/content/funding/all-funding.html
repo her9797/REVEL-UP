@@ -57,7 +57,7 @@
             </div>
 
             <div class="progress-container">
-                <div class="progress-bar" th:style="'width:' + ${#numbers.formatDecimal((funding.successAmt * 1.0) / funding.goalAmt * 100, 0, 0)} + '%'"></div>
+                <div class="progress-bar" th:style="'width:' + ${#numbers.formatDecimal((funding.successAmt * 1.0) / funding.goalAmt * 100, 0, 0)} + '%; background-color: #52cdac;'"></div>
             </div>
 
             <div class="button-group">
