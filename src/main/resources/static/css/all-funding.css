@@ -95,3 +95,17 @@ body {  /* 전체 설정 */
 .gray-heart {
     color: gray !important; /* !important를 사용하여 우선순위 부여 */
 }
+
+
+.progress-container {
+    width: 100%; /* 컨테이너의 전체 너비 */
+    background-color: #ddd; /* 컨테이너의 배경색 */
+}
+
+.progress-bar {
+    height: 20px; /* 바의 높이 */
+    background-color: #4CAF50; /* 바의 배경색 */
+    text-align: center; /* 바 내부 텍스트 정렬 */
+    line-height: 20px; /* 바 내부 텍스트 라인 높이 */
+    color: white; /* 바 내부 텍스트 색상 */
+}

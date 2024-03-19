@@ -52,7 +52,7 @@
 
             <div class="image-box-group">
                 <div class="image-box" th:each="finish : ${ finishList }">
-                    <img th:src="@{/img/product/p1.png}" alt="product1">
+                    <img th:src="@{|/upload/${allPlg.fndSaveFile}|}" alt="product1">
                     <p class="image-desc">
                     <div>
                         <a style="font-weight: bold;" th:text="${finish.fndName}">알뜰살뜰 모아모아 레인보우 협탁1</a><br>

@@ -83,7 +83,6 @@ public class MypageService {
         List<FundingInfoDTO> fndList = mypageMapper.allFndList(userId);
         System.out.println("fndList : " + fndList);
         return fndList;
-
     }
 
     // 펀딩내역 상세조회(펀딩)
@@ -186,5 +185,14 @@ public class MypageService {
         System.out.println("sttrOneFnd : " + sttrOneFnd);
         log.info(sttrOneFnd);
         return sttrOneFnd;
+    }
+
+    public FundingInfoDTO finishUpdateStat(int fndCode) {
+        return mypageMapper.finishUpdateStat(fndCode);
+
+    }
+
+    public void accumulateSuccessAmt(int fndCode, int successAmt) {
+        mypageMapper.accumulateSuccessAmt(fndCode, successAmt);
     }
 }

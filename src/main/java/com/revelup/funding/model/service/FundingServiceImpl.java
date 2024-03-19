@@ -83,12 +83,14 @@ public class FundingServiceImpl implements FundingService {
 
             // 파일 저장용 폴더에 파일 저장 처리
 //            String fndFileLoc = "/Users/jaylee/Documents/SemiFinal/fndFileLoc/" + fndSaveFile; // 이진우 Mac용 저장경로
-        String fndFileLoc = "C:\\Users\\hi\\Desktop\\revelupimg" + fndSaveFile; // Window용 저장경로
+//        String fndFileLoc = "C:\\Users\\hi\\Desktop\\revelupimg" + fndSaveFile; // Window용 저장경로
+            String fndFileLoc = "C:/Users/thunder/Desktop/revelup/" + fndSaveFile; // Window용 저장경로
 //        String fndFileLoc = "C:\\Users\\simko\\Desktop\\file/" + fndSaveFile; // Window용 저장경로
             file.transferTo(new File(fndFileLoc));
 
 
-            String saveFile = "C:\\Users\\simko\\Desktop\\file/" + fndSaveFile;
+//            String saveFile = "C:\\Users\\simko\\Desktop\\file/" + fndSaveFile;
+            String saveFile = "C:/Users/thunder/Desktop/revelup/" + fndSaveFile;
             sessionData.setSessionAttribute("saveFile", saveFile);
 
             // FundingFileDTO 세팅 및 DB에 삽입
@@ -110,10 +112,10 @@ public class FundingServiceImpl implements FundingService {
 
             // 파일 저장용 폴더에 파일 저장 처리
 //            String siFileLoc = "/Users/jaylee/Documents/SemiFinal/fndFileLoc/" + siSaveFile; // 이진우 Mac용 저장경로
-        String siFileLoc = "C:/Users/hi/Desktop/revelupimg/" + siSaveFile; // 현지 Window용 저장경로
-//        String siFileLoc = "C:/Users/simko/Desktop/file/" + siSaveFile; // 현지 Window용 저장경로
+//        String siFileLoc = "C:/Users/hi/Desktop/revelupimg/" + siSaveFile; // 민섭 Window용 저장경로
+            String siFileLoc = "C:/Users/thunder/Desktop/revelup/" + siSaveFile; // 현지 Window용 저장경로
 
-
+//        String siFileLoc = "C:/Users/simko/Desktop/file/" + siSaveFile; //  Window용 저장경로
 
 //        String fndFileLoc = "C:/Users/hi/Desktop/revelupimg/" + siSaveFile;
             file.transferTo(new File(siFileLoc));
