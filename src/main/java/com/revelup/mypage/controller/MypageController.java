@@ -8,6 +8,7 @@ import com.revelup.mypage.model.service.MypageService;
 import com.revelup.notice.model.dto.NoticeDTO;
 import com.revelup.pay.model.dto.PayCompletionDTO;
 import com.revelup.pay.model.dto.PayDTO;
+import com.revelup.user.model.dto.LoginUserDTO;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -306,8 +307,8 @@ public class MypageController {
     @PostMapping("/insertInq")
     @ResponseBody
     public String insertInq(@RequestParam("fndCode") int fndCode
-            ,@ModelAttribute InquiryDTO inquiryDTO
-            ,@ModelAttribute InquiryFileDTO inquiryFileDTO, Model model) {
+                            , @ModelAttribute InquiryDTO inquiryDTO
+                            , @ModelAttribute InquiryFileDTO inquiryFileDTO, Model model) {
 
         log.info("fndCode : " + fndCode);
         System.out.println("fndCode : " + fndCode);

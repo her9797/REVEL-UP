@@ -11,6 +11,7 @@ import java.util.concurrent.ConcurrentLinkedDeque;
 import com.revelup.config.KakaoPayConfig;
 
 import com.revelup.config.SessionData;
+import com.revelup.funding.model.dto.DeliveryDTO;
 import com.revelup.funding.model.dto.FundingInfoDTO;
 import com.revelup.pay.model.dao.PlgMapper;
 import com.revelup.pay.model.dto.*;
@@ -35,16 +36,21 @@ public class PayService {
 	private final KakaoPayConfig kakaoPayConfig;
 
 	private FundingInfoDTO fundingInfoDTO;
+
 	private final PlgMapper plgMapper;
 
 	@Autowired
 	private SessionData sessionData;
 
+	private DeliveryDTO deliveryDTO;
+
 	@Autowired
 //	private final PayMapper paymapper;
-	public PayService(KakaoPayConfig kakaoPayConfig, PlgMapper plgMapper) {
+	public PayService(KakaoPayConfig kakaoPayConfig, PlgMapper plgMapper, DeliveryDTO deliveryDTO, FundingInfoDTO fundingInfoDTO) {
 		this.kakaoPayConfig = kakaoPayConfig;
 		this.plgMapper = plgMapper;
+		this.deliveryDTO = deliveryDTO;
+		this.fundingInfoDTO = fundingInfoDTO;
 	}
 
 	@Transactional
@@ -131,9 +137,21 @@ public class PayService {
 
 		plgMapper.insertPlg(payCompletionDTO);
 
+		int plgCode = payCompletionDTO.getPlgCode();
+		deliveryDTO.setPlgCode(plgCode);
+		plgMapper.insertDeliv(deliveryDTO);
+
+//		int plgPrice = payCompletionDTO.getPlgPrice();
+		fundingInfoDTO.setFndCode(payCompletionDTO.getFndCode());
+		fundingInfoDTO.setSuccessAmt(payCompletionDTO.getPlgPrice());
+		plgMapper.updateSuccessAmt(fundingInfoDTO);
+
+
 		System.out.println("❌카카오톡 어프로프 DOT❌" + kakaoPayApproveDTO);
 		System.out.println("❌레스폰스❌" + response);
 		System.out.println("❌페이컴플리트 DTO❌" + payCompletionDTO);
+		System.out.println("❌delivery DTO❌" + deliveryDTO);
+		System.out.println("❌fundingInfo DTO❌" + fundingInfoDTO);
 
 
 		return response;

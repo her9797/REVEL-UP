@@ -19,7 +19,15 @@
         <result property="siFileDiv" column="SI_FILE_DIV"/>
     </resultMap>
 
-    <insert id="insertPlg" parameterType="com.revelup.pay.model.dto.PayCompletionDTO">
+    <resultMap id="delivResultMap" type="com.revelup.funding.model.dto.DeliveryDTO">
+        <id property="plgCode" column="PLG_CODE" />
+        <result property="delivStat" column="DELIV_STAT" />
+        <result property="trackingNo" column="TRACKING_NO" />
+    </resultMap>
+
+<!-- useGeneratedKeys: 데이터베이스에서 생성된 키(ex/ 자동 증가된 ID)를 사용할지 여부를 지정, true로 설정되어 있어 자동 생성된 키를 사용.-->
+<!-- keyProperty: 자동 생성된 키를 매핑할 Java 객체의 속성을 지정(PayCompletionDTO 클래스의 plgCode 속성에 해당하는 데이터베이스에서 생성된 키를 매핑) -->
+    <insert id="insertPlg" parameterType="com.revelup.pay.model.dto.PayCompletionDTO" useGeneratedKeys="true" keyProperty="plgCode">
         INSERT INTO PLG(
                         USER_ID
                         ,FND_CODE
@@ -42,7 +50,25 @@
         SELECT FND_CODE
         FROM FND_INFO
         WHERE FND_CODE = #{fndCode}
-
     </select>
-    
+
+    <insert id="insertDeliv" parameterType="com.revelup.funding.model.dto.DeliveryDTO">
+        INSERT INTO DELIV(
+                            PLG_CODE,
+                            DELIV_STAT
+                            )
+        VALUES (
+                #{plgCode},
+                'R'
+                )
+    </insert>
+
+
+    <update id="updateSuccessAmt" parameterType="com.revelup.funding.model.dto.FundingInfoDTO">
+        UPDATE FND_INFO
+           SET SUCCESS_AMT = #{successAmt}
+         WHERE FND_CODE = #{fndCode}
+    </update>
+
+
 </mapper>

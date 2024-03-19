@@ -42,7 +42,7 @@
 .image-box-group {
     display: flex; /* 요소를 가로로 배치 */
     flex-wrap: wrap; /* 화면 크기에 따라 요소를 다음 줄로 넘김 */
-    justify-content: space-between; /*  요소 사이에 여백 동일하게 배치 */
+    justify-content: flex-start; /*  요소 사이에 여백 동일하게 배치 */
 }
 
 /* 이미지 박스 스타일 */
@@ -54,7 +54,7 @@
     border-radius: 15px;  /* 모서리 둥글게 */
     padding: 10px;
     font-size: 14px; /* 원하는 폰트 크기로 설정 */
-    margin: 3% 1px 8px 0; /* top right bottom left*/
+    margin: 3% 16px 8px 0; /* top right bottom left*/
     background-color: rgb(240, 240, 240);
 }
 

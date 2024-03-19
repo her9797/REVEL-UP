@@ -52,7 +52,7 @@
 
             <div class="image-box-group">
                 <div class="image-box" th:each="allFnd : ${ allFndList }">
-                    <img th:src="@{/img/product/p1.png}" alt="product1">
+                    <img th:src="@{|/upload/${allFnd.fndSaveFile}|}" alt="product1">
                     <p class="image-desc">
                     <div>
                         <a style="font-weight: bold;" th:text="${allFnd.fndName}">알뜰살뜰 모아모아 레인보우 협탁1</a><br>
@@ -65,7 +65,6 @@
                         <button class="notice-insert-btn" onclick="location.href='/content/mypage/setter-notice'"> 공지사항등록</button>
                         <a style="color: #000000; text-decoration:none; text-align:center;" class="detail-btn" th:href="@{|/content/mypage/setter-funding-history/${allFnd.fndCode}|}">상세조회</a>
                         <button type="button" class="fnd-delete-btn" data-fndcode="${}" onclick="openModal(this)"> 삭제</button>
-<!--                        <button type="button" id="fnd-delete-btn" class="fnd-delete-btn" onclick="openModal()"> 삭제</button>-->
                     </div>
                 </div>
                 </div>

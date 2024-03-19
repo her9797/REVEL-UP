@@ -52,7 +52,10 @@
 
             <div class="image-box-group">
                 <div class="image-box" th:each="refuse : ${ refuseList }">
-                    <img th:src="@{/img/product/p1.png}" alt="product1">
+                    <p hidden="hidden" data-fndCode="${refuse.fndCode}"></p>
+                    <p hidden="hidden" data-userId="${refuse.userId}"></p>
+                    <p hidden="hidden" data-fndInsertDttm="${refuse.fndInsertDttm}"></p>
+                    <img th:src="@{|/upload/${refuse.fndSaveFile}|}" alt="product1">
                     <p class="image-desc">
                     <div>
                         <a style="font-weight: bold;" th:text="${refuse.fndName}">알뜰살뜰 모아모아 레인보우 협탁1</a><br>
@@ -60,55 +63,57 @@
                         <a th:text="'마감일 : ' + ${refuse.fndEndDt}">마감일 : 2024-05-07</a><br>
                     </div>
                     <div class="button-group">
-                        <a style="color: #000000; text-decoration:none; text-align:center;" id="inquiry-btn" class="inquiry" data-fnd-code="fndCode" data-user-id="userId">심사관련문의하기</a>
+                        <button style="color: #000000; text-decoration:none; text-align:center;" id="inquiry-btn" class="inquiry"  onclick="openInquiryModal(this)" data-fndCode="${refuse.fndCode}" data-userId="${refuse.userId}">심사관련문의하기</button>
                     </div>
+
                 </div>
 
 
 
-            <!-- 모달창 -->
-            <div id="inquiry-modal" class="inquiry-modal">
-                <div class="modal-content">
-                    <h4>문의 등록</h4>
-                    <span id="close-inquiry-btn">&times;</span>  <!-- x를 나타내는 문자유니코드 U+00D7 -->
-                    <form th:action="@{/content/mypage/setter-fndList}" method="post">
-                        <div class="inquiry-content" >
-                            <div class="contract">
-                                <p id="modal-fndCode">펀딩번호</p>
-                                <input type="text" id="insert-fndCode" class="text-box1" name="fndCode" disabled>
+                <!-- 모달창 -->
+                <div id="inquiry-modal" class="inquiry-modal">
+                    <div class="modal-content">
+                        <h4>문의 등록</h4>
+                        <span id="close-inquiry-btn" onclick="closeModal()">&times;</span>  <!-- x를 나타내는 문자유니코드 U+00D7 -->
+                        <form th:action="@{/content/mypage/insertInq}" method="post">
+                            <div class="inquiry-content">
+
+                                <div class="contract">
+                                    <p id="modal-fndCode">펀딩번호</p>
+                                    <input type="text" id="insert-fndCode" class="text-box1"  name="fndCode" readonly>
+                                </div>
+                                <div class="contract">
+                                    <p id="modal-userId" >작성자</p>
+                                    <input type="text" id="insert-userId" class="text-box2"  name="userId" readonly>
+                                </div>
+                                <div class="contract">
+                                    <p id="modal-title" >제목</p>
+                                    <input type="text" id="insert-title" class="text-box3"  name="inqTitle">
+                                </div>
+                                <div class="contract">
+                                    <p id="modal-dateTime" >작성날짜</p>
+                                    <input type="text" id="insert-dateTime" class="text-box4"  name="inqInsertDttm" readonly>
+                                </div>
+                                <div class="contract">
+                                    <p id="modal-file" >첨부파일</p>
+                                    <input type="file" id="insert-file" class="text-box5"  name="inqFile">
+                                </div>
+                                <div class="contract">
+                                    <p id="insert-text">내용</p>
+                                    <textarea id="insert-content" class="textCont" name="inqCont"></textarea>
+                                </div>
                             </div>
-                            <div class="contract">
-                                <p id="modal-userId" >작성자</p>
-                                <input type="text" id="insert-userId"  class="text-box2" name="userId" disabled>
-                            </div>
-                            <div class="contract">
-                                <p id="modal-title" >제목</p>
-                                <input type="text" id="insert-title" class="text-box3"  name="inqTitle">
-                            </div>
-                            <div class="contract">
-                                <p id="modal-dateTime" >작성날짜</p>
-                                <input type="text" id="insert-dateTime" class="text-box4"  name="inqInsertDttm" disabled>
-                            </div>
-                            <div class="contract">
-                                <p id="modal-file" >첨부파일</p>
-                                <input type="file" id="insert-file" class="text-box5"  name="inqFile" accept="image/*" multiple>
-                            </div>
-                            <div class="contract">
-                                <p id="insert-text">내용</p>
-                                <textarea id="insert-content" class="textCont" name="inqCont"></textarea>
-                            </div>
+                        </form>
+                        <div class="insert-inquiry" style="justify-content: center;">
+                            <button type="submit" id="insert-confirm-btn" style="width: 120px">등록하기</button>
                         </div>
-                    </form>
-                    <div class="insert-inquiry" style="justify-content: center;">
-                        <button type="submit" id="insert-confirm-btn" style="width: 120px">등록하기</button>
                     </div>
                 </div>
             </div>
-            </div>
-
-        </div>
         </div>
     </div>
+    </div>
+
 
     <!-- Features Area -->
     <section class="features-area">

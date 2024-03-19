@@ -24,6 +24,7 @@
         <result property="goalAmt" column="GOAL_AMT" />
         <result property="fndDescr" column="FND_DESCR" />
         <result property="successAmt" column="SUCCESS_AMT" />
+        <result property="fndSaveFile" column="FND_SAVE_FILE" />
         <result property="fndDelYn" column="FND_DEL_YN" />
         <result property="fndPrgStat" column="FND_PRG_STAT" />
         <result property="auditStat" column="AUDIT_STAT" />
@@ -106,8 +107,8 @@
     <resultMap id="twoPlgResultMap" type="com.revelup.pay.model.dto.PayDTO">
         <id property="plgCode" column="PLG_CODE" />
         <result property="userId" column="USER_ID" />
-        <result property="fndSaveFile" column="FND_SAVE_FILE" />
         <result property="fndCode" column="FND_CODE" />
+        <result property="fndSaveFile" column="FND_SAVE_FILE" />
         <result property="giftQty" column="GIFT_QTY" />
         <result property="plgDttm" column="PLG_DTTM" />
         <result property="plgPrice" column="PLG_PRICE" />
@@ -160,45 +161,27 @@
         <!--         WHERE FND_CODE = #{ fndCode }-->
     </update>
 
-
-<!--    &lt;!&ndash; 후원내역조회 후원내역 &ndash;&gt;-->
-<!--    <select id="selectAllPlgList" resultMap="payResultMap">-->
-<!--        SELECT-->
-<!--                P.PLG_CODE-->
-<!--                ,P.PLG_DTTM-->
-<!--                ,F.FND_CODE-->
-<!--                ,F.FND_NAME-->
-<!--                ,G.GIFT_NAME-->
-<!--                ,p.GIFT_QTY-->
-<!--                ,G.GIFT_PRICE-->
-<!--                ,P.PLG_PRICE-->
-<!--                ,D.DELIV_STAT-->
-<!--          FROM PLG P-->
-<!--          JOIN DELIV D ON P.PLG_CODE = D.PLG_CODE-->
-<!--          JOIN FND_INFO F ON P.FND_CODE = F.FND_CODE-->
-<!--          JOIN GIFT G ON G.FND_CODE = F.FND_CODE-->
-<!--         WHERE F.FND_PRG_STAT = 'L' AND F.USER_ID = #{userId}-->
-<!--    </select>-->
-
-        <!-- 후원내역조회 후원내역 -->
-        <select id="selectAllPlgList" resultMap="payResultMap">
-            SELECT
-            P.PLG_CODE
-            ,P.PLG_DTTM
-            ,F.FND_CODE
-            ,F.FND_NAME
-            ,G.GIFT_NAME
-            ,p.GIFT_QTY
-            ,G.GIFT_PRICE
-            ,P.PLG_PRICE
-<!--            #      ,D.DELIV_STAT-->
-            FROM PLG P
-<!--            #          JOIN DELIV D ON P.PLG_CODE = D.PLG_CODE-->
-            JOIN FND_INFO F ON P.FND_CODE = F.FND_CODE
-            JOIN GIFT G ON G.FND_CODE = F.FND_CODE
-            JOIN USER U ON P.USER_ID = U.USER_ID
-            WHERE F.FND_PRG_STAT = 'L' AND F.USER_ID = F.USER_ID;
-        </select>
+    <!-- 후원내역조회 후원내역 -->
+    <select id="selectAllPlgList" resultMap="payResultMap">
+        SELECT
+                P.PLG_CODE
+                ,P.PLG_DTTM
+                ,FIF.FND_SAVE_FILE
+                ,F.FND_CODE
+                ,F.FND_NAME
+                ,G.GIFT_NAME
+                ,p.GIFT_QTY
+                ,G.GIFT_PRICE
+                ,P.PLG_PRICE
+                ,D.DELIV_STAT
+          FROM PLG P
+          JOIN DELIV D ON P.PLG_CODE = D.PLG_CODE
+          JOIN FND_INFO F ON P.FND_CODE = F.FND_CODE
+          JOIN FND_INSERT_FILE FIF ON F.FND_CODE = FIF.FND_CODE
+          JOIN GIFT G ON G.FND_CODE = F.FND_CODE
+          JOIN USER U ON P.USER_ID = U.USER_ID
+         WHERE F.FND_PRG_STAT = 'L' AND F.USER_ID = #{userId} AND FIF.FILE_DIV = 'T'
+    </select>
 
 
     <!-- 후원내역조회 후원철회 -->
@@ -208,14 +191,16 @@
                 ,P.PLG_CODE
                 ,F.FND_CODE
                 ,F.FND_NAME
+                ,FIF.FND_SAVE_FILE
                 ,G.GIFT_NAME
                 ,p.GIFT_QTY
                 ,G.GIFT_PRICE
                 ,P.PLG_PRICE
           FROM PLG P
           JOIN FND_INFO F ON P.FND_CODE = F.FND_CODE
+          JOIN FND_INSERT_FILE FIF ON F.FND_CODE = FIF.FND_CODE
           JOIN GIFT G ON G.FND_CODE = F.FND_CODE
-         WHERE F.FND_PRG_STAT = 'C' AND F.USER_ID = #{userId}
+         WHERE F.FND_PRG_STAT = 'C' AND F.USER_ID = #{userId} AND FIF.FILE_DIV = 'T'
     </select>
 
     <!-- 후원내역조회 미달성 -->
@@ -223,24 +208,24 @@
         SELECT
                 P.PLG_DTTM
                 ,P.PLG_CODE
-                ,F.FND_CODE
                 ,F.FND_NAME
+                ,FIF.FND_SAVE_FILE
                 ,G.GIFT_NAME
                 ,p.GIFT_QTY
-                ,G.GIFT_PRICE
                 ,P.PLG_PRICE
                 ,F.FND_PRG_STAT
           FROM PLG P
           JOIN FND_INFO F ON P.FND_CODE = F.FND_CODE
+          JOIN FND_INSERT_FILE FIF ON F.FND_CODE = FIF.FND_CODE
           JOIN GIFT G ON G.FND_CODE = F.FND_CODE
-         WHERE F.FND_PRG_STAT = 'U' AND F.USER_ID = #{userId}
+         WHERE F.FND_PRG_STAT = 'U' AND F.USER_ID = #{userId} AND FIF.FILE_DIV = 'T';
     </select>
 
     <!-- 후원내역조회 상세조회 -->
     <select id="selectOne" resultMap="twoPlgResultMap">
         SELECT
                 P.PLG_DTTM
-                , FIF_FND_SAVE_FILE
+                , FIF.FND_SAVE_FILE
                 , F.FND_NAME
                 , G.GIFT_NAME
                 , P.GIFT_QTY
@@ -256,29 +241,31 @@
           JOIN FND_INFO F ON P.FND_CODE = F.FND_CODE
           JOIN FND_INSERT_FILE FIF ON F.FND_CODE = FIF.FND_CODE
           JOIN GIFT G ON G.FND_CODE = F.FND_CODE
-         WHERE P.PLG_CODE = #{plgCode}
+         WHERE P.PLG_CODE = #{plgCode} AND FIF.FILE_DIV = 'T'
     </select>
 
     <!-- 후원내역조회 상세조회 -->
     <select id="selectByOne" resultMap="twoPlgResultMap">
         SELECT
-        P.PLG_DTTM
-        , F.FND_NAME
-        , G.GIFT_NAME
-        , P.GIFT_QTY
-        , P.PLG_PRICE
-        , F.FND_END_DT
-        , D.DELIV_STAT
-        , D.TRACKING_NO
-        , U.USER_ADD
-        , U.USER_NAME
-        , U.USER_PHONE
-        FROM PLG P
-        JOIN USER U ON P.USER_ID = U.USER_ID
-        JOIN DELIV D ON P.PLG_CODE = D.PLG_CODE
-        JOIN FND_INFO F ON P.FND_CODE = F.FND_CODE
-        JOIN GIFT G ON G.FND_CODE = F.FND_CODE
-        WHERE P.PLG_CODE = #{plgCode}
+                P.PLG_DTTM
+                , F.FND_NAME
+                , FIF.FND_SAVE_FILE
+                , G.GIFT_NAME
+                , P.GIFT_QTY
+                , P.PLG_PRICE
+                , F.FND_END_DT
+                , D.DELIV_STAT
+                , D.TRACKING_NO
+                , U.USER_ADD
+                , U.USER_NAME
+                , U.USER_PHONE
+          FROM PLG P
+          JOIN USER U ON P.USER_ID = U.USER_ID
+          JOIN DELIV D ON P.PLG_CODE = D.PLG_CODE
+          JOIN FND_INFO F ON P.FND_CODE = F.FND_CODE
+          JOIN FND_INSERT_FILE FIF ON F.FND_CODE = FIF.FND_CODE
+          JOIN GIFT G ON G.FND_CODE = F.FND_CODE
+         WHERE P.PLG_CODE = #{plgCode} AND FIF.FILE_DIV = 'T'
     </select>
 
 <!-- 달성액 가져오는 방법 -->
@@ -293,13 +280,15 @@
         SELECT
                 F.FND_CODE
                 ,F.FND_NAME
+                ,FIF.FND_SAVE_FILE
                 ,F.GOAL_AMT
                 ,F.SUCCESS_AMT
                 ,F.FND_END_DT
                 ,A.AUDIT_STAT
           FROM FND_INFO F
-            JOIN AUD A ON F.FND_CODE = A.FND_CODE
-         WHERE A.AUDIT_STAT = 'A' AND F.USER_ID = #{userId}
+          JOIN FND_INSERT_FILE FIF ON F.FND_CODE = FIF.FND_CODE
+          JOIN AUD A ON F.FND_CODE = A.FND_CODE
+         WHERE A.AUDIT_STAT = 'A' AND F.USER_ID = #{userId} AND FIF.FILE_DIV = 'T'
     </select>
 
     <!-- 세터 펀딩내역 공지사항 -->
@@ -325,14 +314,16 @@
                 A.AUDIT_APPR_DT
                 ,F.FND_CODE
                 ,F.FND_NAME
+                ,FIF.FND_SAVE_FILE
                 ,G.GIFT_NAME
                 ,F.GOAL_AMT
                 ,F.SUCCESS_AMT
                 ,F.FND_END_DT
           FROM FND_INFO F
           JOIN AUD A ON A.FND_CODE = F.FND_CODE
+          JOIN FND_INSERT_FILE FIF ON F.FND_CODE = FIF.FND_CODE
           JOIN GIFT G ON G.FND_CODE = F.FND_CODE
-         WHERE F.FND_CODE = #{fndCode}
+         WHERE F.FND_CODE = #{fndCode} AND FIF.FILE_DIV = 'T'
     </select>
 
     <!-- 세터 펀딩내역 상세조회(후원자) -->
@@ -405,43 +396,58 @@
         SELECT
                 F.FND_CODE
                 ,F.FND_NAME
+                ,FIF.FND_SAVE_FILE
                 ,F.GOAL_AMT
                 ,F.FND_END_DT
                 ,A.AUDIT_STAT
           FROM FND_INFO F
           JOIN AUD A ON A.FND_CODE = F.FND_CODE
-         WHERE A.AUDIT_STAT = 'P' AND F.USER_ID = #{userId}
+          JOIN FND_INSERT_FILE FIF ON F.FND_CODE = FIF.FND_CODE
+         WHERE A.AUDIT_STAT = 'P' AND F.USER_ID = #{userId} AND FIF.FILE_DIV = 'T'
     </select>
 
     <!-- 세터 반려된 펀딩 -->
     <select id="refuseList" resultMap="fndInfoResultMap">
         SELECT
                F.FND_CODE
+               ,F.USER_ID
                ,F.FND_NAME
+               ,FIF.FND_SAVE_FILE
                ,F.GOAL_AMT
                ,F.FND_END_DT
                ,F.USER_ID
           FROM FND_INFO F
           JOIN AUD A ON A.FND_CODE = F.FND_CODE
-         WHERE A.AUDIT_STAT = 'D' AND F.USER_ID = #{userId}
+          JOIN FND_INSERT_FILE FIF ON F.FND_CODE = FIF.FND_CODE
+         WHERE A.AUDIT_STAT = 'D' AND F.USER_ID = #{userId} AND FIF.FILE_DIV = 'T'
     </select>
 
-    <select id="inqFnd" resultMap="fndInfoResultMap">
-        SELECT FND_CODE ,USER_ID
-        FROM FND_INFO
-    </select>
-
+    <!-- Inserting inquiry into database -->
+    <insert id="inqFnd" parameterType="com.revelup.funding.model.dto.InquiryDTO">
+        INSERT INTO INQ (   FND_CODE
+                            , INQ_TITLE
+                            , INQ_CONT
+                            , INQ_INSERT_DTTM
+                        )
+        VALUES (    #{fndCode}
+                    , #{inqTitle}
+                    , #{inqCont}
+                    , now()
+                )
+    </insert>
 
     <!-- 세터 종료된 펀딩 -->
     <select id="finishList" resultMap="fndInfoResultMap">
         SELECT
-                FND_CODE
-                ,FND_NAME
-                ,GOAL_AMT
-                ,SUCCESS_AMT
-                ,FND_END_DT
-          FROM FND_INFO
-         WHERE FND_PRG_STAT = 'E' AND USER_ID = #{userId}
+                F.FND_CODE
+                ,F.FND_NAME
+                ,FIF.FND_SAVE_FILE
+                ,F.GOAL_AMT
+                ,F.SUCCESS_AMT
+                ,F.FND_END_DT
+          FROM FND_INFO F
+          JOIN FND_INSERT_FILE FIF ON F.FND_CODE = FIF.FND_CODE
+         WHERE FND_PRG_STAT = 'E' AND USER_ID = #{userId} AND FIF.FILE_DIV = 'T'
     </select>
 
 </mapper>
