@@ -2,6 +2,7 @@ package com.revelup.auth.controller;
 
 import com.revelup.funding.model.dto.FundingInfoDTO;
 import com.revelup.funding.model.service.FundingService;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;

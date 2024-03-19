@@ -101,6 +101,7 @@ public class PayController {
                 .totalPrice(approveResponse.getAmount().getTotal())
                 .createdAt(approveResponse.getApprovedAt())
                 .quantity(approveResponse.getQuantity())
+
                 .build();
         model.addAttribute("item", payCompletionDTO);
 
