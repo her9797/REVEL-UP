@@ -138,10 +138,8 @@ public class PayController {
         String fndName = (String) sessionData.getSessionAttribute("fndName");
         int giftPrice = (int) sessionData.getSessionAttribute("giftPrice");
         String fndEndDt = (String) sessionData.getSessionAttribute("fndEndDt");
-//        String saveFile = (String) sessionData.getSessionAttribute("file");
 
         List<FundingInfoDTO> fundingInfoDTOList = (List<FundingInfoDTO>) sessionData.getSessionAttribute("fundingInfoDTOList") ;
-
 
         PayDTO payDTO = new PayDTO();
         payDTO.setFndCode(fndCodeOfPay);
@@ -149,21 +147,13 @@ public class PayController {
         payDTO.setFndName(fndName);
         payDTO.setGiftPrice(giftPrice);
         payDTO.setFndEndDt(fndEndDt);
-//        payDTO.setSaveFile(file);
-//        payDTO.setFundingInfo(fundingInfoDTOList);
 
-        String file1 = null;
+        String file1 = "";
 
         for (FundingInfoDTO dto : fundingInfoDTOList) {
 
-            String file = dto.getFndSaveFile();
-
-            System.out.println("💕💕💕💕💕💕💕" + dto);
-            System.out.println("💕💕💕💕💕💕💕" + file);
-
             if (payDTO.getFndCode() == dto.getFndCode()) {
                 file1 = dto.getFndSaveFile();
-                System.out.println("🔥🔥🔥🔥🔥" + file1);
 
                 payDTO.setFndSaveFile(file1);
 
@@ -172,7 +162,6 @@ public class PayController {
         }
 
         model.addAttribute("pay", payDTO);
-        System.out.println("⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐" + payDTO);
 
         return "content/pay/pay";
     }

@@ -63,10 +63,6 @@ public class UserService {
 
     }
 
-
-
-
-
     /** 회원가입 */
     public int signup(UserDTO userDTO) {
 
@@ -116,19 +112,20 @@ public class UserService {
         return count > 0;
     }
 
+    /** 유저 권한 변경 (펀딩 등록 : 게터->세터) */
     public void updateUserRole(String userId) {
 
         userMapper.updateUserRole(userId);
     }
 
+    /** 회원 탈퇴 1단계 -> 회원 ID 가져오기 */
     public LoginUserDTO userDelete(String userId) {
 
        return userMapper.userDelete(userId);
     }
 
+    /** 회원탈퇴 2단계 -> 회원 ID를 기반으로, 탈퇴 진행 */
     public void userDelete2(LoginUserDTO loginUserDTO) {
-
-
 
         userMapper.userDelete2(loginUserDTO);
     }

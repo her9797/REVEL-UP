@@ -71,7 +71,11 @@
             <a hidden><strong>펀딩코드 : </strong></a><a id="fndCode" name="fndCode" th:text="${pay.fndCode}" hidden></a><br>
             <a><strong>선물금액 : </strong></a><a id="itemPrice" th:text="${pay.giftPrice} +  원"></a><br>
 <!--            <a><strong>후원날짜 : </strong> 2024-02-25</a><br>-->
-            <a><strong>수량 : </strong></a><a id="quantity"><strong></strong>1</a><br>
+            <a><strong>수량 : </strong>
+            <button style="margin-right: -15px" class="btn-qty" onclick="decreaseQuantity()">-</button>
+            <span id="quantity">1</span>
+            <button style="margin-left: -15px" class="btn-qty" onclick="increaseQuantity()">+</button><br>
+<!--            <a><strong>수량 : </strong></a><a id="quantity"><strong></strong>5</a><br>-->
             <a><strong>마감일 :</strong></a><a id="fndEndDt" th:text="${pay.fndEndDt}"></a><br>
         </p>
     </div>

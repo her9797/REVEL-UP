@@ -110,9 +110,7 @@ public class FundingController {
     }
 
 
-    /**
-     * 유저 아이디만 가져가서, 세터로 변경
-     */
+    /** 유저 아이디만 가져가서, 세터로 변경 */
     private void updateUserRole(String userId) {
 
         userService.updateUserRole(userId);
@@ -162,20 +160,17 @@ public class FundingController {
         SetterFileDTO setterFile = fundingService.selectSttrImg(userId);
         model.addAttribute("sttrImg", setterFile);
 
-        System.out.println("🔥🔥🔥🔥🔥🔥🔥🔥" + fundingInfoDTO.getFndCode());
 
 
         int fndCodeOfPay = fundingInfoDTO.getFndCode();
         String fndName = fundingInfoDTO.getFndName();
         int giftPrice = fundingInfoDTO.getGiftPrice();
         String fndEndDt = fundingInfoDTO.getFndEndDt();
-//        String file = fundingInfoDTO.getFndSaveFile();
 
         sessionData.setSessionAttribute("fndCodeOfPay", fndCodeOfPay);
         sessionData.setSessionAttribute("fndName", fndName);
         sessionData.setSessionAttribute("giftPrice", giftPrice);
         sessionData.setSessionAttribute("fndEndDt", fndEndDt);
-//        sessionData.setSessionAttribute("file", file);
 
 
 

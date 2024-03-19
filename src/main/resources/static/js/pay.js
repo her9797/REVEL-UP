@@ -52,3 +52,25 @@ function sendDataToUrl(method, url, data) {
         }
     });
 }
+
+var quantity = 1;
+
+// 수량 증가 함수
+function increaseQuantity() {
+    quantity++;
+    updateQuantityDisplay();
+}
+
+// 수량 감소 함수
+function decreaseQuantity() {
+    if (quantity > 1) { // 수량이 1 이상일 때만 감소
+        quantity--;
+        updateQuantityDisplay();
+    }
+}
+
+// 수량 출력 업데이트 함수
+function updateQuantityDisplay() {
+    var quantityOutput = document.getElementById("quantity");
+    quantityOutput.innerText = quantity;
+}

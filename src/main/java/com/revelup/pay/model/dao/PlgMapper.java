@@ -11,11 +11,8 @@ import org.apache.ibatis.annotations.Mapper;
 public interface PlgMapper {
     void insertPlg(PayCompletionDTO payCompletionDTO);
 
-    int getFndCodePay(int fndCodeOfPay);
-
     void insertDeliv(DeliveryDTO deliveryDTO);
 
     void updateSuccessAmt(FundingInfoDTO fundingInfoDTO);
 
-    PayDTO getFile(FundingInfoDTO fundingInfoDTO);
 }

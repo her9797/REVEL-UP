@@ -142,26 +142,13 @@ public class PayService {
 		deliveryDTO.setPlgCode(plgCode);
 		plgMapper.insertDeliv(deliveryDTO);
 
-//		int plgPrice = payCompletionDTO.getPlgPrice();
 		fundingInfoDTO.setFndCode(payCompletionDTO.getFndCode());
 		fundingInfoDTO.setSuccessAmt(payCompletionDTO.getPlgPrice());
 		plgMapper.updateSuccessAmt(fundingInfoDTO);
-
-
-		System.out.println("❌카카오톡 어프로프 DOT❌" + kakaoPayApproveDTO);
-		System.out.println("❌레스폰스❌" + response);
-		System.out.println("❌페이컴플리트 DTO❌" + payCompletionDTO);
-		System.out.println("❌delivery DTO❌" + deliveryDTO);
-		System.out.println("❌fundingInfo DTO❌" + fundingInfoDTO);
 
 
 		return response;
 	}
 
 
-    public PayDTO getFile(FundingInfoDTO fundingInfoDTO) {
-
-		System.out.println("❤❤❤❤❤❤❤"+fundingInfoDTO);
-		return plgMapper.getFile(fundingInfoDTO);
-    }
 }

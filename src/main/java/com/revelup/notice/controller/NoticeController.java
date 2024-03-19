@@ -23,16 +23,7 @@ public class NoticeController {
         this.noticeService = noticeService;
     }
 
-    /** 공지사항 페이지 이동 */
-//    @GetMapping("/manager-notice")
-//    public String noticeList(Model model) {
-//
-//        List<NoticeDTO> noticeList = noticeService.findAllNtcList();
-//        model.addAttribute("noticeList", noticeList);
-//        return "manager/manager-notice";
-//
-//    }
-
+    /** 공지사항 리스트 -> 페이징 */
     @GetMapping("/manager-notice")
     public String getNoticeByPage(@RequestParam(value = "page", defaultValue = "0") int page,
                                   @RequestParam(value = "size", defaultValue = "10") int size, Model model) {
@@ -57,7 +48,7 @@ public class NoticeController {
         model.addAttribute("rangeStart", rangeStart); // 페이지 범위 시작 추가
         model.addAttribute("rangeEnd", rangeEnd); // 페이지 범위 끝 추가
 
-        return "manager/manager-notice"; // 템플릿 이름 반환
+        return "manager/manager-notice";
     }
 
 

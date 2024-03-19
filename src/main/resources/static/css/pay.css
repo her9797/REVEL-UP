@@ -95,3 +95,20 @@
     transition: background-color 0.3s ease; /* 호버 효과 전환 효과 설정 */
     margin-left: 61%; /* 이미지 박스를 오른쪽으로 정렬 */
 }
+
+.btn-qty {
+    font-size: 20px;
+    background-color: transparent;
+    color: #087559;
+    border: none;
+    cursor: pointer;
+    font-weight: bolder;
+}
+
+.btn-qty:hover {
+    text-decoration: underline;
+}
+
+#quantity {
+    margin: 0 10px;
+}
