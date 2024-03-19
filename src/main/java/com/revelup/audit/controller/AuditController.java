@@ -23,8 +23,6 @@ public class AuditController {
     public String auditList(Model model, AuditDTO auditDTO){
 
         List<AuditDTO> audit = auditService.auditList(auditDTO);
-        System.out.println("컨트롤러 : "+ audit);
-
         model.addAttribute("audit", audit);
 
         return "manager/manager-audit";

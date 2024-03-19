@@ -183,6 +183,7 @@
          WHERE F.FND_PRG_STAT = 'L' AND P.USER_ID = #{userId} AND FIF.FILE_DIV = 'T'
     </select>
 
+
     <!-- 후원내역조회 후원철회 -->
     <select id="selectRefundList" resultMap="payResultMap">
         SELECT
@@ -288,7 +289,7 @@
           JOIN FND_INSERT_FILE FIF ON F.FND_CODE = FIF.FND_CODE
           JOIN AUD A ON F.FND_CODE = A.FND_CODE
          WHERE A.AUDIT_STAT = 'A' AND F.USER_ID = #{userId} AND FIF.FILE_DIV = 'T'
-        AND F.FND_END_DT > now()
+<!--        AND REPLACE(F.FND_END_DT, '-', '') <![CDATA[ < ]]>  REPLACE(CURRENT_DATE(), '-', '')-->
     </select>
 
     <update id="accumulateSuccessAmt" parameterType="com.revelup.funding.model.dto.FundingInfoDTO">
@@ -350,6 +351,8 @@
          WHERE F.FND_CODE = #{fndCode}
     </select>
 
+<!--     <delete id="deleteFnd" parameterType="Long">
+   -->
     <delete id="deleteFnd" parameterType="com.revelup.funding.model.dto.FundingInfoDTO">
         DELETE
           FROM FND_INFO
@@ -362,7 +365,8 @@
         WHERE FND_CODE = #{ fndCode }
     </delete>
 
-<!--    해당 값 없음 -->
+
+<!--    해당 값 없음-->
 <!--    <delete id="deleteRpt" parameterType="com.revelup.report.model.dto.ReportDTO">-->
 <!--        DELETE-->
 <!--        FROM RPT-->
@@ -375,7 +379,7 @@
          WHERE FND_CODE = #{ fndCode }
     </delete>
 
-<!--    정산 dto -->
+<!--    정산 dto 없음,,, -->
 <!--    <delete id="deleteStlmt" parameterType="com.revelup.pay.model.dto.">-->
 <!--        DELETE-->
 <!--        FROM STLMT_LIST-->
@@ -461,17 +465,17 @@
 <!--        AND FND_END_DT lt now()-->
 <!--    </update>-->
 
-<!--    <update id="updateFundingStatusToE">-->
-<!--        UPDATE FND_INFO-->
-<!--        SET FND_PRG_STAT = 'E'-->
-<!--        WHERE FND_CODE = #{fndCode}-->
-<!--    </update>-->
+    <update id="updateFundingStatusToE">
+        UPDATE FND_INFO
+        SET FND_PRG_STAT = 'E'
+        WHERE FND_CODE = #{fndCode}
+    </update>
 
     <select id="getFinishList" resultMap="fndInfoResultMap">
         SELECT
-                FND_CODE,
-                FND_END_DT
-                FROM FND_INFO
+        FND_CODE,
+        FND_END_DT
+        FROM FND_INFO
         WHERE FND_END_DT lt NOW()
     </select>
 
