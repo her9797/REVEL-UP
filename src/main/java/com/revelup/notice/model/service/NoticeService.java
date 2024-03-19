@@ -42,4 +42,14 @@ public class NoticeService {
     public void updateNotice(NoticeDTO noticeDTO) {
         noticeMapper.updateNotice(noticeDTO);
     }
+
+    public int totalNotice() {
+        return noticeMapper.totalNotice();
+
+    }
+
+    public List<NoticeDTO> getNoticeByPage(int page, int noticePerPage) {
+
+        return noticeMapper.getNoticeByPage(page, noticePerPage);
+    }
 }

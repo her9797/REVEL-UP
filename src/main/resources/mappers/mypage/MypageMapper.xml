@@ -180,7 +180,7 @@
           JOIN FND_INSERT_FILE FIF ON F.FND_CODE = FIF.FND_CODE
           JOIN GIFT G ON G.FND_CODE = F.FND_CODE
           JOIN USER U ON P.USER_ID = U.USER_ID
-         WHERE F.FND_PRG_STAT = 'L' AND F.USER_ID = #{userId} AND FIF.FILE_DIV = 'T'
+         WHERE F.FND_PRG_STAT = 'L' AND P.USER_ID = #{userId} AND FIF.FILE_DIV = 'T'
     </select>
 
 

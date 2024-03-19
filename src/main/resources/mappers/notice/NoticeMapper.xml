@@ -56,4 +56,16 @@
     </delete>
 
 
+    <select id="totalNotice" resultType="int">
+        SELECT COUNT(*)
+        FROM NTC
+    </select>
+
+    <select id="getNoticeByPage" parameterType="map" resultMap="noticeResultMap">
+        SELECT *
+        FROM NTC
+        ORDER BY NTC_CODE
+        LIMIT #{start}, #{size}
+    </select>
+
 </mapper>

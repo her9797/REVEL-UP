@@ -126,6 +126,8 @@ public class FundingController {
         System.out.println("fundingInfoDTOList 🔥🔥🔥🔥🔥🔥🔥🔥 selectAllFunding = " + fundingInfoDTOList);
 
 
+        sessionData.setSessionAttribute("fundingInfoDTOList", fundingInfoDTOList);
+
         return "content/funding/all-funding";
     }
 
@@ -167,13 +169,13 @@ public class FundingController {
         String fndName = fundingInfoDTO.getFndName();
         int giftPrice = fundingInfoDTO.getGiftPrice();
         String fndEndDt = fundingInfoDTO.getFndEndDt();
-        String file = fundingInfoDTO.getSiSaveFile();
+//        String file = fundingInfoDTO.getFndSaveFile();
 
         sessionData.setSessionAttribute("fndCodeOfPay", fndCodeOfPay);
         sessionData.setSessionAttribute("fndName", fndName);
         sessionData.setSessionAttribute("giftPrice", giftPrice);
         sessionData.setSessionAttribute("fndEndDt", fndEndDt);
-        sessionData.setSessionAttribute("file", file);
+//        sessionData.setSessionAttribute("file", file);
 
 
 

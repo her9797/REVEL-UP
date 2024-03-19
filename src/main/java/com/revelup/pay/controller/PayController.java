@@ -28,6 +28,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import javax.print.DocFlavor;
 import java.security.Principal;
+import java.util.List;
 
 /**
  * 아래 두개의 페이지 참고.
@@ -129,7 +130,10 @@ public class PayController {
         String fndName = (String) sessionData.getSessionAttribute("fndName");
         int giftPrice = (int) sessionData.getSessionAttribute("giftPrice");
         String fndEndDt = (String) sessionData.getSessionAttribute("fndEndDt");
-        String file = (String) sessionData.getSessionAttribute("file");
+//        String saveFile = (String) sessionData.getSessionAttribute("file");
+
+        List<FundingInfoDTO> fundingInfoDTOList = (List<FundingInfoDTO>) sessionData.getSessionAttribute("fundingInfoDTOList") ;
+
 
         PayDTO payDTO = new PayDTO();
         payDTO.setFndCode(fndCodeOfPay);
@@ -137,8 +141,27 @@ public class PayController {
         payDTO.setFndName(fndName);
         payDTO.setGiftPrice(giftPrice);
         payDTO.setFndEndDt(fndEndDt);
-        payDTO.setSaveFile(file);
+//        payDTO.setSaveFile(file);
+//        payDTO.setFundingInfo(fundingInfoDTOList);
 
+        String file1 = null;
+
+        for (FundingInfoDTO dto : fundingInfoDTOList) {
+
+            String file = dto.getFndSaveFile();
+
+            System.out.println("💕💕💕💕💕💕💕" + dto);
+            System.out.println("💕💕💕💕💕💕💕" + file);
+
+            if (payDTO.getFndCode() == dto.getFndCode()) {
+                file1 = dto.getFndSaveFile();
+                System.out.println("🔥🔥🔥🔥🔥" + file1);
+
+                payDTO.setFndSaveFile(file1);
+
+            }
+
+        }
 
         model.addAttribute("pay", payDTO);
         System.out.println("⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐" + payDTO);

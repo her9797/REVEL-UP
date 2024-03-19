@@ -1,3 +1,4 @@
+
 // 페이지의 로드가 완료된 후에 실행될 함수 정의
 window.onload = function() {
     // 신규등록 버튼 클릭 시 모달 표시
@@ -135,4 +136,129 @@ function updateNotice(ntcCode) {
         }
     });
 
+}
+
+
+document.addEventListener("DOMContentLoaded", function() {
+    // 페이지당 공지사항 수와 전체 공지사항 수를 설정해야 합니다.
+    var noticesPerPage = 5; // 페이지당 공지사항 수
+    var totalNotices = 10/* 전체 공지사항 수를 여기에 설정하세요 */;
+
+    var currentPage = 1; // 현재 페이지
+    var totalPages = Math.ceil(totalNotices / noticesPerPage); // 전체 페이지 수
+
+    // 페이지 번호를 클릭할 때 해당 페이지로 이동하는 함수
+    function goToPage(page) {
+        currentPage = page;
+        // 해당 페이지의 공지사항을 불러오는 등의 작업을 수행할 수 있습니다.
+        console.log("이동한 페이지:", currentPage);
+    }
+
+    // 페이지 번호를 생성하는 함수
+    function renderPageNumbers() {
+        var pages = document.querySelector(".pages");
+        pages.innerHTML = ""; // 기존 페이지 번호 초기화
+
+        // 첫 페이지, 이전 페이지 버튼 생성
+        if (currentPage > 1) {
+            pages.innerHTML += `<i class="fa-solid fa-angles-left" id="first_page"></i>`;
+            pages.innerHTML += `<i class="fa-solid fa-angle-left" id="prev_page"></i>`;
+        }
+
+        // 페이지 번호 생성
+        for (var i = 1; i <= totalPages; i++) {
+            pages.innerHTML += `<span class="${currentPage === i ? 'active' : ''}" onclick="goToPage(${i})">${i}</span>`;
+        }
+
+        // 다음 페이지, 마지막 페이지 버튼 생성
+        if (currentPage < totalPages) {
+            pages.innerHTML += `<i class="fa-solid fa-angle-right" id="next_page"></i>`;
+            pages.innerHTML += `<i class="fa-solid fa-angles-right" id="last_page"></i>`;
+        }
+
+        // 페이지 버튼에 이벤트 리스너 등록
+        var pageButtons = document.querySelectorAll(".pages span");
+        pageButtons.forEach(function(button) {
+            button.addEventListener("click", function() {
+                goToPage(parseInt(button.textContent));
+            });
+        });
+
+        // 이전 페이지 버튼에 이벤트 리스너 등록
+        var prevPageButton = document.getElementById("prev_page");
+        if (prevPageButton) {
+            prevPageButton.addEventListener("click", function() {
+                if (currentPage > 1) {
+                    goToPage(currentPage - 1);
+                }
+            });
+        }
+
+        // 다음 페이지 버튼에 이벤트 리스너 등록
+        var nextPageButton = document.getElementById("next_page");
+        if (nextPageButton) {
+            nextPageButton.addEventListener("click", function() {
+                if (currentPage < totalPages) {
+                    goToPage(currentPage + 1);
+                }
+            });
+        }
+
+        // 첫 페이지 버튼에 이벤트 리스너 등록
+        var firstPageButton = document.getElementById("first_page");
+        if (firstPageButton) {
+            firstPageButton.addEventListener("click", function() {
+                goToPage(1);
+            });
+        }
+
+        // 마지막 페이지 버튼에 이벤트 리스너 등록
+        var lastPageButton = document.getElementById("last_page");
+        if (lastPageButton) {
+            lastPageButton.addEventListener("click", function() {
+                goToPage(totalPages);
+            });
+        }
+    }
+
+    // 페이지 번호 렌더링
+    renderPageNumbers();
+});
+
+
+// 페이지를 로드하고 초기 페이지 내용을 표시
+loadPage(1);
+
+// 페이지를 클릭할 때 해당 페이지로 이동하고 페이지 내용을 갱신하는 함수
+function goToPage(page) {
+    // 현재 페이지를 변경
+    currentPage = page;
+    // 새로운 페이지로 이동
+    loadPage(page);
+}
+
+// 페이지 버튼에 이벤트 리스너 등록
+document.querySelectorAll(".pages span").forEach(function(button) {
+    button.addEventListener("click", function() {
+        goToPage(parseInt(button.textContent));
+    });
+});
+
+// 페이지를 불러와서 페이지 내용을 갱신하는 함수
+function loadPage(page) {
+    // AJAX를 사용하여 페이지의 내용을 불러옴
+    $.ajax({
+        url: '/manager/manager-notice?page=' + page, // 페이지 내용을 불러올 URL에 페이지 매개변수 추가
+        type: 'GET',
+        success: function(response) {
+            // 페이지 내용을 받아와서 화면에 표시
+            document.getElementById('page-content').innerHTML = response;
+            // 페이지 번호 렌더링
+            renderPageNumbers();
+        },
+        error: function(xhr, status, error) {
+            // 오류 처리
+            console.error('페이지를 불러오는 중 오류가 발생하였습니다.');
+        }
+    });
 }
