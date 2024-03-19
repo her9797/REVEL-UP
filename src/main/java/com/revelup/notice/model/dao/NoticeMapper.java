@@ -26,4 +26,7 @@ public interface NoticeMapper {
     void updateNotice(NoticeDTO noticeDTO);
 
 
+    int totalNotice();
+
+    List<NoticeDTO> getNoticeByPage(@Param("start") int start, @Param("size") int size);
 }

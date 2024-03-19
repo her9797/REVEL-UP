@@ -2,19 +2,14 @@ package com.revelup.notice.controller;
 
 import com.revelup.notice.model.dto.NoticeDTO;
 import com.revelup.notice.model.service.NoticeService;
-import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
-import jakarta.servlet.http.HttpServletRequest;
-import jakarta.servlet.http.HttpServletResponse;
+import org.springframework.data.web.PageableDefault;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.servlet.ModelAndView;
-import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import java.io.IOException;
-import java.sql.Date;
+import java.awt.print.Pageable;
 import java.util.List;
 
 @Controller
@@ -29,14 +24,42 @@ public class NoticeController {
     }
 
     /** 공지사항 페이지 이동 */
+//    @GetMapping("/manager-notice")
+//    public String noticeList(Model model) {
+//
+//        List<NoticeDTO> noticeList = noticeService.findAllNtcList();
+//        model.addAttribute("noticeList", noticeList);
+//        return "manager/manager-notice";
+//
+//    }
+
     @GetMapping("/manager-notice")
-    public String noticeList(Model model) {
+    public String getNoticeByPage(@RequestParam(value = "page", defaultValue = "0") int page,
+                                  @RequestParam(value = "size", defaultValue = "10") int size, Model model) {
 
-        List<NoticeDTO> noticeList = noticeService.findAllNtcList();
-        model.addAttribute("noticeList", noticeList);
-        return "manager/manager-notice";
+        int noticePerPage = size; // 페이지 당 공지사항 수
+        int totalNotice = noticeService.totalNotice(); // 전체 공지사항 수
 
+        int totalPage = (int) Math.ceil((double) totalNotice / noticePerPage); // 전체 페이지 수
+
+        int start = Math.max((page - 1) * size, 0);
+        int end = Math.min(start + size, totalNotice); // 끝 인덱스
+
+        List<NoticeDTO> notice = noticeService.getNoticeByPage(start, size); // 해당 페이지의 공지사항 가져오기
+
+        // 페이지 범위 계산
+        int rangeStart = (page - 1) * size + 1;
+        int rangeEnd = Math.min(page * size, totalNotice);
+
+        model.addAttribute("noticeList", notice); // 모델에 공지사항 리스트 추가
+        model.addAttribute("page", page); // 현재 페이지 번호 추가
+        model.addAttribute("totalPage", totalPage); // 전체 페이지 수 추가
+        model.addAttribute("rangeStart", rangeStart); // 페이지 범위 시작 추가
+        model.addAttribute("rangeEnd", rangeEnd); // 페이지 범위 끝 추가
+
+        return "manager/manager-notice"; // 템플릿 이름 반환
     }
+
 
     /** 공지사항 등록 */
     @PostMapping("/insert-notice")

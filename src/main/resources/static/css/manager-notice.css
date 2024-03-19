@@ -80,25 +80,42 @@
     opacity: 0.8;
 }
 
-/* 페이징 처리 */
-div.paging {
-    width: 100%;
-    display: inline-flex;
-    align-items: center;
-    margin-top: 20px;
+
+
+/* 여기 밑. */
+.pagination {
+    display: flex;
     justify-content: center;
+    list-style-type: none;
+    padding: 0;
 }
 
-div.paging > i, div.paging > div.pages {
-    margin: 0 10px;
+.pagination li {
+    margin: 0 5px;
 }
 
-div.paging > i, div.paging > div.pages > span {
-    margin: 0 3px;
-    cursor: pointer;
+.pagination a {
+    display: block;
+    padding: 5px 10px;
+    text-decoration: none;
+    color: #333;
+    border: 1px solid #ccc;
+    border-radius: 3px;
 }
 
-span.active {
-    color: red;
-    font-weight: bold;
+.pagination a:hover {
+    background-color: #f0f0f0;
+}
+
+.pagination .active a {
+    background-color: #0CC291;
+    color: #fff;
+    border-color: #0aa27b;
+}
+
+.pagination .disabled a {
+    pointer-events: none;
+    background-color: #e9ecef;
+    color: #6c757d;
+    border-color: #dee2e6;
 }

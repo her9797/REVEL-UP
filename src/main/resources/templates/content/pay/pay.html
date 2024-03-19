@@ -64,7 +64,7 @@
 
 <section class="product" style="margin-right: 100px; margin-top: 40px">
     <div class="image-box"> <!-- 컨테이너 스타일-->
-        <img th:src="@{|/upload/${pay.saveFile}|}" class="image"> <!--사진에 대한 이미지 css적용시 사용-->
+        <img th:src="@{|/upload/${pay.fndSaveFile}|}" class="image"> <!--사진에 대한 이미지 css적용시 사용-->
         <p class="image-desc" style="margin-top: 50px">
             <a id="itemName" style="font-weight: bold; font-size: 25px" th:text="${pay.fndName}" ></a><br>
 <!--            <span><strong>펀딩코드 ㅅㅂ : </strong> <span th:text="${payFunding.fndCode} + '원'"></span></span><br>-->
