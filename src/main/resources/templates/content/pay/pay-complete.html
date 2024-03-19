@@ -38,37 +38,26 @@
 
 
 <section>
-    <div class="success">
+    <div class="success" style="margin-top: 50px">
         <img src="/img/icons/green-check-icon.svg" id="image" alt="완료 버튼">
     </div>
 </section>
 
 
-<section class="note">
+<section class="note" style="margin-top: 50px">
     <p class="image-desc">
-        <span th:text="${item.itemName}" style="font-weight: bold;"></span><br>
+        <span><strong>펀딩명 : </strong> <span th:text="${item.itemName}"></span></span><br>
 
         <span><strong>선물가격 : </strong> <span th:text="${item.totalPrice} + '원'"></span></span><br>
         <span><strong>후원날짜 : </strong> <span th:text="${item.createdAt}"></span></span><br>
 <!--        <span><strong>후원코드 : </strong> <span th:text="${item.fndCode}"></span></span><br>-->
         <span><strong>수량 :</strong><span th:text="${item.quantity} + '개'"></span></span><br>
-        <span><strong>마감일 :</strong>2024-04-25</span><br>
+
     </p>
 </section>
-<section class="pay">
-    <!-- 결제하기 , 카카오 페이 버튼-->
-    <div class="paybutton"></div>
+<section class="pay" style="margin-bottom: 100px">
     <button onclick="" class="form-paybutton">상세조회</button>
 </section>
-<br>
-<br>
-<br>
-<br>
-<div id="footer"></div>
-<!-- jQuery -->
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
 <div th:insert="~{/fragments/footer.html}"></div>
 

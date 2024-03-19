@@ -259,6 +259,7 @@ input, button, .wishlist-btn, .pay-btn {
     margin: 0 5px 0 5px;
     height: 32.8px;
     align-items: center;
+    text-align: center;
 }
 
 .wishlist-btn, .pay-btn {
@@ -271,7 +272,14 @@ input, button, .wishlist-btn, .pay-btn {
 
 /* 후원하기 버튼 마우스 호버시 스타일 */
 .pay-btn:hover {
-    background-color: #64af3d;
+    background-color: #0aa97e;
+}
+
+.pay-btn span,
+.wishlist-btn span{
+    /* 텍스트의 위치를 조정하는 CSS */
+    display: block;
+    padding-top: 3px; /* 텍스트를 아래로 이동시키는 패딩값 조정 */
 }
 
 .total-price input {

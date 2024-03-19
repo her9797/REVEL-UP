@@ -54,3 +54,12 @@ body {
     margin-left: 40%; /* 이미지 박스를 오른쪽으로 정렬 */
     bottom: 75%; /* 결제 버튼 위쪽 간격 추가 */
 }
+
+.pay {
+    display: flex; /* 요소를 플렉스 박스로 설정 */
+    justify-content: center; /* 주 축을 중앙으로 정렬 */
+    align-items: center; /* 교차 축을 중앙으로 정렬 */
+    margin-bottom: 150px; /* 하단 여백 추가 */
+    margin-top: 150px;
+    margin-right: 530px;
+}

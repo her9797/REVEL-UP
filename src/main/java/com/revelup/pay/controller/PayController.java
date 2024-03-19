@@ -28,6 +28,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import javax.print.DocFlavor;
 import java.security.Principal;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -83,6 +84,9 @@ public class PayController {
 
         log.info("kakaoPayReadyDTO: {}", kakaoPayReadyDTO);
 
+        String itemName = kakaoPayReadyDTO.getItemName();
+        sessionData.setSessionAttribute("itemName", itemName);
+
         String redirectUrl = payService.kakaoPayReady(request, kakaoPayReadyDTO);
         return redirectUrl;
     }
@@ -96,11 +100,14 @@ public class PayController {
         log.info("pgToken: {}", pgToken);
         KaKaoPayApproveResponseDTO approveResponse = payService.kakaoPayApprove(userDetails.getUsername(), pgToken, payDTO, principal);
 
+        String itemName = (String) sessionData.getSessionAttribute("itemName");
+
         PayCompletionDTO payCompletionDTO = PayCompletionDTO.builder()
-                .itemName(approveResponse.getGiftName())
+                .itemName(itemName)
                 .totalPrice(approveResponse.getAmount().getTotal())
-                .createdAt(approveResponse.getApprovedAt())
+                .createdAt(approveResponse.getCreatedAt())
                 .quantity(approveResponse.getQuantity())
+
 
                 .build();
         model.addAttribute("item", payCompletionDTO);
