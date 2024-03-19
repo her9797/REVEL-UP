@@ -37,7 +37,7 @@ public class MypageController {
     }
 
     // 운송장번호 UPDATE
-//    @ResponseBody // @ResponseBody return을 문자 그대로 반환하라는 의미 여기서는 사용하지 않음
+    // @ResponseBody // @ResponseBody return을 문자 그대로 반환하라는 의미 여기서는 사용하지 않음
     @PostMapping("/updateTrackingNo")
     public String updateTrackingNo(@RequestParam("plgCode") int plgCode, @RequestParam("trackingNo") String trackingNo, Model model, FundingInfoDTO fundingInfoDTO){
 
@@ -46,9 +46,8 @@ public class MypageController {
         deliveryDTO.setDelivStat("S");
         deliveryDTO.setTrackingNo(trackingNo);
         model.addAttribute("deliveryDTO", deliveryDTO);
-        System.out.println(deliveryDTO);
+
         fundingInfoDTO.getFndCode();
-        System.out.println("fundingInfoDTO : " + fundingInfoDTO.getFndCode());
 
         int result = mypageService.updateTrackingNo(deliveryDTO);
 
@@ -58,7 +57,6 @@ public class MypageController {
             System.out.println("실패!!!!!");
         }
 
-//        return "redirect:setter-funding-history";
         return "redirect:/content/mypage/setter-funding-history";
     }
 
@@ -88,7 +86,7 @@ public class MypageController {
         log.info("plgCode : {}", plgCode);
         try {
             PayDTO plgDetails = mypageService.selectOne(plgCode);
-            System.out.println("plgDetails :" + plgDetails);
+
             if (plgDetails == null) { // 조회 결과가 없는 경우
                 log.info("해당 plgCode에 대한 데이터가 존재하지 않습니다: {}", plgCode);
                 model.addAttribute("message", "해당 정보를 찾을 수 없습니다."); // 모델에 메시지 추가
@@ -104,68 +102,12 @@ public class MypageController {
         }
     }
 
-// details1에서 trackingNo의 null 유무에 따라 delivStat의 상태만 변화되도록 변경!!!
-//    // 나의 후원내역2 상세보기 페이지 이동
-//    @GetMapping("/getter-spons-details2/{plgCode}")
-//    public String selectByOnePlg(@RequestParam("plgCode") int plgCode, Model model) {
-//
-//        log.info("plgCode : {}", plgCode);
-//        try {
-//            PayDTO plgDetails = mypageService.selectByOne(plgCode);
-//            System.out.println("plgDetails :" + plgDetails);
-//            if (plgDetails == null) { // 조회 결과가 없는 경우
-//                log.info("해당 plgCode에 대한 데이터가 존재하지 않습니다: {}", plgCode);
-//                model.addAttribute("message", "해당 정보를 찾을 수 없습니다."); // 모델에 메시지 추가
-//            } else { // 조회 결과가 있는 경우
-//                log.info("plgDetails: {}", plgDetails); // 조회된 후원 내역 로깅
-//                model.addAttribute("plgDetails", plgDetails); // 모델에 후원 내역 추가
-//            }
-//            return "content/mypage/getter-spons-details2"; // 후원 내역 상세보기 페이지로 이동
-//        } catch (Exception e) { // 예외 처리
-//            log.error("페이지를 불러오는 중 오류가 발생했습니다.", e); // 오류 로깅
-//            // 예외를 발생시켜 공통 예외 처리 기능을 통해 사용자에게 적절한 응답을 할 수 있도록 함
-//            throw new RuntimeException("페이지를 불러오는 중 오류가 발생했습니다.", e);
-//        }
-//    }
-//
-//    // 나의 후원내역3 상세보기 페이지 이동
+    // details1에서 trackingNo의 null 유무에 따라 delivStat의 상태만 변화되도록 변경!!!
+    // 나의 후원내역3 상세보기 페이지 이동(구매확정)
 //    @GetMapping("/getter-spons-details3")
 //    public String getterSponsDetailsThreePage() {
 //        return "content/mypage/getter-spons-details3";
 //    }
-
-// 배송여부에 따라 url이동 페이지 작성중 (에러 발생)
-//    @GetMapping("/getter-spons-details")
-//    public String getterSponsDetails(@RequestParam("plgCode") int plgCode, Model model) {
-//        log.info("plgCode : {}", plgCode);
-//        try {
-//            PayDTO plgDetails = mypageService.selectOne(plgCode); // selectOne 메소드 사용으로 가정
-//            System.out.println("plgDetails :" + plgDetails);
-//            if (plgDetails == null) {
-//                log.info("해당 plgCode에 대한 데이터가 존재하지 않습니다: {}", plgCode);
-//                model.addAttribute("message", "해당 정보를 찾을 수 없습니다.");
-//                return "errorPage"; // 에러 페이지 또는 적절한 페이지로 리다이렉트
-//            } else {
-//                log.info("plgDetails: {}", plgDetails);
-//                model.addAttribute("plgDetails", plgDetails);
-//                // delivStat 값에 따라 조건 분기
-//                if ("R".equals(plgDetails.getDelivStat())) {
-//                    return "redirect:/content/mypage/getter-spons-details1";
-//                } else if ("S".equals(plgDetails.getDelivStat())) {
-//                    return "redirect:/content/mypage/getter-spons-details2";
-//                } else {
-//                    // delivStat이 R 또는 S가 아닌 경우 처리
-//                    model.addAttribute("message", "배송 상태가 유효하지 않습니다.");
-//                    return "errorPage"; // 에러 페이지 또는 적절한 페이지로 리다이렉트
-//                }
-//            }
-//        } catch (Exception e) {
-//            log.error("페이지를 불러오는 중 오류가 발생했습니다.", e);
-//            throw new RuntimeException("페이지를 불러오는 중 오류가 발생했습니다.", e);
-//        }
-//    }
-
-
 
     // 후원철회 버튼 클릭 후 페이지 이동
     @GetMapping("/getter-refund")
@@ -205,7 +147,6 @@ public class MypageController {
     public String setterFndListPage(Model model, Principal principal) {
 
         String userId = principal.getName();
-        System.out.println("userId : " + userId);
 
         try {
             List<FundingInfoDTO> allFndList = mypageService.allFndList(userId);
@@ -218,11 +159,11 @@ public class MypageController {
         }
     }
 
-    @PostMapping("/accumulateSuccessAmt/{fndCode}")
-    public String accumulateSuccessAmt(@PathVariable("fndCode") int fndCode, @RequestParam("successAmt") int successAmt) {
-        mypageService.accumulateSuccessAmt(fndCode, successAmt);
-        return "redirect:/content/mypage/setter-fndList";
-    }
+    // 펀딩 상태를 업데이트하는 엔드포인트
+//    @PostMapping("/update-funding-status")
+//    public void updateFundingStatus(@RequestParam("fndCode") int fndCode) {
+//        mypageService.updateFundingStatus(fndCode);
+//    }
 
     @PostMapping("/setter-fndList/{fndCode}")
     public String setterFndListDeletePage(@PathVariable("fndCode") int fndCode) {
@@ -235,12 +176,10 @@ public class MypageController {
 
     @GetMapping("/setter-notice/{fndCode}")
     public String sttrNotice(@PathVariable("fndCode")int fndCode, Model model) {
-        System.out.println("fndCode : " + fndCode);
         FundingInfoDTO sttrOneFnd = mypageService.sttrOneFnd(fndCode);
         log.info("selectOne");
 
         model.addAttribute("sttrOneFnd", sttrOneFnd);
-        System.out.println("sttrOneFnd" + sttrOneFnd);
 
         return "content/mypage/setter-notice";
     }
@@ -257,10 +196,8 @@ public class MypageController {
         List<PayDTO> plgList = mypageService.plgList(fndCode);
 
         model.addAttribute("selectOneFnd", selectOneFnd);
-        System.out.println("selectOneFnd" + selectOneFnd);
-
         model.addAttribute("plgList", plgList);
-        System.out.println("plgList" + plgList);
+
         return "content/mypage/setter-funding-history";
     }
 
@@ -269,8 +206,6 @@ public class MypageController {
     public String deleteFnd(@RequestParam("fndCode") int fndCode) {
 
         log.info("fndCode : " + fndCode);
-        System.out.println("fndCode : " + fndCode);
-
         mypageService.deleteFnd(fndCode);
 
         return "redirect:/content/mypage/setter-fndList";
@@ -315,11 +250,9 @@ public class MypageController {
                             , @ModelAttribute InquiryFileDTO inquiryFileDTO, Model model) {
 
         log.info("fndCode : " + fndCode);
-        System.out.println("fndCode : " + fndCode);
 
         FundingInfoDTO refuse = mypageService.inqFnd(fndCode); // 펀딩번호로 정보 가져오기
         model.addAttribute("refuse", refuse);
-
 
         mypageService.insertInq(fndCode, inquiryDTO, inquiryFileDTO);
 
@@ -342,18 +275,6 @@ public class MypageController {
         }
     }
 
-    @PostMapping("/update-funding-status")
-    public String finishUpdateStat(@RequestParam("fndCode") int fndCode, FundingInfoDTO fundingInfoDTO) {
-
-        System.out.println(fndCode);
-        log.info(fndCode);
-        fundingInfoDTO = mypageService.finishUpdateStat(fndCode);
-        System.out.println(fundingInfoDTO);
-        log.info(fundingInfoDTO);
-        return "redirect:/content/mypage/setter-fndList";
-    }
-
-
     // 찜한 목록 조회 페이지 이동
     @GetMapping("/all-wishlist")
     public String allWishListPage() {
@@ -373,7 +294,4 @@ public class MypageController {
             super(message, cause);
         }
     }
-
-
-
 }
