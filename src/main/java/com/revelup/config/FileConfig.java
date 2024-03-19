@@ -11,7 +11,7 @@ public class FileConfig implements WebMvcConfigurer {
 //    private String fndFileLoc = "file:///Users/jaylee/Documents/SemiFinal/fndFileLoc/"; // Mac용 저장경로
 //    private String fndFileLoc = "file:///C:/Users/hi/Desktop/revelupimg/"; // Window용 저장경로
     private String fndFileLoc = "file:///C:/Users/simko/Desktop/file/"; // Window용 저장경로
-    private String fndFileLoc = "file:///C:/Users/hi/Desktop/revelupimg/"; // Window용 저장경로
+//    private String fndFileLoc = "file:///C:/Users/hi/Desktop/revelupimg/"; // Window용 저장경로
 //    private String fndFileLoc = "file:///C:/Users/simko/Desktop/file/"; // Window용 저장경로
 
 

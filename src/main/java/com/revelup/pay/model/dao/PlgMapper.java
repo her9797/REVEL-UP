@@ -1,5 +1,6 @@
 package com.revelup.pay.model.dao;
 
+import com.revelup.funding.model.dto.DeliveryDTO;
 import com.revelup.funding.model.dto.FundingInfoDTO;
 import com.revelup.pay.model.dto.KakaoPayReadyDTO;
 import com.revelup.pay.model.dto.PayCompletionDTO;
