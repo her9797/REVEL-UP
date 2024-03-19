@@ -75,7 +75,6 @@ public class UserController {
                          @RequestParam("userName") String userName,
                          @RequestParam("userEmail") String userEmail , UserDTO userDTO){
 
-        System.out.println(userDTO);
         try {
             userDTO.setUserId(userId);
             userDTO.setUserName(userName);
