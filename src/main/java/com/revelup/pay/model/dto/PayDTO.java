@@ -42,7 +42,7 @@ public class PayDTO {
     private List<GiftDTO> gift;
     private GiftDTO giftPrice2;
     private int giftPrice;
-    private MultipartFile saveFile;
+    private String saveFile;
 
 
 }

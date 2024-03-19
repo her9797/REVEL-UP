@@ -4,13 +4,16 @@ import com.revelup.audit.model.dto.AuditDTO;
 import com.revelup.config.SessionData;
 import com.revelup.funding.model.dto.*;
 import com.revelup.funding.model.service.FundingService;
+import com.revelup.pay.controller.PayController;
 import com.revelup.pay.model.dto.KakaoPayReadyDTO;
 import com.revelup.pay.model.dto.PayDTO;
 import com.revelup.pay.model.service.PayService;
 import com.revelup.user.model.dto.LoginUserDTO;
 import com.revelup.user.model.dto.UserDTO;
 import com.revelup.user.model.service.UserService;
+import jakarta.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.io.ResourceLoader;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -20,6 +23,7 @@ import org.thymeleaf.model.IModel;
 import java.io.File;
 import java.io.IOException;
 import java.security.Principal;
+import java.util.ArrayList;
 import java.util.List;
 
 @Controller
@@ -34,6 +38,8 @@ public class FundingController {
 
     @Autowired
     private final SessionData sessionData;
+
+    private PayController payController;
 
     public FundingController(FundingService fundingService, UserService userService, PayService payService, SessionData sessionData) {
         this.fundingService = fundingService;
@@ -123,8 +129,10 @@ public class FundingController {
         return "content/funding/all-funding";
     }
 
+
+
     @GetMapping("/all-funding/{fndCode}")
-    public String findByCode(@PathVariable("fndCode") int fndCode, Model model) {
+    public String findByCode(@PathVariable("fndCode") int fndCode, Model model, Principal principal) {
         // 조회수 처리
         // fundingService.updateViews(fndCode);
 
@@ -142,6 +150,7 @@ public class FundingController {
         List<FundingFileDTO> fundingFileDTOList = fundingService.findFile(fndCode);
         model.addAttribute("fundingFileList", fundingFileDTOList);
 
+
         // DetailImg 첨부파일 가져옴
         FundingFileDTO detailImage = fundingService.selectDetailImg(fndCode);
         model.addAttribute("detailImage", detailImage);
@@ -158,13 +167,14 @@ public class FundingController {
         String fndName = fundingInfoDTO.getFndName();
         int giftPrice = fundingInfoDTO.getGiftPrice();
         String fndEndDt = fundingInfoDTO.getFndEndDt();
-        MultipartFile saveFile =  fundingInfoDTO.getThumbnailImage();
+        String file = fundingInfoDTO.getSiSaveFile();
 
         sessionData.setSessionAttribute("fndCodeOfPay", fndCodeOfPay);
         sessionData.setSessionAttribute("fndName", fndName);
         sessionData.setSessionAttribute("giftPrice", giftPrice);
         sessionData.setSessionAttribute("fndEndDt", fndEndDt);
-        sessionData.setSessionAttribute("saveFile", saveFile);
+        sessionData.setSessionAttribute("file", file);
+
 
 
         return "content/funding/detail-funding";

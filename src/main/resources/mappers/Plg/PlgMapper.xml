@@ -19,6 +19,21 @@
         <result property="siFileDiv" column="SI_FILE_DIV"/>
     </resultMap>
 
+    <resultMap type="com.revelup.funding.model.dto.FundingFileDTO" id="findFile">
+        <id property="fileCode" column="FILE_CODE"/>
+        <result property="fndCode" column="FND_CODE"/>
+        <result property="fndFileLoc" column="FND_FILE_LOC"/>
+        <result property="fndOrgFile" column="FND_ORG_FILE"/>
+        <result property="fndSaveFile" column="FND_SAVE_FILE"/>
+        <result property="fileDiv" column="FILE_DIV"/>
+    </resultMap>
+
+    <resultMap id="payDTO" type="com.revelup.pay.model.dto.PayDTO">
+        <id property="plgCode" column="PLG_CODE"/>
+        <result property="fndCode" column="FND_CODE"/>
+        <result property="userId" column="USER_ID"/>
+    </resultMap>
+
     <insert id="insertPlg" parameterType="com.revelup.pay.model.dto.PayCompletionDTO">
         INSERT INTO PLG(
                         USER_ID
@@ -43,6 +58,27 @@
         FROM FND_INFO
         WHERE FND_CODE = #{fndCode}
 
+    </select>
+
+    <select id="getFile" resultMap="findFile">
+        SELECT
+                f.FILE_CODE,
+                f.FND_CODE,
+                f.FND_FILE_LOC,
+                f.FND_ORG_FILE,
+                f.FND_SAVE_FILE,
+                f.FILE_DIV,
+                p.PLG_CODE,
+                p.USER_ID,
+                p.FND_CODE
+        FROM
+                FND_INSERT_FILE f
+        JOIN
+                PLG p ON f.FND_CODE = p.FND_CODE
+        WHERE
+                f.FILE_DIV = 'M'
+          AND
+                p.FND_CODE = f.FND_CODE
     </select>
     
 </mapper>

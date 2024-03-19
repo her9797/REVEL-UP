@@ -1,9 +1,11 @@
 package com.revelup.funding.model.service;
 
 import com.revelup.audit.model.dto.AuditDTO;
+import com.revelup.config.SessionData;
 import com.revelup.funding.model.dao.FundingMapper;
 import com.revelup.funding.model.dto.*;
 import com.revelup.user.model.dto.UserDTO;
+import jakarta.mail.Session;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -22,6 +24,9 @@ public class FundingServiceImpl implements FundingService {
     public FundingServiceImpl(FundingMapper mapper) {
         this.mapper = mapper;
     }
+
+    @Autowired
+    private SessionData sessionData;
 
     @Override
     @Transactional
@@ -79,8 +84,12 @@ public class FundingServiceImpl implements FundingService {
             // 파일 저장용 폴더에 파일 저장 처리
 //            String fndFileLoc = "/Users/jaylee/Documents/SemiFinal/fndFileLoc/" + fndSaveFile; // 이진우 Mac용 저장경로
         String fndFileLoc = "C:\\Users\\hi\\Desktop\\revelupimg" + fndSaveFile; // Window용 저장경로
-//        String fndFileLoc = "C:/Users/hi/Desktop/revelupimg/" + fndSaveFile;
+//        String fndFileLoc = "C:\\Users\\simko\\Desktop\\file/" + fndSaveFile; // Window용 저장경로
             file.transferTo(new File(fndFileLoc));
+
+
+            String saveFile = "C:\\Users\\simko\\Desktop\\file/" + fndSaveFile;
+            sessionData.setSessionAttribute("saveFile", saveFile);
 
             // FundingFileDTO 세팅 및 DB에 삽입
             FundingFileDTO fundingFileDTO = new FundingFileDTO();
@@ -102,6 +111,10 @@ public class FundingServiceImpl implements FundingService {
             // 파일 저장용 폴더에 파일 저장 처리
 //            String siFileLoc = "/Users/jaylee/Documents/SemiFinal/fndFileLoc/" + siSaveFile; // 이진우 Mac용 저장경로
         String siFileLoc = "C:/Users/hi/Desktop/revelupimg/" + siSaveFile; // 현지 Window용 저장경로
+//        String siFileLoc = "C:/Users/simko/Desktop/file/" + siSaveFile; // 현지 Window용 저장경로
+
+
+
 //        String fndFileLoc = "C:/Users/hi/Desktop/revelupimg/" + siSaveFile;
             file.transferTo(new File(siFileLoc));
 
