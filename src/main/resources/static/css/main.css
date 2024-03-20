@@ -100,6 +100,26 @@ body {
 }
 
 
+
+#details-btn {
+    background-color: #0cc291; /* 새로운 버튼 기본 배경색 */
+    color: white; /* 새로운 버튼 기본 텍스트 색상 */
+    border: none;
+    padding: 8px 10px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    width: 210px;
+    cursor: pointer;
+    border-radius: 10px;
+    transition: background-color 0.3s ease, transform 0.2s ease; /* 배경색 및 크기에 대한 전환 효과를 추가합니다. */
+}
+
+#details-btn:hover {
+    background-color: #52cdac;
+}
+
 /* 하이라이트 효과 */
 .highlight {
     cursor: pointer;
