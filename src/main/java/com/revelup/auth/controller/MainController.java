@@ -35,6 +35,8 @@ public class MainController {
 
         System.out.println("fundingInfoDTOList 메인컨트롤러 뭘까뭘까뭘까 = " + fundingInfoDTOList);
 
+        
+
         return "main";
     }
 
