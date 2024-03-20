@@ -26,8 +26,7 @@ public interface FundingService {
 
     FundingInfoDTO getFundingByUserId(String userId);
 
-
-
+    int getParticipantCount(int fndCode);
 
 
 //    FundingInfoDTO estimatedDeliv(int fndCode);

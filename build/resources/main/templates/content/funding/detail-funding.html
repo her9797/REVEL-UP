@@ -73,12 +73,7 @@
         <!-- 펀딩 정보 -->
         <div class="funding-description">
             <h2 th:text="${funding.fndName}"></h2>
-            <!-- 달성율 그래프 -->
-<!--            <div class="progress" role="progressbar" aria-label="Success example" aria-valuenow="75"-->
-<!--                 aria-valuemin="0"-->
-<!--                 aria-valuemax="100" style="height: 30px;">-->
-<!--                <div class="progress-bar bg-success" style="width: 75%">75% 달성</div>-->
-<!--            </div>-->
+            <!-- 달성 그래프 -->
             <div class="progress-container">
                 <div class="progress-bar" th:style="'width:' + ${#numbers.formatDecimal((funding.successAmt * 1.0) / funding.goalAmt * 100, 0, 0)} + '%; background-color: #52cdac;'" th:text="${#numbers.formatDecimal((funding.successAmt * 1.0) / funding.goalAmt * 100, 0, 0)} + '%'"></div>
             </div>
@@ -114,7 +109,7 @@
 
         <!--  후원 관련 정보 테이블  -->
         <div class="statics">
-            <h4>총 160명 참여</h4>
+            <h4 th:text="'총 ' + ${participantCount} + '명 참여'"></h4>
             <table class="table">
                 <tr>
                     <td class="left-margin">모금 목표액</td>

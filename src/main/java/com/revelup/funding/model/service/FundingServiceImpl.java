@@ -174,5 +174,9 @@ public class FundingServiceImpl implements FundingService {
 //        return mapper.estimatedDeliv(fndCode);
 //    }
 
+    @Override
+    public int getParticipantCount(int fndCode) {
+        return mapper.getParticipantCount(fndCode);
+    }
 
 }

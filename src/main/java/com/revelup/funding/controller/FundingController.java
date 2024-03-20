@@ -90,13 +90,6 @@ public class FundingController {
     public String addFundingToExisting(@ModelAttribute FundingInfoDTO fundingInfoDTO,
                                        @ModelAttribute GiftDTO giftDTO,
                                        @ModelAttribute AuditDTO auditDTO) throws IOException {
-        System.out.println("fundingInfoDTO = " + fundingInfoDTO);
-        System.out.println(" ");
-        System.out.println("giftDTO = " + giftDTO);
-        System.out.println(" ");
-        System.out.println("auditDTO = " + auditDTO);
-        System.out.println(" ");
-
         fundingService.addFundingToExisting(fundingInfoDTO, giftDTO, auditDTO);
 
         return "content/funding/insertFunding/new-funding-complete";
@@ -134,6 +127,10 @@ public class FundingController {
         System.out.println("!!!!!!!!!!!!" + fundingInfoDTO);
         model.addAttribute("funding", fundingInfoDTO);
 
+        // 후원 참여자 수 반환
+        int participantCount = fundingService.getParticipantCount(fndCode);
+        System.out.println("!?!?!?!?!??!? = " + participantCount);
+        model.addAttribute("participantCount", participantCount);
 
         // 통계 데이터 중 선물 예상 발송일
 //        FundingInfoDTO estimatedDeliv = fundingService.estimatedDeliv(fndCode);
