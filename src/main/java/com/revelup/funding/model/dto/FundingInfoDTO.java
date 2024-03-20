@@ -60,4 +60,5 @@ public class FundingInfoDTO implements java.io.Serializable {
 
     private Date auditApprDt;       // 심사 승인 일자
     private String auditStat;       // 심사 상태
+
 }
