@@ -3,6 +3,7 @@ package com.revelup.common;
 public enum UserRole {
 
     게터("게터"),
+
     세터("세터"),
     매니저("매니저"),
     회원탈퇴("회원탈퇴");
@@ -24,3 +25,9 @@ public enum UserRole {
                 '}';
     }
 }
+
+
+
+
+
+
