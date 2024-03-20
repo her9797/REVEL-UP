@@ -82,15 +82,15 @@ public class FundingServiceImpl implements FundingService {
             String fndSaveFile = System.currentTimeMillis() + "-" + fndOrgFile;
 
             // 파일 저장용 폴더에 파일 저장 처리
-//            String fndFileLoc = "C:/Users/thunder/Desktop/revelup/" + fndSaveFile; // 이진우 Mac용 저장경로
+            String fndFileLoc = "C:/Users/thunder/Desktop/revelup/" + fndSaveFile; // 이진우 Mac용 저장경로
 //            String fndFileLoc = "/Users/jaylee/Documents/SemiFinal/fndFileLoc/" + fndSaveFile; // 이진우 Mac용 저장경로
-        String fndFileLoc = "C:/Users/hi/Desktop/revelupimg/" + fndSaveFile; // Window용 저장경로
+//        String fndFileLoc = "C:/Users/hi/Desktop/revelupimg/" + fndSaveFile; // Window용 저장경로
 //        String fndFileLoc = "C:\\Users\\simko\\Desktop\\file/" + fndSaveFile; // Window용 저장경로
             file.transferTo(new File(fndFileLoc));
 
 //            String saveFile = "/Users/jaylee/Documents/SemiFinal/fndFileLoc/" + fndSaveFile;
-//            String saveFile = "C:/Users/thunder/Desktop/revelup/" + fndSaveFile;
-            String saveFile = "C:\\Users\\simko\\Desktop\\file/" + fndSaveFile;
+            String saveFile = "C:/Users/thunder/Desktop/revelup/" + fndSaveFile;
+//            String saveFile = "C:\\Users\\simko\\Desktop\\file/" + fndSaveFile;
             sessionData.setSessionAttribute("saveFile", saveFile);
 
             // FundingFileDTO 세팅 및 DB에 삽입

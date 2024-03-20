@@ -223,9 +223,9 @@ function validateTitle() {
     var title = document.getElementById('fndName').value;
     var errorElement = document.getElementById('titleError');
 
-    if (title.length > 22) {
-        errorElement.textContent = "펀딩명은 21자를 넘을 수 없습니다.";
-        document.getElementById('fndName').value = title.slice(0, 22);
+    if (title.length > 19) {
+        errorElement.textContent = "펀딩명은 18자를 넘을 수 없습니다.";
+        document.getElementById('fndName').value = title.slice(0, 19);
         return false; // 유효성 검사 실패
     } else {
         errorElement.textContent = "";
@@ -301,10 +301,10 @@ function validateStory() {
     var storyLength = document.getElementById('funding-story3').value.length;
     var storyErrorElement = document.getElementById('storyError');
 
-    if (storyLength < 1 || storyLength > 746) { // 길이가 1 미만 또는 500 이상인 경우
-        storyErrorElement.textContent = "펀딩 스토리는 1자 이상, 745자 이하여야 합니다.";
-        if (storyLength > 746) { // 길이가 745자를 초과한 경우
-            storyTextarea.value = storyTextarea.value.slice(0, 746); // 746자 이후의 문자열은 제거
+    if (storyLength < 1 || storyLength > 791) { // 길이가 1 미만 또는 500 이상인 경우
+        storyErrorElement.textContent = "펀딩 스토리는 1자 이상, 790자 이하여야 합니다.";
+        if (storyLength > 791) { // 길이가 745자를 초과한 경우
+            storyTextarea.value = storyTextarea.value.slice(0, 791); // 746자 이후의 문자열은 제거
         }
         return false; // 유효성 검사 실패'
     } else {

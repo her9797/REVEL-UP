@@ -139,6 +139,12 @@ public class PayController {
         int giftPrice = (int) sessionData.getSessionAttribute("giftPrice");
         String fndEndDt = (String) sessionData.getSessionAttribute("fndEndDt");
 
+        // 가져온 세션 데이터를 로그로 출력
+        System.out.println("fndCodeOfPay: 페이컨트롤러 " + fndCodeOfPay);
+        System.out.println("fndName: 페이컨트롤러 " + fndName);
+        System.out.println("giftPrice: 페이컨트롤러 " + giftPrice);
+        System.out.println("fndEndDt: 페이컨트롤러 " + fndEndDt);
+
         List<FundingInfoDTO> fundingInfoDTOList = (List<FundingInfoDTO>) sessionData.getSessionAttribute("fundingInfoDTOList") ;
 
         PayDTO payDTO = new PayDTO();

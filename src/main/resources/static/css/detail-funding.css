@@ -44,9 +44,6 @@ html, body {
 /*    text-align: center;*/
 /*}*/
 
-
-/* !!!!!!!!!!!!!!!!!!!!!!!!!! 여기서부터 !!!!!!!!!!!!!!!!!!!!!!!!!! */
-
 /* 썸네일 라디오 버튼 숨기기 */
 .section [id*="slide"] {
     display: none;
@@ -156,8 +153,25 @@ html, body {
     display: block;
 }
 
-/* 여기까지 */
+.progress-container {
+    width: 100%; /* 컨테이너의 전체 너비 */
+    background-color: #ddd; /* 컨테이너의 배경색 */
+    border-radius: 5px;
+}
 
+.progress-bar {
+    height: 20px; /* 바의 높이 */
+    background-color: #008000; /* 바의 배경색 */
+    text-align: center; /* 바 내부 텍스트 정렬 */
+    line-height: 20px; /* 바 내부 텍스트 라인 높이 */
+    color: white; /* 바 내부 텍스트 색상 */
+    overflow: hidden; /* 넘치는 부분 감춤 */
+    width: 100%; /* 너비를 100%로 설정 */
+    max-width: 100%; /* 최대 너비를 100%로 설정 */
+    white-space: nowrap; /* 텍스트 줄바꿈 방지 */
+    border-radius: 5px;
+
+}
 
 .right-column1 h4 {
     display: flex;
