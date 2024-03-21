@@ -29,6 +29,8 @@ thymeleaf : 템플릿 엔진
 MySql Driver
 
 Spring security
+
+Java MailSender
 ```
 
 ### PART
