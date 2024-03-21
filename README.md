@@ -1,18 +1,23 @@
 # REVEL-UP PROJECT
 
 Spring-boot & MyBatis를 이용한 웹 개발 프로젝트
-
+```
 ### Language
 
 Java 17
+```
 
+```
 ### SpringBoot
 
 3.2.2
+```
 
+```
 ### Dependencies
 
 Spring web : 스프링 웹 MVC
+```
 
 Lombok
 
