@@ -2,6 +2,10 @@
 
 Spring-boot & MyBatis를 이용한 웹 개발 프로젝트
 
+### Introduce
+```
+리사이클 & 업사이클 제품만을 판매하는 크라우드펀딩 웹 개발
+```
 ### Language
 ```
 Java 17
