@@ -18,7 +18,6 @@ Java 17
 ```
 Spring web : 스프링 웹 MVC
 
-
 Lombok
 
 thymeleaf : 템플릿 엔진
