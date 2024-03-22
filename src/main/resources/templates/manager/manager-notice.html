@@ -128,16 +128,15 @@
         </div>
     </div>
 
-
     <div>
         <ul class="pagination">
-            <li th:if="${page > 1}">
+            <li th:if="${totalPage > 0}">
                 <a th:href="@{/manager/manager-notice(page=1)}">First</a>
             </li>
             <li th:each="p : ${#numbers.sequence(1, totalPage)}" th:class="${page == p ? 'active' : ''}">
                 <a th:href="@{/manager/manager-notice(page=${p})}" th:text="${p}"></a>
             </li>
-            <li th:if="${page < totalPage}">
+            <li th:if="${totalPage > 1}">
                 <a th:href="@{/manager/manager-notice(page=${totalPage})}">Last</a>
             </li>
         </ul>
