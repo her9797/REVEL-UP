@@ -2,14 +2,11 @@
   
 # REVEL-UP PROJECT
 
-Spring-boot & MyBatis를 이용한 웹 개발 프로젝트
+### Spring-boot & MyBatis를 이용한 웹 개발 프로젝트
+🍀리사이클 & 업사이클 제품만을 판매하는 크라우드펀딩 웹 개발🍀
 
-### Introduce
-```
-리사이클 & 업사이클 제품만을 판매하는 크라우드펀딩 웹 개발
-```
+![revelup-main](https://github.com/her9797/semi-project/assets/153487372/ad5c94cf-d322-463a-bbb2-5770f3ad1065)
 
-![revelup-main](https://github.com/her9797/semi-project/assets/153487372/c0b23ed0-4804-4128-b796-85b3cf6103c5)
 </div>
 
 
@@ -40,16 +37,14 @@ Spring security
 Java MailSender
 ```
 
+
 ### PART
-```
-User (로그인 / 회원) - Spring Security
 
-Notice (공지사항)
+|회원|공지사항|심사|결제|
+|---|---|---|---|
+|![로그인 페이지](https://github.com/her9797/semi-project/assets/153487372/630e9faf-1a58-4a2e-9268-206b4c33a056)|![공지사항 1](https://github.com/her9797/semi-project/assets/153487372/241697e8-a64e-48f1-aadb-bd24987bd2cc)|![펀딩](https://github.com/her9797/semi-project/assets/153487372/04220ed0-33f8-4f8c-baf4-748a78a4764e)|![결제](https://github.com/her9797/semi-project/assets/153487372/502a647e-bfc6-4b74-9ccf-6727e5f7f340)|
+|로그인 페이지|공지사항 등록|심사 처리|카카오페이 결제|
 
-Audit (심사)
-
-Pay
-```
 
 ### 후기
 ```
