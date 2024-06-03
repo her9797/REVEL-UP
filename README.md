@@ -1,6 +1,7 @@
 # REVEL-UP PROJECT
 
 Spring-boot & MyBatis를 이용한 웹 개발 프로젝트
+![revelup-main](https://github.com/her9797/semi-project/assets/153487372/c0b23ed0-4804-4128-b796-85b3cf6103c5)
 
 ### Introduce
 ```
@@ -35,11 +36,11 @@ Java MailSender
 
 ### PART
 ```
-User
+User (로그인 / 회원) - Spring Security
 
-Notice
+Notice (공지사항)
 
-Audit
+Audit (심사)
 
 Pay
 ```
