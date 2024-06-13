@@ -2,7 +2,7 @@
   
 # REVEL-UP PROJECT
 
-### Spring-boot & MyBatis를 이용한 웹 개발 프로젝트
+### Spring & MyBatis를 이용한 웹 개발 프로젝트
 🍀리사이클 & 업사이클 제품만을 판매하는 크라우드펀딩 웹 개발🍀
 
 ![revelup-main](https://github.com/her9797/semi-project/assets/153487372/ad5c94cf-d322-463a-bbb2-5770f3ad1065)
@@ -16,7 +16,7 @@ Java 17
 ```
 
 
-### SpringBoot
+### Spring
 ```
 3.2.2
 ```
