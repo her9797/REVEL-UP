@@ -19,7 +19,7 @@
 
 |회원|공지사항|심사|결제|
 |---|---|---|---|
-|![로그인 페이지](https://github.com/her9797/semi-project/assets/153487372/630e9faf-1a58-4a2e-9268-206b4c33a056)|![공지사항 1](https://github.com/her9797/semi-project/assets/153487372/241697e8-a64e-48f1-aadb-bd24987bd2cc)|![펀딩](https://github.com/her9797/semi-project/assets/153487372/04220ed0-33f8-4f8c-baf4-748a78a4764e)|![결제](https://github.com/her9797/semi-project/assets/153487372/502a647e-bfc6-4b74-9ccf-6727e5f7f340)|
+|![로그인 페이지](https://github.com/her9797/semi-project/assets/153487372/630e9faf-1a58-4a2e-9268-206b4c33a056)|![noti](https://github.com/her9797/REVEL-UP/assets/153487372/eda30e5c-8f71-486b-b5ca-51194c51d9d3)|![audit](https://github.com/her9797/REVEL-UP/assets/153487372/c2c800e4-438e-4037-b05d-0f1e0a5bf582)|![pay](https://github.com/her9797/REVEL-UP/assets/153487372/e9afa0ea-fa3f-4600-8cf2-be2976fbf565)|
 |로그인 페이지|공지사항 등록|심사 처리|카카오페이 결제|
 
 
@@ -28,6 +28,11 @@
 로그인
  - 스프링 시큐리티를 이용한 로그인 및 JavaMailSender를 이용한 사용자 인증 구현
  - 사용자 인터페이스 개선을 위한 Thymeleaf와 HTML을 활용한 프론트엔드 개발
+
+결제
+ - 카카오페이 테스트 API를 사용하여 결제 기능 구현
+ - 테스트 결제 요청, 결제 승인, 결제 취소 등의 기능을 포함한 결제 프로세스 개발
+ - API 응답 데이터를 처리하고, 사용자에게 결제 정보를 제공하는 프론트엔드 인터페이스 개발
 
 공지사항
  - Spring 프레임워크를 활용하여 공지사항 관리 기능 구현
