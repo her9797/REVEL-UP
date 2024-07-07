@@ -147,6 +147,8 @@ public class PayController {
 
         List<FundingInfoDTO> fundingInfoDTOList = (List<FundingInfoDTO>) sessionData.getSessionAttribute("fundingInfoDTOList") ;
 
+        System.out.println("fundingInfoDTOList" + fundingInfoDTOList);
+
         PayDTO payDTO = new PayDTO();
         payDTO.setFndCode(fndCodeOfPay);
         payDTO.setUserId(userId);

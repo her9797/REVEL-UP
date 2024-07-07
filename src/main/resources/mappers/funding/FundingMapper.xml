@@ -76,13 +76,6 @@
         <result property="fileAttached" column="FILE_ATTACHED"/>
     </resultMap>
 
-    <resultMap id="audit" type="com.revelup.audit.model.dto.AuditDTO">
-        <id property="fndCode" column="FND_CODE"/>
-        <result property="fndInsertDttm" column="FND_INSERT_DTTM"/>
-        <result property="auditStat" column="AUDIT_STAT"/>
-        <result property="auditApprDt" column="AUDIT_APPR_DT"/>
-    </resultMap>
-
     <resultMap id="getFundingByUserId" type="com.revelup.funding.model.dto.FundingInfoDTO">
         <id property="userId" column="USER_ID"/>
         <result property="sttrCompany" column="STTR_COMPANY"/>
@@ -91,6 +84,28 @@
         <result property="sttrBank" column="STTR_BANK"/>
         <result property="sttrAccNo" column="STTR_ACC_NO"/>
         <result property="sttrAccHolder" column="STTR_ACC_HOLDER"/>
+    </resultMap>
+
+    <!-- AuditDTO resultMap -->
+    <resultMap id="audit" type="com.revelup.audit.model.dto.AuditDTO">
+        <id property="fndCode" column="FND_CODE"/>
+        <result property="fndInsertDttm" column="FND_INSERT_DTTM"/>
+        <result property="auditStat" column="AUDIT_STAT"/>
+        <result property="auditApprDt" column="AUDIT_APPR_DT"/>
+    </resultMap>
+
+    <resultMap id="fundingInfoResultMap" type="com.revelup.funding.model.dto.FundingInfoDTO">
+        <id property="fndCode" column="FND_CODE" />
+        <result property="userId" column="USER_ID" />
+        <result property="fndName" column="FND_NAME" />
+        <result property="fndEndDt" column="FND_END_DT" />
+        <result property="goalAmt" column="GOAL_AMT" />
+        <result property="fndDescr" column="FND_DESCR" />
+        <result property="successAmt" column="SUCCESS_AMT" />
+        <result property="fndDelYn" column="FND_DEL_YN" />
+        <result property="fndPrgStat" column="FND_PRG_STAT" />
+        <result property="fndInsertDttm" column="FND_INSERT_DTTM" />
+        <result property="fileAttached" column="FILE_ATTACHED" />
     </resultMap>
 
     <select id="getParticipantCount" resultType="java.lang.Integer">
@@ -232,36 +247,8 @@
         ORDER BY FND_CODE DESC;
     </select>
 
-
-
-    <!--    &lt;!&ndash; 조회수 업데이트 쿼리   &ndash;&gt;-->
-    <!--    <update id="updateViews" parameterType="int">-->
-    <!--        UPDATE FND_INFO-->
-    <!--        SET FND_VIEWS=FND_VIEWS+1-->
-    <!--        WHERE FND_CODE=#{FND_CODE}-->
-    <!--    </update>-->
-
-    <!--    펀딩 코드로 검색하는 쿼리-->
-    <select id="findByCode" resultMap="findByCode">
-        SELECT fi.USER_ID
-                , fi.FND_CODE
-                , fi.FND_DESCR
-                , fi.FND_NAME
-                , gi.GIFT_PRICE
-                , fi.FND_END_DT
-                , fi.GOAL_AMT
-                , fi.SUCCESS_AMT
-                , a.AUDIT_STAT
-                , fi.FILE_ATTACHED
-                , sf.SI_SAVE_FILE
-                , sf.SI_FILE_DIV
-        FROM FND_INFO fi
-        JOIN GIFT gi ON fi.FND_CODE = gi.FND_CODE
-        JOIN AUD a ON fi.FND_CODE = a.FND_CODE
-        JOIN STTR_INFO_FILE sf ON fi.USER_ID = sf.USER_ID
-        WHERE fi.FND_CODE = #{fndCode}
-        AND a.AUDIT_STAT = 'A'
-        AND SI_FILE_DIV = 'S';
+    <select id="findByCode" parameterType="int" resultMap="fundingInfoResultMap">
+        SELECT * FROM fnd_info WHERE FND_CODE = #{fndCode}
     </select>
 
     <!-- 펀딩 달성 시 선물 예상 발송일 -->

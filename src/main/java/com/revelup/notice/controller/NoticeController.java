@@ -25,7 +25,7 @@ public class NoticeController {
 
     /** 공지사항 리스트 -> 페이징 */
     @GetMapping("/manager-notice")
-    public String getNoticeByPage(@RequestParam(value = "page", defaultValue = "1") int page,
+    public String getNoticeByPage(@RequestParam(value = "page", defaultValue = "0") int page,
                                   @RequestParam(value = "size", defaultValue = "10") int size, Model model) {
 
         int noticePerPage = size; // 페이지 당 공지사항 수
@@ -41,12 +41,6 @@ public class NoticeController {
         // 페이지 범위 계산
         int rangeStart = (page - 1) * size + 1;
         int rangeEnd = Math.min(page * size, totalNotice);
-
-        // 공지사항이 없는 경우 페이지 번호를 1로 고정 -> 1 / 0이 같이보여서 수정
-        if (totalNotice == 0) {
-            page = 1;
-            totalPage = 1;
-        }
 
         model.addAttribute("noticeList", notice); // 모델에 공지사항 리스트 추가
         model.addAttribute("page", page); // 현재 페이지 번호 추가

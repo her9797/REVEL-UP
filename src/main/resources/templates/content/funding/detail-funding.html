@@ -159,9 +159,7 @@
         </div>
     </div>
 
-    <div class="right-column2">
-        <img th:src="@{|/upload/${sttrImg.siSaveFile}|}" alt="">
-    </div>
+
 </main>
 
 
@@ -206,18 +204,18 @@
 <div th:insert="~{fragments/footer.html}"></div>
 <script>
     $(document).ready(function () {
-// 수량 증가 버튼 클릭 시
+        // 수량 증가 버튼 클릭 시
         $('.plus').click(function () {
-            let quantityInput = $('#quantity-input');
+            let quantityInput = $('#qty-input'); // 수정: id를 qty-input으로 변경
             let quantity = parseInt(quantityInput.val());
             quantity++;
             quantityInput.val(quantity);
             calculateTotalPrice();
         });
 
-// 수량 감소 버튼 클릭 시
+        // 수량 감소 버튼 클릭 시
         $('.minus').click(function () {
-            let quantityInput = $('#quantity-input');
+            let quantityInput = $('#qty-input'); // 수정: id를 qty-input으로 변경
             let quantity = parseInt(quantityInput.val());
             if (quantity > 1) {
                 quantity--;
@@ -226,10 +224,10 @@
             }
         });
 
-// 총 후원금액 계산 함수
+        // 총 후원금액 계산 함수
         function calculateTotalPrice() {
             let unitPrice = parseInt($('#unit-price').text().replace('원', ''));
-            let quantity = parseInt($('#quantity-input').val());
+            let quantity = parseInt($('#qty-input').val()); // 수정: id를 qty-input으로 변경
             let totalPrice = unitPrice * quantity;
             $('.total-price input[type="text"]').val(totalPrice + '원');
         }

@@ -61,7 +61,7 @@
             </div>
 
             <div class="button-group">
-                <button style="margin-left: 8px" id="details-btn" th:onclick="'javascript:window.location.href=\'' + @{/content/funding/all-funding/__${funding.fndCode}__} + '\''">상세보기</button>
+                <button style="margin-left: 8px" th:onclick="|window.location.href='/content/funding/all-funding/__${funding.fndCode}__'|">상세보기</button>
             </div>
         </div>
     </div>

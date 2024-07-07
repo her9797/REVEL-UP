@@ -119,12 +119,11 @@ public class FundingController {
 
     @GetMapping("/all-funding/{fndCode}")
     public String findByCode(@PathVariable("fndCode") int fndCode, Model model, Principal principal) {
-        // 조회수 처리
-        // fundingService.updateViews(fndCode);
 
         // 상세내용 가져옴
+        System.out.println("Controller - findByCode: fndCode = " + fndCode);
         FundingInfoDTO fundingInfoDTO = fundingService.findByCode(fndCode);
-        System.out.println("!!!!!!!!!!!!" + fundingInfoDTO);
+        System.out.println(fundingInfoDTO);
         model.addAttribute("funding", fundingInfoDTO);
 
         // 후원 참여자 수 반환
@@ -154,7 +153,7 @@ public class FundingController {
 
         int fndCodeOfPay = fundingInfoDTO.getFndCode();
         String fndName = fundingInfoDTO.getFndName();
-        int giftPrice = fundingInfoDTO.getGiftPrice();
+        int giftPrice = fundingInfoDTO.getGoalAmt();
         String fndEndDt = fundingInfoDTO.getFndEndDt();
 
         System.out.println("fndCodeOfPay 펀딩컨트롤러에서 담아줄때 = " + fndCodeOfPay);

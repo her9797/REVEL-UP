@@ -4,6 +4,7 @@ import com.revelup.audit.model.dto.AuditDTO;
 import com.revelup.funding.model.dto.*;
 import com.revelup.user.model.dto.UserDTO;
 import org.apache.ibatis.annotations.Mapper;
+import org.springframework.data.repository.query.Param;
 
 import java.util.List;
 
