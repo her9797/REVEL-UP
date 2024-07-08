@@ -18,7 +18,8 @@
 ### ERD 설계
 |ERD(논리)|ERD(물리)|
 |---|---|
-|![CROWD-ERD1](https://github.com/her9797/REVEL-UP/assets/153487372/465a08c9-a9cb-4676-aa08-636029580535)|![CROWD-ERD2](https://github.com/her9797/REVEL-UP/assets/153487372/e83b4f3c-5031-4787-bddd-51c64b74cb42)|
+|![CROWD-ERD1](https://github.com/her9797/REVEL-UP/assets/153487372/08ae7af0-8848-4179-86a5-20301a998dd0)|![CROWD-ERD2](https://github.com/her9797/REVEL-UP/assets/153487372/658c8281-2c57-4c72-96b6-61aa6fc8edee)|
+
 
 
 
@@ -26,8 +27,8 @@
 
 |회원|공지사항|심사|결제|
 |---|---|---|---|
-|![로그인 페이지](https://github.com/her9797/semi-project/assets/153487372/630e9faf-1a58-4a2e-9268-206b4c33a056)|![noti](https://github.com/her9797/REVEL-UP/assets/153487372/eda30e5c-8f71-486b-b5ca-51194c51d9d3)|![audit](https://github.com/her9797/REVEL-UP/assets/153487372/c2c800e4-438e-4037-b05d-0f1e0a5bf582)|![pay](https://github.com/her9797/REVEL-UP/assets/153487372/e9afa0ea-fa3f-4600-8cf2-be2976fbf565)|
-|로그인 페이지|공지사항 등록|심사 처리|카카오페이 결제|
+||![pay](https://github.com/her9797/REVEL-UP/assets/153487372/ec3226b3-1888-48a6-97d0-48f111ba061f)|![audit](https://github.com/her9797/REVEL-UP/assets/153487372/52bd18ac-37dd-411e-8731-89468ab6e91c)|![noti](https://github.com/her9797/REVEL-UP/assets/153487372/299f2873-23b1-467e-a656-4088fa0bbf99)|
+|로그인 페이지|카카오페이 결제|심사 처리|공지사항 등록|
 
 
 ### 기능
