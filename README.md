@@ -5,7 +5,8 @@
 ### Spring & MyBatis를 이용한 웹 개발 프로젝트
 🍀리사이클 & 업사이클 제품만을 판매하는 크라우드펀딩 웹 개발🍀
 
-![revelup-main](https://github.com/her9797/semi-project/assets/153487372/ad5c94cf-d322-463a-bbb2-5770f3ad1065)
+![REVELUP](https://github.com/her9797/REVEL-UP/assets/153487372/ad048d61-e7e9-45a0-a0ae-7cb1e8dac968)
+
 
 </div>
 
@@ -27,7 +28,7 @@
 
 |회원|공지사항|심사|결제|
 |---|---|---|---|
-||![pay](https://github.com/her9797/REVEL-UP/assets/153487372/ec3226b3-1888-48a6-97d0-48f111ba061f)|![audit](https://github.com/her9797/REVEL-UP/assets/153487372/52bd18ac-37dd-411e-8731-89468ab6e91c)|![noti](https://github.com/her9797/REVEL-UP/assets/153487372/299f2873-23b1-467e-a656-4088fa0bbf99)|
+|![login](https://github.com/her9797/REVEL-UP/assets/153487372/46a93d23-1a01-4b73-b2ec-31d54bc94eb9)|![pay](https://github.com/her9797/REVEL-UP/assets/153487372/ec3226b3-1888-48a6-97d0-48f111ba061f)|![audit](https://github.com/her9797/REVEL-UP/assets/153487372/52bd18ac-37dd-411e-8731-89468ab6e91c)|![noti](https://github.com/her9797/REVEL-UP/assets/153487372/299f2873-23b1-467e-a656-4088fa0bbf99)|
 |로그인 페이지|카카오페이 결제|심사 처리|공지사항 등록|
 
 
