@@ -15,6 +15,13 @@
 
 ![HTML5](https://img.shields.io/badge/html5-%23E34F26.svg?style=for-the-badge&logo=html5&logoColor=white) <img src="https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=JavaScript&logoColor=white"> ![Bootstrap](https://img.shields.io/badge/bootstrap-%238511FA.svg?style=for-the-badge&logo=bootstrap&logoColor=white) ![CSS3](https://img.shields.io/badge/css3-%231572B6.svg?style=for-the-badge&logo=css3&logoColor=white)
 
+### ERD 설계
+|ERD(논리)|ERD(물리)|
+|---|---|
+|![CROWD-ERD1](https://github.com/her9797/REVEL-UP/assets/153487372/465a08c9-a9cb-4676-aa08-636029580535)|![CROWD-ERD2](https://github.com/her9797/REVEL-UP/assets/153487372/e83b4f3c-5031-4787-bddd-51c64b74cb42)|
+
+
+
 ### PART
 
 |회원|공지사항|심사|결제|
