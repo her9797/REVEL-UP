@@ -2,7 +2,7 @@
   
 # REVEL-UP PROJECT
 
-### Spring & MyBatis를 이용한 웹 개발 프로젝트
+### Spring & Thymeleaf & MyBatis를 이용한 웹 프로젝트
 🍀리사이클 & 업사이클 제품만을 판매하는 크라우드펀딩 웹 개발🍀
 
 ![REVELUP](https://github.com/her9797/REVEL-UP/assets/153487372/ad048d61-e7e9-45a0-a0ae-7cb1e8dac968)
