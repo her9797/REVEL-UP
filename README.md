@@ -38,7 +38,7 @@
 
 <div align="center">
   
-| 회원 | 공지사항 | 심사 | 결제 |
+| 회원 | 결제 | 심사 | 공지사항 |
 | --- | --- | --- | --- |
 | ![login](https://github.com/her9797/REVEL-UP/assets/153487372/46a93d23-1a01-4b73-b2ec-31d54bc94eb9) | ![pay](https://github.com/her9797/REVEL-UP/assets/153487372/ec3226b3-1888-48a6-97d0-48f111ba061f) | ![audit](https://github.com/her9797/REVEL-UP/assets/153487372/52bd18ac-37dd-411e-8731-89468ab6e91c) | ![noti](https://github.com/her9797/REVEL-UP/assets/153487372/299f2873-23b1-467e-a656-4088fa0bbf99) |
 | 로그인 페이지 | 카카오페이 결제 | 심사 처리 | 공지사항 등록 |
